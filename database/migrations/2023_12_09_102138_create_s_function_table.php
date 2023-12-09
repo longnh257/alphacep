@@ -9,14 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('s_function', function (Blueprint $table) {
             $table->string('function_id', 3)->primary();
-            $table->string('function_name', 20);
-            $table->string('category_id', 2);
-            $table->string('url', 256);
-            $table->timestamps();
+            $table->string('function_name', 20)->nullable();
+            $table->string('category_id', 2)->nullable();
+            $table->string('url', 256)->nullable();
         });
     }
 
