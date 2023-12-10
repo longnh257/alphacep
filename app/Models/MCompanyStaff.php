@@ -11,5 +11,5 @@ class MCompanyStaff extends Model
 
 
     protected $table = 'm_company_staff';
-    protected $guarded = ['m_company_staff_id'];
+    protected $guarded = ['company_staff_id'];
 }

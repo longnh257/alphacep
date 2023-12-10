@@ -10,5 +10,5 @@ class MFlowgroup extends Model
     use HasFactory;
 
     protected $table = 'm_flowgroup';
-    protected $guarded = ['m_flowgroup_id'];
+    protected $guarded = ['id'];
 }

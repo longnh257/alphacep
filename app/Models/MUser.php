@@ -10,5 +10,5 @@ class MUser extends Model
     use HasFactory;
 
     protected $table = 'm_user';
-    protected $guarded = ['m_user_id'];
+    protected $guarded = ['user_id'];
 }

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class VisitGuidanceRecordDetail extends Model
 {
     use HasFactory;
+
+    protected $table = 'visit_guidance_record_detail';
+    protected $guarded = ['detail_id'];
 }

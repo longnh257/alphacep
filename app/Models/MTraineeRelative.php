@@ -10,5 +10,5 @@ class MTraineeRelative extends Model
     use HasFactory;
 
     protected $table = 'm_trainee_relative';
-    protected $guarded = ['m_trainee_relative_id'];
+    protected $guarded = ['relative_id'];
 }

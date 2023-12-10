@@ -10,5 +10,5 @@ class MNationality extends Model
     use HasFactory;
 
     protected $table = 'm_nationality';
-    protected $guarded = ['m_nationality_id'];
+    protected $guarded = ['nationality_id'];
 }

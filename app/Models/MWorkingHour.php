@@ -10,5 +10,5 @@ class MWorkingHour extends Model
     use HasFactory;
 
     protected $table = 'm_working_hour';
-    protected $guarded = ['m_working_hour_id'];
+    protected $guarded = ['working_hour_id'];
 }

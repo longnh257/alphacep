@@ -10,5 +10,5 @@ class MWork extends Model
     use HasFactory;
 
     protected $table = 'm_work';
-    protected $guarded = ['m_work_id'];
+    protected $guarded = ['work_id'];
 }

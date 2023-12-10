@@ -10,5 +10,5 @@ class MStayFacility extends Model
     use HasFactory;
 
     protected $table = 'm_stay_facility';
-    protected $guarded = ['m_stay_facility_id'];
+    protected $guarded = ['stay_facility_id'];
 }

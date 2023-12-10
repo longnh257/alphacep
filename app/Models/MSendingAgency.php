@@ -10,5 +10,5 @@ class MSendingAgency extends Model
     use HasFactory;
 
     protected $table = 'm_sending_agency';
-    protected $guarded = ['m_sending_agency_id'];
+    protected $guarded = ['sending_agency_id'];
 }

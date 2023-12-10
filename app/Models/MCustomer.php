@@ -10,5 +10,5 @@ class MCustomer extends Model
     use HasFactory;
 
     protected $table = 'm_customer';
-    protected $guarded = ['m_customer_id'];
+    protected $guarded = ['customer_id'];
 }

@@ -10,5 +10,5 @@ class SFunctionCategory extends Model
     use HasFactory;
 
     protected $table = 's_function_category';
-    protected $guarded = ['s_function_category_id'];
+    protected $guarded = ['category_id'];
 }

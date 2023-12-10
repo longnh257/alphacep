@@ -10,5 +10,5 @@ class SFunction extends Model
     use HasFactory;
 
     protected $table = 's_function';
-    protected $guarded = ['s_function_id'];
+    protected $guarded = ['function_id'];
 }

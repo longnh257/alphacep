@@ -10,5 +10,5 @@ class MWorkflow extends Model
     use HasFactory;
 
     protected $table = 'm_workflow';
-    protected $guarded = ['m_workflow_id'];
+    protected $guarded = ['flow_id'];
 }

@@ -10,5 +10,5 @@ class MCustomerOffice extends Model
     use HasFactory;
 
     protected $table = 'm_customer_office';
-    protected $guarded = ['m_customer_office_id'];
+    protected $guarded = ['customer_office_id'];
 }

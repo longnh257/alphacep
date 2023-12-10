@@ -10,5 +10,5 @@ class ProjectTraineeContract extends Model
     use HasFactory;
 
     protected $table = 'project_trainee_contract';
-    protected $guarded = ['project_trainee_contract_id'];
+    protected $guarded = ['contract_id'];
 }

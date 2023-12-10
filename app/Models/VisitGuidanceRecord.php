@@ -10,5 +10,5 @@ class VisitGuidanceRecord extends Model
     use HasFactory;
 
     protected $table = 'visit_guidance_record';
-    protected $guarded = ['visit_guidance_record_id'];
+    protected $guarded = ['visit_record_id'];
 }
