@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'm_user';
-    protected $guarded = ['m_user_id'];
+    protected $guarded = ['user_id'];
     /**
      * The attributes that are mass assignable.
      *
