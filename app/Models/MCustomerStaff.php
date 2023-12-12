@@ -11,4 +11,8 @@ class MCustomerStaff extends Model
 
     protected $table = 'm_customer_staff';
     protected $guarded = ['customer_staff_id'];
+
+    protected $primaryKey = 'customer_staff_id';
+    const CREATED_AT = 'updated_on';
+    const UPDATED_AT = 'created_on';
 }

@@ -1,23 +1,23 @@
 @extends('layouts.master')
 
-@section('title', 'Khách hàng')
+@section('title', 'Customer Office')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Khách hàng</h5>
+            <h5 class="page-title fs-21 mb-1">Customer Office</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Khách hàng</li>
+                    <li class="breadcrumb-item active" aria-current="page">Customer Office</li>
                 </ol>
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.customer.create')}}" class="btn btn-info btn-icon me-2 btn-b">
+                <a href="{{route('view.customer_staff.create')}}" class="btn btn-info btn-icon me-2 btn-b">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -52,7 +52,7 @@
                             <tr class="gridjs-tr">
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">ID</div>
+                                        <div class="gridjs-th-content">Name</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -68,7 +68,7 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Tel</div>
+                                        <div class="gridjs-th-content">Name</div>
                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-up"></i>
                                         </button>
@@ -76,29 +76,45 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Email</div>
+                                        <div class="gridjs-th-content">Name</div>
                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in list" :key="item.customer_id">
-                                <td>((item.customer_id))</td>
-                                <td class="fw-medium">((item.name))</td>
-                                <td class="fw-medium">((item.tel))</td>
+                            <tr>
+                                <td>05 Dec 2019</td>
+                                <td class="fw-medium">34</td>
+                                <td class="fw-medium">$658.20</td>
                                 <td class="text-danger fw-medium">-$45.10</td>
-                                <td>
-                                    <div class="hstack gap-2 flex-wrap"> 
-                                        <a :href="`customer/`+item.customer_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a> 
-                                        <a href="javascript:void(0);" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a> 
-                                    </div>
-                                </td>
                             </tr>
-
+                            <tr>
+                                <td>06 Dec 2019</td>
+                                <td class="fw-medium">26</td>
+                                <td class="fw-medium">$453.25</td>
+                                <td class="text-danger fw-medium">-$15.02</td>
+                            </tr>
+                            <tr>
+                                <td>07 Dec 2019</td>
+                                <td class="fw-medium">34</td>
+                                <td class="fw-medium">$653.12</td>
+                                <td class="text-danger fw-medium">-$13.45</td>
+                            </tr>
+                            <tr>
+                                <td>08 Dec 2019</td>
+                                <td class="fw-medium">45</td>
+                                <td class="fw-medium">$546.47</td>
+                                <td class="text-danger fw-medium">-$24.22</td>
+                            </tr>
+                            <tr>
+                                <td>09 Dec 2019</td>
+                                <td class="fw-medium">31</td>
+                                <td class="fw-medium">$425.72</td>
+                                <td class="text-danger fw-medium">-$25.01</td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="card-footer p-8pt">
@@ -239,8 +255,6 @@
                             pageArr.push(that.page + 2);
                         }
                         that.listPage = pageArr;
-
-                        console.log(that.list);
                     },
                     error: function(xhr, textStatus, error) {
                         notifier.warning('システムエラーが発生しました。 大変お手数ですが、サイト管理者までご連絡ください');

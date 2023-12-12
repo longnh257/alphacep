@@ -4,24 +4,22 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\MCustomer;
+use App\Models\MCustomerStaff;
+use App\Models\MCustomerOffice;
 use Illuminate\Support\Facades\Auth;
 
-class CustomerPageController extends Controller
+class CustomerStaffPageController extends Controller
 {
     public function index(Request $request)
     {
-        return view('pages.customer.index');
+        return view('pages.customer_staff.index');
     }
 
     public function create()
     {
-        return view('pages.customer.create');
-    } 
-    public function create1()
-    {
-        return view('pages.customer.create1');
-    } 
+        $offices = MCustomerOffice::all('customer_office_id', 'name');
+        return view('pages.customer_staff.create', compact('offices'));
+    }
 
     public function store(Request $request)
     {
@@ -30,6 +28,7 @@ class CustomerPageController extends Controller
             'name' => 'required|max:255',
             'name_kana' => 'required|max:255',
             'tel' => 'required|regex:/^\d{10}$/',
+            'customer_office_id' => 'required',
         ], [
             'name.required' => 'The name field is required.',
             'name.max' => 'The name must not exceed :max characters.',
@@ -42,26 +41,28 @@ class CustomerPageController extends Controller
         $request['created_by_id'] = Auth::id();
         $request['updated_by_id'] = Auth::id();
 
-        MCustomer::create($request->except('_token'));
+        MCustomerStaff::create($request->except('_token'));
 
-        return redirect()->route('view.customer.index')
-            ->with('success', 'Customer created successfully!');
+        return redirect()->route('view.customer_staff.index')
+            ->with('success', 'CustomerOffice created successfully!');
     }
 
     public function edit($id)
     {
-        $customer = MCustomer::findOrFail($id);
-        return view('pages.customer.edit', compact('customer'));
+        $customer_staff = MCustomerStaff::findOrFail($id);
+        $offices = MCustomerOffice::all('customer_office_id', 'name');
+
+        return view('pages.customer_staff.edit', compact(['customer_staff','offices']));
     }
 
     public function update(Request $request, $id)
-    {  
-        $customer = MCustomer::findOrFail($id);
-
+    {
+        $customer_staff = MCustomerStaff::findOrFail($id);
         $request->validate([
-        'name' => 'required|max:255',
-        'name_kana' => 'required|max:255',
-        'tel' => 'required|regex:/^\d{10}$/',
+            'name' => 'required|max:255',
+            'name_kana' => 'required|max:255',
+            'tel' => 'required|regex:/^\d{10}$/',
+            'customer_office_id' => 'required',
         ], [
             'name.required' => 'The name field is required.',
             'name.max' => 'The name must not exceed :max characters.',
@@ -70,18 +71,18 @@ class CustomerPageController extends Controller
             'tel.required' => 'The telephone field is required.',
             'tel.regex' => 'The telephone field must be a 10-digit number.',
         ]);
-        $customer->update($request->input());
+        $customer_staff->update($request->input());
 
-        return redirect()->route('view.customer.index')
-            ->with('success', 'Customer updated successfully!');
+        return redirect()->route('view.customer_staff.index')
+            ->with('success', 'CustomerStaff updated successfully!');
     }
 
     public function destroy($id)
     {
-        $post = MCustomer::findOrFail($id);
+        $post = MCustomerStaff::findOrFail($id);
         $post->delete();
 
-        return redirect()->route('view.customer.index')
+        return redirect()->route('view.customer_staff.index')
             ->with('success', 'Post deleted successfully!');
     }
 }

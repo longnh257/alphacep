@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address2', 100)->nullable();
             $table->string('corporate_number', 20)->nullable();
             $table->string('office_area', 10)->nullable();
-            $table->string('supervion_businss_type', 2)->nullable();
+            $table->string('supervion_business_type', 2)->nullable();
             $table->string('supervion_license_number', 20)->nullable();
             $table->date('permission_date')->nullable();
             $table->date('planning_period_from_date')->nullable();

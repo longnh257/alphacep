@@ -639,10 +639,13 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.customers_list')}}" + conditionSearch,
+                    url: "{{route('api.customers.list')}}" + conditionSearch,
                     success: function(data) {
+
                         that.list = data.result.data;
                         that.count = data.result.last_page;
+
+                        // Phân trang
                         let pageArr = [];
                         if (that.page - 2 > 0) {
                             pageArr.push(that.page - 2);
