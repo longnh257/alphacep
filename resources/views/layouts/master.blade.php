@@ -22,11 +22,14 @@
 
     <!-- Icons Css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/libs/awesome-notifications/style.css') }}">
 
     <title>@yield('title', 'Trang Chủ')</title>
     <meta name="Description" content="@yield('description', '')">
     <meta name="Author" content="@yield('author', '')">
     <meta name="keywords" content="@yield('keywords', '')">
+    <link rel="stylesheet" href="{{ asset('assets/libs/prismjs/themes/prism-coy.min.css') }}">
+    <link href="{{ asset('assets/css/custome.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -81,7 +84,13 @@
     <!-- JSVector Maps MapsJS -->
     <script src="{{ asset('assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
     <script src="{{ asset('assets/js/us-merc-en.js') }}"></script>
+
+    <script src="{{ asset('assets/libs/awesome-notifications/index.var.js') }}"></script>
+    <script src="{{ asset('vueJs/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('vueJs/vue.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script>
     @yield('script-footer')
+
 
 
 </body>
