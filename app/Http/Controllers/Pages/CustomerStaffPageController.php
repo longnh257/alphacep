@@ -79,10 +79,10 @@ class CustomerStaffPageController extends Controller
 
     public function destroy($id)
     {
-        $post = MCustomerStaff::findOrFail($id);
-        $post->delete();
+        $staff = MCustomerStaff::findOrFail($id);
+        $staff->delete();
 
         return redirect()->route('view.customer_staff.index')
-            ->with('success', 'Post deleted successfully!');
+            ->with('success', 'Staff deleted successfully!');
     }
 }

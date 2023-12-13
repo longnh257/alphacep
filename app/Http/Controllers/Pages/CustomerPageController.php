@@ -50,7 +50,7 @@ class CustomerPageController extends Controller
 
     public function edit($id)
     {
-        $customer = MCustomer::findOrFail($id);
+        $customer = MCustomer::with('offices')->findOrFail($id);
         return view('pages.customer.edit', compact('customer'));
     }
 
@@ -82,6 +82,6 @@ class CustomerPageController extends Controller
         $post->delete();
 
         return redirect()->route('view.customer.index')
-            ->with('success', 'Post deleted successfully!');
+            ->with('success', 'Customer deleted successfully!');
     }
 }

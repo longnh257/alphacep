@@ -10,6 +10,9 @@ use App\Http\Controllers\Pages\CustomerStaffPageController;
 // Import Api
 use App\Http\Controllers\API\Project\ProjectController;
 use App\Http\Controllers\API\Project\CustomerController;
+use App\Http\Controllers\Api\Project\CustomerOfficeController;
+use App\Http\Controllers\Api\Project\CustomerStaffController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,4 +67,6 @@ Route::group(['prefix' => 'customer-staff', 'middleware' => 'check.login'], func
 Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.list');
     Route::get('/customers', [CustomerController::class, 'index'])->name('api.customers.list');
+    Route::get('/customer-offices', [CustomerOfficeController::class, 'index'])->name('api.customer_offices.list');
+    Route::get('/customer-staffs', [CustomerStaffController::class, 'index'])->name('api.customer_staffs.list');
 });

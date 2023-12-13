@@ -23,6 +23,7 @@
     <!-- Icons Css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/libs/awesome-notifications/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
 
     <title>@yield('title', 'Trang Chủ')</title>
     <meta name="Description" content="@yield('description', '')">
@@ -89,6 +90,8 @@
     <script src="{{ asset('vueJs/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('vueJs/vue.min.js') }}"></script>
     <script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script>
+    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/sweet-alerts.js') }}"></script>
     @yield('script-footer')
 
 

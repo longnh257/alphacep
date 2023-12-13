@@ -80,10 +80,10 @@ class CustomerOfficePageController extends Controller
 
     public function destroy($id)
     {
-        $post = MCustomerOffice::findOrFail($id);
-        $post->delete();
+        $office = MCustomerOffice::findOrFail($id);
+        $office->delete();
 
         return redirect()->route('view.customer_office.index')
-            ->with('success', 'Post deleted successfully!');
+            ->with('success', 'Office deleted successfully!');
     }
 }

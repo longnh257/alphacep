@@ -13668,7 +13668,7 @@ table.dataTable > tbody > tr.selected > * {
   box-shadow: none;
 }
 .swal2-container .swal2-styled.swal2-confirm {
-  background-color: var(--primary-color) !important;
+  background-color: var(--primary-color) ;
   color: #fff;
 }
 .swal2-container .swal2-footer {

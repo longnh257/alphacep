@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <span class="fs-12 text-muted mb-3 ">Nội dung giải thích về bảng</span>
-                <div class="table-responsive country-table">
+                <div class="table-responsive country-table" v-if="list.length > 0">
                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                         <thead class="gridjs-thead">
                             <tr class="gridjs-tr">
@@ -76,7 +76,7 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Email</div>
+                                        <div class="gridjs-th-content">Addresss</div>
                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -90,11 +90,15 @@
                                 <td>((item.customer_id))</td>
                                 <td class="fw-medium">((item.name))</td>
                                 <td class="fw-medium">((item.tel))</td>
-                                <td class="text-danger fw-medium">-$45.10</td>
+                                <td class="fw-medium">((item.address1))</td>
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap"> 
-                                        <a :href="`customer/`+item.customer_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a> 
-                                        <a href="javascript:void(0);" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a> 
+                                    <div class="hstack gap-2 flex-wrap">
+                                        <a :href="`{{asset('customer')}}/`+item.customer_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                        <form :action="`{{asset('customer')}}/`+item.customer_id"  :id="'formDelete_'+((item.customer_id))" class="pt-1" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="##" @click="deleteCustomer(item.customer_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -127,7 +131,6 @@
                                 </button>
                             </li>
 
-
                             <li class="page-item disabled" v-if="page > count - 1 || count == 1">
                                 <button class="page-link" type="button">
                                     <i class="fe fe-arrow-right"></i>
@@ -142,6 +145,7 @@
                         </ul>
                     </div>
                 </div>
+                <div class="alert alert-primary text-center" v-else>{{ trans('label.empty') }}</div>
             </div>
         </div>
     </div>
@@ -246,7 +250,23 @@
                         notifier.warning('システムエラーが発生しました。 大変お手数ですが、サイト管理者までご連絡ください');
                     }
                 });
-            }
+            },
+            deleteCustomer(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        jQuery('#formDelete_'+id).submit();
+                    }
+                })
+             
+            },
         },
     });
 </script>
