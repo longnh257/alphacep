@@ -198,7 +198,7 @@
                             </div>
                             <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
 
-                                <div class="table-responsive country-table"  v-if="list.length > 0">
+                                <div class="table-responsive country-table">
                                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                                         <thead class="gridjs-thead">
                                             <tr class="gridjs-tr">
@@ -235,17 +235,22 @@
                                                         </button>
                                                     </div>
                                                 </th>
+                                                <th>
+                                                    <div class="pe-1 mb-xl-0 text-end">
+                                                        <a href="{{route('view.customer_office.create',['customer_id'=>$customer->customer_id])}}" class="btn btn-info btn-icon me-2 btn-b">
+                                                            <i class="fe fe-plus"></i></a>
+                                                    </div>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
-                                            <tr v-for="item in list" :key="item.customer_id">
+                                            <tr v-for="item in list" :key="item.customer_id" v-if="list.length > 0">
                                                 <td>((item.customer_office_id))</td>
                                                 <td class="fw-medium">((item.name))</td>
                                                 <td>((item.customer_id))</td>
                                                 <td class="fw-medium">((item.tel))</td>
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap">
+                                                    <div class="hstack gap-2 flex-wrap justify-end">
                                                         <a :href="`{{asset('customer-office')}}/`+item.customer_office_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('customer-office')}}/`+item.customer_office_id" :id="'formDelete_'+((item.customer_office_id))" class="pt-1" method="post">
                                                             @method('DELETE')
@@ -299,7 +304,6 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="alert alert-primary text-center" v-else>{{ trans('label.empty') }}</div>
                             </div>
                         </div>
                     </div>

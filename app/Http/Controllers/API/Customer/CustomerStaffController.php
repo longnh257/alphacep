@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Api\Project;
+namespace App\Http\Controllers\Api\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\MCustomer;
 use App\Models\MCustomerOffice;
+use App\Models\MCustomerStaff;
 use Illuminate\Http\Request;
 
-class CustomerOfficeController extends Controller
+class CustomerStaffController extends Controller
 {
     public $numPerPage = 10;
-
     public function index(Request $request)
     {
-        $query  = MCustomerOffice::query();
+        $query  = MCustomerStaff::query();
 
         if ($s = $request->has("s")) {
             $query->where("trainee_number", "LIKE", "%" . $s . "%");
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
 
-        if ($request->customer_id) {
-            $query->where('customer_id', $request->customer_id);
+        if ($request->customer_office_id) {
+            $query->where('customer_office_id', $request->customer_office_id);
         }
-
+        
         $datas = $query->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list Installers successful.', $datas);

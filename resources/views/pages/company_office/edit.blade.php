@@ -17,7 +17,7 @@
                 </button>
             </div>
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.customer.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                     <i class="bi bi-box-arrow-left"></i>
                 </a>
             </div>
@@ -67,128 +67,128 @@
                         </div>
                         @endforeach
                         @endif
-                        <form action="{{route('view.customer_office.update', ['id' => $customer_office->customer_office_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+                        <form action="{{route('view.company_office.update', ['id' => $company_office->company_office_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
                             @method('PUT')
                             @csrf
                             <div class="row gy-4">
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{ $customer_office->name }}" placeholder="{{ trans('label.name') }}">
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ $company_office->name }}" placeholder="{{ trans('label.name') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                                    <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ $customer_office->name_kana }}" placeholder="{{ trans('label.name_kana') }}">
+                                    <label for="company_name_kana" class="form-label  required">{{ trans('label.company_name_kana') }}</label>
+                                    <input type="text" class="form-control" name="company_name_kana" id="company_name_kana" value="{{ $company_office->company_name_kana }}" placeholder="{{ trans('label.company_name_kana') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="tel" class="form-label required">{{ trans('label.tel') }}</label>
-                                    <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ $customer_office->tel }}" placeholder="{{ trans('label.tel') }}">
+                                    <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ $company_office->tel }}" placeholder="{{ trans('label.tel') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="fax" class="form-label">{{ trans('label.fax') }}</label>
-                                    <input type="text" class="form-control" name="fax" id="fax" value="{{ $customer_office->fax }}" placeholder="{{ trans('label.fax') }}">
+                                    <input type="text" class="form-control" name="fax" id="fax" value="{{ $company_office->fax }}" placeholder="{{ trans('label.fax') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
-                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $customer_office->postcode }}" placeholder="{{ trans('label.postcode') }}">
+                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $company_office->postcode }}" placeholder="{{ trans('label.postcode') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="address1" class="form-label">{{ trans('label.address1') }}</label>
-                                    <input type="text" class="form-control" name="address1" id="address1" value="{{ $customer_office->address1 }}" placeholder="{{ trans('label.address1') }}">
+                                    <input type="text" class="form-control" name="address1" id="address1" value="{{ $company_office->address1 }}" placeholder="{{ trans('label.address1') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="address2" class="form-label">{{ trans('label.address2') }}</label>
-                                    <input type="text" class="form-control" name="address2" id="address2" value="{{ $customer_office->address2 }}" placeholder="{{ trans('label.address2') }}">
+                                    <input type="text" class="form-control" name="address2" id="address2" value="{{ $company_office->address2 }}" placeholder="{{ trans('label.address2') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="corporate_number" class="form-label">{{ trans('label.corporate_number') }}</label>
-                                    <input type="text" class="form-control" name="corporate_number" id="corporate_number" value="{{ $customer_office->corporate_number }}" placeholder="{{ trans('label.corporate_number') }}">
+                                    <input type="text" class="form-control" name="corporate_number" id="corporate_number" value="{{ $company_office->corporate_number }}" placeholder="{{ trans('label.corporate_number') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="office_area" class="form-label">{{ trans('label.office_area') }}</label>
-                                    <input type="text" class="form-control" name="office_area" id="office_area" value="{{ $customer_office->office_area }}" placeholder="{{ trans('label.office_area') }}">
+                                    <input type="text" class="form-control" name="office_area" id="office_area" value="{{ $company_office->office_area }}" placeholder="{{ trans('label.office_area') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="office_number" class="form-label">{{ trans('label.office_number') }}</label>
-                                    <input type="text" class="form-control" name="office_number" id="office_number" value="{{ $customer_office->office_number }}" placeholder="{{ trans('label.office_number') }}">
+                                    <input type="text" class="form-control" name="office_number" id="office_number" value="{{ $company_office->office_number }}" placeholder="{{ trans('label.office_number') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="employment_insurance_office_number" class="form-label">{{ trans('label.employment_insurance_office_number') }}</label>
-                                    <input type="text" class="form-control" name="employment_insurance_office_number" id="employment_insurance_office_number" value="{{ $customer_office->employment_insurance_office_number }}" placeholder="{{ trans('label.employment_insurance_office_number') }}">
+                                    <input type="text" class="form-control" name="employment_insurance_office_number" id="employment_insurance_office_number" value="{{ $company_office->employment_insurance_office_number }}" placeholder="{{ trans('label.employment_insurance_office_number') }}">
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="supervion_license_number" class="form-label">{{ trans('label.supervion_license_number') }}</label>
-                                    <input type="text" class="form-control" name="supervion_license_number" id="supervion_license_number" value="{{ $customer_office->supervion_license_number }}" placeholder="{{ trans('label.supervion_license_number') }}">
+                                    <input type="text" class="form-control" name="supervion_license_number" id="supervion_license_number" value="{{ $company_office->supervion_license_number }}" placeholder="{{ trans('label.supervion_license_number') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="work_intern_area" class="form-label ">{{ trans('label.work_intern_area') }}</label>
                                     <select class="form-control" data-trigger name="work_intern_area" id="work_intern_area">
                                         <option value="1">1</option>
-                                        <option value="0" @if($customer_office->work_intern_area == "0" ) selected @endif>0</option>
+                                        <option value="0" @if($company_office->work_intern_area == "0" ) selected @endif>0</option>
                                     </select>
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="intern_prefecture" class="form-label">{{ trans('label.intern_prefecture') }}</label>
-                                    <input type="text" class="form-control" name="intern_prefecture" id="intern_prefecture" value="{{ $customer_office->intern_prefecture }}" placeholder="{{ trans('label.intern_prefecture') }}">
+                                    <input type="text" class="form-control" name="intern_prefecture" id="intern_prefecture" value="{{ $company_office->intern_prefecture }}" placeholder="{{ trans('label.intern_prefecture') }}">
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="audit_execution_frequency" class="form-label">{{ trans('label.audit_execution_frequency') }}</label>
-                                    <input type="number" class="form-control" name="audit_execution_frequency" id="audit_execution_frequency" value="{{ $customer_office->audit_execution_frequency }}" placeholder="{{ trans('label.audit_execution_frequency') }}">
+                                    <input type="number" class="form-control" name="audit_execution_frequency" id="audit_execution_frequency" value="{{ $company_office->audit_execution_frequency }}" placeholder="{{ trans('label.audit_execution_frequency') }}">
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="identifying_code" class="form-label">{{ trans('label.identifying_code') }}</label>
-                                    <input type="number" class="form-control" name="identifying_code" id="identifying_code" value="{{ $customer_office->identifying_code }}" placeholder="{{ trans('label.identifying_code') }}">
+                                    <input type="number" class="form-control" name="identifying_code" id="identifying_code" value="{{ $company_office->identifying_code }}" placeholder="{{ trans('label.identifying_code') }}">
                                 </div>
 
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="permission_date" class="form-label">{{ trans('label.permission_date') }}</label>
-                                    <input type="date" class="form-control" name="permission_date" id="permission_date" value="{{ $customer_office->permission_date }}" placeholder="{{ trans('label.permission_date') }}">
+                                    <input type="date" class="form-control" name="permission_date" id="permission_date" value="{{ $company_office->permission_date }}" placeholder="{{ trans('label.permission_date') }}">
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="planning_period_from_date" class="form-label">{{ trans('label.planning_period_from_date') }}</label>
-                                    <input type="date" class="form-control" name="planning_period_from_date" id="planning_period_from_date" value="{{ $customer_office->planning_period_from_date }}" placeholder="{{ trans('label.planning_period_from_date') }}">
+                                    <input type="date" class="form-control" name="planning_period_from_date" id="planning_period_from_date" value="{{ $company_office->planning_period_from_date }}" placeholder="{{ trans('label.planning_period_from_date') }}">
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="new_buid_date" class="form-label">{{ trans('label.new_buid_date') }}</label>
-                                    <input type="date" class="form-control" name="new_buid_date" id="new_buid_date" value="{{ $customer_office->new_buid_date }}" placeholder="{{ trans('label.new_buid_date') }}">
+                                    <input type="date" class="form-control" name="new_buid_date" id="new_buid_date" value="{{ $company_office->new_buid_date }}" placeholder="{{ trans('label.new_buid_date') }}">
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="abolition_date" class="form-label">{{ trans('label.abolition_date') }}</label>
-                                    <input type="date" class="form-control" name="abolition_date" id="abolition_date" value="{{ $customer_office->abolition_date }}" placeholder="{{ trans('label.abolition_date') }}">
+                                    <input type="date" class="form-control" name="abolition_date" id="abolition_date" value="{{ $company_office->abolition_date }}" placeholder="{{ trans('label.abolition_date') }}">
                                 </div>
 
                                 <div class=" col-lg-6 col-md-6 col-sm-12">
                                     <label for="planning_period_from_to" class="form-label">{{ trans('label.planning_period_from_to') }}</label>
-                                    <input type="date" class="form-control" name="planning_period_from_to" id="planning_period_from_to" value="{{ $customer_office->planning_period_from_to }}" placeholder="{{ trans('label.permission_valid_from_date') }}">
+                                    <input type="date" class="form-control" name="planning_period_from_to" id="planning_period_from_to" value="{{ $company_office->planning_period_from_to }}" placeholder="{{ trans('label.permission_valid_from_date') }}">
                                 </div>
 
                                 <div class="  col-sm-12">
                                     <label for="jobs_comment" class="form-label">{{ trans('label.jobs_comment') }}</label>
-                                    <textarea class="form-control" name="jobs_comment" id="jobs_comment" placeholder="{{ trans('label.jobs_comment') }}">{{ $customer_office->jobs_comment }}</textarea>
+                                    <textarea class="form-control" name="jobs_comment" id="jobs_comment" placeholder="{{ trans('label.jobs_comment') }}">{{ $company_office->jobs_comment }}</textarea>
                                 </div>
 
 
                                 <div class="  col-sm-12">
                                     <label for="note" class="form-label">{{ trans('label.note') }}</label>
-                                    <textarea class="form-control" name="note" id="note" placeholder="{{ trans('label.note') }}">{{ $customer_office->note }}</textarea>
+                                    <textarea class="form-control" name="note" id="note" placeholder="{{ trans('label.note') }}">{{ $company_office->note }}</textarea>
                                 </div>
 
                                 <div class="btn-list">
@@ -248,7 +248,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.customer_staff.create',['customer_office_id'=>$customer_office->customer_office_id])}}" class="btn btn-info btn-icon me-2 btn-b">
+                                                        <a href="{{route('view.company_staff.create',['company_office_id'=>$company_office->company_office_id])}}" class="btn btn-info btn-icon me-2 btn-b">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
@@ -256,18 +256,18 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="item in list" :key="item.customer_id" v-if="list.length > 0">
-                                                <td>((item.customer_staff_id))</td>
+                                            <tr v-for="item in list" :key="item.company_id" v-if="list.length > 0">
+                                                <td>((item.company_staff_id))</td>
                                                 <td class="fw-medium">((item.name))</td>
-                                                <td>((item.customer_office_id))</td>
+                                                <td>((item.company_office_id))</td>
                                                 <td class="fw-medium">((item.tel))</td>
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap">
-                                                        <a :href="`{{asset('customer-staff')}}/`+item.customer_staff_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                                        <form :action="`{{asset('customer-staff')}}/`+item.customer_staff_id" :id="'formDelete_'+((item.customer_staff_id))" class="pt-1" method="post">
+                                                        <a :href="`{{asset('company-staff')}}/`+item.company_staff_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                                        <form :action="`{{asset('company-staff')}}/`+item.company_staff_id" :id="'formDelete_'+((item.company_staff_id))" class="pt-1" method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <a href="##" @click="deleteStaff(item.customer_staff_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                                            <a href="##" @click="deleteStaff(item.company_staff_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -353,7 +353,7 @@
         el: '#list-data',
         data: {
             sortDirection: 'desc',
-            sortBy: 'customer_id',
+            sortBy: 'company_id',
             count: 0,
             page: 1,
             list: [],
@@ -395,11 +395,11 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
-                conditionSearch += '&customer_office_id=' + `{{$customer_office->customer_office_id}}`;
+                conditionSearch += '&company_office_id=' + `{{$company_office->company_office_id}}`;
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.customer_staffs.list')}}" + conditionSearch,
+                    url: "{{route('api.company_staffs.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         console.log(that.list);

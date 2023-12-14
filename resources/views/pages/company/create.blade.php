@@ -3,12 +3,26 @@
 @section('title', 'Trang chủ')
 
 @section('content')
-<form action="{{route('view.customer_office.store',['customer_id'=>$customer->customer_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.company.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">Thêm Office</h4>
+            <h4 class="mb-0">Thêm Khách hàng</h4>
+        </div>
+        <div class="main-dashboard-header-right">
+            <div class="d-flex my-xl-auto right-content align-items-center">
+                <div class="pe-1 mb-xl-0">
+                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
+                        <i class="bi bi-save"></i>
+                    </button>
+                </div>
+                <div class="pe-1 mb-xl-0">
+                    <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <!-- End Page Header -->
@@ -20,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Thông tin Office
+                        Thông tin khách hàng
                     </div>
                 </div>
 
@@ -40,8 +54,8 @@
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                            <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ old('name_kana') }}" placeholder="{{ trans('label.name_kana') }}">
+                            <label for="company_name_kana" class="form-label  required">{{ trans('label.company_name_kana') }}</label>
+                            <input type="text" class="form-control" name="company_name_kana" id="company_name_kana" value="{{ old('company_name_kana') }}" placeholder="{{ trans('label.company_name_kana') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
@@ -80,43 +94,43 @@
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="office_number" class="form-label">{{ trans('label.office_number') }}</label>
-                            <input type="text" class="form-control" name="office_number" id="office_number" value="{{ old('office_number') }}" placeholder="{{ trans('label.office_number') }}">
+                            <label for="supervion_business_type" class="form-label">{{ trans('label.supervion_business_type') }}</label>
+                            <input type="text" class="form-control" name="supervion_business_type" id="supervion_business_type" value="{{ old('supervion_business_type') }}" placeholder="{{ trans('label.supervion_business_type') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="employment_insurance_office_number" class="form-label">{{ trans('label.employment_insurance_office_number') }}</label>
-                            <input type="text" class="form-control" name="employment_insurance_office_number" id="employment_insurance_office_number" value="{{ old('employment_insurance_office_number') }}" placeholder="{{ trans('label.employment_insurance_office_number') }}">
-                        </div>
-
-                        <div class=" col-lg-6 col-md-6 col-sm-12">
                             <label for="supervion_license_number" class="form-label">{{ trans('label.supervion_license_number') }}</label>
                             <input type="text" class="form-control" name="supervion_license_number" id="supervion_license_number" value="{{ old('supervion_license_number') }}" placeholder="{{ trans('label.supervion_license_number') }}">
                         </div>
 
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="work_intern_area" class="form-label ">{{ trans('label.work_intern_area') }}</label>
-                            <select class="form-control" data-trigger name="work_intern_area" id="work_intern_area">
-                                <option value="1">1</option>
-                                <option value="0" >0</option>
-                            </select>
+
+
+                        <div class=" col-lg-6 col-md-6 col-sm-12">
+                            <label for="external_audit" class="form-label">{{ trans('label.external_audit') }}</label>
+                            <input type="text" class="form-control" name="external_audit" id="external_audit" value="{{ old('external_audit') }}" placeholder="{{ trans('label.external_audit') }}">
                         </div>
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
-                            <label for="intern_prefecture" class="form-label">{{ trans('label.intern_prefecture') }}</label>
-                            <input type="text" class="form-control" name="intern_prefecture" id="intern_prefecture" value="{{ old('intern_prefecture') }}" placeholder="{{ trans('label.intern_prefecture') }}">
+                            <label for="external_audit_person" class="form-label">{{ trans('label.external_audit_person') }}</label>
+                            <input type="text" class="form-control" name="external_audit_person" id="external_audit_person" value="{{ old('external_audit_person') }}" placeholder="{{ trans('label.external_audit_person') }}">
                         </div>
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
-                            <label for="audit_execution_frequency" class="form-label">{{ trans('label.audit_execution_frequency') }}</label>
-                            <input type="number" class="form-control" name="audit_execution_frequency" id="audit_execution_frequency" value="{{ old('audit_execution_frequency') }}" placeholder="{{ trans('label.audit_execution_frequency') }}">
+                            <label for="external_officer" class="form-label">{{ trans('label.external_officer') }}</label>
+                            <input type="text" class="form-control" name="external_officer" id="external_officer" value="{{ old('external_officer') }}" placeholder="{{ trans('label.external_officer') }}">
+                        </div>
+
+                        <div class=" col-lg-6 col-md-6 col-sm-12">
+                            <label for="corporate_type" class="form-label">{{ trans('label.corporate_type') }}</label>
+                            <input type="text" class="form-control" name="corporate_type" id="corporate_type" value="{{ old('corporate_type') }}" placeholder="{{ trans('label.corporate_type') }}">
                         </div>
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
                             <label for="identifying_code" class="form-label">{{ trans('label.identifying_code') }}</label>
-                            <input type="number" class="form-control" name="identifying_code" id="identifying_code" value="{{ old('identifying_code') }}" placeholder="{{ trans('label.identifying_code') }}">
+                            <input type="text" class="form-control" name="identifying_code" id="identifying_code" value="{{ old('identifying_code') }}" placeholder="{{ trans('label.identifying_code') }}">
                         </div>
 
+                   
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
                             <label for="permission_date" class="form-label">{{ trans('label.permission_date') }}</label>
@@ -129,18 +143,23 @@
                         </div>
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
-                            <label for="new_buid_date" class="form-label">{{ trans('label.new_buid_date') }}</label>
-                            <input type="date" class="form-control" name="new_buid_date" id="new_buid_date" value="{{ old('new_buid_date') }}" placeholder="{{ trans('label.new_buid_date') }}">
+                            <label for="planning_period_to_date" class="form-label">{{ trans('label.planning_period_to_date') }}</label>
+                            <input type="date" class="form-control" name="planning_period_to_date" id="planning_period_to_date" value="{{ old('planning_period_to_date') }}" placeholder="{{ trans('label.planning_period_to_date') }}">
                         </div>
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
-                            <label for="abolition_date" class="form-label">{{ trans('label.abolition_date') }}</label>
-                            <input type="date" class="form-control" name="abolition_date" id="abolition_date" value="{{ old('abolition_date') }}" placeholder="{{ trans('label.abolition_date') }}">
+                            <label for="permission_valid_from_date" class="form-label">{{ trans('label.permission_valid_from_date') }}</label>
+                            <input type="date" class="form-control" name="permission_valid_from_date" id="permission_valid_from_date" value="{{ old('permission_valid_from_date') }}" placeholder="{{ trans('label.permission_valid_from_date') }}">
                         </div>
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
-                            <label for="planning_period_from_to" class="form-label">{{ trans('label.planning_period_from_to') }}</label>
-                            <input type="date" class="form-control" name="planning_period_from_to" id="planning_period_from_to" value="{{ old('planning_period_from_to') }}" placeholder="{{ trans('label.permission_valid_from_date') }}">
+                            <label for="permission_valid_to_date" class="form-label">{{ trans('label.permission_valid_to_date') }}</label>
+                            <input type="date" class="form-control" name="permission_valid_to_date" id="permission_valid_to_date" value="{{ old('permission_valid_to_date') }}" placeholder="{{ trans('label.permission_valid_to_date') }}">
+                        </div>
+
+                        <div class="  col-sm-12">
+                            <label for="overview" class="form-label">{{ trans('label.overview') }}</label>
+                            <textarea class="form-control" name="overview" id="overview" placeholder="{{ trans('label.overview') }}">{{ old('overview') }}</textarea>
                         </div>
 
                         <div class="  col-sm-12">
@@ -164,6 +183,24 @@
         </div>
     </div>
     <!-- End:: row-1 -->
+    <!-- row closed -->
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <div></div>
+        <div class="main-dashboard-header-right">
+            <div class="d-flex my-xl-auto right-content align-items-center">
+                <div class="pe-1 mb-xl-0">
+                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
+                        <i class="bi bi-save"></i>
+                    </button>
+                </div>
+                <div class="pe-1 mb-xl-0">
+                    <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </form>
 @endsection

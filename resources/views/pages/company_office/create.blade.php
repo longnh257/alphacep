@@ -3,7 +3,7 @@
 @section('title', 'Trang chủ')
 
 @section('content')
-<form action="{{route('view.customer_office.store',['customer_id'=>$customer->customer_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.company_office.store',['company_id'=>$company->company_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
@@ -40,8 +40,8 @@
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                            <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ old('name_kana') }}" placeholder="{{ trans('label.name_kana') }}">
+                            <label for="company_name_kana" class="form-label  required">{{ trans('label.company_name_kana') }}</label>
+                            <input type="text" class="form-control" name="company_name_kana" id="company_name_kana" value="{{ old('company_name_kana') }}" placeholder="{{ trans('label.company_name_kana') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">

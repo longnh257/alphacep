@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\Pages\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\MCustomerStaff;
+use App\Models\MCustomer;
 use App\Models\MCustomerOffice;
+use App\Models\MCustomerStaff;
 use Illuminate\Support\Facades\Auth;
 
-class CustomerStaffPageController extends Controller
+class CustomerPageController extends Controller
 {
     public function index(Request $request)
     {
-        return view('pages.customer_staff.index');
+        return view('pages.customer.index');
     }
 
     public function create()
     {
-        $offices = MCustomerOffice::all('customer_office_id', 'name');
-        return view('pages.customer_staff.create', compact('offices'));
-    }
+        return view('pages.customer.create');
+    } 
+ 
 
     public function store(Request $request)
     {
@@ -28,7 +29,6 @@ class CustomerStaffPageController extends Controller
             'name' => 'required|max:255',
             'name_kana' => 'required|max:255',
             'tel' => 'required|regex:/^\d{10}$/',
-            'customer_office_id' => 'required',
         ], [
             'name.required' => 'The name field is required.',
             'name.max' => 'The name must not exceed :max characters.',
@@ -41,28 +41,26 @@ class CustomerStaffPageController extends Controller
         $request['created_by_id'] = Auth::id();
         $request['updated_by_id'] = Auth::id();
 
-        MCustomerStaff::create($request->except('_token'));
+        MCustomer::create($request->except('_token'));
 
-        return redirect()->route('view.customer_staff.index')
-            ->with('success', 'CustomerOffice created successfully!');
+        return redirect()->route('view.customer.index')
+            ->with('success', 'Customer created successfully!');
     }
 
     public function edit($id)
     {
-        $customer_staff = MCustomerStaff::findOrFail($id);
-        $offices = MCustomerOffice::all('customer_office_id', 'name');
-
-        return view('pages.customer_staff.edit', compact(['customer_staff','offices']));
+        $customer = MCustomer::with('offices')->findOrFail($id);
+        return view('pages.customer.edit', compact('customer'));
     }
 
     public function update(Request $request, $id)
-    {
-        $customer_staff = MCustomerStaff::findOrFail($id);
+    {  
+        $customer = MCustomer::findOrFail($id);
+
         $request->validate([
-            'name' => 'required|max:255',
-            'name_kana' => 'required|max:255',
-            'tel' => 'required|regex:/^\d{10}$/',
-            'customer_office_id' => 'required',
+        'name' => 'required|max:255',
+        'name_kana' => 'required|max:255',
+        'tel' => 'required|regex:/^\d{10}$/',
         ], [
             'name.required' => 'The name field is required.',
             'name.max' => 'The name must not exceed :max characters.',
@@ -71,18 +69,20 @@ class CustomerStaffPageController extends Controller
             'tel.required' => 'The telephone field is required.',
             'tel.regex' => 'The telephone field must be a 10-digit number.',
         ]);
-        $customer_staff->update($request->input());
+        $customer->update($request->input());
 
-        return redirect()->route('view.customer_staff.index')
-            ->with('success', 'CustomerStaff updated successfully!');
+        return redirect()->route('view.customer.index')
+            ->with('success', 'Customer updated successfully!');
     }
 
     public function destroy($id)
     {
-        $staff = MCustomerStaff::findOrFail($id);
-        $staff->delete();
+        $post = MCustomer::findOrFail($id);
+        MCustomerStaff::where('customer_id',$id)->delete();
+        MCustomerOffice::where('customer_id',$id)->delete();
+        $post->delete();
 
-        return redirect()->route('view.customer_staff.index')
-            ->with('success', 'Staff deleted successfully!');
+        return redirect()->route('view.customer.index')
+            ->with('success', 'Customer deleted successfully!');
     }
 }
