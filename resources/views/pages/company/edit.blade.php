@@ -7,8 +7,8 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">Thêm Khách hàng</h4>
-        <p class="mb-0 text-muted">Mô tả ngắn về chức năng thêm khách hàng</p>
+        <h4 class="mb-0">Thêm công ty</h4>
+        <p class="mb-0 text-muted">Mô tả ngắn về chức năng thêm công ty</p>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card-body">
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#company" aria-current="page" href="#company"> Thông tin khách hàng</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#company" aria-current="page" href="#company"> Thông tin công ty</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" data-bs-target="#office" href="#office">Thông tin office</a>
@@ -63,8 +63,8 @@
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="company_name_kana" class="form-label  required">{{ trans('label.company_name_kana') }}</label>
-                                    <input type="text" class="form-control" name="company_name_kana" id="company_name_kana" value="{{ $company->company_name_kana }}" placeholder="{{ trans('label.company_name_kana') }}">
+                                    <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
+                                    <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ $company->name_kana }}" placeholder="{{ trans('label.name_kana') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
@@ -76,108 +76,9 @@
                                     <label for="fax" class="form-label">{{ trans('label.fax') }}</label>
                                     <input type="text" class="form-control" name="fax" id="fax" value="{{ $company->fax }}" placeholder="{{ trans('label.fax') }}">
                                 </div>
-
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
                                     <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $company->postcode }}" placeholder="{{ trans('label.postcode') }}">
-                                </div>
-
-                                <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="address1" class="form-label">{{ trans('label.address1') }}</label>
-                                    <input type="text" class="form-control" name="address1" id="address1" value="{{ $company->address1 }}" placeholder="{{ trans('label.address1') }}">
-                                </div>
-
-                                <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="address2" class="form-label">{{ trans('label.address2') }}</label>
-                                    <input type="text" class="form-control" name="address2" id="address2" value="{{ $company->address2 }}" placeholder="{{ trans('label.address2') }}">
-                                </div>
-
-                                <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="corporate_number" class="form-label">{{ trans('label.corporate_number') }}</label>
-                                    <input type="text" class="form-control" name="corporate_number" id="corporate_number" value="{{ $company->corporate_number }}" placeholder="{{ trans('label.corporate_number') }}">
-                                </div>
-
-                                <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="office_area" class="form-label">{{ trans('label.office_area') }}</label>
-                                    <input type="text" class="form-control" name="office_area" id="office_area" value="{{ $company->office_area }}" placeholder="{{ trans('label.office_area') }}">
-                                </div>
-
-                                <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="supervion_business_type" class="form-label">{{ trans('label.supervion_business_type') }}</label>
-                                    <input type="text" class="form-control" name="supervion_business_type" id="supervion_business_type" value="{{ $company->supervion_business_type }}" placeholder="{{ trans('label.supervion_business_type') }}">
-                                </div>
-
-                                <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="supervion_license_number" class="form-label">{{ trans('label.supervion_license_number') }}</label>
-                                    <input type="text" class="form-control" name="supervion_license_number" id="supervion_license_number" value="{{ $company->supervion_license_number }}" placeholder="{{ trans('label.supervion_license_number') }}">
-                                </div>
-
-
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="external_audit" class="form-label">{{ trans('label.external_audit') }}</label>
-                                    <input type="text" class="form-control" name="external_audit" id="external_audit" value="{{ $company->external_audit }}" placeholder="{{ trans('label.external_audit') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="external_audit_person" class="form-label">{{ trans('label.external_audit_person') }}</label>
-                                    <input type="text" class="form-control" name="external_audit_person" id="external_audit_person" value="{{ $company->external_audit_person }}" placeholder="{{ trans('label.external_audit_person') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="external_officer" class="form-label">{{ trans('label.external_officer') }}</label>
-                                    <input type="text" class="form-control" name="external_officer" id="external_officer" value="{{ $company->external_officer }}" placeholder="{{ trans('label.external_officer') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="corporate_type" class="form-label">{{ trans('label.corporate_type') }}</label>
-                                    <input type="text" class="form-control" name="corporate_type" id="corporate_type" value="{{ $company->corporate_type }}" placeholder="{{ trans('label.corporate_type') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="identifying_code" class="form-label">{{ trans('label.identifying_code') }}</label>
-                                    <input type="text" class="form-control" name="identifying_code" id="identifying_code" value="{{ $company->identifying_code }}" placeholder="{{ trans('label.identifying_code') }}">
-                                </div>
-
-                                <div class="  col-sm-12">
-                                    <label for="overview" class="form-label">{{ trans('label.overview') }}</label>
-                                    <textarea class="form-control" name="overview" id="overview" placeholder="{{ trans('label.overview') }}">{{ $company->overview }}</textarea>
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="permission_date" class="form-label">{{ trans('label.permission_date') }}</label>
-                                    <input type="date" class="form-control" name="permission_date" id="permission_date" value="{{ $company->permission_date }}" placeholder="{{ trans('label.permission_date') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="planning_period_from_date" class="form-label">{{ trans('label.planning_period_from_date') }}</label>
-                                    <input type="date" class="form-control" name="planning_period_from_date" id="planning_period_from_date" value="{{ $company->planning_period_from_date }}" placeholder="{{ trans('label.planning_period_from_date') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="planning_period_to_date" class="form-label">{{ trans('label.planning_period_to_date') }}</label>
-                                    <input type="date" class="form-control" name="planning_period_to_date" id="planning_period_to_date" value="{{ $company->planning_period_to_date }}" placeholder="{{ trans('label.planning_period_to_date') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="permission_valid_from_date" class="form-label">{{ trans('label.permission_valid_from_date') }}</label>
-                                    <input type="date" class="form-control" name="permission_valid_from_date" id="permission_valid_from_date" value="{{ $company->permission_valid_from_date }}" placeholder="{{ trans('label.permission_valid_from_date') }}">
-                                </div>
-
-                                <div class=" col-lg-6 col-md-6 col-sm-12">
-                                    <label for="permission_valid_to_date" class="form-label">{{ trans('label.permission_valid_to_date') }}</label>
-                                    <input type="date" class="form-control" name="permission_valid_to_date" id="permission_valid_to_date" value="{{ $company->permission_valid_to_date }}" placeholder="{{ trans('label.permission_valid_to_date') }}">
-                                </div>
-
-                                <div class="  col-sm-12">
-                                    <label for="jobs_comment" class="form-label">{{ trans('label.jobs_comment') }}</label>
-                                    <textarea class="form-control" name="jobs_comment" id="jobs_comment" placeholder="{{ trans('label.jobs_comment') }}">{{ $company->jobs_comment }}</textarea>
-                                </div>
-
-
-                                <div class="  col-sm-12">
-                                    <label for="note" class="form-label">{{ trans('label.note') }}</label>
-                                    <textarea class="form-control" name="note" id="note" placeholder="{{ trans('label.note') }}">{{ $company->note }}</textarea>
                                 </div>
 
                                 <div class="btn-list">
@@ -237,14 +138,14 @@
                                                 </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon me-2 btn-b">
+                                                        <a href="{{route('view.company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="item in list" :key="item.company_id" v-if="list.length > 0">
+                                            <tr v-for="item in list" :key="item.company_id">
                                                 <td>((item.company_office_id))</td>
                                                 <td class="fw-medium">((item.name))</td>
                                                 <td>((item.company_id))</td>

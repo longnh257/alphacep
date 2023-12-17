@@ -24,6 +24,8 @@ class CustomerOfficeController extends Controller
             $query->where('customer_id', $request->customer_id);
         }
 
+        $query->with(['staffs'])->withCount(['staffs']);
+
         $datas = $query->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list Installers successful.', $datas);

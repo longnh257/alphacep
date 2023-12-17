@@ -248,7 +248,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.customer_staff.create',['customer_office_id'=>$customer_office->customer_office_id])}}" class="btn btn-info btn-icon me-2 btn-b">
+                                                        <a href="{{route('view.customer_staff.create',['customer_office_id'=>$customer_office->customer_office_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
@@ -256,13 +256,13 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="item in list" :key="item.customer_id" v-if="list.length > 0">
+                                            <tr v-for="item in list" :key="item.customer_id" >
                                                 <td>((item.customer_staff_id))</td>
                                                 <td class="fw-medium">((item.name))</td>
                                                 <td>((item.customer_office_id))</td>
                                                 <td class="fw-medium">((item.tel))</td>
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap">
+                                                    <div class="hstack gap-2 flex-wrap justify-content-end">
                                                         <a :href="`{{asset('customer-staff')}}/`+item.customer_staff_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('customer-staff')}}/`+item.customer_staff_id" :id="'formDelete_'+((item.customer_staff_id))" class="pt-1" method="post">
                                                             @method('DELETE')
@@ -272,12 +272,6 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <!--       <tr v-else>
-                                                <td>
-                                                    <div class="alert alert-primary text-center"  v-else>{{ trans('label.empty') }}</div>
-                                                </td>
-                                            </tr>
- -->
                                         </tbody>
                                     </table>
                                     <div class="card-footer p-8pt">

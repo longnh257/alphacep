@@ -11,4 +11,7 @@ class MNativeLanguage extends Model
 
     protected $table = 'm_native_language';
     protected $guarded = ['native_language_id'];
+    protected $primaryKey = 'native_language_id';
+    const CREATED_AT = 'updated_on';
+    const UPDATED_AT = 'created_on';
 }

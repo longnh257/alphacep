@@ -23,6 +23,8 @@ class CompanyOfficeController extends Controller
             $query->where('company_id', $request->company_id);
         }
 
+        $query->with(['staffs']);
+
         $datas = $query->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list Installers successful.', $datas);

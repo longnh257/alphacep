@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Native Language')
 
 @section('content')
-<form action="{{route('view.company.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.native_language.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">Thêm công ty</h4>
+            <h4 class="mb-0">{{ trans('label.native_language_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -18,7 +18,7 @@
                     </button>
                 </div>
                 <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                    <a href="{{route('view.native_language.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                         <i class="bi bi-box-arrow-left"></i>
                     </a>
                 </div>
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Thông tin công ty
+                        {{ trans('label.native_language_info') }}
                     </div>
                 </div>
 
@@ -49,28 +49,9 @@
 
                 <div class="card-body">
                     <div class="row gy-4">
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('label.name') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                            <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ old('name_kana') }}" placeholder="{{ trans('label.name_kana') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="tel" class="form-label required">{{ trans('label.tel') }}</label>
-                            <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ old('tel') }}" placeholder="{{ trans('label.tel') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="fax" class="form-label">{{ trans('label.fax') }}</label>
-                            <input type="text" class="form-control" name="fax" id="fax" value="{{ old('fax') }}" placeholder="{{ trans('label.fax') }}">
-                        </div>
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
-                            <input type="text" class="form-control" name="postcode" id="postcode" value="{{ old('postcode') }}" placeholder="{{ trans('label.postcode') }}">
+                        <div class="col-sm-12">
+                            <label for="native_language" class="form-label required">{{ trans('label.native_language') }}</label>
+                            <input type="text" class="form-control" name="native_language" id="native_language" value="{{ old('native_language') }}" placeholder="{{ trans('label.native_language') }}">
                         </div>
 
                         <div class="btn-list">
@@ -94,7 +75,7 @@
                     </button>
                 </div>
                 <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                    <a href="{{route('view.native_language.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                         <i class="bi bi-box-arrow-left"></i>
                     </a>
                 </div>

@@ -10,7 +10,7 @@
         <div>
             <h4 class="mb-0">Thêm Staff</h4>
         </div>
-     
+
     </div>
     <!-- End Page Header -->
 
@@ -41,27 +41,17 @@
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="company_name_kana" class="form-label  required">{{ trans('label.company_name_kana') }}</label>
-                            <input type="text" class="form-control" name="company_name_kana" id="company_name_kana" value="{{ old('company_name_kana') }}" placeholder="{{ trans('label.company_name_kana') }}">
+                            <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
+                            <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ old('name_kana') }}" placeholder="{{ trans('label.name_kana') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="tel" class="form-label required">{{ trans('label.tel') }}</label>
-                            <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ old('tel') }}" placeholder="{{ trans('label.tel') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="mail" class="form-label required">{{ trans('label.mail') }}</label>
-                            <input type="text" class="form-control" name="mail" id="mail" max="10" min="10" value="{{ old('mail') }}" placeholder="{{ trans('label.mail') }}">
-                        </div>
-
-                        <div class=" col-lg-6 col-md-6 col-sm-12">
-                            <label for="birthday" class="form-label">{{ trans('label.birthday') }}</label>
+                            <label for="birthday" class="form-label ">{{ trans('label.birthday') }}</label>
                             <input type="date" class="form-control" name="birthday" id="birthday" value="{{ old('birthday') }}" placeholder="{{ trans('label.birthday') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="sex" class="form-label required">{{ trans('label.sex') }}</label>
+                            <label for="sex" class="form-label ">{{ trans('label.sex') }}</label>
                             <select class="form-control" data-trigger name="sex" id="sex">
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
@@ -70,14 +60,20 @@
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="position" class="form-label">{{ trans('label.position') }}</label>
+                            <label for="position" class="form-label ">{{ trans('label.position') }}</label>
                             <input type="text" class="form-control" name="position" id="position" value="{{ old('position') }}" placeholder="{{ trans('label.position') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="nationality" class="form-label">{{ trans('label.nationality') }}</label>
+                            <label for="nationality" class="form-label ">{{ trans('label.nationality') }}</label>
                             <input type="text" class="form-control" name="nationality" id="nationality" value="{{ old('nationality') }}" placeholder="{{ trans('label.nationality') }}">
                         </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="tel" class="form-label ">{{ trans('label.tel') }}</label>
+                            <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ old('tel') }}" placeholder="{{ trans('label.tel') }}">
+                        </div>
+
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
                             <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
@@ -85,49 +81,51 @@
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="address1" class="form-label">{{ trans('label.address1') }}</label>
+                            <label for="address1" class="form-label ">{{ trans('label.address1') }}</label>
                             <input type="text" class="form-control" name="address1" id="address1" value="{{ old('address1') }}" placeholder="{{ trans('label.address1') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="address2" class="form-label">{{ trans('label.address2') }}</label>
+                            <label for="address2" class="form-label ">{{ trans('label.address2') }}</label>
                             <input type="text" class="form-control" name="address2" id="address2" value="{{ old('address2') }}" placeholder="{{ trans('label.address2') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="certificate" class="form-label">{{ trans('label.certificate') }}</label>
-                            <input type="text" class="form-control" name="certificate" id="certificate" value="{{ old('certificate') }}" placeholder="{{ trans('label.certificate') }}">
+                            <label for="mail" class="form-label">{{ trans('label.mail') }}</label>
+                            <input type="email" class="form-control" name="mail" id="mail" value="{{ old('mail') }}" placeholder="{{ trans('label.mail') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="certificate_submit" class="form-label ">{{ trans('label.certificate_submit') }}</label>
-                            <select class="form-control" data-trigger name="certificate_submit" id="certificate_submit">
-                                <option value="1">1</option>
-                                <option value="0">0</option>
-                            </select>
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="role" class="form-label required">{{ trans('label.role') }}</label>
-                            <select class="form-control" data-trigger name="role" id="role">
-                                <option value="1">1</option>
-                                <option value="0">0</option>
-                            </select>
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="work_condition" class="form-label required">{{ trans('label.work_condition') }}</label>
-                            <select class="form-control" data-trigger name="work_condition" id="work_condition">
-                                <option value="1">1</option>
-                                <option value="0">0</option>
-                            </select>
-                        </div>
-
-                        <div class=" col-lg-6 col-md-6 col-sm-12">
                             <label for="assignment_date" class="form-label">{{ trans('label.assignment_date') }}</label>
                             <input type="date" class="form-control" name="assignment_date" id="assignment_date" value="{{ old('assignment_date') }}" placeholder="{{ trans('label.assignment_date') }}">
                         </div>
 
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="certificate_submit" class="form-label ">{{ trans('label.certificate_submit') }}</label>
+                            <select class="form-control" data-trigger name="certificate_submit" id="certificate_submit">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="work_condition" class="form-label ">{{ trans('label.work_condition') }}</label>
+                            <select class="form-control" data-trigger name="work_condition" id="work_condition">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="  col-sm-12">
+                            <label for="certificate" class="form-label">{{ trans('label.certificate') }}</label>
+                            <textarea class="form-control" name="certificate" id="certificate" placeholder="{{ trans('label.certificate') }}">{{ old('certificate') }}</textarea>
+                        </div>
+
+                        <div class="  col-sm-12">
+                            <label for="note" class="form-label">{{ trans('label.note') }}</label>
+                            <textarea class="form-control" name="note" id="note" placeholder="{{ trans('label.note') }}">{{ old('note') }}</textarea>
+                        </div>
 
                         <div class="btn-list">
                             <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>

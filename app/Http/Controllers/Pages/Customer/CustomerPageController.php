@@ -28,7 +28,9 @@ class CustomerPageController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'name_kana' => 'required|max:255',
-            'tel' => 'required|regex:/^\d{10}$/',
+            'tel' => 'required|regex:/^\d{10}$/|max:12',
+            'fax' => 'regex:/^\d{10}$/|max:12',
+            'postcode' => 'max:10',
         ], [
             'name.required' => 'The name field is required.',
             'name.max' => 'The name must not exceed :max characters.',
@@ -69,6 +71,7 @@ class CustomerPageController extends Controller
             'tel.required' => 'The telephone field is required.',
             'tel.regex' => 'The telephone field must be a 10-digit number.',
         ]);
+        $request['updated_by_id'] = Auth::id();
         $customer->update($request->input());
 
         return redirect()->route('view.customer.index')

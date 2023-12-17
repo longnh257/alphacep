@@ -13,15 +13,19 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      */
     public $numPerPage = 10;
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $query  = MCustomer::query();
 
         if ($s = $request->has("s")) {
             $query->where("trainee_number", "LIKE", "%" . $s . "%");
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
+
+        $query->with(['companies','offices'])->withCount(['companies','offices']);
+
         $datas = $query->paginate($this->numPerPage);
 
-        return $this->hasSuccess('Get list Installers successful.',$datas);
+        return $this->hasSuccess('Get list Installers successful.', $datas);
     }
 }

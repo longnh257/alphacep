@@ -11,4 +11,7 @@ class MSendingAgency extends Model
 
     protected $table = 'm_sending_agency';
     protected $guarded = ['sending_agency_id'];
+    protected $primaryKey = 'sending_agency_id';
+    const CREATED_AT = 'updated_on';
+    const UPDATED_AT = 'created_on';
 }

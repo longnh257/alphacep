@@ -1,14 +1,28 @@
 @extends('layouts.master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Sending Agency')
 
 @section('content')
-<form action="{{route('view.company_office.store',['company_id'=>$company->company_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.sending_agency.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">Thêm Office</h4>
+            <h4 class="mb-0">{{ trans('label.sending_agency_add') }}</h4>
+        </div>
+        <div class="main-dashboard-header-right">
+            <div class="d-flex my-xl-auto right-content align-items-center">
+                <div class="pe-1 mb-xl-0">
+                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
+                        <i class="bi bi-save"></i>
+                    </button>
+                </div>
+                <div class="pe-1 mb-xl-0">
+                    <a href="{{route('view.sending_agency.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <!-- End Page Header -->
@@ -20,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Thông tin Office
+                    {{ trans('label.sending_agency_info') }}
                     </div>
                 </div>
 
@@ -35,13 +49,18 @@
                 <div class="card-body">
                     <div class="row gy-4">
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('label.name') }}">
+                            <label for="name" class="form-label required">{{ trans('label.representative_name') }}</label>
+                            <input type="text" class="form-control" name="representative_name" id="representative_name" value="{{ old('representative_name') }}" placeholder="{{ trans('label.representative_name') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                            <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ old('name_kana') }}" placeholder="{{ trans('label.name_kana') }}">
+                            <label for="representative_name_kana" class="form-label  required">{{ trans('label.representative_name_kana') }}</label>
+                            <input type="text" class="form-control" name="representative_name_kana" id="representative_name_kana" value="{{ old('representative_name_kana') }}" placeholder="{{ trans('label.representative_name_kana') }}">
+                        </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="mail" class="form-label required">{{ trans('label.mail') }}</label>
+                            <input type="email" class="form-control" name="mail" id="mail" value="{{ old('mail') }}" placeholder="{{ trans('label.mail') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
@@ -58,11 +77,6 @@
                             <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
                             <input type="text" class="form-control" name="postcode" id="postcode" value="{{ old('postcode') }}" placeholder="{{ trans('label.postcode') }}">
                         </div>
-                        
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="office_area" class="form-label">{{ trans('label.office_area') }}</label>
-                            <input type="text" class="form-control" name="office_area" id="office_area" value="{{ old('office_area') }}" placeholder="{{ trans('label.office_area') }}">
-                        </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
                             <label for="address1" class="form-label">{{ trans('label.address1') }}</label>
@@ -74,15 +88,6 @@
                             <input type="text" class="form-control" name="address2" id="address2" value="{{ old('address2') }}" placeholder="{{ trans('label.address2') }}">
                         </div>
 
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="office_number" class="form-label">{{ trans('label.office_number') }}</label>
-                            <input type="text" class="form-control" name="office_number" id="office_number" value="{{ old('office_number') }}" placeholder="{{ trans('label.office_number') }}">
-                        </div>
-
-                        <div class="  col-sm-12">
-                            <label for="note" class="form-label">{{ trans('label.note') }}</label>
-                            <textarea class="form-control" name="note" id="note" placeholder="{{ trans('label.note') }}">{{ old('note') }}</textarea>
-                        </div>
 
                         <div class="btn-list">
                             <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
@@ -94,6 +99,24 @@
         </div>
     </div>
     <!-- End:: row-1 -->
+    <!-- row closed -->
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <div></div>
+        <div class="main-dashboard-header-right">
+            <div class="d-flex my-xl-auto right-content align-items-center">
+                <div class="pe-1 mb-xl-0">
+                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
+                        <i class="bi bi-save"></i>
+                    </button>
+                </div>
+                <div class="pe-1 mb-xl-0">
+                    <a href="{{route('view.sending_agency.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </form>
 @endsection

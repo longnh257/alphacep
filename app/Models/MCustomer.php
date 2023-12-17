@@ -20,4 +20,8 @@ class MCustomer extends Model
     {
         return $this->hasMany(MCustomerOffice::class, 'customer_id', 'customer_id');
     }
+    public function companies(): HasMany
+    {
+        return $this->hasMany(MCompany::class, 'customer_id', 'customer_id');
+    }
 }

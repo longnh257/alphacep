@@ -1,23 +1,23 @@
 @extends('layouts.master')
 
-@section('title', 'Khách hàng')
+@section('title', 'Sending Agency')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Customer Office</h5>
+            <h5 class="page-title fs-21 mb-1">{{ trans('label.sending_agency') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Customer Office</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.sending_agency') }}</li>
                 </ol>
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
+                <a href="{{route('view.sending_agency.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -46,58 +46,58 @@
                     </div>
                 </div>
                  
-                <div class="table-responsive country-table ">
+                <div class="table-responsive country-table" >
                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                         <thead class="gridjs-thead">
                             <tr class="gridjs-tr">
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">OFFICE ID</div>
+                                        <div class="gridjs-th-content">ID</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Name</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                            <i class="fe fe-arrow-up"></i>
-                                        </button>
-                                    </div>
-                                </th>
-                                <th class="gridjs-th gridjs-th-sort ">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Customer</div>
+                                        <div class="gridjs-th-content">Representative Name</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort">
+                                <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
                                         <div class="gridjs-th-content">Tel</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-up"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">Addresss</div>
                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in list" :key="item.customer_id">
-                                <td>((item.customer_office_id))</td>
-                                <td class="fw-medium">((item.name))</td>
-                                <td>((item.customer_id))</td>
+                            <tr v-for="item in list" :key="item.sending_agency_id">
+                                <td>((item.sending_agency_id))</td>
+                                <td class="fw-medium">((item.representative_name))</td>
                                 <td class="fw-medium">((item.tel))</td>
+                                <td class="fw-medium">((item.address1))</td>
                                 <td>
                                     <div class="hstack gap-2 flex-wrap justify-content-end">
-                                        <a :href="`{{asset('customer-office')}}/`+item.customer_office_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('customer-office')}}/`+item.customer_office_id" :id="'formDelete_'+((item.customer_office_id))" class="pt-1" method="post">
+                                        <a :href="`{{asset('sending-agency')}}/`+item.sending_agency_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                        <form :action="`{{asset('sending-agency')}}/`+item.sending_agency_id"  :id="'formDelete_'+((item.sending_agency_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteItem(item.customer_office_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteAgency(item.sending_agency_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -130,7 +130,6 @@
                                     <span>((item))</span>
                                 </button>
                             </li>
-
 
                             <li class="page-item disabled" v-if="page > count - 1 || count == 1">
                                 <button class="page-link" type="button">
@@ -167,6 +166,8 @@
 <!-- Custom JS -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+
+
 <script type="text/javascript">
     var CSRF_TOKEN = jQuery('meta[name="csrf-token"]').attr('content');
     var S_HYPEN = "-";
@@ -177,7 +178,7 @@
         el: '#list-data',
         data: {
             sortDirection: 'desc',
-            sortBy: 'customer_id',
+            sortBy: 'sending_agency_id',
             count: 0,
             page: 1,
             list: [],
@@ -222,10 +223,9 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.customer_offices.list')}}" + conditionSearch,
+                    url: "{{route('api.sending_agencies.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
-                        console.log(that.list);
                         that.count = data.result.last_page;
                         let pageArr = [];
                         if (that.page - 2 > 0) {
@@ -242,14 +242,15 @@
                             pageArr.push(that.page + 2);
                         }
                         that.listPage = pageArr;
+
+                        console.log(that.list);
                     },
                     error: function(xhr, textStatus, error) {
                         notifier.warning('システムエラーが発生しました。 大変お手数ですが、サイト管理者までご連絡ください');
                     }
                 });
             },
-            deleteItem(id) {
-                console.log(1);
+            deleteAgency(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -260,10 +261,10 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDelete_' + id).submit();
+                        jQuery('#formDelete_'+id).submit();
                     }
                 })
-
+             
             },
         },
     });

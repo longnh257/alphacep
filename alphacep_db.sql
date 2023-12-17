@@ -144,7 +144,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `m_company` (
   `company_id` bigint(20) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `company_name_kana` varchar(100) DEFAULT NULL,
+  `name_kana` varchar(100) DEFAULT NULL,
   `tel` varchar(12) DEFAULT NULL,
   `fax` varchar(12) DEFAULT NULL,
   `postcode` varchar(10) DEFAULT NULL,

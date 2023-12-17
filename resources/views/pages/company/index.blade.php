@@ -1,23 +1,23 @@
 @extends('layouts.master')
 
-@section('title', 'Khách hàng')
+@section('title', 'Company')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Khách hàng</h5>
+            <h5 class="page-title fs-21 mb-1">{{ trans('label.company') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Khách hàng</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.company') }}</li>
                 </ol>
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.company.create')}}" class="btn btn-info btn-icon me-2 btn-b">
+                <a href="{{route('view.company.create1')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
-                    <h4 class="card-title mb-1">Tiêu Đề</h4>
+                   {{ trans('label.table_title') }}
                     <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light bg-transparent rounded-pill" data-bs-toggle="dropdown"><i class="fe fe-more-horizontal"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);">10</a>
@@ -45,8 +45,7 @@
                         <a class="dropdown-item" href="javascript:void(0);">All</a>
                     </div>
                 </div>
-                <span class="fs-12 text-muted mb-3 ">Nội dung giải thích về bảng</span>
-                <div class="table-responsive country-table" v-if="list.length > 0">
+                <div class="table-responsive country-table">
                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                         <thead class="gridjs-thead">
                             <tr class="gridjs-tr">
@@ -76,7 +75,23 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Addresss</div>
+                                        <div class="gridjs-th-content">Postcode</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">Customer</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">Created</div>
                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -90,9 +105,11 @@
                                 <td>((item.company_id))</td>
                                 <td class="fw-medium">((item.name))</td>
                                 <td class="fw-medium">((item.tel))</td>
-                                <td class="fw-medium">((item.address1))</td>
+                                <td class="fw-medium">((item.postcode))</td>
+                                <td class="fw-medium">((item.customer_id))</td>
+                                <td class="fw-medium">((item.created_on))</td>
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap">
+                                    <div class="hstack gap-2 flex-wrap justify-content-end">
                                         <a :href="`{{asset('company')}}/`+item.company_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('company')}}/`+item.company_id"  :id="'formDelete_'+((item.company_id))" class="pt-1" method="post">
                                             @method('DELETE')
@@ -145,7 +162,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="alert alert-primary text-center" v-else>{{ trans('label.empty') }}</div>
             </div>
         </div>
     </div>
