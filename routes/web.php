@@ -25,6 +25,8 @@ use App\Http\Controllers\API\Company\CompanystaffController;
 use App\Http\Controllers\API\Nationality\NationalityController;
 use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
+use App\Http\Controllers\API\Trainee\TraineeController;
+use App\Http\Controllers\Pages\Trainee\TraineePageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,9 +76,9 @@ Route::group(['prefix' => 'customer-staff', 'middleware' => 'check.login'], func
     Route::delete('/{id}', [CustomerStaffPageController::class, 'destroy'])->name('view.customer_staff.destroy');
 });
 
+//end customer
 
-// Router Api Website
-
+//company
 Route::group(['prefix' => 'company', 'middleware' => 'check.login'], function () {
     Route::get('/', [CompanyPageController::class, 'index'])->name('view.company.index');
     Route::get('/create1', [CompanyPageController::class, 'create'])->name('view.company.create1');
@@ -86,6 +88,7 @@ Route::group(['prefix' => 'company', 'middleware' => 'check.login'], function ()
     Route::put('/{id}', [CompanyPageController::class, 'update'])->name('view.company.update');
     Route::delete('/{id}', [CompanyPageController::class, 'destroy'])->name('view.company.destroy');
 });
+
 Route::group(['prefix' => 'company-office', 'middleware' => 'check.login'], function () {
     Route::get('/create/{company_id}', [CompanyOfficePageController::class, 'create'])->name('view.company_office.create');
     Route::post('/{company_id}', [CompanyOfficePageController::class, 'store'])->name('view.company_office.store');
@@ -101,6 +104,22 @@ Route::group(['prefix' => 'company-staff', 'middleware' => 'check.login'], funct
     Route::put('/{id}', [CompanystaffPageController::class, 'update'])->name('view.company_staff.update');
     Route::delete('/{id}', [CompanystaffPageController::class, 'destroy'])->name('view.company_staff.destroy');
 });
+
+//end company
+
+
+//trainee
+
+Route::group(['prefix' => 'trainee', 'middleware' => 'check.login'], function () {
+    Route::get('/', [TraineePageController::class, 'index'])->name('view.trainee.index');
+    Route::get('/create', [TraineePageController::class, 'create'])->name('view.trainee.create');
+    Route::post('/', [TraineePageController::class, 'store'])->name('view.trainee.store');
+    Route::get('/{id}/edit', [TraineePageController::class, 'edit'])->name('view.trainee.edit');
+    Route::put('/{id}', [TraineePageController::class, 'update'])->name('view.trainee.update');
+    Route::delete('/{id}', [TraineePageController::class, 'destroy'])->name('view.trainee.destroy');
+});
+
+//end trainee
 
 Route::group(['prefix' => 'nationality', 'middleware' => 'check.login'], function () {
     Route::get('/', [NationalityPageController::class, 'index'])->name('view.nationality.index');
@@ -140,11 +159,18 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
         Route::get('/customer-offices', [CustomerOfficeController::class, 'index'])->name('api.customer_offices.list');
         Route::get('/customer-staffs', [CustomerStaffController::class, 'index'])->name('api.customer_staffs.list');
     });
+
     Route::group(['prefix' => 'companies'], function () {
         Route::get('/companies', [CompanyController::class, 'index'])->name('api.companies.list');
         Route::get('/company-offices', [CompanyOfficeController::class, 'index'])->name('api.company_offices.list');
         Route::get('/company-staffs', [CompanystaffController::class, 'index'])->name('api.company_staffs.list');
     });
+
+
+    Route::group(['prefix' => 'trainees'], function () {
+        Route::get('/trainees', [TraineeController::class, 'index'])->name('api.trainees.list');
+    });
+
     Route::group(['prefix' => 'nationalities'], function () {
         Route::get('/', [NationalityController::class, 'index'])->name('api.nationalities.list');
     });

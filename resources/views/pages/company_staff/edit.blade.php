@@ -48,7 +48,7 @@
                 @endif
 
                 <div class="card-body">
-                <div class="row gy-4">
+                    <div class="row gy-4">
                         <div class="  col-lg-6 col-md-6 col-sm-12">
                             <label for="name" class="form-label required">{{ trans('label.name') }}</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{ $company_staff->name }}" placeholder="{{ trans('label.name') }}">
@@ -63,13 +63,11 @@
                             <label for="birthday" class="form-label ">{{ trans('label.birthday') }}</label>
                             <input type="date" class="form-control" name="birthday" id="birthday" value="{{ $company_staff->birthday }}" placeholder="{{ trans('label.birthday') }}">
                         </div>
-
                         <div class="  col-lg-6 col-md-6 col-sm-12">
                             <label for="sex" class="form-label ">{{ trans('label.sex') }}</label>
                             <select class="form-control" data-trigger name="sex" id="sex">
-                            <option value="M">Male</option>
-                                <option value="F"  @if($company_staff->sex == "F" ) selected @endif>Female</option>
-                                <option value="O"  @if($company_staff->sex == "O" ) selected @endif>Others</option>
+                                <option value="1">男</option>
+                                <option value="2" @if($company_staff->sex == "2" ) selected @endif>女</option>
                             </select>
                         </div>
 
@@ -146,7 +144,7 @@
                         </div>
 
                     </div>
-    
+
                 </div>
             </div>
         </div>

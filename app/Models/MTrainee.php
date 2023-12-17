@@ -11,4 +11,7 @@ class MTrainee extends Model
 
     protected $table = 'm_trainee';
     protected $guarded = ['trainee_id'];
+    protected $primaryKey = 'trainee_id';
+    const CREATED_AT = 'updated_on';
+    const UPDATED_AT = 'created_on';
 }
