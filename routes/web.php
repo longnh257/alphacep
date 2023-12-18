@@ -26,7 +26,9 @@ use App\Http\Controllers\API\Nationality\NationalityController;
 use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
 use App\Http\Controllers\API\Trainee\TraineeController;
+use App\Http\Controllers\API\TraineeRelative\TraineeRelativeController;
 use App\Http\Controllers\Pages\Trainee\TraineePageController;
+use App\Http\Controllers\Pages\TraineeRelative\TraineeRelativePageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,6 +123,19 @@ Route::group(['prefix' => 'trainee', 'middleware' => 'check.login'], function ()
 
 //end trainee
 
+//trainee
+
+Route::group(['prefix' => 'trainee-relative', 'middleware' => 'check.login'], function () {
+    Route::get('/', [TraineeRelativePageController::class, 'index'])->name('view.trainee_relative.index');
+    Route::get('/create', [TraineeRelativePageController::class, 'create'])->name('view.trainee_relative.create');
+    Route::post('/', [TraineeRelativePageController::class, 'store'])->name('view.trainee_relative.store');
+    Route::get('/{id}/edit', [TraineeRelativePageController::class, 'edit'])->name('view.trainee_relative.edit');
+    Route::put('/{id}', [TraineeRelativePageController::class, 'update'])->name('view.trainee_relative.update');
+    Route::delete('/{id}', [TraineeRelativePageController::class, 'destroy'])->name('view.trainee_relative.destroy');
+});
+
+//end trainee
+
 Route::group(['prefix' => 'nationality', 'middleware' => 'check.login'], function () {
     Route::get('/', [NationalityPageController::class, 'index'])->name('view.nationality.index');
     Route::get('/create', [NationalityPageController::class, 'create'])->name('view.nationality.create');
@@ -169,6 +184,10 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
 
     Route::group(['prefix' => 'trainees'], function () {
         Route::get('/trainees', [TraineeController::class, 'index'])->name('api.trainees.list');
+    });
+
+    Route::group(['prefix' => 'trainee-relatives'], function () {
+        Route::get('/trainee-relatives', [TraineeRelativeController::class, 'index'])->name('api.trainee_relatives.list');
     });
 
     Route::group(['prefix' => 'nationalities'], function () {
