@@ -12,6 +12,8 @@ use App\Http\Controllers\Pages\Company\CompanystaffPageController;
 use App\Http\Controllers\Pages\Nationality\NationalityPageController;
 use App\Http\Controllers\Pages\NativeLanguage\NativeLanguagePageController;
 use App\Http\Controllers\Pages\SendingAgency\SendingAgencyPageController;
+use App\Http\Controllers\Pages\TraineeRelative\TraineeRelativePageController;
+use App\Http\Controllers\Pages\Trainee\TraineePageController;
 
 
 // Import Api
@@ -27,8 +29,6 @@ use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
 use App\Http\Controllers\API\Trainee\TraineeController;
 use App\Http\Controllers\API\TraineeRelative\TraineeRelativeController;
-use App\Http\Controllers\Pages\Trainee\TraineePageController;
-use App\Http\Controllers\Pages\TraineeRelative\TraineeRelativePageController;
 
 /*
 |--------------------------------------------------------------------------
