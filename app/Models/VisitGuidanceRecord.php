@@ -11,4 +11,7 @@ class VisitGuidanceRecord extends Model
 
     protected $table = 'visit_guidance_record';
     protected $guarded = ['visit_record_id'];
+    protected $primaryKey = 'visit_record_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

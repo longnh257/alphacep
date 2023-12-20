@@ -1,23 +1,23 @@
 @extends('layouts.master')
 
-@section('title', 'Training Facility')
+@section('title', 'Project')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">  {{ trans('label.training_facility') }}</h5>
+            <h5 class="page-title fs-21 mb-1"> {{ trans('label.project') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">  {{ trans('label.homepage') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">  {{ trans('label.training_facility') }}</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.project') }}</li>
                 </ol>
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.training_facility.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
+                <a href="{{route('view.project.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
-                   {{ trans('label.table_title') }}
+                    <h4 class="card-title mb-1">{{ trans('label.table_title') }}</h4>
                     <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light bg-transparent rounded-pill" data-bs-toggle="dropdown"><i class="fe fe-more-horizontal"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);">10</a>
@@ -45,14 +45,13 @@
                         <a class="dropdown-item" href="javascript:void(0);">All</a>
                     </div>
                 </div>
-                 
-                <div class="table-responsive country-table" >
+                <div class="table-responsive country-table">
                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                         <thead class="gridjs-thead">
                             <tr class="gridjs-tr">
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">ID</div>
+                                        <div class="gridjs-th-content">{{ trans('label.id') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -60,63 +59,70 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Name</div>
+                                        <div class="gridjs-th-content">{{ trans('label.trainee_number') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort ">
+
+                                <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">tel</div>
-                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                            <i class="fe fe-maximize-2"></i>
+                                        <div class="gridjs-th-content">{{ trans('label.entry_date') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort ">
+
+                                <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">postcode</div>
-                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                            <i class="fe fe-maximize-2"></i>
+                                        <div class="gridjs-th-content">{{ trans('label.sending_agency') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort ">
+
+                                <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">address1</div>
-                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                            <i class="fe fe-maximize-2"></i>
+                                        <div class="gridjs-th-content">{{ trans('label.company') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort ">
+
+                                <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">address2</div>
-                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                            <i class="fe fe-maximize-2"></i>
+                                        <div class="gridjs-th-content">{{ trans('label.url') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                             
-                                <th></th>
+                                <th class="text-end">
+                                    <a href="{{route('view.project.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                        <i class="fe fe-plus"></i></a>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in list" :key="item.training_facility_id">
-                                <td>((item.training_facility_id))</td>
-                                <td class="fw-medium">((item.name))</td>
-                                <td class="fw-medium">((item.tel))</td>
-                                <td class="fw-medium">((item.postcode))</td>
-                                <td class="fw-medium">((item.address1))</td>
-                                <td class="fw-medium">((item.address2))</td>
+                            <tr v-for="item in list" :key="item.project_id">
+                                <td>((item.project_id))</td>
+                                <td class="fw-medium">((item.trainee_number))</td>
+                                <td class="fw-medium">((item.entry_date))</td>
+                                <td class="fw-medium">((item.sending_agency_id))</td>
+                                <td class="fw-medium">((item.company_id))</td>
+                                <td class="fw-medium">((item.url))</td>
                                 <td>
                                     <div class="hstack gap-2 flex-wrap justify-content-end">
-                                        <a :href="`{{asset('training-facility')}}/`+item.training_facility_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('training-facility')}}/`+item.training_facility_id"  :id="'formDelete_'+((item.training_facility_id))" class="pt-1" method="post">
+                                        <a :href="`{{asset('project-trainee/create')}}/`+item.project_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee')}}"><i class="si si-user-follow"></i></a>
+                                        <a :href="`{{asset('project')}}/`+item.project_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                        <form :action="`{{asset('project')}}/`+item.project_id" :id="'formDelete_'+((item.project_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteTrainee(item.training_facility_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteProjectCategory(item.project_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -197,7 +203,7 @@
         el: '#list-data',
         data: {
             sortDirection: 'desc',
-            sortBy: 'training_facility_id',
+            sortBy: 'fyb_id',
             count: 0,
             page: 1,
             list: [],
@@ -242,7 +248,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.training_facilities.list')}}" + conditionSearch,
+                    url: "{{route('api.projects_trainee.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;
@@ -269,7 +275,7 @@
                     }
                 });
             },
-            deleteTrainee(id) {
+            deleteProjectCategory(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -280,10 +286,10 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDelete_'+id).submit();
+                        jQuery('#formDelete_' + id).submit();
                     }
                 })
-             
+
             },
         },
     });

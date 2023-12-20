@@ -14,15 +14,17 @@ use App\Http\Controllers\Pages\FunctionCategory\FunctionCategoryPageController;
 use App\Http\Controllers\Pages\Nationality\NationalityPageController;
 use App\Http\Controllers\Pages\NativeLanguage\NativeLanguagePageController;
 use App\Http\Controllers\Pages\SendingAgency\SendingAgencyPageController;
-use App\Http\Controllers\Pages\TraineeRelative\TraineeRelativePageController;
+use App\Http\Controllers\Pages\Trainee\TraineeRelativePageController;
 use App\Http\Controllers\Pages\Trainee\TraineePageController;
 use App\Http\Controllers\Pages\Project\ProjectPageController;
+use App\Http\Controllers\Pages\Project\ProjectTraineePageController;
 use App\Http\Controllers\Pages\Work\WorkPageController;
 use App\Http\Controllers\Pages\Work\WorkFlowPageController;
 
 
 // Import Api
 use App\Http\Controllers\API\Project\ProjectController;
+use App\Http\Controllers\API\Project\ProjectTraineeController;
 use App\Http\Controllers\API\Work\WorkController;
 use App\Http\Controllers\API\Work\WorkFlowController;
 use App\Http\Controllers\API\Customer\CustomerController;
@@ -37,7 +39,7 @@ use App\Http\Controllers\API\Nationality\NationalityController;
 use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
 use App\Http\Controllers\API\Trainee\TraineeController;
-use App\Http\Controllers\API\TraineeRelative\TraineeRelativeController;
+use App\Http\Controllers\API\Trainee\TraineeRelativeController;
 use App\Http\Controllers\API\TrainingFacility\TrainingFacilityController;
 use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
 
@@ -58,9 +60,6 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => 'check.login'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home_page');
-});
-
-Route::group(['prefix' => 'project', 'middleware' => 'check.login'], function () {
 });
 
 //customer
@@ -128,8 +127,17 @@ Route::group(['prefix' => 'project', 'middleware' => 'check.login'], function ()
     Route::put('/{id}', [ProjectPageController::class, 'update'])->name('view.project.update');
     Route::delete('/{id}', [ProjectPageController::class, 'destroy'])->name('view.project.destroy');
 });
+
+Route::group(['prefix' => 'project-trainee', 'middleware' => 'check.login'], function () {
+    Route::get('/create/{project_id}', [ProjectTraineePageController::class, 'create'])->name('view.project_trainee.create');
+    Route::post('/{project_id}', [ProjectTraineePageController::class, 'store'])->name('view.project_trainee.store');
+    Route::get('/{id}/edit', [ProjectTraineePageController::class, 'edit'])->name('view.project_trainee.edit');
+    Route::put('/{id}', [ProjectTraineePageController::class, 'update'])->name('view.project_trainee.update');
+    Route::delete('/{id}', [ProjectTraineePageController::class, 'destroy'])->name('view.project_trainee.destroy');
+});
 //end Project
-//Project
+
+//work
 Route::group(['prefix' => 'work', 'middleware' => 'check.login'], function () {
     Route::get('/', [WorkPageController::class, 'index'])->name('view.work.index');
     Route::get('/create', [WorkPageController::class, 'create'])->name('view.work.create');
@@ -138,8 +146,9 @@ Route::group(['prefix' => 'work', 'middleware' => 'check.login'], function () {
     Route::put('/{id}', [WorkPageController::class, 'update'])->name('view.work.update');
     Route::delete('/{id}', [WorkPageController::class, 'destroy'])->name('view.work.destroy');
 });
-//end Project
-//Project
+//end work
+
+//workflow
 Route::group(['prefix' => 'workflow', 'middleware' => 'check.login'], function () {
     Route::get('/', [WorkFlowPageController::class, 'index'])->name('view.workflow.index');
     Route::get('/create', [WorkFlowPageController::class, 'create'])->name('view.workflow.create');
@@ -148,7 +157,7 @@ Route::group(['prefix' => 'workflow', 'middleware' => 'check.login'], function (
     Route::put('/{id}', [WorkFlowPageController::class, 'update'])->name('view.workflow.update');
     Route::delete('/{id}', [WorkFlowPageController::class, 'destroy'])->name('view.workflow.destroy');
 });
-//end Project
+//end workflow
 
 
 Route::group(['prefix' => 'function', 'middleware' => 'check.login'], function () {
@@ -240,6 +249,8 @@ Route::group(['prefix' => 'sending-agency', 'middleware' => 'check.login'], func
 
 Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.list');
+
+    Route::get('/project-trainees', [ProjectTraineeController::class, 'index'])->name('api.project_trainees.list');
 
     Route::group(['prefix' => 'customers'], function () {
         Route::get('/customers', [CustomerController::class, 'index'])->name('api.customers.list');

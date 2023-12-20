@@ -11,12 +11,12 @@ class TrainingFacilityPageController extends Controller
 {
     public function index(Request $request)
     {
-        return view('pages.trainee_relative.index');
+        return view('pages.training_facility.index');
     }
 
     public function create()
     {
-        return view('pages.trainee_relative.create');
+        return view('pages.training_facility.create');
     }
 
 
@@ -37,33 +37,31 @@ class TrainingFacilityPageController extends Controller
 
         MTrainingFacility::create($request->except('_token'));
 
-        return redirect()->route('view.trainee_relative.index')
+        return redirect()->route('view.training_facility.index')
             ->with('success', 'Training Facility created successfully!');
     }
 
     public function edit($id)
     {
-        $trainee_relative = MTrainingFacility::findOrFail($id);
-        return view('pages.trainee_relative.edit', compact('trainee_relative'));
+        $training_facility = MTrainingFacility::findOrFail($id);
+        return view('pages.training_facility.edit', compact('training_facility'));
     }
 
     public function update(Request $request, $id)
     {
-        $trainee_relative = MTrainingFacility::findOrFail($id);
+        $training_facility = MTrainingFacility::findOrFail($id);
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'name_kana' => 'required|max:255',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-            'name_kana.required' => 'The name kana field is required.',
-            'name_kana.max' => 'The name kana must not exceed :max characters.',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:254',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
         $request['updated_by_id'] = Auth::id();
-        $trainee_relative->update($request->except('customer_id'));
+        $training_facility->update($request->except('customer_id'));
 
-        return redirect()->route('view.trainee_relative.index')
+        return redirect()->route('view.training_facility.index')
             ->with('success', 'Training Facility updated successfully!');
     }
 
@@ -72,7 +70,7 @@ class TrainingFacilityPageController extends Controller
         $post = MTrainingFacility::findOrFail($id);
         $post->delete();
 
-        return redirect()->route('view.trainee_relative.index')
+        return redirect()->route('view.training_facility.index')
             ->with('success', 'Training Facility deleted successfully!');
     }
 }

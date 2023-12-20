@@ -11,4 +11,7 @@ class ProjectWorkTask extends Model
 
     protected $table = 'project_work_task';
     protected $guarded = ['task_id'];
+    protected $primaryKey = 'task_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

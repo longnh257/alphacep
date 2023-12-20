@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pages\TraineeRelative;
+namespace App\Http\Controllers\Pages\Trainee;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

@@ -11,4 +11,7 @@ class ProjectWorkTaskFile extends Model
 
     protected $table = 'project_work_task_file';
     protected $guarded = ['task_file_id'];
+    protected $primaryKey = 'task_file_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

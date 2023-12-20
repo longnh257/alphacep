@@ -11,4 +11,7 @@ class ProjectTraineeContract extends Model
 
     protected $table = 'project_trainee_contract';
     protected $guarded = ['contract_id'];
+    protected $primaryKey = 'contract_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

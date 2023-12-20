@@ -11,4 +11,7 @@ class MTrainingFacility extends Model
 
     protected $table = 'm_training_facility';
     protected $guarded = ['training_facility_id'];
+    protected $primaryKey = 'training_facility_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }
