@@ -38,6 +38,8 @@ use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
 use App\Http\Controllers\API\Trainee\TraineeController;
 use App\Http\Controllers\API\TraineeRelative\TraineeRelativeController;
+use App\Http\Controllers\API\TrainingFacility\TrainingFacilityController;
+use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -193,6 +195,19 @@ Route::group(['prefix' => 'trainee-relative', 'middleware' => 'check.login'], fu
 
 //end trainee
 
+//trainee
+
+Route::group(['prefix' => 'training-facility', 'middleware' => 'check.login'], function () {
+    Route::get('/', [TrainingFacilityPageController::class, 'index'])->name('view.training_facility.index');
+    Route::get('/create', [TrainingFacilityPageController::class, 'create'])->name('view.training_facility.create');
+    Route::post('/', [TrainingFacilityPageController::class, 'store'])->name('view.training_facility.store');
+    Route::get('/{id}/edit', [TrainingFacilityPageController::class, 'edit'])->name('view.training_facility.edit');
+    Route::put('/{id}', [TrainingFacilityPageController::class, 'update'])->name('view.training_facility.update');
+    Route::delete('/{id}', [TrainingFacilityPageController::class, 'destroy'])->name('view.training_facility.destroy');
+});
+
+//end trainee
+
 Route::group(['prefix' => 'nationality', 'middleware' => 'check.login'], function () {
     Route::get('/', [NationalityPageController::class, 'index'])->name('view.nationality.index');
     Route::get('/create', [NationalityPageController::class, 'create'])->name('view.nationality.create');
@@ -252,6 +267,10 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
 
     Route::group(['prefix' => 'trainee-relatives'], function () {
         Route::get('/trainee-relatives', [TraineeRelativeController::class, 'index'])->name('api.trainee_relatives.list');
+    });
+    
+    Route::group(['prefix' => 'training-facilities'], function () {
+        Route::get('/training-facilities', [TrainingFacilityController::class, 'index'])->name('api.training_facilities.list');
     });
 
     Route::group(['prefix' => 'nationalities'], function () {

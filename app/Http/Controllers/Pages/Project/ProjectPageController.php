@@ -21,7 +21,7 @@ class ProjectPageController extends Controller
     {
         $company = MCompany::all();
         $sending_agency = MSendingAgency::all();
-        return view('pages.project.create',compact('company','sending_agency'));
+        return view('pages.project.create', compact('company', 'sending_agency'));
     }
 
 
@@ -30,8 +30,8 @@ class ProjectPageController extends Controller
 
         $request->validate(
             [
-                'trainee_number'=>'required',
-                'entry_date'=>'required',
+                'trainee_number' => 'required',
+                'entry_date' => 'required',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),
@@ -51,16 +51,17 @@ class ProjectPageController extends Controller
         $company = MCompany::all();
         $sending_agency = MSendingAgency::all();
         $project = Project::findOrFail($id);
-        return view('pages.project.edit', compact('project','company','sending_agency'));
+        return view('pages.project.edit', compact('project', 'company', 'sending_agency'));
     }
 
     public function update(Request $request, $id)
     {
         $project = Project::findOrFail($id);
+
         $request->validate(
             [
-                'trainee_number'=>'required',
-                'entry_date'=>'required',
+                'trainee_number' => 'required',
+                'entry_date' => 'required',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),

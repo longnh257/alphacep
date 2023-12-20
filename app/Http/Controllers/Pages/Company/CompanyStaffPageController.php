@@ -27,18 +27,15 @@ class CompanystaffPageController extends Controller
     {
         $company_office = MCompanyOffice::findOrFail($company_office_id);
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'name_kana' => 'required|max:255',
-            'tel' => 'required|regex:/^\d{10}$/',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-            'name_kana.required' => 'The name kana field is required.',
-            'name_kana.max' => 'The name kana must not exceed :max characters.',
-            'tel.required' => 'The telephone field is required.',
-            'tel.regex' => 'The telephone field must be a 10-digit number.',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'name_kana' => 'required|max:255',
+                'tel' => 'required|regex:/^\d{10}$/',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $request['company_office_id'] = $company_office->company_office_id;
         $request['company_id'] = $company_office->company_id;
@@ -61,18 +58,17 @@ class CompanystaffPageController extends Controller
     public function update(Request $request, $id)
     {
         $company_staff = MCompanystaff::findOrFail($id);
-        $request->validate([
-            'name' => 'required|max:255',
-            'name_kana' => 'required|max:255',
-            'tel' => 'required|regex:/^\d{10}$/',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-            'name_kana.required' => 'The name kana field is required.',
-            'name_kana.max' => 'The name kana must not exceed :max characters.',
-            'tel.required' => 'The telephone field is required.',
-            'tel.regex' => 'The telephone field must be a 10-digit number.',
-        ]);
+
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'name_kana' => 'required|max:255',
+                'tel' => 'required|regex:/^\d{10}$/',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
+
         $company_staff->update($request->except(['company_office_id','company_id','_token']));
 
         return redirect()->route('view.company_office.edit',['id'=>$company_staff->company_office_id])

@@ -17,21 +17,21 @@ class TraineeRelativePageController extends Controller
     public function create()
     {
         return view('pages.trainee_relative.create');
-    } 
- 
+    }
+
 
     public function store(Request $request)
     {
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'name_kana' => 'required|max:255',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-            'name_kana.required' => 'The name kana field is required.',
-            'name_kana.max' => 'The name kana must not exceed :max characters.',
-        ]);
+
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'name_kana' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $request['customer_id'] = Auth::user()->customer_id;
         $request['created_by_id'] = Auth::id();
@@ -50,18 +50,18 @@ class TraineeRelativePageController extends Controller
     }
 
     public function update(Request $request, $id)
-    {  
+    {
         $trainee_relative = MTraineeRelative::findOrFail($id);
 
-        $request->validate([
-        'name' => 'required|max:255',
-        'name_kana' => 'required|max:255',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-            'name_kana.required' => 'The name kana field is required.',
-            'name_kana.max' => 'The name kana must not exceed :max characters.',
-        ]);
+
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'name_kana' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
         $request['updated_by_id'] = Auth::id();
         $trainee_relative->update($request->except('customer_id'));
 

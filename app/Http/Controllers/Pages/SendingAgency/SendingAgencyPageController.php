@@ -24,10 +24,14 @@ class SendingAgencyPageController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'representative_name' => 'required|max:255',
-            'representative_name_kana' => 'required|max:255',
-        ]);
+        $request->validate(
+            [
+                'representative_name' => 'required|max:255',
+                'representative_name_kana' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $request['customer_id'] = Auth::user()->customer_id;
         $request['created_by_id'] = Auth::id();
@@ -49,10 +53,14 @@ class SendingAgencyPageController extends Controller
     {
         $sending_agency = MSendingAgency::findOrFail($id);
 
-        $request->validate([
-            'representative_name' => 'required|max:255',
-            'representative_name_kana' => 'required|max:255',
-        ]);
+        $request->validate(
+            [
+                'representative_name' => 'required|max:255',
+                'representative_name_kana' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
         $request['updated_by_id'] = Auth::id();
         $sending_agency->update($request->except('customer_id'));
 

@@ -76,8 +76,8 @@
                                 <td class="fw-medium">((item.name))</td>
                                 <td>
                                     <div class="hstack gap-2 flex-wrap justify-content-end">
-                                        <a :href="`{{asset('training_facility')}}/`+item.training_facility_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('training_facility')}}/`+item.training_facility_id"  :id="'formDelete_'+((item.training_facility_id))" class="pt-1" method="post">
+                                        <a :href="`{{asset('training-facility')}}/`+item.training_facility_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                        <form :action="`{{asset('training-facility')}}/`+item.training_facility_id"  :id="'formDelete_'+((item.training_facility_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
                                             <a href="##" @click="deleteTrainee(item.training_facility_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
@@ -206,7 +206,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.training_facilitys.list')}}" + conditionSearch,
+                    url: "{{route('api.training_facilities.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;

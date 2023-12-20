@@ -18,15 +18,18 @@ class NativeLanguagePageController extends Controller
     public function create()
     {
         return view('pages.native_language.create');
-    } 
- 
+    }
+
 
     public function store(Request $request)
     {
-
-        $request->validate([
-            'native_language' => 'required|max:255',
-        ]);
+        $request->validate(
+            [
+                'native_language' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $request['created_by_id'] = Auth::id();
         $request['updated_by_id'] = Auth::id();
@@ -44,12 +47,17 @@ class NativeLanguagePageController extends Controller
     }
 
     public function update(Request $request, $id)
-    {  
+    {
         $native_language = MNativeLanguage::findOrFail($id);
 
-        $request->validate([
-        'native_language' => 'required|max:255',
-        ]);
+        $request->validate(
+            [
+                'native_language' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
+        
         $request['updated_by_id'] = Auth::id();
         $native_language->update($request->input());
 

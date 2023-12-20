@@ -19,18 +19,19 @@ class NationalityPageController extends Controller
     public function create()
     {
         return view('pages.nationality.create');
-    } 
- 
+    }
+
 
     public function store(Request $request)
     {
 
-        $request->validate([
-            'name' => 'required|max:255',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $request['created_by_id'] = Auth::id();
         $request['updated_by_id'] = Auth::id();
@@ -48,15 +49,15 @@ class NationalityPageController extends Controller
     }
 
     public function update(Request $request, $id)
-    {  
+    {
         $nationality = MNationality::findOrFail($id);
-
-        $request->validate([
-        'name' => 'required|max:255',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
         $request['updated_by_id'] = Auth::id();
         $nationality->update($request->input());
 

@@ -25,18 +25,16 @@ class CustomerOfficePageController extends Controller
     public function store(Request $request, $customer_id)
     {
         $customer =  MCustomer::findOrFail($customer_id);
-        $request->validate([
-            'name' => 'required|max:255',
-            'name_kana' => 'required|max:255',
-            'tel' => 'required|regex:/^\d{10}$/',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-            'name_kana.required' => 'The name kana field is required.',
-            'name_kana.max' => 'The name kana must not exceed :max characters.',
-            'tel.required' => 'The telephone field is required.',
-            'tel.regex' => 'The telephone field must be a 10-digit number.',
-        ]);
+   
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'name_kana' => 'required|max:255',
+                'tel' => 'required|regex:/^\d{10}$/',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $request['customer_id'] = $customer->customer_id;
         $request['created_by_id'] = Auth::id();
@@ -58,19 +56,15 @@ class CustomerOfficePageController extends Controller
     public function update(Request $request, $id)
     {
         $customer_office = MCustomerOffice::findOrFail($id);
-
-        $request->validate([
-            'name' => 'required|max:255',
-            'name_kana' => 'required|max:255',
-            'tel' => 'required|regex:/^\d{10}$/',
-        ], [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name must not exceed :max characters.',
-            'name_kana.required' => 'The name kana field is required.',
-            'name_kana.max' => 'The name kana must not exceed :max characters.',
-            'tel.required' => 'The telephone field is required.',
-            'tel.regex' => 'The telephone field must be a 10-digit number.',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'name_kana' => 'required|max:255',
+                'tel' => 'required|regex:/^\d{10}$/',
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $customer_office->update($request->except(['customer_id', '_token']));
 
