@@ -11,4 +11,7 @@ class MWorkflow extends Model
 
     protected $table = 'm_workflow';
     protected $guarded = ['flow_id'];
+    protected $primaryKey = 'flow_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

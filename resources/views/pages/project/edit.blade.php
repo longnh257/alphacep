@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Function')
+@section('title', 'Project')
 
 @section('content')
 
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.function_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('label.project_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -17,7 +17,7 @@
                 </button>
             </div>
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.function.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                <a href="{{route('view.project.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                     <i class="bi bi-box-arrow-left"></i>
                 </a>
             </div>
@@ -42,21 +42,36 @@
                     </div>
                     @endforeach
                     @endif
-                    <form action="{{route('view.function.update', ['id' => $function->function_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+                    <form action="{{route('view.project.update', ['id' => $project->project_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
                         @method('PUT')
                         @csrf
                         <div class="row gy-4">
                             <div class="col-sm-12">
-                                <label for="function_name" class="form-label required">{{ trans('label.function_name') }}</label>
-                                <input type="text" class="form-control" name="function_name" id="function_name" value="{{ $function->function_name }}" placeholder="{{ trans('label.function_name') }}">
+                                <label for="trainee_number" class="form-label required">{{ trans('label.trainee_number') }}</label>
+                                <input type="number" class="form-control" name="trainee_number" id="trainee_number" value="{{ $project->trainee_number }}" placeholder="{{ trans('label.trainee_number') }}">
                             </div>
 
                             <div class="col-sm-12">
-                                <label for="category_id" class="form-label ">{{ trans('label.category') }}</label>
-                                <select class="form-control" data-trigger name="category_id" id="category_id">
-                                    <option value="">{{ trans('label.choose_parent') }}</option>
-                                    @foreach ($categories as $cat)
-                                    <option value="{{$cat->category_id}}" @if($function->category_id == $cat->category_id) selected @endif>{{$cat->category_name}}</option>
+                                <label for="entry_date" class="form-label required">{{ trans('label.entry_date') }}</label>
+                                <input type="date" class="form-control" name="entry_date" id="entry_date" value="{{ $project->entry_date }}" placeholder="{{ trans('label.entry_date') }}">
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="sending_agency_id" class="form-label ">{{ trans('label.sending_agency') }}</label>
+                                <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency_id">
+                                    <option value="">{{ trans('label.choose_sending_agency') }}</option>
+                                    @foreach ($sending_agency as $item)
+                                    <option value="{{$item->sending_agency_id}}" @if($project->sending_agency_id == $item->sending_agency_id ) selected @endif>{{$item->sending_agency_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="company_id" class="form-label ">{{ trans('label.company') }}</label>
+                                <select class="form-control" data-trigger name="company_id" id="company_id">
+                                    <option value="">{{ trans('label.choose_company') }}</option>
+                                    @foreach ($company as $item)
+                                    <option value="{{$item->company_id}}"  @if($project->company_id == $item->company_id ) selected @endif>{{$item->company_name}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title', 'Project')
+@section('title', 'Work')
 
 @section('content')
-<form action="{{route('view.project.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.work.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.project_add') }}</h4>
+            <h4 class="mb-0">{{ trans('label.work_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -18,7 +18,7 @@
                     </button>
                 </div>
                 <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.project.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                    <a href="{{route('view.work.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                         <i class="bi bi-box-arrow-left"></i>
                     </a>
                 </div>
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.project_info') }}
+                        {{ trans('label.work_info') }}
                     </div>
                 </div>
 
@@ -50,32 +50,17 @@
                 <div class="card-body">
                     <div class="row gy-4">
 
+
                         <div class="col-sm-12">
-                            <label for="trainee_number" class="form-label required">{{ trans('label.trainee_number') }}</label>
-                            <input type="number" class="form-control" name="trainee_number" id="trainee_number" value="{{ old('trainee_number') }}" placeholder="{{ trans('label.trainee_number') }}">
+                            <label for="name" class="form-label required">{{ trans('label.name') }}</label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('label.name') }}">
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="entry_date" class="form-label required">{{ trans('label.entry_date') }}</label>
-                            <input type="date" class="form-control" name="entry_date" id="entry_date" value="{{ old('entry_date') }}" placeholder="{{ trans('label.entry_date') }}">
-                        </div>
-
-                        <div class="col-sm-12">
-                            <label for="sending_agency_id" class="form-label ">{{ trans('label.sending_agency') }}</label>
-                            <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency_id">
-                                <option value="">{{ trans('label.choose_sending_agency') }}</option>
-                                @foreach ($sending_agency as $item)
-                                <option value="{{$item->sending_agency_id}}">{{$item->sending_agency_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <label for="company_id" class="form-label ">{{ trans('label.company') }}</label>
-                            <select class="form-control" data-trigger name="company_id" id="company_id">
-                                <option value="">{{ trans('label.choose_company') }}</option>
-                                @foreach ($company as $item)
-                                <option value="{{$item->company_id}}">{{$item->company_name}}</option>
+                            <label for="workflow_id" class="form-label ">{{ trans('label.workflow_id') }}</label>
+                            <select class="form-control" data-trigger name="workflow_id" id="workflow_id">
+                                @foreach ($workflow as $item)
+                                <option value="{{$item->flow_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -101,7 +86,7 @@
                     </button>
                 </div>
                 <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.project.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
+                    <a href="{{route('view.work.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                         <i class="bi bi-box-arrow-left"></i>
                     </a>
                 </div>

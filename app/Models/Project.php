@@ -11,4 +11,7 @@ class Project extends Model
 
     protected $table = 'project';
     protected $guarded = ['project_id'];
+    protected $primaryKey = 'project_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

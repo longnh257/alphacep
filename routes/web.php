@@ -16,10 +16,15 @@ use App\Http\Controllers\Pages\NativeLanguage\NativeLanguagePageController;
 use App\Http\Controllers\Pages\SendingAgency\SendingAgencyPageController;
 use App\Http\Controllers\Pages\TraineeRelative\TraineeRelativePageController;
 use App\Http\Controllers\Pages\Trainee\TraineePageController;
+use App\Http\Controllers\Pages\Project\ProjectPageController;
+use App\Http\Controllers\Pages\Work\WorkPageController;
+use App\Http\Controllers\Pages\Work\WorkFlowPageController;
 
 
 // Import Api
 use App\Http\Controllers\API\Project\ProjectController;
+use App\Http\Controllers\API\Work\WorkController;
+use App\Http\Controllers\API\Work\WorkFlowController;
 use App\Http\Controllers\API\Customer\CustomerController;
 use App\Http\Controllers\API\Customer\CustomerOfficeController;
 use App\Http\Controllers\API\Customer\CustomerStaffController;
@@ -87,7 +92,6 @@ Route::group(['prefix' => 'customer-staff', 'middleware' => 'check.login'], func
 //company
 Route::group(['prefix' => 'company', 'middleware' => 'check.login'], function () {
     Route::get('/', [CompanyPageController::class, 'index'])->name('view.company.index');
-    Route::get('/create1', [CompanyPageController::class, 'create'])->name('view.company.create1');
     Route::get('/create/{customer_id}', [CompanyPageController::class, 'create'])->name('view.company.create');
     Route::post('/', [CompanyPageController::class, 'store'])->name('view.company.store');
     Route::get('/{id}/edit', [CompanyPageController::class, 'edit'])->name('view.company.edit');
@@ -112,6 +116,37 @@ Route::group(['prefix' => 'company-staff', 'middleware' => 'check.login'], funct
 });
 
 //end company
+
+//Project
+Route::group(['prefix' => 'project', 'middleware' => 'check.login'], function () {
+    Route::get('/', [ProjectPageController::class, 'index'])->name('view.project.index');
+    Route::get('/create', [ProjectPageController::class, 'create'])->name('view.project.create');
+    Route::post('/', [ProjectPageController::class, 'store'])->name('view.project.store');
+    Route::get('/{id}/edit', [ProjectPageController::class, 'edit'])->name('view.project.edit');
+    Route::put('/{id}', [ProjectPageController::class, 'update'])->name('view.project.update');
+    Route::delete('/{id}', [ProjectPageController::class, 'destroy'])->name('view.project.destroy');
+});
+//end Project
+//Project
+Route::group(['prefix' => 'work', 'middleware' => 'check.login'], function () {
+    Route::get('/', [WorkPageController::class, 'index'])->name('view.work.index');
+    Route::get('/create', [WorkPageController::class, 'create'])->name('view.work.create');
+    Route::post('/', [WorkPageController::class, 'store'])->name('view.work.store');
+    Route::get('/{id}/edit', [WorkPageController::class, 'edit'])->name('view.work.edit');
+    Route::put('/{id}', [WorkPageController::class, 'update'])->name('view.work.update');
+    Route::delete('/{id}', [WorkPageController::class, 'destroy'])->name('view.work.destroy');
+});
+//end Project
+//Project
+Route::group(['prefix' => 'workflow', 'middleware' => 'check.login'], function () {
+    Route::get('/', [WorkFlowPageController::class, 'index'])->name('view.workflow.index');
+    Route::get('/create', [WorkFlowPageController::class, 'create'])->name('view.workflow.create');
+    Route::post('/', [WorkFlowPageController::class, 'store'])->name('view.workflow.store');
+    Route::get('/{id}/edit', [WorkFlowPageController::class, 'edit'])->name('view.workflow.edit');
+    Route::put('/{id}', [WorkFlowPageController::class, 'update'])->name('view.workflow.update');
+    Route::delete('/{id}', [WorkFlowPageController::class, 'destroy'])->name('view.workflow.destroy');
+});
+//end Project
 
 
 Route::group(['prefix' => 'function', 'middleware' => 'check.login'], function () {
@@ -222,10 +257,20 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::group(['prefix' => 'nationalities'], function () {
         Route::get('/', [NationalityController::class, 'index'])->name('api.nationalities.list');
     });
+
     Route::group(['prefix' => 'native-languages'], function () {
         Route::get('/', [NativeLanguageController::class, 'index'])->name('api.native_languages.list');
     });
+
     Route::group(['prefix' => 'sending-agencies'], function () {
         Route::get('/', [SendingAgencyController::class, 'index'])->name('api.sending_agencies.list');
+    });
+
+    Route::group(['prefix' => 'works'], function () {
+        Route::get('/', [WorkController::class, 'index'])->name('api.works.list');
+    });
+
+    Route::group(['prefix' => 'workflows'], function () {
+        Route::get('/', [WorkFlowController::class, 'index'])->name('api.workflows.list');
     });
 });

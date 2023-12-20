@@ -13,8 +13,8 @@ class MCustomer extends Model
     protected $table = 'm_customer';
     protected $guarded = ['customer_id'];
     protected $primaryKey = 'customer_id';
-    const CREATED_AT = 'updated_on';
-    const UPDATED_AT = 'created_on';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 
     public function offices(): HasMany
     {

@@ -12,6 +12,6 @@ class MTraineeRelative extends Model
     protected $table = 'm_trainee_relative';
     protected $guarded = ['relative_id'];
     protected $primaryKey = 'relative_id';
-    const CREATED_AT = 'updated_on';
-    const UPDATED_AT = 'created_on';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

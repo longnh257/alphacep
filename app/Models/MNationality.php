@@ -12,6 +12,6 @@ class MNationality extends Model
     protected $table = 'm_nationality';
     protected $guarded = ['nationality_id'];
     protected $primaryKey = 'nationality_id';
-    const CREATED_AT = 'updated_on';
-    const UPDATED_AT = 'created_on';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }

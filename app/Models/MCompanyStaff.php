@@ -15,8 +15,8 @@ class MCompanystaff extends Model
     protected $guarded = ['company_staff_id'];
     
     protected $primaryKey = 'company_staff_id';
-    const CREATED_AT = 'updated_on';
-    const UPDATED_AT = 'created_on';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 
     public function office(): BelongsTo
     {

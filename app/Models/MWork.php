@@ -11,4 +11,7 @@ class MWork extends Model
 
     protected $table = 'm_work';
     protected $guarded = ['work_id'];
+    protected $primaryKey = 'work_id';
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 }
