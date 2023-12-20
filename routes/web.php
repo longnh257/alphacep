@@ -9,6 +9,8 @@ use App\Http\Controllers\Pages\Customer\CustomerStaffPageController;
 use App\Http\Controllers\Pages\Company\CompanyPageController;
 use App\Http\Controllers\Pages\Company\CompanyOfficePageController;
 use App\Http\Controllers\Pages\Company\CompanystaffPageController;
+use App\Http\Controllers\Pages\Function\FunctionPageController;
+use App\Http\Controllers\Pages\FunctionCategory\FunctionCategoryPageController;
 use App\Http\Controllers\Pages\Nationality\NationalityPageController;
 use App\Http\Controllers\Pages\NativeLanguage\NativeLanguagePageController;
 use App\Http\Controllers\Pages\SendingAgency\SendingAgencyPageController;
@@ -24,6 +26,8 @@ use App\Http\Controllers\API\Customer\CustomerStaffController;
 use App\Http\Controllers\API\Company\CompanyController;
 use App\Http\Controllers\API\Company\CompanyOfficeController;
 use App\Http\Controllers\API\Company\CompanystaffController;
+use App\Http\Controllers\API\Function\FunctionController;
+use App\Http\Controllers\API\FunctionCategory\FunctionCategoryController;
 use App\Http\Controllers\API\Nationality\NationalityController;
 use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
@@ -110,6 +114,24 @@ Route::group(['prefix' => 'company-staff', 'middleware' => 'check.login'], funct
 //end company
 
 
+Route::group(['prefix' => 'function', 'middleware' => 'check.login'], function () {
+    Route::get('/', [FunctionPageController::class, 'index'])->name('view.function.index');
+    Route::get('/create', [FunctionPageController::class, 'create'])->name('view.function.create');
+    Route::post('/', [FunctionPageController::class, 'store'])->name('view.function.store');
+    Route::get('/{id}/edit', [FunctionPageController::class, 'edit'])->name('view.function.edit');
+    Route::put('/{id}', [FunctionPageController::class, 'update'])->name('view.function.update');
+    Route::delete('/{id}', [FunctionPageController::class, 'destroy'])->name('view.function.destroy');
+});
+Route::group(['prefix' => 'function-category', 'middleware' => 'check.login'], function () {
+    Route::get('/', [FunctionCategoryPageController::class, 'index'])->name('view.function_category.index');
+    Route::get('/create', [FunctionCategoryPageController::class, 'create'])->name('view.function_category.create');
+    Route::post('/', [FunctionCategoryPageController::class, 'store'])->name('view.function_category.store');
+    Route::get('/{id}/edit', [FunctionCategoryPageController::class, 'edit'])->name('view.function_category.edit');
+    Route::put('/{id}', [FunctionCategoryPageController::class, 'update'])->name('view.function_category.update');
+    Route::delete('/{id}', [FunctionCategoryPageController::class, 'destroy'])->name('view.function_category.destroy');
+});
+
+
 //trainee
 
 Route::group(['prefix' => 'trainee', 'middleware' => 'check.login'], function () {
@@ -181,6 +203,13 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
         Route::get('/company-staffs', [CompanystaffController::class, 'index'])->name('api.company_staffs.list');
     });
 
+
+    Route::group(['prefix' => 'functions'], function () {
+        Route::get('/', [FunctionController::class, 'index'])->name('api.functions.list');
+    });
+    Route::group(['prefix' => 'function-categories'], function () {
+        Route::get('/', [FunctionCategoryController::class, 'index'])->name('api.function_categories.list');
+    });
 
     Route::group(['prefix' => 'trainees'], function () {
         Route::get('/trainees', [TraineeController::class, 'index'])->name('api.trainees.list');

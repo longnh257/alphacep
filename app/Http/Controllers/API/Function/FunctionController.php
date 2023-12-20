@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API\TraineeRelative;
+namespace App\Http\Controllers\API\Function;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\MTraineeRelative;
+use App\Models\SFunction;
 
 
-class TraineeRelativeController extends Controller
+class FunctionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +15,15 @@ class TraineeRelativeController extends Controller
     public $numPerPage = 10;
     public function index(Request $request)
     {
-        $query  = MTraineeRelative::query();
+        $query  = SFunction::query();
 
         if ($s = $request->has("s")) {
-            $query->where("TraineeRelative_number", "LIKE", "%" . $s . "%");
+            $query->where("trainee_number", "LIKE", "%" . $s . "%");
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
 
         $datas = $query->paginate($this->numPerPage);
 
-        return $this->hasSuccess('Get list Trainee Relative  successful.', $datas);
+        return $this->hasSuccess('Get list Installers successful.', $datas);
     }
 }

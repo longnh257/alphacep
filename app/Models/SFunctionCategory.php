@@ -11,4 +11,7 @@ class SFunctionCategory extends Model
 
     protected $table = 's_function_category';
     protected $guarded = ['category_id'];
+    protected $primaryKey = 'category_id';
+    public $timestamps = false;
+
 }
