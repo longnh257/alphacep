@@ -165,9 +165,10 @@
                                                 <td>((item.trainee_id))</td>
                                                 <td>((item.training_facility_id))</td>
                                                 <td>((item.sending_agency_id))</td>
-                                             
+
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap justify-end">
+                                                        <a :href="`{{asset('project-trainee-contract/create')}}/`+item.project_trainee_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee-contract')}}"><i class="bx bx-file"></i></a>
                                                         <a :href="`{{asset('project-trainee')}}/`+item.project_trainee_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('project-trainee')}}/`+item.project_trainee_id" :id="'formDelete'+((item.project_trainee_id))" class="pt-1" method="post">
                                                             @method('DELETE')

@@ -20,11 +20,13 @@ use App\Http\Controllers\Pages\Project\ProjectPageController;
 use App\Http\Controllers\Pages\Project\ProjectTraineePageController;
 use App\Http\Controllers\Pages\Work\WorkPageController;
 use App\Http\Controllers\Pages\Work\WorkFlowPageController;
+use App\Http\Controllers\Pages\Project\ProjectTraineeContractPageController;
 
 
 // Import Api
 use App\Http\Controllers\API\Project\ProjectController;
 use App\Http\Controllers\API\Project\ProjectTraineeController;
+use App\Http\Controllers\API\Project\ProjectTraineeContractController;
 use App\Http\Controllers\API\Work\WorkController;
 use App\Http\Controllers\API\Work\WorkFlowController;
 use App\Http\Controllers\API\Customer\CustomerController;
@@ -134,6 +136,14 @@ Route::group(['prefix' => 'project-trainee', 'middleware' => 'check.login'], fun
     Route::get('/{id}/edit', [ProjectTraineePageController::class, 'edit'])->name('view.project_trainee.edit');
     Route::put('/{id}', [ProjectTraineePageController::class, 'update'])->name('view.project_trainee.update');
     Route::delete('/{id}', [ProjectTraineePageController::class, 'destroy'])->name('view.project_trainee.destroy');
+});
+
+Route::group(['prefix' => 'project-trainee-contract', 'middleware' => 'check.login'], function () {
+    Route::get('/create/{trainee_id}', [ProjectTraineeContractPageController::class, 'create'])->name('view.project_trainee_contract.create');
+    Route::post('/{trainee_id}', [ProjectTraineeContractPageController::class, 'store'])->name('view.project_trainee_contract.store');
+    Route::get('/{id}/edit', [ProjectTraineeContractPageController::class, 'edit'])->name('view.project_trainee_contract.edit');
+    Route::put('/{id}', [ProjectTraineeContractPageController::class, 'update'])->name('view.project_trainee_contract.update');
+    Route::delete('/{id}', [ProjectTraineeContractPageController::class, 'destroy'])->name('view.project_trainee_contract.destroy');
 });
 //end Project
 
