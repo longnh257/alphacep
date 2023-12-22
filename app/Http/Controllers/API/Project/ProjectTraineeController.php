@@ -19,7 +19,7 @@ class ProjectTraineeController extends Controller
             $query->where("trainee_number", "LIKE", "%" . $s . "%");
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
-        $datas = $query->paginate($this->numPerPage);
+        $datas = $query->with('trainee')->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list Installers successful.',$datas);
     }

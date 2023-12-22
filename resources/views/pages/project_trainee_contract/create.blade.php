@@ -1,29 +1,16 @@
 @extends('layouts.master')
 
-@section('title', 'Project')
+@section('title', 'Contract')
 
 @section('content')
-<form action="{{route('view.project_trainee_contract.store',['trainee_id' => $project_trainee->project_trainee_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.project_trainee_contract.store',['project_trainee_id' => $project_trainee->project_trainee_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.project_add') }}</h4>
+            <h4 class="mb-0">{{ trans('label.project_trainee_contract_add') }}</h4>
         </div>
-        <div class="main-dashboard-header-right">
-            <div class="d-flex my-xl-auto right-content align-items-center">
-                <div class="pe-1 mb-xl-0">
-                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
-                        <i class="bi bi-save"></i>
-                    </button>
-                </div>
-                <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.project.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
-                        <i class="bi bi-box-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- End Page Header -->
 
@@ -51,14 +38,14 @@
                     <div class="row gy-4">
 
 
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="project_trainee_id" class="form-label">{{ trans('label.project_trainee_id') }}</label>
-                            <input type="text" class="form-control" name="project_trainee_id" id="project_trainee_id" value="{{ old('project_trainee_id') }}" placeholder="{{ trans('label.project_trainee_id') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_office_id" class="form-label">{{ trans('label.training_office_id') }}</label>
-                            <input type="text" class="form-control" name="training_office_id" id="training_office_id" value="{{ old('training_office_id') }}" placeholder="{{ trans('label.training_office_id') }}">
+                        <div class="col-sm-12">
+                            <label for="training_facility" class="form-label ">{{ trans('label.training_facility') }}</label>
+                            <select class="form-control" data-trigger name="training_facility_id" id="training_facility">
+                                <option value="">{{ trans('label.choose_training_facility') }}</option>
+                                @foreach ($training_facility as $item)
+                                <option value="{{$item->training_facility_id}}">ID: {{$item->training_facility_id}} - Name: {{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -424,6 +411,106 @@
                             <input type="text" class="form-control" name="training_span_period" id="training_span_period" value="{{ old('training_span_period') }}" placeholder="{{ trans('label.training_span_period') }}">
                         </div>
 
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no1_basic_salary_for_month" class="form-label">{{ trans('label.training_no1_basic_salary_for_month') }}</label>
+                            <input type="number" class="form-control" name="training_no1_basic_salary_for_month" id="training_no1_basic_salary_for_month" value="{{ old('training_no1_basic_salary_for_month') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no1_basic_salary_for_day" class="form-label">{{ trans('label.training_no1_basic_salary_for_day') }}</label>
+                            <input type="number" class="form-control" name="training_no1_basic_salary_for_day" id="training_no1_basic_salary_for_day" value="{{ old('training_no1_basic_salary_for_day') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no1_basic_salary_for_hour" class="form-label">{{ trans('label.training_no1_basic_salary_for_hour') }}</label>
+                            <input type="number" class="form-control" name="training_no1_basic_salary_for_hour" id="training_no1_basic_salary_for_hour" value="{{ old('training_no1_basic_salary_for_hour') }}">
+                        </div>
+
+                        <!-- Continue the pattern for the remaining fields -->
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no2_basic_salary_for_month" class="form-label">{{ trans('label.training_no2_basic_salary_for_month') }}</label>
+                            <input type="number" class="form-control" name="training_no2_basic_salary_for_month" id="training_no2_basic_salary_for_month" value="{{ old('training_no2_basic_salary_for_month') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no2_basic_salary_for_day" class="form-label">{{ trans('label.training_no2_basic_salary_for_day') }}</label>
+                            <input type="number" class="form-control" name="training_no2_basic_salary_for_day" id="training_no2_basic_salary_for_day" value="{{ old('training_no2_basic_salary_for_day') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no2_basic_salary_for_hour" class="form-label">{{ trans('label.training_no2_basic_salary_for_hour') }}</label>
+                            <input type="number" class="form-control" name="training_no2_basic_salary_for_hour" id="training_no2_basic_salary_for_hour" value="{{ old('training_no2_basic_salary_for_hour') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no3_basic_salary_for_month" class="form-label">{{ trans('label.training_no3_basic_salary_for_month') }}</label>
+                            <input type="number" class="form-control" name="training_no3_basic_salary_for_month" id="training_no3_basic_salary_for_month" value="{{ old('training_no3_basic_salary_for_month') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no3_basic_salary_for_day" class="form-label">{{ trans('label.training_no3_basic_salary_for_day') }}</label>
+                            <input type="number" class="form-control" name="training_no3_basic_salary_for_day" id="training_no3_basic_salary_for_day" value="{{ old('training_no3_basic_salary_for_day') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="training_no3_basic_salary_for_hour" class="form-label">{{ trans('label.training_no3_basic_salary_for_hour') }}</label>
+                            <input type="number" class="form-control" name="training_no3_basic_salary_for_hour" id="training_no3_basic_salary_for_hour" value="{{ old('training_no3_basic_salary_for_hour') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="commuting_allowance" class="form-label">{{ trans('label.commuting_allowance') }}</label>
+                            <input type="number" class="form-control" name="commuting_allowance" id="commuting_allowance" value="{{ old('commuting_allowance') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="approx_amount" class="form-label">{{ trans('label.approx_amount') }}</label>
+                            <input type="number" class="form-control" name="approx_amount" id="approx_amount" value="{{ old('approx_amount') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="food_expense_div" class="form-label">{{ trans('label.food_expense_div') }}</label>
+                            <select class="form-control" name="food_expense_div" id="food_expense_div">
+                                <option value="1">{{ trans('label.yes') }}</option>
+                                <option value="0">{{ trans('label.no') }}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="food_expense_amount" class="form-label">{{ trans('label.food_expense_amount') }}</label>
+                            <input type="number" class="form-control" name="food_expense_amount" id="food_expense_amount" value="{{ old('food_expense_amount') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="house_expense_amount" class="form-label">{{ trans('label.house_expense_amount') }}</label>
+                            <input type="number" class="form-control" name="house_expense_amount" id="house_expense_amount" value="{{ old('house_expense_amount') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="accommodation_type" class="form-label">{{ trans('label.accommodation_type') }}</label>
+                            <select class="form-control" name="accommodation_type" id="accommodation_type">
+                                <option value="01">{{ trans('label.self_owned_property') }}</option>
+                                <option value="02">{{ trans('label.leased_property') }}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="light_heat_fee_div" class="form-label">{{ trans('label.light_heat_fee_div') }}</label>
+                            <select class="form-control" name="light_heat_fee_div" id="light_heat_fee_div">
+                                <option value="1">{{ trans('label.yes') }}</option>
+                                <option value="0">{{ trans('label.no') }}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="light_heat_fee" class="form-label">{{ trans('label.light_heat_fee') }}</label>
+                            <input type="number" class="form-control" name="light_heat_fee" id="light_heat_fee" value="{{ old('light_heat_fee') }}">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="other_amount" class="form-label">{{ trans('label.other_amount') }}</label>
+                            <input type="number" class="form-control" name="other_amount" id="other_amount" value="{{ old('other_amount') }}">
+                        </div>
 
                         <div class="btn-list">
                             <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
@@ -437,21 +524,7 @@
     <!-- End:: row-1 -->
     <!-- row closed -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-        <div></div>
-        <div class="main-dashboard-header-right">
-            <div class="d-flex my-xl-auto right-content align-items-center">
-                <div class="pe-1 mb-xl-0">
-                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
-                        <i class="bi bi-save"></i>
-                    </button>
-                </div>
-                <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.project.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
-                        <i class="bi bi-box-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 </form>

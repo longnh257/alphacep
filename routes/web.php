@@ -44,6 +44,7 @@ use App\Http\Controllers\API\Trainee\TraineeController;
 use App\Http\Controllers\API\Trainee\TraineeRelativeController;
 use App\Http\Controllers\API\TrainingFacility\TrainingFacilityController;
 use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
+use App\Models\ProjectTraineeContract;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,8 +140,8 @@ Route::group(['prefix' => 'project-trainee', 'middleware' => 'check.login'], fun
 });
 
 Route::group(['prefix' => 'project-trainee-contract', 'middleware' => 'check.login'], function () {
-    Route::get('/create/{trainee_id}', [ProjectTraineeContractPageController::class, 'create'])->name('view.project_trainee_contract.create');
-    Route::post('/{trainee_id}', [ProjectTraineeContractPageController::class, 'store'])->name('view.project_trainee_contract.store');
+    Route::get('/create/{project_trainee_id}', [ProjectTraineeContractPageController::class, 'create'])->name('view.project_trainee_contract.create');
+    Route::post('/{project_trainee_id}', [ProjectTraineeContractPageController::class, 'store'])->name('view.project_trainee_contract.store');
     Route::get('/{id}/edit', [ProjectTraineeContractPageController::class, 'edit'])->name('view.project_trainee_contract.edit');
     Route::put('/{id}', [ProjectTraineeContractPageController::class, 'update'])->name('view.project_trainee_contract.update');
     Route::delete('/{id}', [ProjectTraineeContractPageController::class, 'destroy'])->name('view.project_trainee_contract.destroy');
@@ -259,8 +260,8 @@ Route::group(['prefix' => 'sending-agency', 'middleware' => 'check.login'], func
 
 Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.list');
-
     Route::get('/project-trainees', [ProjectTraineeController::class, 'index'])->name('api.project_trainees.list');
+    Route::get('/project-trainee-contracts', [ProjectTraineeContractController::class, 'index'])->name('api.project_trainee_contracts.list');
 
     Route::group(['prefix' => 'customers'], function () {
         Route::get('/customers', [CustomerController::class, 'index'])->name('api.customers.list');
