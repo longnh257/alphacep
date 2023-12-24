@@ -117,12 +117,13 @@
                                 <td class="fw-medium">((item.url))</td>
                                 <td>
                                     <div class="hstack gap-2 flex-wrap justify-content-end">
+                                        <a :href="`{{asset('project-work/create')}}/`+item.project_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-work')}}"><i class="bi bi-briefcase"></i></a>
                                         <a :href="`{{asset('project-trainee/create')}}/`+item.project_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee')}}"><i class="si si-user-follow"></i></a>
                                         <a :href="`{{asset('project')}}/`+item.project_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('project')}}/`+item.project_id" :id="'formDelete_'+((item.project_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteProjectCategory(item.project_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteItem(item.project_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -275,7 +276,7 @@
                     }
                 });
             },
-            deleteProjectCategory(id) {
+            deleteItem(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",

@@ -156,7 +156,7 @@
                                                         <form :action="`{{asset('company-office')}}/`+item.company_office_id" :id="'formDelete_'+((item.company_office_id))" class="pt-1" method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <a href="##" @click="deleteOffice(item.company_office_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                                            <a href="##" @click="deleteItem(item.company_office_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -311,7 +311,7 @@
                     }
                 });
             },
-            deleteOffice(id) {
+            deleteItem(id) {
                 console.log(1);
                 Swal.fire({
                     title: 'Are you sure?',

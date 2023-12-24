@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Project Trainee')
+@section('title', 'Task File')
 
 @section('content')
 
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.project_trainee_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('label.task_file_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
 
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_trainee_info" href="#project_trainee_info">{{trans('label.project_trainee_info')}}</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_work_task_file_info" href="#project_work_task_file_info">{{trans('label.project_work_task_file_info')}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " data-bs-toggle="tab" data-bs-target="#contract_info" aria-current="page" href="#contract_info"> {{trans('label.project_info')}}</a>
@@ -51,38 +51,66 @@
                     </div>
                     @endforeach
                     @endif
-                    <div class="tab-pane active" id="project_trainee_info" role="project_trainee_info">
+                    <div class="tab-pane active" id="project_work_task_file_info" role="project_work_task_file_info">
 
-                        <form action="{{route('view.project_trainee.update', ['id' => $project_trainee->project_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+                        <form action="{{route('view.project_work_task_file.update', ['id' => $model->task_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
                             @method('PUT')
                             @csrf
                             <div class="row gy-4">
 
-                                <div class="col-sm-12">
-                                    <label for="project_id" class="form-label required">{{ trans('label.project_id') }}</label>
-                                    <input type="number" class="form-control" value="{{$project_trainee->project_id}}" disabled>
-                                </div>
-                                <div class="col-sm-12">
-                                    <label for="trainee" class="form-label required">{{ trans('label.trainee') }}</label>
-                                    <input type="number" class="form-control" value="{{$project_trainee->trainee_id}}" disabled>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="project_work_id" class="form-label">{{ trans('label.project_work_id') }}</label>
+                                    <input type="number" class="form-control" value="{{ $model->project_work_id }}" disabled>
                                 </div>
 
-                                <div class="col-sm-12">
-                                    <label for="sending_agency" class="form-label ">{{ trans('label.sending_agency') }}</label>
-                                    <select class="form-control" data-trigger name="sending_agency" id="sending_agency">
-                                        @foreach ($sending_agency as $item)
-                                        <option value="{{$item->sending_agency_id}}" @if($project_trainee->sending_agency_id == $item->sending_agency_id ) selected @endif>ID: {{$item->sending_agency_id}} - Name: {{$item->representative_name}}</option>
-                                        @endforeach
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="title" class="form-label">{{ trans('label.title') }}</label>
+                                    <input type="text" class="form-control" name="title" id="title" value="{{ $model->title }}">
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="seq_no" class="form-label">{{ trans('label.seq_no') }}</label>
+                                    <input type="number" class="form-control" name="seq_no" id="seq_no" value="{{ $model->seq_no }}">
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="person_id" class="form-label">{{ trans('label.person_id') }}</label>
+                                    <!-- Dropdown for person_id -->
+                                    <input type="number" class="form-control" name="person_id" id="person_id" value="{{ $model->complete_user_id }}">
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="complete_limit_date" class="form-label">{{ trans('label.complete_limit_date') }}</label>
+                                    <input type="date" class="form-control" name="complete_limit_date" id="complete_limit_date" value="{{ $model->complete_limit_date }}">
+                                </div>
+
+                                <div class=" col-sm-12">
+                                    <label for="content" class="form-label">{{ trans('label.content') }}</label>
+                                    <textarea class="form-control" name="content" id="content">{{ $model->content }}</textarea>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="status" class="form-label">{{ trans('label.status') }}</label>
+                                    <!-- Dropdown for status -->
+                                    <select class="form-control" name="status" id="status">
+                                        <option value="0" {{ $model->status == '0' ? 'selected' : '' }}>{{ trans('label.incomplete') }}</option>
+                                        <option value="1" {{ $model->status == '1' ? 'selected' : '' }}> {{ trans('label.complete') }}</option>
                                     </select>
                                 </div>
 
-                                <div class="col-sm-12">
-                                    <label for="training_facility" class="form-label ">{{ trans('label.training_facility') }}</label>
-                                    <select class="form-control" data-trigger name="training_facility" id="training_facility">
-                                        @foreach ($training_facility as $item)
-                                        <option value="{{$item->training_facility_id}}" @if($project_trainee->training_facility_id == $item->training_facility_id ) selected @endif>ID: {{$item->training_facility_id}} - Name: {{$item->name}}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="complete_date" class="form-label">{{ trans('label.complete_date') }}</label>
+                                    <input type="date" class="form-control" name="complete_date" id="complete_date" value="{{ $model->complete_date }}">
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="complete_user_id" class="form-label">{{ trans('label.complete_user_id') }}</label>
+                                    <input type="number" class="form-control" name="complete_user_id" id="complete_user_id" value="{{ $model->complete_user_id }}">
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="complete_user_name" class="form-label">{{ trans('label.complete_user_name') }}</label>
+                                    <input type="text" class="form-control" name="complete_user_name" id="complete_user_name" value="{{ $model->complete_user_name }}">
                                 </div>
 
 
@@ -118,7 +146,7 @@
                                                         </button>
                                                     </div>
                                                 </th>
-                                              
+
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
                                                         <div class="gridjs-th-content">{{trans('label.trainee')}}</div>
@@ -138,18 +166,18 @@
 
                                                 <th>
                                                     <div class="pe-1 mb-xl-0">
-                                                        <a href="{{route('view.project_trainee_contract.create',['project_trainee_id'=>$project_trainee->project_trainee_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                                        <a href="{{route('view.project_work_task_file.create',['project_work_id'=>$model->task_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="item in list" :key="item.project_trainee_contract_id">
+                                            <tr v-for="item in list" :key="item.project_work_task_file_id">
                                                 <td>((item.contract_id))</td>
-                                                <td>((item.project_trainee?.trainee?.name))</td>
-                                                <td>((item.project_trainee?.project?.project_id))</td>
-                                             
+                                                <td>((item.project_work_task_file?.trainee?.name))</td>
+                                                <td>((item.project_work_task_file?.project?.project_id))</td>
+
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap justify-end">
                                                         <a :href="`{{asset('project-trainee-contract')}}/`+item.contract_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
@@ -283,7 +311,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.project_trainee_contracts.list')}}" + conditionSearch,
+                    url: "{{route('api.project_work_task_files.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;

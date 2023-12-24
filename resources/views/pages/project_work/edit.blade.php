@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Project')
+@section('title', 'Project Trainee')
 
 @section('content')
 
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.project_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('label.project_work_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -31,16 +31,18 @@
         <div class="card custom-card    pt-4">
 
             <div class="card-body">
+
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_info" aria-current="page" href="#project_info"> {{trans('label.project_info')}}</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_work_info" href="#project_work_info">{{trans('label.project_work_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#project_trainee_info" href="#project_trainee_info">{{trans('label.project_trainee_info')}}</a>
+                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#work_task" aria-current="page" href="#work_task"> {{trans('label.project_work_task_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#project_work_info" href="#project_work_info">{{trans('label.project_work_info')}}</a>
+                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#work_task_file" aria-current="page" href="#work_task_file"> {{trans('label.project_work_task_file_info')}}</a>
                     </li>
+
                 </ul>
 
                 <div class="tab-content">
@@ -52,42 +54,27 @@
                     </div>
                     @endforeach
                     @endif
+                    <div class="tab-pane active" id="project_work_info" role="project_work_info">
 
-
-                    <div class="tab-pane active" id="project_info" role="project_info">
-                        <form action="{{route('view.project.update', ['id' => $project->project_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+                        <form action="{{route('view.project_work.update', ['id' => $model->project_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
                             @method('PUT')
                             @csrf
                             <div class="row gy-4">
+
                                 <div class="col-sm-12">
-                                    <label for="trainee_number" class="form-label required">{{ trans('label.trainee_number') }}</label>
-                                    <input type="number" class="form-control" name="trainee_number" id="trainee_number" value="{{ $project->trainee_number }}" placeholder="{{ trans('label.trainee_number') }}">
+                                    <label for="project_id" class="form-label required">{{ trans('label.project_id') }}</label>
+                                    <input type="number" class="form-control" value="{{$model->project_id}}" disabled>
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <label for="entry_date" class="form-label required">{{ trans('label.entry_date') }}</label>
-                                    <input type="date" class="form-control" name="entry_date" id="entry_date" value="{{ $project->entry_date }}" placeholder="{{ trans('label.entry_date') }}">
-                                </div>
-
-                                <div class="col-sm-12">
-                                    <label for="sending_agency_id" class="form-label ">{{ trans('label.sending_agency') }}</label>
-                                    <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency_id">
-                                        <option value="">{{ trans('label.choose_sending_agency') }}</option>
-                                        @foreach ($sending_agency as $item)
-                                        <option value="{{$item->sending_agency_id}}" @if($project->sending_agency_id == $item->sending_agency_id ) selected @endif>{{$item->sending_agency_name}}</option>
+                                    <label for="work" class="form-label ">{{ trans('label.work') }}</label>
+                                    <select class="form-control" data-trigger name="work_id" id="work">
+                                        @foreach ($work as $item)
+                                        <option value="{{$item->work_id}}" {{ $model->work_id == $item->work_id ? 'selected' : '' }}>ID: {{$item->work_id}} - Name: {{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
-                                <div class="col-sm-12">
-                                    <label for="company_id" class="form-label ">{{ trans('label.company') }}</label>
-                                    <select class="form-control" data-trigger name="company_id" id="company_id">
-                                        <option value="">{{ trans('label.choose_company') }}</option>
-                                        @foreach ($company as $item)
-                                        <option value="{{$item->company_id}}" @if($project->company_id == $item->company_id ) selected @endif>{{$item->company_name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
 
                                 <div class="btn-list">
                                     <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
@@ -95,9 +82,10 @@
 
                             </div>
                         </form>
+
                     </div>
 
-                    <div class="tab-pane" id="project_trainee_info" role="project_trainee_info">
+                    <div class="tab-pane" id="work_task" role="work_task">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
                                 @if (session('success'))
@@ -114,69 +102,78 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_trainee_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.task_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
                                                     </div>
-                                                </th>
-                                                <th class="gridjs-th gridjs-th-sort ">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_id')}}</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-                                                <th class="gridjs-th gridjs-th-sort ">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.trainee_id')}}</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-                                                <th class="gridjs-th gridjs-th-sort ">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.training_facility_id')}}</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-                                                <th class="gridjs-th gridjs-th-sort ">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.sending_agency_id')}}</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
+
                                                 </th>
 
                                                 <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.project_work_id')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.seq_no')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.person_id')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.complete_user_id')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.complete_user_name')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th>
                                                     <div class="pe-1 mb-xl-0">
-                                                        <a href="{{route('view.project_trainee.create',['project_id'=>$project->project_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                                        <a href="{{route('view.project_work_task.create',['project_work_id'=>$model->project_work_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="item in list" :key="item.project_trainee_id">
-                                                <td>((item.project_trainee_id))</td>
-                                                <td>((item.project_id))</td>
-                                                <td>((item.trainee_id))</td>
-                                                <td>((item.training_facility_id))</td>
-                                                <td>((item.sending_agency_id))</td>
+                                            <tr v-for="item in list" :key="item.project_work_project_work_id">
+                                                <td>((item.task_id))</td>
+                                                <td>((item.project_work_id))</td>
+                                                <td>((item.seq_no))</td>
+                                                <td>((item.person_id))</td>
+                                                <td>((item.complete_user_id))</td>
+                                                <td>((item.complete_user_name))</td>
 
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap justify-end">
-                                                        <a :href="`{{asset('project-trainee-contract/create')}}/`+item.project_trainee_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee-contract')}}"><i class="bx bx-file"></i></a>
-                                                        <a :href="`{{asset('project-trainee')}}/`+item.project_trainee_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                                        <form :action="`{{asset('project-trainee')}}/`+item.project_trainee_id" :id="'formDelete_'+((item.project_trainee_id))" class="pt-1" method="post">
+                                                        <a :href="`{{asset('project-work-task')}}/`+item.task_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                                        <form :action="`{{asset('project-work-task')}}/`+item.task_id" :id="'formDelete_'+((item.task_id))" class="pt-1" method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <a href="##" @click="deleteProjectTrainee(item.project_trainee_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                                            <a href="##" @click="deleteItem(item.task_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -229,7 +226,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="project_work_info" role="project_work_info">
+                    <div class="tab-pane" id="work_task_file" role="work_task_file">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
                                 @if (session('success'))
@@ -246,50 +243,78 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.task_id')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+
+                                                </th>
+
+                                                <th>
+                                                    <div class="flex-between-center">
                                                         <div class="gridjs-th-content">{{trans('label.project_work_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
                                                     </div>
                                                 </th>
-                                                <th class="gridjs-th gridjs-th-sort ">
+                                                <th>
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.seq_no')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
                                                     </div>
                                                 </th>
-                                                <th class="gridjs-th gridjs-th-sort ">
+                                                <th>
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.work_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.person_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
                                                     </div>
                                                 </th>
-
+                                                <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.complete_user_id')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.complete_user_name')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0">
-                                                        <a href="{{route('view.project_work.create',['project_id'=>$project->project_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                                        <a href="{{route('view.project_work_task_file.create',['project_work_id'=>$model->project_work_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="item in list" :key="item.project_work_id">
+                                            <tr v-for="item in list" :key="item.project_work_project_work_id">
+                                                <td>((item.task_id))</td>
                                                 <td>((item.project_work_id))</td>
-                                                <td>((item.project_id))</td>
-                                                <td>((item.work_id))</td>
+                                                <td>((item.seq_no))</td>
+                                                <td>((item.person_id))</td>
+                                                <td>((item.complete_user_id))</td>
+                                                <td>((item.complete_user_name))</td>
 
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap justify-end">
-                                                        <a :href="`{{asset('project-work')}}/`+item.project_work_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                                        <form :action="`{{asset('project-work')}}/`+item.project_work_id" :id="'formDeleteWork_'+((item.project_work_id))" class="pt-1" method="post">
+                                                        <a :href="`{{asset('project-work-task-file')}}/`+item.task_file_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                                        <form :action="`{{asset('project-work-task-file')}}/`+item.task_file_id" :id="'formDeleteFile_'+((item.task_file_id))" class="pt-1" method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <a href="##" @click="deleteWork(item.project_work_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                                            <a href="##" @click="deleteFileItem(item.task_file_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -416,7 +441,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.project_trainees.list')}}" + conditionSearch,
+                    url: "{{route('api.project_work_tasks.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;
@@ -443,7 +468,7 @@
                     }
                 });
             },
-            deleteProjectTrainee(id) {
+            deleteItem(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -511,7 +536,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.project_works.list')}}" + conditionSearch,
+                    url: "{{route('api.project_work_task_files.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;
@@ -538,7 +563,7 @@
                     }
                 });
             },
-            deleteWork(id) {
+            deleteFileItem(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -549,7 +574,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDeleteWork_' + id).submit();
+                        jQuery('#formDeleteFile_' + id).submit();
                     }
                 })
 

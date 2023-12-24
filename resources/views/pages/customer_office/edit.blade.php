@@ -267,7 +267,7 @@
                                                         <form :action="`{{asset('customer-staff')}}/`+item.customer_staff_id" :id="'formDelete_'+((item.customer_staff_id))" class="pt-1" method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <a href="##" @click="deleteStaff(item.customer_staff_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                                            <a href="##" @click="deleteItem(item.customer_staff_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -419,7 +419,7 @@
                     }
                 });
             },
-            deleteStaff(id) {
+            deleteItem(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",

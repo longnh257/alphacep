@@ -97,7 +97,7 @@
                                         <form :action="`{{asset('sending-agency')}}/`+item.sending_agency_id"  :id="'formDelete_'+((item.sending_agency_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteAgency(item.sending_agency_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteItem(item.sending_agency_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -250,7 +250,7 @@
                     }
                 });
             },
-            deleteAgency(id) {
+            deleteItem(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",

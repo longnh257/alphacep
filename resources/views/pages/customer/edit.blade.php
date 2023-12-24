@@ -392,7 +392,7 @@
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap justify-content-end">
                                                         <a :href="`{{asset('company')}}/`+item.company_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                                        <form :action="`{{asset('company')}}/`+item.company_id" :id="'formDelete_'+((item.company_id))" class="pt-1" method="post">
+                                                        <form :action="`{{asset('company')}}/`+item.company_id" :id="'formDeleteCompany_'+((item.company_id))" class="pt-1" method="post">
                                                             @method('DELETE')
                                                             @csrf
                                                             <a href="##" @click="deleteCompany(item.company_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
@@ -550,7 +550,6 @@
                 });
             },
             deleteOffice(id) {
-                console.log(1);
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -561,7 +560,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDelete_' + id).submit();
+                        jQuery('#formDeleteOffice_' + id).submit();
                     }
                 })
 
@@ -644,8 +643,7 @@
                     }
                 });
             },
-            deleteOffice(id) {
-                console.log(1);
+            deleteCompany(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -656,7 +654,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDelete_' + id).submit();
+                        jQuery('#formDeleteCompany_' + id).submit();
                     }
                 })
 

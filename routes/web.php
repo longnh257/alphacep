@@ -18,15 +18,21 @@ use App\Http\Controllers\Pages\Trainee\TraineeRelativePageController;
 use App\Http\Controllers\Pages\Trainee\TraineePageController;
 use App\Http\Controllers\Pages\Project\ProjectPageController;
 use App\Http\Controllers\Pages\Project\ProjectTraineePageController;
+use App\Http\Controllers\Pages\Project\ProjectWorkPageController;
+use App\Http\Controllers\Pages\Project\ProjectWorkTaskPageController;
+use App\Http\Controllers\Pages\Project\ProjectWorkTaskFilePageController;
+use App\Http\Controllers\Pages\Project\ProjectTraineeContractPageController;
 use App\Http\Controllers\Pages\Work\WorkPageController;
 use App\Http\Controllers\Pages\Work\WorkFlowPageController;
-use App\Http\Controllers\Pages\Project\ProjectTraineeContractPageController;
 
 
 // Import Api
 use App\Http\Controllers\API\Project\ProjectController;
 use App\Http\Controllers\API\Project\ProjectTraineeController;
 use App\Http\Controllers\API\Project\ProjectTraineeContractController;
+use App\Http\Controllers\API\Project\ProjectWorkController;
+use App\Http\Controllers\API\Project\ProjectWorkTaskController;
+use App\Http\Controllers\API\Project\ProjectWorkTaskFileController;
 use App\Http\Controllers\API\Work\WorkController;
 use App\Http\Controllers\API\Work\WorkFlowController;
 use App\Http\Controllers\API\Customer\CustomerController;
@@ -129,6 +135,30 @@ Route::group(['prefix' => 'project', 'middleware' => 'check.login'], function ()
     Route::get('/{id}/edit', [ProjectPageController::class, 'edit'])->name('view.project.edit');
     Route::put('/{id}', [ProjectPageController::class, 'update'])->name('view.project.update');
     Route::delete('/{id}', [ProjectPageController::class, 'destroy'])->name('view.project.destroy');
+});
+
+Route::group(['prefix' => 'project-work', 'middleware' => 'check.login'], function () {
+    Route::get('/create/{project_id}', [ProjectWorkPageController::class, 'create'])->name('view.project_work.create');
+    Route::post('/{project_id}', [ProjectWorkPageController::class, 'store'])->name('view.project_work.store');
+    Route::get('/{id}/edit', [ProjectWorkPageController::class, 'edit'])->name('view.project_work.edit');
+    Route::put('/{id}', [ProjectWorkPageController::class, 'update'])->name('view.project_work.update');
+    Route::delete('/{id}', [ProjectWorkPageController::class, 'destroy'])->name('view.project_work.destroy');
+});
+
+Route::group(['prefix' => 'project-work-task', 'middleware' => 'check.login'], function () {
+    Route::get('/create/{project_work_id}', [ProjectWorkTaskPageController::class, 'create'])->name('view.project_work_task.create');
+    Route::post('/{project_work_id}', [ProjectWorkTaskPageController::class, 'store'])->name('view.project_work_task.store');
+    Route::get('/{id}/edit', [ProjectWorkTaskPageController::class, 'edit'])->name('view.project_work_task.edit');
+    Route::put('/{id}', [ProjectWorkTaskPageController::class, 'update'])->name('view.project_work_task.update');
+    Route::delete('/{id}', [ProjectWorkTaskPageController::class, 'destroy'])->name('view.project_work_task.destroy');
+});
+
+Route::group(['prefix' => 'project-work-task-file', 'middleware' => 'check.login'], function () {
+    Route::get('/create/{project_work_id}', [ProjectWorkTaskFilePageController::class, 'create'])->name('view.project_work_task_file.create');
+    Route::post('/{project_work_id}', [ProjectWorkTaskFilePageController::class, 'store'])->name('view.project_work_task_file.store');
+    Route::get('/{id}/edit', [ProjectWorkTaskFilePageController::class, 'edit'])->name('view.project_work_task_file.edit');
+    Route::put('/{id}', [ProjectWorkTaskFilePageController::class, 'update'])->name('view.project_work_task_file.update');
+    Route::delete('/{id}', [ProjectWorkTaskFilePageController::class, 'destroy'])->name('view.project_work_task_file.destroy');
 });
 
 Route::group(['prefix' => 'project-trainee', 'middleware' => 'check.login'], function () {
@@ -262,6 +292,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.list');
     Route::get('/project-trainees', [ProjectTraineeController::class, 'index'])->name('api.project_trainees.list');
     Route::get('/project-trainee-contracts', [ProjectTraineeContractController::class, 'index'])->name('api.project_trainee_contracts.list');
+    Route::get('/project-works', [ProjectWorkController::class, 'index'])->name('api.project_works.list');
+    Route::get('/project-work-tasks', [ProjectWorkTaskController::class, 'index'])->name('api.project_work_tasks.list');
+    Route::get('/project-work-task-files', [ProjectWorkTaskFileController::class, 'index'])->name('api.project_work_task_files.list');
 
     Route::group(['prefix' => 'customers'], function () {
         Route::get('/customers', [CustomerController::class, 'index'])->name('api.customers.list');

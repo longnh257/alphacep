@@ -122,7 +122,7 @@
                                         <form :action="`{{asset('project')}}/`+item.project_id" :id="'formDelete_'+((item.project_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteProjectCategory(item.project_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteItem(item.project_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -275,7 +275,7 @@
                     }
                 });
             },
-            deleteProjectCategory(id) {
+            deleteItem(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",

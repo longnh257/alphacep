@@ -1,23 +1,23 @@
 @extends('layouts.master')
 
-@section('title', 'Work')
+@section('title', 'Project')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1"> {{ trans('label.work') }}</h5>
+            <h5 class="page-title fs-21 mb-1"> {{ trans('label.project') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.work') }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.project') }}</li>
                 </ol>
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.work.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                <a href="{{route('view.project.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -59,40 +59,70 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.name') }}</div>
-                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                            <i class="fe fe-maximize-2"></i>
-                                        </button>
-                                    </div> 
-                                </th>
-                                <th class="gridjs-th gridjs-th-sort ">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.workflow') }}</div>
+                                        <div class="gridjs-th-content">{{ trans('label.trainee_number') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
                                     </div>
                                 </th>
 
+                                <th class="gridjs-th gridjs-th-sort">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('label.entry_date') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </th>
+
+                                <th class="gridjs-th gridjs-th-sort">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('label.sending_agency') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </th>
+
+                                <th class="gridjs-th gridjs-th-sort">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('label.company') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </th>
+
+                                <th class="gridjs-th gridjs-th-sort">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('label.url') }}</div>
+                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </th>
                                 <th class="text-end">
-                                    <a href="{{route('view.work.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                    <a href="{{route('view.project.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                                         <i class="fe fe-plus"></i></a>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in list" :key="item.work_id">
-                                <td>((item.work_id))</td>
-                                <td class="fw-medium">((item.name))</td>
-                                <td class="fw-medium">((item.workflow_id))</td>
-
+                            <tr v-for="item in list" :key="item.project_id">
+                                <td>((item.project_id))</td>
+                                <td class="fw-medium">((item.trainee_number))</td>
+                                <td class="fw-medium">((item.entry_date))</td>
+                                <td class="fw-medium">((item.sending_agency_id))</td>
+                                <td class="fw-medium">((item.company_id))</td>
+                                <td class="fw-medium">((item.url))</td>
                                 <td>
                                     <div class="hstack gap-2 flex-wrap justify-content-end">
-                                        <a :href="`{{asset('work')}}/`+item.work_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('work')}}/`+item.work_id" :id="'formDelete_'+((item.work_id))" class="pt-1" method="post">
+                                        <a :href="`{{asset('project-trainee/create')}}/`+item.project_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee')}}"><i class="si si-user-follow"></i></a>
+                                        <a :href="`{{asset('project')}}/`+item.project_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                        <form :action="`{{asset('project')}}/`+item.project_id" :id="'formDelete_'+((item.project_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteItem(item.work_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteProjectCategory(item.project_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -218,7 +248,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.works.list')}}" + conditionSearch,
+                    url: "{{route('api.projects_trainee.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;
@@ -245,7 +275,7 @@
                     }
                 });
             },
-            deleteItem(id) {
+            deleteProjectCategory(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
