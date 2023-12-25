@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuditReport\AuditReportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pages\AuthController;
 use App\Http\Controllers\Pages\HomeController;
@@ -49,7 +50,12 @@ use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
 use App\Http\Controllers\API\Trainee\TraineeController;
 use App\Http\Controllers\API\Trainee\TraineeRelativeController;
 use App\Http\Controllers\API\TrainingFacility\TrainingFacilityController;
+use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordController;
+use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordDetailController;
+use App\Http\Controllers\Pages\AuditReport\AuditReportPageController;
 use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
+use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordDetailPageController;
+use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordPageController;
 use App\Models\ProjectTraineeContract;
 
 /*
@@ -103,7 +109,7 @@ Route::group(['prefix' => 'customer-staff', 'middleware' => 'check.login'], func
 Route::group(['prefix' => 'company', 'middleware' => 'check.login'], function () {
     Route::get('/', [CompanyPageController::class, 'index'])->name('view.company.index');
     Route::get('/create/{customer_id}', [CompanyPageController::class, 'create'])->name('view.company.create');
-    Route::post('/', [CompanyPageController::class, 'store'])->name('view.company.store');
+    Route::post('/{customer_id}', [CompanyPageController::class, 'store'])->name('view.company.store');
     Route::get('/{id}/edit', [CompanyPageController::class, 'edit'])->name('view.company.edit');
     Route::put('/{id}', [CompanyPageController::class, 'update'])->name('view.company.update');
     Route::delete('/{id}', [CompanyPageController::class, 'destroy'])->name('view.company.destroy');
@@ -136,6 +142,7 @@ Route::group(['prefix' => 'project', 'middleware' => 'check.login'], function ()
     Route::put('/{id}', [ProjectPageController::class, 'update'])->name('view.project.update');
     Route::delete('/{id}', [ProjectPageController::class, 'destroy'])->name('view.project.destroy');
 });
+
 
 Route::group(['prefix' => 'project-work', 'middleware' => 'check.login'], function () {
     Route::get('/create/{project_id}', [ProjectWorkPageController::class, 'create'])->name('view.project_work.create');
@@ -176,7 +183,42 @@ Route::group(['prefix' => 'project-trainee-contract', 'middleware' => 'check.log
     Route::put('/{id}', [ProjectTraineeContractPageController::class, 'update'])->name('view.project_trainee_contract.update');
     Route::delete('/{id}', [ProjectTraineeContractPageController::class, 'destroy'])->name('view.project_trainee_contract.destroy');
 });
+
 //end Project
+
+
+//visit-guidance
+Route::group(['prefix' => 'visit-guidance-record', 'middleware' => 'check.login'], function () {
+    Route::get('/', [VisitGuidanceRecordPageController::class, 'index'])->name('view.visit_guidance_record.index');
+    Route::get('/create/{company_id}', [VisitGuidanceRecordPageController::class, 'create'])->name('view.visit_guidance_record.create');
+    Route::post('/{company_id}', [VisitGuidanceRecordPageController::class, 'store'])->name('view.visit_guidance_record.store');
+    Route::get('/{id}/edit', [VisitGuidanceRecordPageController::class, 'edit'])->name('view.visit_guidance_record.edit');
+    Route::put('/{id}', [VisitGuidanceRecordPageController::class, 'update'])->name('view.visit_guidance_record.update');
+    Route::delete('/{id}', [VisitGuidanceRecordPageController::class, 'destroy'])->name('view.visit_guidance_record.destroy');
+});
+//end visit-guidance
+
+//visit-guidance-record-detail
+Route::group(['prefix' => 'visit-guidance-record-detail', 'middleware' => 'check.login'], function () {
+    Route::get('/', [VisitGuidanceRecordDetailPageController::class, 'index'])->name('view.visit_guidance_record_detail.index');
+    Route::get('/create/{visit_record_id}', [VisitGuidanceRecordDetailPageController::class, 'create'])->name('view.visit_guidance_record_detail.create');
+    Route::post('/{visit_record_id}', [VisitGuidanceRecordDetailPageController::class, 'store'])->name('view.visit_guidance_record_detail.store');
+    Route::get('/{id}/edit', [VisitGuidanceRecordDetailPageController::class, 'edit'])->name('view.visit_guidance_record_detail.edit');
+    Route::put('/{id}', [VisitGuidanceRecordDetailPageController::class, 'update'])->name('view.visit_guidance_record_detail.update');
+    Route::delete('/{id}', [VisitGuidanceRecordDetailPageController::class, 'destroy'])->name('view.visit_guidance_record_detail.destroy');
+});
+//end visit-guidance-record-detail
+
+//audit report
+Route::group(['prefix' => 'audit-report', 'middleware' => 'check.login'], function () {
+    Route::get('/', [AuditReportPageController::class, 'index'])->name('view.audit_report.index');
+    Route::get('/create', [AuditReportPageController::class, 'create'])->name('view.audit_report.create');
+    Route::post('/', [AuditReportPageController::class, 'store'])->name('view.audit_report.store');
+    Route::get('/{id}/edit', [AuditReportPageController::class, 'edit'])->name('view.audit_report.edit');
+    Route::put('/{id}', [AuditReportPageController::class, 'update'])->name('view.audit_report.update');
+    Route::delete('/{id}', [AuditReportPageController::class, 'destroy'])->name('view.audit_report.destroy');
+});
+//end audit report
 
 //work
 Route::group(['prefix' => 'work', 'middleware' => 'check.login'], function () {
@@ -296,6 +338,12 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/project-work-tasks', [ProjectWorkTaskController::class, 'index'])->name('api.project_work_tasks.list');
     Route::get('/project-work-task-files', [ProjectWorkTaskFileController::class, 'index'])->name('api.project_work_task_files.list');
 
+    Route::get('/visit-guidance-records', [VisitGuidanceRecordController::class, 'index'])->name('api.visit_guidance_records.list');
+
+    Route::get('/visit-guidance-record-details', [VisitGuidanceRecordDetailController::class, 'index'])->name('api.visit_guidance_record_details.list');
+
+    Route::get('/audit-reports', [AuditReportController::class, 'index'])->name('api.audit_reports.list');
+
     Route::group(['prefix' => 'customers'], function () {
         Route::get('/customers', [CustomerController::class, 'index'])->name('api.customers.list');
         Route::get('/customer-offices', [CustomerOfficeController::class, 'index'])->name('api.customer_offices.list');
@@ -323,7 +371,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::group(['prefix' => 'trainee-relatives'], function () {
         Route::get('/trainee-relatives', [TraineeRelativeController::class, 'index'])->name('api.trainee_relatives.list');
     });
-    
+
     Route::group(['prefix' => 'training-facilities'], function () {
         Route::get('/training-facilities', [TrainingFacilityController::class, 'index'])->name('api.training_facilities.list');
     });

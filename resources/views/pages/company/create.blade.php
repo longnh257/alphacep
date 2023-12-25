@@ -3,7 +3,7 @@
 @section('title', 'Trang chủ')
 
 @section('content')
-<form action="{{route('view.company.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.company.store',$customer_id)}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">

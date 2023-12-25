@@ -19,7 +19,7 @@ class MCompanyOffice extends Model
 
     public function staffs(): HasMany
     {
-        return $this->hasMany(MCompanystaff::class, 'company_staff_id', 'company_staff_id');
+        return $this->hasMany(MCompanyStaff::class, 'company_office_id', 'company_office_id');
     }
     
     public function company(): BelongsTo

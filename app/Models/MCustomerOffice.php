@@ -19,7 +19,7 @@ class MCustomerOffice extends Model
 
     public function staffs(): HasMany
     {
-        return $this->hasMany(MCustomerStaff::class, 'customer_staff_id', 'customer_staff_id');
+        return $this->hasMany(MCustomerStaff::class, 'customer_office_id', 'customer_office_id');
     }
     
     public function customer(): BelongsTo

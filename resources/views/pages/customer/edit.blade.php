@@ -190,126 +190,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane" id="office" role="office">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
-                                @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                                @endif
-                            </div>
-                            <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
-
-                                <div class="table-responsive country-table">
-                                    <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
-                                        <thead class="gridjs-thead">
-                                            <tr class="gridjs-tr">
-                                                <th class="gridjs-th gridjs-th-sort ">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">OFFICE ID</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-
-                                                <th class="gridjs-th gridjs-th-sort ">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Name</div>
-                                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-up"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-                                                <th class="gridjs-th gridjs-th-sort ">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Customer</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-maximize-2"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-                                                <th class="gridjs-th gridjs-th-sort">
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Tel</div>
-                                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-                                                <th>
-                                                    <div class="pe-1 mb-xl-0">
-                                                        <a href="{{route('view.customer_office.create',['customer_id'=>$customer->customer_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
-                                                            <i class="fe fe-plus"></i></a>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="item in list" :key="item.customer_id" >
-                                                <td>((item.customer_office_id))</td>
-                                                <td class="fw-medium">((item.name))</td>
-                                                <td>((item.customer_id))</td>
-                                                <td class="fw-medium">((item.tel))</td>
-                                                <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
-                                                        <a :href="`{{asset('customer-office')}}/`+item.customer_office_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                                        <form :action="`{{asset('customer-office')}}/`+item.customer_office_id" :id="'formDeleteOffice_'+((item.customer_office_id))" class="pt-1" method="post">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <a href="##" @click="deleteOffice(item.customer_office_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                    <div class="card-footer p-8pt">
-                                        <ul class="pagination justify-content-start pagination-xsm m-0">
-
-                                            <li class="page-item disabled" v-if="page <= 1">
-                                                <button class="page-link" type="button" aria-label="Previous">
-                                                    <i class="fe fe-arrow-left"></i>
-                                                </button>
-                                            </li>
-                                            <li class="page-item" v-if="page > 1" @click="onPrePage()">
-                                                <button class="page-link" type="button" aria-label="Previous">
-                                                    <i class="fe fe-arrow-left"></i>
-                                                </button>
-                                            </li>
-
-
-                                            <li class="page-item disabled" v-if="page > 3 ">
-                                                <button class="page-link" type="button">
-                                                    <span>...</span>
-                                                </button>
-                                            </li>
-                                            <li class="page-item" v-for="item in listPage" v-if="page > (item - 3) && page < (item + 3) " @click="onPageChange(item)" v-bind:class="page == item ? 'active' : ''">
-                                                <button class="page-link" type="button" aria-label="Page 1">
-                                                    <span>((item))</span>
-                                                </button>
-                                            </li>
-
-
-                                            <li class="page-item disabled" v-if="page > count - 1 || count == 1">
-                                                <button class="page-link" type="button">
-                                                    <i class="fe fe-arrow-right"></i>
-                                                </button>
-                                            </li>
-
-                                            <li class="page-item" @click="onNextPage()" v-if="page <= count - 1 && count > 1">
-                                                <button class="page-link" type="button">
-                                                    <i class="fe fe-arrow-right"></i>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+               
                     <div class="tab-pane" id="company" role="company">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
@@ -428,6 +309,126 @@
                                                     <span>((item))</span>
                                                 </button>
                                             </li>
+
+                                            <li class="page-item disabled" v-if="page > count - 1 || count == 1">
+                                                <button class="page-link" type="button">
+                                                    <i class="fe fe-arrow-right"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="page-item" @click="onNextPage()" v-if="page <= count - 1 && count > 1">
+                                                <button class="page-link" type="button">
+                                                    <i class="fe fe-arrow-right"></i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="office" role="office">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
+                                @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                                @endif
+                            </div>
+                            <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
+
+                                <div class="table-responsive country-table">
+                                    <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
+                                        <thead class="gridjs-thead">
+                                            <tr class="gridjs-tr">
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">OFFICE ID</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">Name</div>
+                                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-up"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">Customer</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-maximize-2"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th class="gridjs-th gridjs-th-sort">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">Tel</div>
+                                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="pe-1 mb-xl-0">
+                                                        <a href="{{route('view.customer_office.create',['customer_id'=>$customer->customer_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                                            <i class="fe fe-plus"></i></a>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="item in list" :key="item.customer_id" >
+                                                <td>((item.customer_office_id))</td>
+                                                <td class="fw-medium">((item.name))</td>
+                                                <td>((item.customer_id))</td>
+                                                <td class="fw-medium">((item.tel))</td>
+                                                <td>
+                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                        <a :href="`{{asset('customer-office')}}/`+item.customer_office_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                                        <form :action="`{{asset('customer-office')}}/`+item.customer_office_id" :id="'formDeleteOffice_'+((item.customer_office_id))" class="pt-1" method="post">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <a href="##" @click="deleteOffice(item.customer_office_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="card-footer p-8pt">
+                                        <ul class="pagination justify-content-start pagination-xsm m-0">
+
+                                            <li class="page-item disabled" v-if="page <= 1">
+                                                <button class="page-link" type="button" aria-label="Previous">
+                                                    <i class="fe fe-arrow-left"></i>
+                                                </button>
+                                            </li>
+                                            <li class="page-item" v-if="page > 1" @click="onPrePage()">
+                                                <button class="page-link" type="button" aria-label="Previous">
+                                                    <i class="fe fe-arrow-left"></i>
+                                                </button>
+                                            </li>
+
+
+                                            <li class="page-item disabled" v-if="page > 3 ">
+                                                <button class="page-link" type="button">
+                                                    <span>...</span>
+                                                </button>
+                                            </li>
+                                            <li class="page-item" v-for="item in listPage" v-if="page > (item - 3) && page < (item + 3) " @click="onPageChange(item)" v-bind:class="page == item ? 'active' : ''">
+                                                <button class="page-link" type="button" aria-label="Page 1">
+                                                    <span>((item))</span>
+                                                </button>
+                                            </li>
+
 
                                             <li class="page-item disabled" v-if="page > count - 1 || count == 1">
                                                 <button class="page-link" type="button">

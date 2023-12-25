@@ -1,19 +1,25 @@
 @extends('layouts.master')
 
-@section('title', 'Company')
+@section('title', 'Visit Guidance Record')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">{{ trans('label.company') }}</h5>
+            <h5 class="page-title fs-21 mb-1"> {{ trans('label.visit_guidance_record') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.company') }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.visit_guidance_record') }}</li>
                 </ol>
             </nav>
+        </div>
+        <div class="d-flex my-xl-auto right-content align-items-center">
+            <div class="pe-1 mb-xl-0">
+                <a href="{{route('view.visit_guidance_record.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                    <i class="fe fe-plus"></i></a>
+            </div>
         </div>
     </div>
     <!-- End Page Header -->
@@ -30,7 +36,7 @@
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
-                   {{ trans('label.table_title') }}
+                    <h4 class="card-title mb-1">{{ trans('label.table_title') }}</h4>
                     <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light bg-transparent rounded-pill" data-bs-toggle="dropdown"><i class="fe fe-more-horizontal"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);">10</a>
@@ -45,7 +51,7 @@
                             <tr class="gridjs-tr">
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">ID</div>
+                                        <div class="gridjs-th-content">{{ trans('label.id') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -53,62 +59,66 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Name</div>
+                                        <div class="gridjs-th-content">{{ trans('label.company_id') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                            <i class="fe fe-maximize-2"></i>
+                                            <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Tel</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                            <i class="fe fe-arrow-up"></i>
-                                        </button>
-                                    </div>
-                                </th>
-                                <th class="gridjs-th gridjs-th-sort">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Postcode</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                        <div class="gridjs-th-content">{{ trans('label.company_office_id') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort">
+                                <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Customer</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                        <div class="gridjs-th-content">{{ trans('label.audit_date') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort">
+                                <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Created</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
+                                        <div class="gridjs-th-content">{{ trans('label.last_audit_date') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
                                     </div>
                                 </th>
-                                <th></th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('label.next_audit_date') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                             
+                                <th class="text-end">
+                                    <a href="{{route('view.visit_guidance_record.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                        <i class="fe fe-plus"></i></a>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in list" :key="item.company_id">
+                            <tr v-for="item in list" :key="item.visit_record_id">
+                                <td>((item.visit_record_id))</td>
                                 <td>((item.company_id))</td>
-                                <td class="fw-medium">((item.name))</td>
-                                <td class="fw-medium">((item.tel))</td>
-                                <td class="fw-medium">((item.postcode))</td>
-                                <td class="fw-medium">((item.customer_id))</td>
-                                <td class="fw-medium">((item.created_on))</td>
+                                <td>((item.company_office_id))</td>
+                                <td>((item.audit_date))</td>
+                                <td>((item.last_audit_date))</td>
+                                <td>((item.next_audit_date))</td>
                                 <td>
                                     <div class="hstack gap-2 flex-wrap justify-content-end">
-                                        <a :href="`{{asset('company')}}/`+item.company_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('company')}}/`+item.company_id"  :id="'formDelete_'+((item.company_id))" class="pt-1" method="post">
+                                        <a :href="`{{asset('visit-guidance-record')}}/`+item.visit_record_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                        <form :action="`{{asset('visit-guidance-record')}}/`+item.visit_record_id" :id="'formDelete_'+((item.visit_record_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteItem(item.company_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteItem(item.visit_record_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -189,7 +199,7 @@
         el: '#list-data',
         data: {
             sortDirection: 'desc',
-            sortBy: 'company_id',
+            sortBy: 'fyb_id',
             count: 0,
             page: 1,
             list: [],
@@ -234,7 +244,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.companies.list')}}" + conditionSearch,
+                    url: "{{route('api.visit_guidance_records.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;
@@ -272,10 +282,10 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDelete_'+id).submit();
+                        jQuery('#formDelete_' + id).submit();
                     }
                 })
-             
+
             },
         },
     });
