@@ -22,6 +22,10 @@ class VisitGuidanceRecordController extends Controller
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
 
+        if($request->company_id){
+            $query->where('company_id',$request->company_id);
+        }
+
         $datas = $query->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list Visit Guidance Record successful.', $datas);

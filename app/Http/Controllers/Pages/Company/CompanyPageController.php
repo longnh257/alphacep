@@ -16,13 +16,13 @@ class CompanyPageController extends Controller
         return view('pages.company.index');
     }
 
-    public function create($customer_id)
+    public function create()
     {
-        return view('pages.company.create', compact('customer_id'));
+        return view('pages.company.create');
     }
 
 
-    public function store(Request $request, $customer_id)
+    public function store(Request $request)
     {
 
         $request->validate(
@@ -34,10 +34,6 @@ class CompanyPageController extends Controller
             trans('validation.messages'),
             trans('validation.attributes'),
         );
-
-        $request['created_by_id'] = Auth::id();
-        $request['updated_by_id'] = Auth::id();
-        $request['customer_id'] = $customer_id;
 
         MCompany::create($request->except('_token'));
 

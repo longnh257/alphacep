@@ -11,4 +11,5 @@ class SCode extends Model
 
     protected $table = 's_code';
     protected $guarded = ['code_id'];
+    protected $primaryKey = 'code_id';
 }

@@ -24,4 +24,16 @@ class MCustomer extends Model
     {
         return $this->hasMany(MCompany::class, 'customer_id', 'customer_id');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->created_by_id = auth()->id();
+        });
+        static::updating(function ($model) {
+            $model->updated_by_id =  auth()->id();
+        });
+    }
 }

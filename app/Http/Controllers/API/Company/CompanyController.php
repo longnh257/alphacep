@@ -20,7 +20,7 @@ class CompanyController extends Controller
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
         
-        $query->with(['offices'])->withCount(['offices']);
+        $query->with(['offices'])->withCount(['offices']); 
 
         $datas = $query->paginate($this->numPerPage);
 

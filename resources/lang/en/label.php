@@ -1,8 +1,7 @@
 <?php 
 
 return [
-    'female' => 'Female',
-    'male' => 'Male',
+    //sidebar
     'function' => 'Function',
     'function_category' => 'Function Category',
     'customer' => 'Customer',
@@ -12,6 +11,13 @@ return [
     'trainee' => 'Trainee',
     'training_facility' => 'Training Facility',
     'project' => 'Project',
+    'company' => 'Company',
+    'work' => 'Work',
+    'workflow' => 'Workflow',
+    'audit_report' => 'Audit Report',
+
+    'female' => 'Female',
+    'male' => 'Male',
 ];
 
 ?>

@@ -26,4 +26,19 @@ class MCompanyOffice extends Model
     {
         return $this->belongsTo(MCompany::class, 'company_id', 'company_id');
     }
+
+    
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->customer_id = auth()->user()->customer_id;
+            $model->created_by_id = auth()->id();
+        });
+        static::updating(function ($model) {
+            $model->updated_by_id =  auth()->id();
+            $model->updated_count += 1;
+        });
+    }
 }

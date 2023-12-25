@@ -31,4 +31,20 @@ class ProjectTrainee extends Model
     {
         return $this->belongsTo(Project::class, 'project_id', 'project_id');
     }
+
+    
+        
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->customer_id = auth()->user()->customer_id;
+            $model->created_by_id = auth()->id();
+        });
+        static::updating(function ($model) {
+            $model->updated_by_id =  auth()->id();
+
+        });
+    }
 }

@@ -108,8 +108,8 @@ Route::group(['prefix' => 'customer-staff', 'middleware' => 'check.login'], func
 //company
 Route::group(['prefix' => 'company', 'middleware' => 'check.login'], function () {
     Route::get('/', [CompanyPageController::class, 'index'])->name('view.company.index');
-    Route::get('/create/{customer_id}', [CompanyPageController::class, 'create'])->name('view.company.create');
-    Route::post('/{customer_id}', [CompanyPageController::class, 'store'])->name('view.company.store');
+    Route::get('/create', [CompanyPageController::class, 'create'])->name('view.company.create');
+    Route::post('/', [CompanyPageController::class, 'store'])->name('view.company.store');
     Route::get('/{id}/edit', [CompanyPageController::class, 'edit'])->name('view.company.edit');
     Route::put('/{id}', [CompanyPageController::class, 'update'])->name('view.company.update');
     Route::delete('/{id}', [CompanyPageController::class, 'destroy'])->name('view.company.destroy');
