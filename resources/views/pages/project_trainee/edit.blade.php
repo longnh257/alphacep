@@ -37,7 +37,10 @@
                         <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_trainee_info" href="#project_trainee_info">{{trans('label.project_trainee_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#contract_info" aria-current="page" href="#contract_info"> {{trans('label.project_info')}}</a>
+                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#contract_info" aria-current="page" href="#contract_info"> {{trans('label.contract_info')}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#contract_info" aria-current="page" href="#contract_info"> {{trans('label.contract_info')}}</a>
                     </li>
 
                 </ul>
@@ -118,7 +121,7 @@
                                                         </button>
                                                     </div>
                                                 </th>
-                                              
+
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
                                                         <div class="gridjs-th-content">{{trans('label.trainee')}}</div>
@@ -149,7 +152,7 @@
                                                 <td>((item.contract_id))</td>
                                                 <td>((item.project_trainee?.trainee?.name))</td>
                                                 <td>((item.project_trainee?.project?.project_id))</td>
-                                             
+
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap justify-end">
                                                         <a :href="`{{asset('project-trainee-contract')}}/`+item.contract_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
@@ -233,6 +236,101 @@
     var S_HYPEN = "-";
     var options = {}
     var notifier = new AWN(options);
+
+    new Vue({
+        el: '#list-data',
+        data: {
+            sortDirection: 'desc',
+            sortBy: 'fyb_id',
+            count: 0,
+            page: 1,
+            list: [],
+            conditionSearch: '',
+            listPage: [],
+            showCount: 10,
+        },
+        delimiters: ["((", "))"],
+        mounted() {
+            const that = this;
+            this.onLoadPagination();
+        },
+        computed: {},
+
+        methods: {
+            sort: function(s) {
+                if (s === this.sortBy) {
+                    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+                }
+                this.sortBy = s;
+            },
+            onPageChange(_p) {
+                this.page = _p;
+                this.onLoadPagination();
+            },
+            onPrePage() {
+                if (this.page > 1) {
+                    this.page = this.page - 1;
+                }
+                this.onLoadPagination();
+            },
+            onNextPage() {
+                if (this.page < this.count) {
+                    this.page = this.page + 1;
+                }
+                this.onLoadPagination();
+            },
+            onLoadPagination() {
+                const that = this;
+                let conditionSearch = '?page=' + this.page;
+                conditionSearch += '&showcount=' + this.showCount;
+                this.conditionSearch = conditionSearch;
+                jQuery.ajax({
+                    type: 'GET',
+                    url: "{{route('api.project_trainee_contracts.list')}}" + conditionSearch,
+                    success: function(data) {
+                        that.list = data.result.data;
+                        that.count = data.result.last_page;
+                        let pageArr = [];
+                        if (that.page - 2 > 0) {
+                            pageArr.push(that.page - 2);
+                        }
+                        if (that.page - 1 > 0) {
+                            pageArr.push(that.page - 1);
+                        }
+                        pageArr.push(that.page);
+                        if (that.page + 1 <= that.count) {
+                            pageArr.push(that.page + 1);
+                        }
+                        if (that.page + 2 <= that.count) {
+                            pageArr.push(that.page + 2);
+                        }
+                        that.listPage = pageArr;
+
+                        console.log(that.list);
+                    },
+                    error: function(xhr, textStatus, error) {
+                        notifier.warning('システムエラーが発生しました。 大変お手数ですが、サイト管理者までご連絡ください');
+                    }
+                });
+            },
+            deleteItem(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        jQuery('#formDelete_' + id).submit();
+                    }
+                })
+
+            },
+        },
+    });
 
     new Vue({
         el: '#list-data',
