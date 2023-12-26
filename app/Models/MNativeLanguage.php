@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class MNativeLanguage extends Model
 {
@@ -15,7 +17,6 @@ class MNativeLanguage extends Model
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
 
-       
     protected static function boot()
     {
         parent::boot();
@@ -28,5 +29,4 @@ class MNativeLanguage extends Model
             $model->updated_count += 1;
         });
     }
-
 }

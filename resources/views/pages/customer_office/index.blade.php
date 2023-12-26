@@ -17,7 +17,7 @@
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
+                <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
-                   {{ trans('label.table_title') }}
+                    {{ trans('label.table_title') }}
                     <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light bg-transparent rounded-pill" data-bs-toggle="dropdown"><i class="fe fe-more-horizontal"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);">10</a>
@@ -45,7 +45,7 @@
                         <a class="dropdown-item" href="javascript:void(0);">All</a>
                     </div>
                 </div>
-                 
+
                 <div class="table-responsive country-table ">
                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                         <thead class="gridjs-thead">
@@ -83,6 +83,12 @@
                                         </button>
                                     </div>
                                 </th>
+                                <th>
+                                    <div class="pe-1 mb-xl-0">
+                                        <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                            <i class="fe fe-plus"></i></a>
+                                    </div>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,12 +98,12 @@
                                 <td>((item.customer_id))</td>
                                 <td class="fw-medium">((item.tel))</td>
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 flex-wrap justify-end">
                                         <a :href="`{{asset('customer-office')}}/`+item.customer_office_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('customer-office')}}/`+item.customer_office_id" :id="'formDelete_'+((item.customer_office_id))" class="pt-1" method="post">
+                                        <form :action="`{{asset('customer-office')}}/`+item.customer_office_id" :id="'formDeleteOffice_'+((item.customer_office_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteItem(item.customer_office_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteOffice(item.customer_office_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class MCustomer extends Model
 {
@@ -16,10 +17,16 @@ class MCustomer extends Model
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
 
+    public function user(): HasOne
+    {
+        return $this->hasOne(MUser::class, 'customer_id', 'customer_id');
+    }
+
     public function offices(): HasMany
     {
         return $this->hasMany(MCustomerOffice::class, 'customer_id', 'customer_id');
     }
+
     public function companies(): HasMany
     {
         return $this->hasMany(MCompany::class, 'customer_id', 'customer_id');

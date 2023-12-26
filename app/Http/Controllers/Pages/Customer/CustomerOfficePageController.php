@@ -16,16 +16,14 @@ class CustomerOfficePageController extends Controller
         return view('pages.customer_office.index');
     }
 
-    public function create($customer_id)
+    public function create()
     {
-        $customer =  MCustomer::findOrFail($customer_id);
-        return view('pages.customer_office.create', compact('customer'));
+        return view('pages.customer_office.create');
     }
 
-    public function store(Request $request, $customer_id)
+    public function store(Request $request)
     {
-        $customer =  MCustomer::findOrFail($customer_id);
-   
+
         $request->validate(
             [
                 'name' => 'required|max:255',
@@ -36,21 +34,19 @@ class CustomerOfficePageController extends Controller
             trans('validation.attributes'),
         );
 
-        $request['customer_id'] = $customer->customer_id;
         $request['created_by_id'] = Auth::id();
         $request['updated_by_id'] = Auth::id();
 
         MCustomerOffice::create($request->except('_token'));
 
-        return redirect()->route('view.customer.edit', ['id' => $customer->customer_id])
+        return redirect()->route('view.customer_office.index')
             ->with('success', 'CustomerOffice created successfully!');
     }
 
     public function edit($id)
     {
         $customer_office = MCustomerOffice::findOrFail($id);
-        $customers = MCustomer::all('customer_id', 'name');
-        return view('pages.customer_office.edit', compact('customer_office', 'customers'));
+        return view('pages.customer_office.edit', compact('customer_office'));
     }
 
     public function update(Request $request, $id)
@@ -68,7 +64,7 @@ class CustomerOfficePageController extends Controller
 
         $customer_office->update($request->except(['customer_id', '_token']));
 
-        return redirect()->route('view.customer.edit', ['id' => $customer_office->customer_id])
+        return redirect()->route('view.customer_office.index', ['id' => $customer_office->customer_id])
             ->with('success', 'CustomerOffice updated successfully!');
     }
 
@@ -79,7 +75,7 @@ class CustomerOfficePageController extends Controller
         MCustomerStaff::where('customer_office_id', $id)->delete();
         $office->delete();
 
-        return redirect()->route('view.customer.edit',['id'=>$customer_id])
+        return redirect()->route('view.customer_office.index', ['id' => $customer_id])
             ->with('success', 'Office deleted successfully!');
     }
 }

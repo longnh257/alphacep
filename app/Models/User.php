@@ -13,6 +13,20 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'm_user';
     protected $guarded = ['user_id'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->customer_id = auth()->user()->customer_id;
+            $model->created_by_id = auth()->id();
+        });
+        static::updating(function ($model) {
+            $model->updated_by_id =  auth()->id();
+            $model->updated_count += 1;
+        });
+    }
     /**
      * The attributes that are mass assignable.
      *

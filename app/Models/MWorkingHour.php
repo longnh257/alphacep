@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class MWorkingHour extends Model
 {
@@ -14,7 +16,7 @@ class MWorkingHour extends Model
     protected $primaryKey = 'working_hour_id';
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
-    
+
     protected static function boot()
     {
         parent::boot();
@@ -26,6 +28,13 @@ class MWorkingHour extends Model
         static::updating(function ($model) {
             $model->updated_by_id =  auth()->id();
             $model->updated_count += 1;
+        });  
+        static::addGlobalScope('customer', function (Builder $builder) {
+            $user = Auth::user();
+
+            if ($user) {
+                $builder->where('customer_id', $user->customer_id);
+            }
         });
     }
 }

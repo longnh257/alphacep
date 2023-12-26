@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Trang chủ')
+@section('title', ' Add Customer')
 
 @section('content')
 <form action="{{route('view.customer.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
@@ -8,7 +8,8 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">Thêm Khách hàng</h4>
+            <h4 class="mb-0">{{ trans('label.customer_add') }}</h4>
+            <p class="mb-0 text-muted">{{ trans('label.customer_add_desc') }}</p>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -29,22 +30,68 @@
 
     <!-- row -->
     <!-- Start:: row-1 -->
+
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+    <div class="alert alert-danger mx-4" role="alert">
+        {{ $error }}
+    </div>
+    @endforeach
+    @endif
     <div class="row">
         <div class="col-xl-12">
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Thông tin khách hàng
+                        <h4 class="mb-0">{{ trans('label.account_info') }}</h4>
                     </div>
                 </div>
 
-                @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                <div class="alert alert-danger mx-4" role="alert">
-                    {{ $error }}
+                <div class="card-body">
+                    <div class="row gy-4">
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="name" class="form-label  required">{{ trans('label.name') }}</label>
+                            <input type="text" class="form-control" name="user_name" id="name" value="{{ old('user_name') }}" placeholder="{{ trans('label.user_name') }}">
+                        </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="email" class="form-label required">{{ trans('label.email') }}</label>
+                            <input type="email" class="form-control" name="user_email" id="email" value="{{ old('user_email') }}" placeholder="{{ trans('label.user_email') }}">
+                        </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="password" class="form-label required">{{ trans('label.password') }}</label>
+                            <input type="password" class="form-control" name="password" id="password" value="" placeholder="{{ trans('label.password') }}">
+                        </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="password_confirmation required" class="form-label">{{ trans('label.password_confirmation') }}</label>
+                            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" value="" placeholder="{{ trans('label.password_confirmation') }}">
+                        </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="phone" class="form-label required">{{ trans('label.phone') }}</label>
+                            <input type="phone" class="form-control" name="user_phone" id="phone" value="{{ old('phone') }}" placeholder="{{ trans('label.user_phone') }}">
+                        </div>
+
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="address" class="form-label">{{ trans('label.address') }}</label>
+                            <input type="text" class="form-control" name="user_address" id="address" value="{{ old('address') }}" placeholder="{{ trans('label.user_address') }}">
+                        </div>
+
+                    </div>
                 </div>
-                @endforeach
-                @endif
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        <h4 class="mb-0">{{ trans('label.customer_info') }}</h4>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <div class="row gy-4">
@@ -130,7 +177,7 @@
                             <input type="text" class="form-control" name="identifying_code" id="identifying_code" value="{{ old('identifying_code') }}" placeholder="{{ trans('label.identifying_code') }}">
                         </div>
 
-                   
+
 
                         <div class=" col-lg-6 col-md-6 col-sm-12">
                             <label for="permission_date" class="form-label">{{ trans('label.permission_date') }}</label>

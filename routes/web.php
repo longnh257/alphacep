@@ -95,8 +95,9 @@ Route::group(['prefix' => 'customer', 'middleware' => 'check.login'], function (
     Route::delete('/{id}', [CustomerPageController::class, 'destroy'])->name('view.customer.destroy');
 });
 Route::group(['prefix' => 'customer-office', 'middleware' => 'check.login'], function () {
-    Route::get('/create/{customer_id}', [CustomerOfficePageController::class, 'create'])->name('view.customer_office.create');
-    Route::post('/{customer_id}', [CustomerOfficePageController::class, 'store'])->name('view.customer_office.store');
+    Route::get('/', [CustomerOfficePageController::class, 'index'])->name('view.customer_office.index');
+    Route::get('/create', [CustomerOfficePageController::class, 'create'])->name('view.customer_office.create');
+    Route::post('/', [CustomerOfficePageController::class, 'store'])->name('view.customer_office.store');
     Route::get('/{id}/edit', [CustomerOfficePageController::class, 'edit'])->name('view.customer_office.edit');
     Route::put('/{id}', [CustomerOfficePageController::class, 'update'])->name('view.customer_office.update');
     Route::delete('/{id}', [CustomerOfficePageController::class, 'destroy'])->name('view.customer_office.destroy');

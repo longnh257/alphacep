@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectDocument extends Model
 {
@@ -35,6 +37,13 @@ class ProjectDocument extends Model
         });
         static::deleting(function ($model) {
             $model->document_attributes()->delete();
+        });  
+        static::addGlobalScope('customer', function (Builder $builder) {
+            $user = Auth::user();
+
+            if ($user) {
+                $builder->where('customer_id', $user->customer_id);
+            }
         });
     }
 }

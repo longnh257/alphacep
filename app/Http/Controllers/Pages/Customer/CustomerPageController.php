@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MCustomer;
 use App\Models\MCustomerOffice;
 use App\Models\MCustomerStaff;
+use App\Models\MUser;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerPageController extends Controller
@@ -19,20 +20,23 @@ class CustomerPageController extends Controller
     public function create()
     {
         return view('pages.customer.create');
-    } 
- 
+    }
+
 
     public function store(Request $request)
     {
 
-
         $request->validate(
             [
-                'name' => 'required|max:255',
-                'name_kana' => 'required|max:255',
+                'name' => 'required|max:254',
+                'name_kana' => 'required|max:254',
                 'tel' => 'required|regex:/^\d{10}$/|max:12',
-                'fax' => 'regex:/^\d{10}$/|max:12',
                 'postcode' => 'max:10',
+
+                'user_name' => 'required|max:254',
+                'user_email' => 'email|required|max:254|unique:m_user,email',
+                'user_phone' => 'required|regex:/^\d{10}$/|max:12',
+                'password' => 'required|confirmed',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),
@@ -41,7 +45,16 @@ class CustomerPageController extends Controller
         $request['created_by_id'] = Auth::id();
         $request['updated_by_id'] = Auth::id();
 
-        MCustomer::create($request->except('_token'));
+        $customer = MCustomer::create($request->except('_token'));
+
+        MUser::create([
+            "name" => $request->user_name,
+            "email" => $request->user_email,
+            "phone" => $request->user_phone,
+            "password" => bcrypt($request->password),
+            "address" => $request->address,
+            "customer_id" => $customer->customer_id,
+        ]);
 
         return redirect()->route('view.customer.index')
             ->with('success', 'Customer created successfully!');
@@ -54,15 +67,14 @@ class CustomerPageController extends Controller
     }
 
     public function update(Request $request, $id)
-    {  
+    {
         $customer = MCustomer::findOrFail($id);
-    
+
         $request->validate(
             [
-                'name' => 'required|max:255',
-                'name_kana' => 'required|max:255',
+                'name' => 'required|max:254',
+                'name_kana' => 'required|max:254',
                 'tel' => 'required|regex:/^\d{10}$/|max:12',
-                'fax' => 'regex:/^\d{10}$/|max:12',
                 'postcode' => 'max:10',
             ],
             trans('validation.messages'),
@@ -79,8 +91,8 @@ class CustomerPageController extends Controller
     public function destroy($id)
     {
         $post = MCustomer::findOrFail($id);
-        MCustomerStaff::where('customer_id',$id)->delete();
-        MCustomerOffice::where('customer_id',$id)->delete();
+        MCustomerStaff::where('customer_id', $id)->delete();
+        MCustomerOffice::where('customer_id', $id)->delete();
         $post->delete();
 
         return redirect()->route('view.customer.index')

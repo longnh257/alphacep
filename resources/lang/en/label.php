@@ -2,9 +2,11 @@
 
 return [
     //sidebar
+    'admin' => 'Admin',
     'function' => 'Function',
     'function_category' => 'Function Category',
     'customer' => 'Customer',
+    'customer_office' => 'Customer Office',
     'nationality' => 'Nationality',
     'native_language' => 'Native Language',
     'sending_agency' => 'Sending Agency',

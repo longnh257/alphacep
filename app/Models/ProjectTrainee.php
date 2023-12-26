@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectTrainee extends Model
 {
@@ -32,8 +34,8 @@ class ProjectTrainee extends Model
         return $this->belongsTo(Project::class, 'project_id', 'project_id');
     }
 
-    
-        
+
+
     protected static function boot()
     {
         parent::boot();
@@ -44,7 +46,13 @@ class ProjectTrainee extends Model
         });
         static::updating(function ($model) {
             $model->updated_by_id =  auth()->id();
+        });  
+        static::addGlobalScope('customer', function (Builder $builder) {
+            $user = Auth::user();
 
+            if ($user) {
+                $builder->where('customer_id', $user->customer_id);
+            }
         });
     }
 }

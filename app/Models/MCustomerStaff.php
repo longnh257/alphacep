@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class MCustomerStaff extends Model
 {
@@ -32,6 +34,13 @@ class MCustomerStaff extends Model
         });
         static::updating(function ($model) {
             $model->updated_by_id =  auth()->id();
+        });
+        static::addGlobalScope('customer', function (Builder $builder) {
+            $user = Auth::user();
+
+            if ($user) {
+                $builder->where('customer_id', $user->customer_id);
+            }
         });
     }
 }
