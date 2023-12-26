@@ -46,6 +46,7 @@ use App\Http\Controllers\API\Function\FunctionController;
 use App\Http\Controllers\API\FunctionCategory\FunctionCategoryController;
 use App\Http\Controllers\API\Nationality\NationalityController;
 use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
+use App\Http\Controllers\API\Project\ProjectDocumentController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
 use App\Http\Controllers\API\Trainee\TraineeController;
 use App\Http\Controllers\API\Trainee\TraineeRelativeController;
@@ -53,6 +54,7 @@ use App\Http\Controllers\API\TrainingFacility\TrainingFacilityController;
 use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordController;
 use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordDetailController;
 use App\Http\Controllers\Pages\AuditReport\AuditReportPageController;
+use App\Http\Controllers\Pages\Project\ProjectDocumentPageController;
 use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
 use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordDetailPageController;
 use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordPageController;
@@ -182,6 +184,14 @@ Route::group(['prefix' => 'project-trainee-contract', 'middleware' => 'check.log
     Route::get('/{id}/edit', [ProjectTraineeContractPageController::class, 'edit'])->name('view.project_trainee_contract.edit');
     Route::put('/{id}', [ProjectTraineeContractPageController::class, 'update'])->name('view.project_trainee_contract.update');
     Route::delete('/{id}', [ProjectTraineeContractPageController::class, 'destroy'])->name('view.project_trainee_contract.destroy');
+});
+
+Route::group(['prefix' => 'project-document', 'middleware' => 'check.login'], function () {
+    Route::get('/create/{project_trainee_id}', [ProjectDocumentPageController::class, 'create'])->name('view.project_document.create');
+    Route::post('/{project_trainee_id}', [ProjectDocumentPageController::class, 'store'])->name('view.project_document.store');
+    Route::get('/{id}/edit', [ProjectDocumentPageController::class, 'edit'])->name('view.project_document.edit');
+    Route::put('/{id}', [ProjectDocumentPageController::class, 'update'])->name('view.project_document.update');
+    Route::delete('/{id}', [ProjectDocumentPageController::class, 'destroy'])->name('view.project_document.destroy');
 });
 
 //end Project
@@ -334,6 +344,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.list');
     Route::get('/project-trainees', [ProjectTraineeController::class, 'index'])->name('api.project_trainees.list');
     Route::get('/project-trainee-contracts', [ProjectTraineeContractController::class, 'index'])->name('api.project_trainee_contracts.list');
+    Route::get('/project-documents', [ProjectDocumentController::class, 'index'])->name('api.project-documents.list');
     Route::get('/project-works', [ProjectWorkController::class, 'index'])->name('api.project_works.list');
     Route::get('/project-work-tasks', [ProjectWorkTaskController::class, 'index'])->name('api.project_work_tasks.list');
     Route::get('/project-work-task-files', [ProjectWorkTaskFileController::class, 'index'])->name('api.project_work_task_files.list');

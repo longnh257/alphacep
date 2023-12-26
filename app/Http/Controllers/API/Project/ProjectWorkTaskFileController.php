@@ -21,6 +21,6 @@ class ProjectWorkTaskFileController extends Controller
         }
         $datas = $query->paginate($this->numPerPage);
 
-        return $this->hasSuccess('Get list Installers successful.',$datas);
+        return $this->hasSuccess('Get list successful.',$datas);
     }
 }

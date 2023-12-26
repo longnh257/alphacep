@@ -23,6 +23,6 @@ class ProjectTraineeConTractController extends Controller
 
         $datas = $query->with('project_trainee.project','project_trainee.trainee')->paginate($this->numPerPage);
 
-        return $this->hasSuccess('Get list Installers successful.', $datas);
+        return $this->hasSuccess('Get list successful.', $datas);
     }
 }

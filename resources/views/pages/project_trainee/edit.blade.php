@@ -40,7 +40,7 @@
                         <a class="nav-link " data-bs-toggle="tab" data-bs-target="#contract_info" aria-current="page" href="#contract_info"> {{trans('label.contract_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#contract_info" aria-current="page" href="#contract_info"> {{trans('label.contract_info')}}</a>
+                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#document" aria-current="page" href="#document"> {{trans('label.document')}}</a>
                     </li>
 
                 </ul>
@@ -160,6 +160,118 @@
                                                             @method('DELETE')
                                                             @csrf
                                                             <a href="##" @click="deleteItem(item.contract_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="card-footer p-8pt">
+                                        <ul class="pagination justify-content-start pagination-xsm m-0">
+
+                                            <li class="page-item disabled" v-if="page <= 1">
+                                                <button class="page-link" type="button" aria-label="Previous">
+                                                    <i class="fe fe-arrow-left"></i>
+                                                </button>
+                                            </li>
+                                            <li class="page-item" v-if="page > 1" @click="onPrePage()">
+                                                <button class="page-link" type="button" aria-label="Previous">
+                                                    <i class="fe fe-arrow-left"></i>
+                                                </button>
+                                            </li>
+
+
+                                            <li class="page-item disabled" v-if="page > 3 ">
+                                                <button class="page-link" type="button">
+                                                    <span>...</span>
+                                                </button>
+                                            </li>
+                                            <li class="page-item" v-for="item in listPage" v-if="page > (item - 3) && page < (item + 3) " @click="onPageChange(item)" v-bind:class="page == item ? 'active' : ''">
+                                                <button class="page-link" type="button" aria-label="Page 1">
+                                                    <span>((item))</span>
+                                                </button>
+                                            </li>
+
+
+                                            <li class="page-item disabled" v-if="page > count - 1 || count == 1">
+                                                <button class="page-link" type="button">
+                                                    <i class="fe fe-arrow-right"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="page-item" @click="onNextPage()" v-if="page <= count - 1 && count > 1">
+                                                <button class="page-link" type="button">
+                                                    <i class="fe fe-arrow-right"></i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="document" role="document">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
+                                @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                                @endif
+                            </div>
+                            <div class="col-md-12 col-lg-12 col-xl-12" id="list-data2">
+
+                                <div class="table-responsive country-table">
+                                    <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
+                                        <thead class="gridjs-thead">
+                                            <tr class="gridjs-tr">
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.contract_id')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.trainee')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.project_id')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+
+                                                <th>
+                                                    <div class="pe-1 mb-xl-0">
+                                                        <a href="{{route('view.project_document.create',$project_trainee->project_trainee_id)}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                                            <i class="fe fe-plus"></i></a>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="item in list" :key="item.project_document_id">
+                                                <td>((item.project_document_id))</td>
+
+                                                <td>
+                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                        <a :href="`{{asset('project-document')}}/`+item.project_document_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                                        <form :action="`{{asset('project-document')}}/`+item.project_document_id" :id="'formDeleteDocument_'+((item.project_document_id))" class="pt-1" method="post">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <a href="##" @click="deleteDocument(item.project_document_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -333,7 +445,7 @@
     });
 
     new Vue({
-        el: '#list-data',
+        el: '#list-data2',
         data: {
             sortDirection: 'desc',
             sortBy: 'fyb_id',
@@ -381,7 +493,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.project_trainee_contracts.list')}}" + conditionSearch,
+                    url: "{{route('api.project-documents.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;
