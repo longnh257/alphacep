@@ -229,7 +229,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.contract_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.project_document_id ')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -238,7 +238,7 @@
 
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.trainee')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.document_name')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -246,7 +246,15 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.document_type')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.target_doc')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -264,6 +272,9 @@
                                         <tbody>
                                             <tr v-for="item in list" :key="item.project_document_id">
                                                 <td>((item.project_document_id))</td>
+                                                <td>((item.document_name))</td>
+                                                <td>((item.document_type))</td>
+                                                <td>((item.target_doc))</td>
 
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap justify-end">
@@ -520,7 +531,7 @@
                     }
                 });
             },
-            deleteItem(id) {
+            deleteDocument(id) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -531,7 +542,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDelete_' + id).submit();
+                        jQuery('#formDeleteDocument_' + id).submit();
                     }
                 })
 

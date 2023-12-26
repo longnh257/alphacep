@@ -25,6 +25,12 @@ use App\Http\Controllers\Pages\Project\ProjectWorkTaskFilePageController;
 use App\Http\Controllers\Pages\Project\ProjectTraineeContractPageController;
 use App\Http\Controllers\Pages\Work\WorkPageController;
 use App\Http\Controllers\Pages\Work\WorkFlowPageController;
+use App\Http\Controllers\Pages\AuditReport\AuditReportPageController;
+use App\Http\Controllers\Pages\Project\ProjectDocumentPageController;
+use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
+use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordDetailPageController;
+use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordPageController;
+use App\Http\Controllers\Pages\Document\DocumentTemplatePageController;
 
 
 // Import Api
@@ -46,6 +52,7 @@ use App\Http\Controllers\API\Function\FunctionController;
 use App\Http\Controllers\API\FunctionCategory\FunctionCategoryController;
 use App\Http\Controllers\API\Nationality\NationalityController;
 use App\Http\Controllers\API\NativeLanguage\NativeLanguageController;
+use App\Http\Controllers\API\Project\ProjectDocumentAttributeController;
 use App\Http\Controllers\API\Project\ProjectDocumentController;
 use App\Http\Controllers\API\SendingAgency\SendingAgencyController;
 use App\Http\Controllers\API\Trainee\TraineeController;
@@ -53,12 +60,10 @@ use App\Http\Controllers\API\Trainee\TraineeRelativeController;
 use App\Http\Controllers\API\TrainingFacility\TrainingFacilityController;
 use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordController;
 use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordDetailController;
-use App\Http\Controllers\Pages\AuditReport\AuditReportPageController;
-use App\Http\Controllers\Pages\Project\ProjectDocumentPageController;
-use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
-use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordDetailPageController;
-use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordPageController;
-use App\Models\ProjectTraineeContract;
+use App\Http\Controllers\API\Document\DocumentAttributeController;
+use App\Http\Controllers\API\Document\DocumentTemplateController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -192,6 +197,15 @@ Route::group(['prefix' => 'project-document', 'middleware' => 'check.login'], fu
     Route::get('/{id}/edit', [ProjectDocumentPageController::class, 'edit'])->name('view.project_document.edit');
     Route::put('/{id}', [ProjectDocumentPageController::class, 'update'])->name('view.project_document.update');
     Route::delete('/{id}', [ProjectDocumentPageController::class, 'destroy'])->name('view.project_document.destroy');
+});
+
+Route::group(['prefix' => 'document-template', 'middleware' => 'check.login'], function () {
+    Route::get('/', [DocumentTemplatePageController::class, 'index'])->name('view.document_template.index');
+    Route::get('/create', [DocumentTemplatePageController::class, 'create'])->name('view.document_template.create');
+    Route::post('/', [DocumentTemplatePageController::class, 'store'])->name('view.document_template.store');
+    Route::get('/{id}/edit', [DocumentTemplatePageController::class, 'edit'])->name('view.document_template.edit');
+    Route::put('/{id}', [DocumentTemplatePageController::class, 'update'])->name('view.document_template.update');
+    Route::delete('/{id}', [DocumentTemplatePageController::class, 'destroy'])->name('view.document_template.destroy');
 });
 
 //end Project
@@ -345,9 +359,14 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/project-trainees', [ProjectTraineeController::class, 'index'])->name('api.project_trainees.list');
     Route::get('/project-trainee-contracts', [ProjectTraineeContractController::class, 'index'])->name('api.project_trainee_contracts.list');
     Route::get('/project-documents', [ProjectDocumentController::class, 'index'])->name('api.project-documents.list');
+    Route::get('/project-document-attributes', [ProjectDocumentAttributeController::class, 'index'])->name('api.project-document-attributes.list');
+
     Route::get('/project-works', [ProjectWorkController::class, 'index'])->name('api.project_works.list');
     Route::get('/project-work-tasks', [ProjectWorkTaskController::class, 'index'])->name('api.project_work_tasks.list');
     Route::get('/project-work-task-files', [ProjectWorkTaskFileController::class, 'index'])->name('api.project_work_task_files.list');
+
+    Route::get('/document-templates', [DocumentTemplateController::class, 'index'])->name('api.document_templates.list');
+    Route::get('/document-attributes', [DocumentAttributeController::class, 'index'])->name('api.document_attributes.list');
 
     Route::get('/visit-guidance-records', [VisitGuidanceRecordController::class, 'index'])->name('api.visit_guidance_records.list');
 

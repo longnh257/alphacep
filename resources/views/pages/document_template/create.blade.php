@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title', 'Project Document')
+@section('title', 'Document Template')
 
 @section('content')
-<form action="{{route('view.project_document.store',$project_trainee->project_trainee_id)}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.document_template.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.project_document_add') }}</h4>
+            <h4 class="mb-0">{{ trans('label.document_template_add') }}</h4>
         </div>
     </div>
     <!-- End Page Header -->
@@ -40,15 +40,15 @@
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <label for="document_name" class="form-label">{{ trans('label.document_name') }}</label>
-                            <input type="text" class="form-control" name="document_name" id="document_name" value="{{ old('document_name') }}">
+                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <label for="document_type" class="form-label">{{ trans('label.document_type') }}</label>
-                            <select class="form-control" name="document_type" id="document_type">
-                                <option value="01" {{ old('document_type') == '01' ? 'selected' : '' }}>資格申請書類</option>
-                                <option value="02" {{ old('document_type') == '02' ? 'selected' : '' }}>更新申請書類</option>
-                                <option value="03" {{ old('document_type') == '03' ? 'selected' : '' }}>監査書類</option>
+                            <select class="form-control" name="type" id="type">
+                                <option value="01" {{ old('type') == '01' ? 'selected' : '' }}>資格申請書類</option>
+                                <option value="02" {{ old('type') == '02' ? 'selected' : '' }}>更新申請書類</option>
+                                <option value="03" {{ old('type') == '03' ? 'selected' : '' }}>監査書類</option>
                             </select>
                         </div>
 

@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Project Document')
+@section('title', 'Document Template')
 
 @section('content')
 
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.project_document_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('label.document_template_edit') }}</h4>
     </div>
 
 </div>
@@ -29,9 +29,9 @@
                     </div>
                     @endforeach
                     @endif
-                    <div class="tab-pane active" id="project_document_info" role="project_document_info">
+                    <div class="tab-pane active" id="document_template_info" role="document_template_info">
 
-                        <form action="{{route('view.project_document.update', $model->project_document_id)}}" method="post" enctype="multipart/form-data" class="container-fluid">
+                        <form action="{{route('view.document_template.update', $model->document_template_id)}}" method="post" enctype="multipart/form-data" class="container-fluid">
                             @method('PUT')
                             @csrf
 
@@ -39,16 +39,16 @@
                                 <div class="row gy-4">
 
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <label for="document_name" class="form-label">{{ trans('label.document_name') }}</label>
-                                        <input type="text" class="form-control" name="document_name" id="document_name" value="{{ $model->document_name }}">
+                                        <label for="name" class="form-label">{{ trans('label.name') }}</label>
+                                        <input type="text" class="form-control" name="name" id="name" value="{{ $model->name }}">
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <label for="document_type" class="form-label">{{ trans('label.document_type') }}</label>
-                                        <select class="form-control" name="document_type" id="document_type">
-                                            <option value="01" {{ $model->document_type == '01' ? 'selected' : '' }}>資格申請書類</option>
-                                            <option value="02" {{ $model->document_type == '02' ? 'selected' : '' }}>更新申請書類</option>
-                                            <option value="03" {{ $model->document_type == '03' ? 'selected' : '' }}>監査書類</option>
+                                        <label for="type" class="form-label">{{ trans('label.type') }}</label>
+                                        <select class="form-control" name="type" id="type">
+                                            <option value="01" {{ $model->type == '01' ? 'selected' : '' }}>資格申請書類</option>
+                                            <option value="02" {{ $model->type == '02' ? 'selected' : '' }}>更新申請書類</option>
+                                            <option value="03" {{ $model->type == '03' ? 'selected' : '' }}>監査書類</option>
                                         </select>
                                     </div>
 
@@ -178,7 +178,7 @@
                 const that = this;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.project-document-attributes.list')}}?project_document_id={{$model->project_document_id}}",
+                    url: "{{route('api.document_attributes.list')}}?document_template_id={{$model->document_template_id}}",
                     success: function(data) {
                         that.attributes = data.result.data;
                         console.log( that.attributes);

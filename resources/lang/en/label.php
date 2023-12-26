@@ -15,6 +15,7 @@ return [
     'work' => 'Work',
     'workflow' => 'Workflow',
     'audit_report' => 'Audit Report',
+    'document_template' => 'Document Template',
 
     'female' => 'Female',
     'male' => 'Male',
