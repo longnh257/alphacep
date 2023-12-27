@@ -313,8 +313,8 @@ Route::group(['prefix' => 'trainee', 'middleware' => 'check.login'], function ()
 
 Route::group(['prefix' => 'trainee-relative', 'middleware' => 'check.login'], function () {
     Route::get('/', [TraineeRelativePageController::class, 'index'])->name('view.trainee_relative.index');
-    Route::get('/create', [TraineeRelativePageController::class, 'create'])->name('view.trainee_relative.create');
-    Route::post('/', [TraineeRelativePageController::class, 'store'])->name('view.trainee_relative.store');
+    Route::get('/create/{trainee_id}', [TraineeRelativePageController::class, 'create'])->name('view.trainee_relative.create');
+    Route::post('/{trainee_id}', [TraineeRelativePageController::class, 'store'])->name('view.trainee_relative.store');
     Route::get('/{id}/edit', [TraineeRelativePageController::class, 'edit'])->name('view.trainee_relative.edit');
     Route::put('/{id}', [TraineeRelativePageController::class, 'update'])->name('view.trainee_relative.update');
     Route::delete('/{id}', [TraineeRelativePageController::class, 'destroy'])->name('view.trainee_relative.destroy');

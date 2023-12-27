@@ -44,8 +44,8 @@ class TraineePageController extends Controller
 
     public function edit($id)
     {
-        $trainee = MTrainee::findOrFail($id);
-        return view('pages.trainee.edit', compact('trainee'));
+        $model = MTrainee::findOrFail($id);
+        return view('pages.trainee.edit', compact('model'));
     }
 
     public function update(Request $request, $id)

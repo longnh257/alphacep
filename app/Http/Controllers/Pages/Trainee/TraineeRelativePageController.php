@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages\Trainee;
 
 use App\Http\Controllers\Controller;
+use App\Models\MTrainee;
 use Illuminate\Http\Request;
 use App\Models\MTraineeRelative;
 use Illuminate\Support\Facades\Auth;
@@ -14,58 +15,52 @@ class TraineeRelativePageController extends Controller
         return view('pages.trainee_relative.index');
     }
 
-    public function create()
+    public function create($trainee_id)
     {
-        return view('pages.trainee_relative.create');
+        $trainee = MTrainee::findOrFail($trainee_id);
+        return view('pages.trainee_relative.create', compact('trainee'));
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, $trainee_id)
     {
-
-
+        $trainee = MTrainee::findOrFail($trainee_id);
         $request->validate(
             [
                 'name' => 'required|max:255',
-                'name_kana' => 'required|max:255',
+                'relationship' => 'required|max:255',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),
         );
-
-        $request['customer_id'] = Auth::user()->customer_id;
-        $request['created_by_id'] = Auth::id();
-        $request['updated_by_id'] = Auth::id();
-
+        $request['trainee_id'] =  $trainee->trainee_id;
         MTraineeRelative::create($request->except('_token'));
 
-        return redirect()->route('view.trainee_relative.index')
+        return redirect()->route('view.trainee.edit', $trainee_id)
             ->with('success', 'TraineeRelative created successfully!');
     }
 
     public function edit($id)
     {
-        $trainee_relative = MTraineeRelative::findOrFail($id);
-        return view('pages.trainee_relative.edit', compact('trainee_relative'));
+        $model = MTraineeRelative::findOrFail($id);
+        return view('pages.trainee_relative.edit', compact('model'));
     }
 
     public function update(Request $request, $id)
     {
         $trainee_relative = MTraineeRelative::findOrFail($id);
-
-
         $request->validate(
             [
                 'name' => 'required|max:255',
-                'name_kana' => 'required|max:255',
+                'relationship' => 'required|max:255',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),
         );
-        $request['updated_by_id'] = Auth::id();
+
         $trainee_relative->update($request->except('customer_id'));
 
-        return redirect()->route('view.trainee_relative.index')
+        return redirect()->route('view.trainee.edit', $trainee_relative->trainee_id)
             ->with('success', 'TraineeRelative updated successfully!');
     }
 
@@ -74,7 +69,7 @@ class TraineeRelativePageController extends Controller
         $post = MTraineeRelative::findOrFail($id);
         $post->delete();
 
-        return redirect()->route('view.trainee_relative.index')
+        return redirect()->route('view.trainee.index')
             ->with('success', 'Trainee Relative deleted successfully!');
     }
 }

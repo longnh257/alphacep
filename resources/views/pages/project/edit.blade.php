@@ -170,7 +170,7 @@
                                                 <td>((item.sending_agency_id))</td>
 
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                    <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('project-trainee-contract/create')}}/`+item.project_trainee_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee-contract')}}"><i class="bx bx-file"></i></a>
                                                         <a :href="`{{asset('project-trainee')}}/`+item.project_trainee_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('project-trainee')}}/`+item.project_trainee_id" :id="'formDelete_'+((item.project_trainee_id))" class="pt-1" method="post">
@@ -284,7 +284,7 @@
                                                 <td>((item.work_id))</td>
 
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                    <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('project-work')}}/`+item.project_work_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('project-work')}}/`+item.project_work_id" :id="'formDeleteWork_'+((item.project_work_id))" class="pt-1" method="post">
                                                             @method('DELETE')

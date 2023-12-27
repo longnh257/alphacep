@@ -168,7 +168,7 @@
                                                 <td>((item.complete_user_name))</td>
 
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                    <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('project-work-task')}}/`+item.task_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('project-work-task')}}/`+item.task_id" :id="'formDelete_'+((item.task_id))" class="pt-1" method="post">
                                                             @method('DELETE')
@@ -309,7 +309,7 @@
                                                 <td>((item.complete_user_name))</td>
 
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                    <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('project-work-task-file')}}/`+item.task_file_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('project-work-task-file')}}/`+item.task_file_id" :id="'formDeleteFile_'+((item.task_file_id))" class="pt-1" method="post">
                                                             @method('DELETE')

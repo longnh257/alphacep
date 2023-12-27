@@ -168,7 +168,7 @@
                                                 <td>((item.visit_date ))</td>
                                                 <td>((item.visit_time ))</td>
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                    <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('visit-guidance-record-detail')}}/`+item.detail_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('visit-guidance-record-detail')}}/`+item.detail_id" :id="'formDelete_'+((item.visit_record_id))" class="pt-1" method="post">
                                                             @method('DELETE')

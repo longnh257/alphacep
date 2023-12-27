@@ -1,188 +1,88 @@
 @extends('layouts.master')
 
-@section('title', 'Trainee')
+@section('title', 'Trainee Relative')
 
 @section('content')
-<form action="{{route('view.trainee.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
+<form action="{{route('view.trainee_relative.store',$trainee->trainee_id)}}" method="post" enctype="multipart/form-data" class="container-fluid">
     @csrf
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.trainee_add') }}</h4>
-        </div>
-        <div class="main-dashboard-header-right">
-            <div class="d-flex my-xl-auto right-content align-items-center">
-                <div class="pe-1 mb-xl-0">
-                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
-                        <i class="bi bi-save"></i>
-                    </button>
-                </div>
-                <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.trainee.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
-                        <i class="bi bi-box-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
+            <h4 class="mb-0">{{ trans('label.trainee_relative_add') }}</h4>
         </div>
     </div>
     <!-- End Page Header -->
 
     <!-- row -->
     <!-- Start:: row-1 -->
+
+
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+    <div class="alert alert-danger mx-2" role="alert">
+        {{ $error }}
+    </div>
+    @endforeach
+    @endif
     <div class="row">
         <div class="col-xl-12">
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.trainee_info') }}
+                        {{ trans('label.trainee_relative_info') }}
                     </div>
                 </div>
 
-                @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                <div class="alert alert-danger mx-4" role="alert">
-                    {{ $error }}
-                </div>
-                @endforeach
-                @endif
 
                 <div class="card-body">
                     <div class="row gy-4">
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('label.name') }}">
+                            <label for="relationship required" class="form-label">{{ trans('label.relationship') }}</label>
+                            <input type="text" class="form-control" name="relationship" id="relationship" value="{{ old('relationship') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="tel" class="form-label">{{ trans('label.tel') }}</label>
-                            <input type="text" class="form-control" name="tel" id="tel" value="{{ old('tel') }}" placeholder="{{ trans('label.tel') }}">
+                            <label for="name required" class="form-label">{{ trans('label.name') }}</label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
-                            <input type="text" class="form-control" name="postcode" id="postcode" value="{{ old('postcode') }}" placeholder="{{ trans('label.postcode') }}">
+                            <label for="birthday" class="form-label">{{ trans('label.birthday') }}</label>
+                            <input type="date" class="form-control" name="birthday" id="birthday" value="{{ old('birthday') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="address1" class="form-label">{{ trans('label.address1') }}</label>
-                            <input type="text" class="form-control" name="address1" id="address1" value="{{ old('address1') }}" placeholder="{{ trans('label.address1') }}">
+                            <label for="nationality" class="form-label">{{ trans('label.nationality') }}</label>
+                            <input type="text" class="form-control" name="nationality" id="nationality" value="{{ old('nationality') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="address2" class="form-label">{{ trans('label.address2') }}</label>
-                            <input type="text" class="form-control" name="address2" id="address2" value="{{ old('address2') }}" placeholder="{{ trans('label.address2') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="food_expense_payment" class="form-label">{{ trans('label.food_expense_payment') }}</label>
-                            <select class="form-select" name="food_expense_payment" id="food_expense_payment">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
+                            <label for="live_together" class="form-label">{{ trans('label.live_together') }}</label>
+                            <select class="form-control" name="live_together" id="live_together">
+                                <option value="1" {{ old('live_together') == '1' ? 'selected' : '' }}>有</option>
+                                <option value="0" {{ old('live_together') == '0' ? 'selected' : '' }}>無</option>
                             </select>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="food_expense_payment_detail" class="form-label">{{ trans('label.food_expense_payment_detail') }}</label>
-                            <input type="text" class="form-control" name="food_expense_payment_detail" id="food_expense_payment_detail" value="{{ old('food_expense_payment_detail') }}" placeholder="{{ trans('label.food_expense_payment_detail') }}">
+                            <label for="work_school_place" class="form-label">{{ trans('label.work_school_place') }}</label>
+                            <input type="text" class="form-control" name="work_school_place" id="work_school_place" value="{{ old('work_school_place') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="food_expense_trainee_charge" class="form-label">{{ trans('label.food_expense_trainee_charge') }}</label>
-                            <select class="form-select" name="food_expense_trainee_charge" id="food_expense_trainee_charge">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
+                            <label for="mobile_tel" class="form-label">{{ trans('label.mobile_tel') }}</label>
+                            <input type="text" class="form-control" name="mobile_tel" id="mobile_tel" value="{{ old('mobile_tel') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="food_expense_trainee_charge_detail" class="form-label">{{ trans('label.food_expense_trainee_charge_detail') }}</label>
-                            <input type="text" class="form-control" name="food_expense_trainee_charge_detail" id="food_expense_trainee_charge_detail" value="{{ old('food_expense_trainee_charge_detail') }}" placeholder="{{ trans('label.food_expense_trainee_charge_detail') }}">
+                            <label for="residence_card_number" class="form-label">{{ trans('label.residence_card_number') }}</label>
+                            <input type="text" class="form-control" name="residence_card_number" id="residence_card_number" value="{{ old('residence_card_number') }}">
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="food_expense_comment" class="form-label">{{ trans('label.food_expense_comment') }}</label>
-                            <input type="text" class="form-control" name="food_expense_comment" id="food_expense_comment" value="{{ old('food_expense_comment') }}" placeholder="{{ trans('label.food_expense_comment') }}">
+                        <div class="btn-list">
+                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="house_cost_payment" class="form-label">{{ trans('label.house_cost_payment') }}</label>
-                            <select class="form-select" name="house_cost_payment" id="house_cost_payment">
-                                <option value="0">No</option>
-                                <option value="1" >Yes</option>
-                            </select>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="house_cost_payment_detail" class="form-label">{{ trans('label.house_cost_payment_detail') }}</label>
-                            <input type="text" class="form-control" name="house_cost_payment_detail" id="house_cost_payment_detail" value="{{ old('house_cost_payment_detail') }}" placeholder="{{ trans('label.house_cost_payment_detail') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="house_cost_trainee_charge" class="form-label">{{ trans('label.house_cost_trainee_charge') }}</label>
-                            <select class="form-select" name="house_cost_trainee_charge" id="house_cost_trainee_charge">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="house_cost_trainee_charge_detail" class="form-label">{{ trans('label.house_cost_trainee_charge_detail') }}</label>
-                            <input type="text" class="form-control" name="house_cost_trainee_charge_detail" id="house_cost_trainee_charge_detail" value="{{ old('house_cost_trainee_charge_detail') }}" placeholder="{{ trans('label.house_cost_trainee_charge_detail') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_form" class="form-label">{{ trans('label.training_place_form') }}</label>
-                            <select class="form-select" name="training_place_form" id="training_place_form">
-                                <option value="01">Dormitory</option>
-                                <option value="02">Rental House</option>
-                                <option value="99">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_form_detail" class="form-label">{{ trans('label.training_place_form_detail') }}</label>
-                            <input type="text" class="form-control" name="training_place_form_detail" id="training_place_form_detail" value="{{ old('training_place_form_detail') }}" placeholder="{{ trans('label.training_place_form_detail') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_name" class="form-label">{{ trans('label.training_place_name') }}</label>
-                            <input type="text" class="form-control" name="training_place_name" id="training_place_name" value="{{ old('training_place_name') }}" placeholder="{{ trans('label.training_place_name') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_tel" class="form-label">{{ trans('label.training_place_tel') }}</label>
-                            <input type="text" class="form-control" name="training_place_tel" id="training_place_tel" value="{{ old('training_place_tel') }}" placeholder="{{ trans('label.training_place_tel') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_postcode" class="form-label">{{ trans('label.training_place_postcode') }}</label>
-                            <input type="text" class="form-control" name="training_place_postcode" id="training_place_postcode" value="{{ old('training_place_postcode') }}" placeholder="{{ trans('label.training_place_postcode') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_address1" class="form-label">{{ trans('label.training_place_address1') }}</label>
-                            <input type="text" class="form-control" name="training_place_address1" id="training_place_address1" value="{{ old('training_place_address1') }}" placeholder="{{ trans('label.training_place_address1') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_address2" class="form-label">{{ trans('label.training_place_address2') }}</label>
-                            <input type="text" class="form-control" name="training_place_address2" id="training_place_address2" value="{{ old('training_place_address2') }}" placeholder="{{ trans('label.training_place_address2') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_area" class="form-label">{{ trans('label.training_place_area') }}</label>
-                            <input type="text" class="form-control" name="training_place_area" id="training_place_area" value="{{ old('training_place_area') }}" placeholder="{{ trans('label.training_place_area') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_person" class="form-label">{{ trans('label.training_place_person') }}</label>
-                            <input type="text" class="form-control" name="training_place_person" id="training_place_person" value="{{ old('training_place_person') }}" placeholder="{{ trans('label.training_place_person') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="training_place_room_area" class="form-label">{{ trans('label.training_place_room_area') }}</label>
-                            <input type="text" class="form-control" name="training_place_room_area" id="training_place_room_area" value="{{ old('training_place_room_area') }}" placeholder="{{ trans('label.training_place_room_area') }}">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -190,23 +90,6 @@
     </div>
     <!-- End:: row-1 -->
     <!-- row closed -->
-    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-        <div></div>
-        <div class="main-dashboard-header-right">
-            <div class="d-flex my-xl-auto right-content align-items-center">
-                <div class="pe-1 mb-xl-0">
-                    <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
-                        <i class="bi bi-save"></i>
-                    </button>
-                </div>
-                <div class="pe-1 mb-xl-0">
-                    <a href="{{route('view.trainee.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
-                        <i class="bi bi-box-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </form>
 @endsection

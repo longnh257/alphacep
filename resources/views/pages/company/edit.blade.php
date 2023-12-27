@@ -153,7 +153,7 @@
                                                 <td>((item.company_id))</td>
                                                 <td class="fw-medium">((item.tel))</td>
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                    <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('company-office')}}/`+item.company_office_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('company-office')}}/`+item.company_office_id" :id="'formDelete_'+((item.company_office_id))" class="pt-1" method="post">
                                                             @method('DELETE')
@@ -283,7 +283,7 @@
                                                 <td>((item.trainee_id ))</td>
                                          
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-end">
+                                                    <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('visit-guidance-record')}}/`+item.visit_record_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('visit-guidance-record')}}/`+item.visit_record_id" :id="'formDeleteVisitGuidance_'+((item.visit_record_id))" class="pt-1" method="post">
                                                             @method('DELETE')
