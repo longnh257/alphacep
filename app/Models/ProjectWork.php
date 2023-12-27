@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectWork extends Model
@@ -18,7 +19,7 @@ class ProjectWork extends Model
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
 
-    
+
     public function work(): BelongsTo
     {
         return $this->belongsTo(MTrainee::class, 'work_id', 'work_id');
@@ -29,6 +30,11 @@ class ProjectWork extends Model
         return $this->belongsTo(Project::class, 'project_id', 'project_id');
     }
 
+
+    public function task_files(): HasMany
+    {
+        return $this->hasMany(ProjectWorkTaskFile::class, 'project_work_id', 'project_work_id');
+    }
 
     protected static function boot()
     {
@@ -41,7 +47,10 @@ class ProjectWork extends Model
         static::updating(function ($model) {
             $model->updated_by_id =  auth()->id();
             $model->updated_count += 1;
-        });  
+        });
+        static::deleting(function ($model) {
+            $model->task_files()->delete();
+        });
         static::addGlobalScope('customer', function (Builder $builder) {
             $user = Auth::user();
 

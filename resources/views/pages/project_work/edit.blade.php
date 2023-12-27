@@ -243,7 +243,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.task_file_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -251,7 +251,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.file_name')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.file_path')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -293,7 +293,7 @@
                                         <tbody>
                                             <tr v-for="item in list" :key="item.project_work_project_work_id">
                                                 <td>((item.task_file_id))</td>
-                                                <td>((item.file_name))</td>
+                                                <td><a :href="item.file_path" target="_blank">((item.file_name))</a></td>
                                                 <td>((item.file_size))</td>
                                                 <td>((item.seq_no))</td>
                                                 <td>((item.project_work_id))</td>

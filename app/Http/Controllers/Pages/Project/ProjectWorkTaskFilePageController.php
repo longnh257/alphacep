@@ -23,27 +23,28 @@ class ProjectWorkTaskFilePageController extends Controller
     public function store(Request $request, $project_work_id)
     {
         ProjectWork::findOrFail($project_work_id);
-        $request->validate([
-            'file' => 'required|mimes:pdf,doc,docx|max:4096',
-        ]);
+        $request->validate(
+            [
+                'seq_no' => 'numeric',
+                'file' => 'required|mimes:pdf,doc,docx|max:4096',
+
+            ],
+            trans('validation.messages'),
+            trans('validation.attributes'),
+        );
 
         $file = $request->file('file');
-        $fileName = $file->getClientOriginalName();
+        $fileName = uniqid() . '.' . $file->getClientOriginalName();
         $fileSize = $file->getSize();
         $seqNo = $request->input('seq_no');
-        $path = $file->store('uploads', 'public');
 
-        // Convert to binary if needed
-        $binaryData = file_get_contents(storage_path("app/public/{$path}"));
+        Storage::disk('local')->put('public/uploads/' . $fileName, file_get_contents($file));
 
-        // Store the binary data
-        Storage::disk('public')->put("binaries/{$file->getClientOriginalName()}", $binaryData);
 
         $record =  ProjectWorkTaskFile::create([
             'file_name' => $fileName,
             'file_size' => $fileSize,
             'seq_no' => $seqNo,
-            'file_data' => $binaryData,
             'project_work_id' => $project_work_id,
         ]);
 

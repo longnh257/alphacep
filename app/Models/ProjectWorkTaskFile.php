@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectWorkTaskFile extends Model
 {
@@ -17,12 +18,25 @@ class ProjectWorkTaskFile extends Model
     protected $primaryKey = 'task_file_id';
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
+    protected $appends = ['file_path'];
 
 
     public function project_work(): BelongsTo
     {
         return $this->belongsTo(ProjectWork::class, 'project_work_id', 'project_work_id');
     }
+
+    public function getFilePathAttribute()
+    {
+        return Storage::url($this->getStoragePath());
+    }
+
+    // Helper method to get the storage path
+    protected function getStoragePath()
+    {
+        return "public/uploads/{$this->file_name}";
+    }
+
 
     protected static function boot()
     {
@@ -35,6 +49,9 @@ class ProjectWorkTaskFile extends Model
         static::updating(function ($model) {
             $model->updated_by_id =  auth()->id();
             $model->updated_count += 1;
+        });
+        static::deleting(function ($model) {
+            Storage::delete($model->getStoragePath());
         });
         static::addGlobalScope('customer', function (Builder $builder) {
             $user = Auth::user();

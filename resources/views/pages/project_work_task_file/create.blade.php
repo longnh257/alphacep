@@ -52,7 +52,7 @@
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <label for="seq_no" class="form-label">{{ trans('label.seq_no') }}</label>
-                            <input type="text" class="form-control" name="seq_no" id="seq_no" value="{{ old('seq_no') }}">
+                            <input type="number" class="form-control" name="seq_no" id="seq_no" value="{{ old('seq_no') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
