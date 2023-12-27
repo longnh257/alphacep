@@ -440,7 +440,7 @@
                                                 </th>
 
                                                 <th>
-                                                    <div class="pe-1 mb-xl-0">
+                                                    <div>
                                                         <a href="{{route('view.trainee_relative.create',$model->trainee_id)}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>

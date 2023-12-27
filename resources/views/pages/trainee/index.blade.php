@@ -16,7 +16,7 @@
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
-            <div class="pe-1 mb-xl-0">
+            <div>
                 <a href="{{route('view.trainee.create')}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
                     <i class="fe fe-plus"></i></a>
             </div>

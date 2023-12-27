@@ -12,12 +12,12 @@
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
-                <div class="pe-1 mb-xl-0">
+                <div>
                     <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
                         <i class="bi bi-save"></i>
                     </button>
                 </div>
-                <div class="pe-1 mb-xl-0">
+                <div>
                     <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                         <i class="bi bi-box-arrow-left"></i>
                     </a>
@@ -88,12 +88,12 @@
         <div></div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
-                <div class="pe-1 mb-xl-0">
+                <div>
                     <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
                         <i class="bi bi-save"></i>
                     </button>
                 </div>
-                <div class="pe-1 mb-xl-0">
+                <div>
                     <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                         <i class="bi bi-box-arrow-left"></i>
                     </a>

@@ -16,8 +16,8 @@
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
-            <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.working_hour.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+            <div>
+                <a href="{{route('view.working_hour.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -63,7 +63,7 @@
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
-                                    </div> 
+                                    </div>
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
@@ -71,7 +71,7 @@
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
-                                    </div> 
+                                    </div>
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
@@ -79,12 +79,12 @@
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
-                                    </div> 
+                                    </div>
                                 </th>
-                           
+
 
                                 <th class="text-end">
-                                    <a href="{{route('view.working_hour.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                    <a href="{{route('view.working_hour.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                         <i class="fe fe-plus"></i></a>
                                 </th>
                             </tr>

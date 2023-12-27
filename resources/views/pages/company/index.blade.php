@@ -92,8 +92,8 @@
                                     </div>
                                 </th>
                                 <th>
-                                    <div class="pe-1 mb-xl-0">
-                                        <a href="{{route('view.company.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                    <div>
+                                        <a href="{{route('view.company.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                             <i class="fe fe-plus"></i></a>
                                     </div>
                                 </th>

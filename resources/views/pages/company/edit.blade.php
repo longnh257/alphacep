@@ -11,12 +11,12 @@
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
-            <div class="pe-1 mb-xl-0">
+            <div>
                 <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
                     <i class="bi bi-save"></i>
                 </button>
             </div>
-            <div class="pe-1 mb-xl-0">
+            <div>
                 <a href="{{route('view.company.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                     <i class="bi bi-box-arrow-left"></i>
                 </a>
@@ -140,7 +140,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
+                                                        <a href="{{route('view.company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
@@ -268,7 +268,7 @@
 
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.visit_guidance_record.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank"> 
+                                                        <a href="{{route('view.visit_guidance_record.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>

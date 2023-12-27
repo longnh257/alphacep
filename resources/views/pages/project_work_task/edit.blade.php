@@ -11,12 +11,12 @@
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
-            <div class="pe-1 mb-xl-0">
+            <div>
                 <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
                     <i class="bi bi-save"></i>
                 </button>
             </div>
-            <div class="pe-1 mb-xl-0">
+            <div>
                 <a href="{{route('view.project.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                     <i class="bi bi-box-arrow-left"></i>
                 </a>
@@ -165,8 +165,8 @@
                                                 </th>
 
                                                 <th>
-                                                    <div class="pe-1 mb-xl-0">
-                                                        <a href="{{route('view.project_work_task.create',['project_work_id'=>$model->task_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                                    <div>
+                                                        <a href="{{route('view.project_work_task.create',['project_work_id'=>$model->task_id])}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>

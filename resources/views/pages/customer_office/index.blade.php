@@ -16,8 +16,8 @@
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
-            <div class="pe-1 mb-xl-0">
-                <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+            <div>
+                <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -84,8 +84,8 @@
                                     </div>
                                 </th>
                                 <th>
-                                    <div class="pe-1 mb-xl-0">
-                                        <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
+                                    <div>
+                                        <a href="{{route('view.customer_office.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                             <i class="fe fe-plus"></i></a>
                                     </div>
                                 </th>

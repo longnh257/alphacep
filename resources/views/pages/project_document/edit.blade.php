@@ -89,7 +89,7 @@
                                                 </th>
 
                                                 <th class="text-end" style="width: 50px;">
-                                                    <a @click="addAttr()" class="btn btn-info btn-icon me-2 btn-b">
+                                                    <a @click="addAttr()" class="btn btn-info btn-icon btn-b">
                                                         <i class="fe fe-plus"></i></a>
                                                 </th>
                                             </tr>
