@@ -429,7 +429,7 @@
                                                         </button>
                                                     </div>
                                                 </th>
-                                             
+
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
                                                         <div class="gridjs-th-content">{{trans('label.trainee')}}</div>
@@ -584,6 +584,7 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
+                conditionSearch += '&trainee_id={{$model->trainee_id}}';
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
@@ -632,7 +633,6 @@
             },
         },
     });
-
 </script>
 
 @endsection

@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
-@section('title', 'Khách hàng')
+@section('title', 'Customer Office')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Customer Office</h5>
+            <h5 class="page-title fs-21 mb-1"> {{ trans('label.office') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Customer Office</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('label.office') }}</li>
                 </ol>
             </nav>
         </div>

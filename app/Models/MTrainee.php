@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 
 class MTrainee extends Model
@@ -22,6 +23,13 @@ class MTrainee extends Model
     {
         return $this->hasOne(ProjectTrainee::class, 'project_trainee_id', 'project_trainee_id')->onDelete('cascade');
     }
+
+    
+    public function trainee_relatives(): HasMany
+    {
+        return $this->hasMany(MTraineeRelative::class, 'trainee_id', 'trainee_id');
+    }
+    
 
     protected static function boot()
     {

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 
 class VisitGuidanceRecord extends Model
@@ -16,6 +17,11 @@ class VisitGuidanceRecord extends Model
     protected $primaryKey = 'visit_record_id';
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
+
+    public function details(): HasMany
+    {
+        return $this->hasMany(VisitGuidanceRecordDetail::class, 'visit_record_id', 'visit_record_id');
+    }
 
     protected static function boot()
     {

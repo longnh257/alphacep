@@ -406,6 +406,7 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
+                conditionSearch += '&project_trainee_id=' + '{{$project_trainee->project_trainee_id}}';
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
@@ -501,6 +502,7 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
+                conditionSearch += '&project_trainee_id=' + '{{$project_trainee->project_trainee_id}}';
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',

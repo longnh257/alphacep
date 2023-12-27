@@ -21,6 +21,10 @@ class ProjectTraineeConTractController extends Controller
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
 
+        if ($request->project_trainee_id) {
+            $query->where('project_trainee_id', $request->project_trainee_id);
+        }
+
         $datas = $query->with('project_trainee.project','project_trainee.trainee')->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list successful.', $datas);

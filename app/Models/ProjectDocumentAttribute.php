@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectDocumentAttribute extends Model
@@ -16,7 +17,11 @@ class ProjectDocumentAttribute extends Model
     protected $primaryKey = 'project_document_attribute_id';
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
-
+   
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(ProjectDocument::class, 'project_document_id', 'project_document_id');
+    }
 
 
     protected static function boot()

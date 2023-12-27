@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Customer Staff')
 
 @section('content')
 <form action="{{route('view.customer_staff.store',['customer_office_id'=>$customer_office->customer_office_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">Thêm Staff</h4>
+            <h4 class="mb-0">{{ trans('label.staff_add') }}</h4>
         </div>
      
     </div>
@@ -21,7 +21,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Thông tin Staff
+                    {{ trans('label.staff_info') }}
                     </div>
                 </div>
 

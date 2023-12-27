@@ -23,16 +23,15 @@
         </div>
     </div>
     <!-- End Page Header -->
-
+    <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+    </div>
     <!-- row opened -->
     <div class="row">
-        <div class="col-md-12 col-lg-12 col-xl-12 mb-2">
-            @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
-        </div>
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
@@ -93,14 +92,6 @@
                                     </div>
                                 </th>
 
-                                <th class="gridjs-th gridjs-th-sort">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.url') }}</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                            <i class="fe fe-arrow-down"></i>
-                                        </button>
-                                    </div>
-                                </th>
                                 <th class="text-end">
                                     <a href="{{route('view.project.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                         <i class="fe fe-plus"></i></a>
@@ -114,7 +105,6 @@
                                 <td class="fw-medium">((item.entry_date))</td>
                                 <td class="fw-medium">((item.sending_agency_id))</td>
                                 <td class="fw-medium">((item.company_id))</td>
-                                <td class="fw-medium">((item.url))</td>
                                 <td>
                                     <div class="hstack gap-2 ">
                                         <a :href="`{{asset('project-work/create')}}/`+item.project_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-work')}}"><i class="bi bi-briefcase"></i></a>

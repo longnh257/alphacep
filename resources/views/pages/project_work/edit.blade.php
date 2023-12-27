@@ -243,23 +243,29 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.task_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.task_file_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
                                                     </div>
-
                                                 </th>
-
-                                                <th>
+                                                <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_work_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.file_name')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
                                                     </div>
                                                 </th>
-                                                <th>
+                                                <th class="gridjs-th gridjs-th-sort ">
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('label.file_size')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
                                                         <div class="gridjs-th-content">{{trans('label.seq_no')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
@@ -267,30 +273,15 @@
                                                         </button>
                                                     </div>
                                                 </th>
-                                                <th>
+                                                <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.person_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.project_work_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
                                                     </div>
                                                 </th>
-                                                <th>
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.complete_user_id')}}</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
-                                                <th>
-                                                    <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.complete_user_name')}}</div>
-                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                                            <i class="fe fe-arrow-down"></i>
-                                                        </button>
-                                                    </div>
-                                                </th>
+
                                                 <th>
                                                     <div>
                                                         <a href="{{route('view.project_work_task_file.create',['project_work_id'=>$model->project_work_id])}}" class="btn btn-info btn-icon btn-b" target="_blank">
@@ -301,16 +292,17 @@
                                         </thead>
                                         <tbody>
                                             <tr v-for="item in list" :key="item.project_work_project_work_id">
-                                                <td>((item.task_id))</td>
-                                                <td>((item.project_work_id))</td>
+                                                <td>((item.task_file_id))</td>
+                                                <td>((item.file_name))</td>
+                                                <td>((item.file_size))</td>
                                                 <td>((item.seq_no))</td>
-                                                <td>((item.person_id))</td>
-                                                <td>((item.complete_user_id))</td>
-                                                <td>((item.complete_user_name))</td>
+                                                <td>((item.project_work_id))</td>
 
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap">
-                                                        <a :href="`{{asset('project-work-task-file')}}/`+item.task_file_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                                        <!--   
+                                                            <a :href="`{{asset('project-work-task-file')}}/`+item.task_file_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                                      -->
                                                         <form :action="`{{asset('project-work-task-file')}}/`+item.task_file_id" :id="'formDeleteFile_'+((item.task_file_id))" class="pt-1" method="post">
                                                             @method('DELETE')
                                                             @csrf
@@ -438,6 +430,7 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
+                conditionSearch += '&project_work_id=' + '{{$model->project_work_id}}';
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
@@ -533,6 +526,7 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
+                conditionSearch += '&project_work_id=' + '{{$model->project_work_id}}';
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',

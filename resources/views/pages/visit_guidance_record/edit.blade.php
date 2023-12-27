@@ -299,6 +299,7 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
+                conditionSearch += '&visit_record_id ={{$model->visit_record_id }}';
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',

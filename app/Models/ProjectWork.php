@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectWork extends Model
@@ -16,6 +17,17 @@ class ProjectWork extends Model
     protected $primaryKey = 'project_work_id';
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
+
+    
+    public function work(): BelongsTo
+    {
+        return $this->belongsTo(MTrainee::class, 'work_id', 'work_id');
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class, 'project_id', 'project_id');
+    }
 
 
     protected static function boot()

@@ -26,6 +26,14 @@
 </div>
 <!-- End Page Header -->
 
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+<div class="alert alert-danger mx-2" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+@endif
+
 <div class="row">
     <div class="col-xl-12">
         <div class="card custom-card    pt-4">
@@ -45,13 +53,6 @@
 
                 <div class="tab-content">
 
-                    @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger mx-2" role="alert">
-                        {{ $error }}
-                    </div>
-                    @endforeach
-                    @endif
 
 
                     <div class="tab-pane active" id="project_info" role="project_info">
@@ -413,6 +414,7 @@
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
                 conditionSearch += '&showcount=' + this.showCount;
+                conditionSearch += '&project_id=' + '{{$project->project_id}}';
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
@@ -507,7 +509,9 @@
             onLoadPagination() {
                 const that = this;
                 let conditionSearch = '?page=' + this.page;
+                conditionSearch += '&project_id=' + '{{$project->project_id}}';
                 conditionSearch += '&showcount=' + this.showCount;
+
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',

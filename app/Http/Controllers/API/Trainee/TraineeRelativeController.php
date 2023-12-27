@@ -22,6 +22,10 @@ class TraineeRelativeController extends Controller
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
 
+        if ($request->trainee_id) {
+            $query->where('trainee_id', $request->trainee_id);
+        }
+
         $datas = $query->with('trainee')->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list Trainee Relative  successful.', $datas);

@@ -27,6 +27,13 @@
     </div>
     <!-- End Page Header -->
 
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+    <div class="alert alert-danger mx-4" role="alert">
+        {{ $error }}
+    </div>
+    @endforeach
+    @endif
     <!-- row -->
     <!-- Start:: row-1 -->
     <div class="row">
@@ -37,15 +44,6 @@
                         {{ trans('label.project_info') }}
                     </div>
                 </div>
-
-                @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                <div class="alert alert-danger mx-4" role="alert">
-                    {{ $error }}
-                </div>
-                @endforeach
-                @endif
-
 
                 <div class="card-body">
                     <div class="row gy-4">

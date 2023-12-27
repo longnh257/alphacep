@@ -7,17 +7,17 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">  {{ trans('label.trainee') }}</h5>
+            <h5 class="page-title fs-21 mb-1"> {{ trans('label.trainee') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">  {{ trans('label.homepage') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">  {{ trans('label.trainee') }}</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);"> {{ trans('label.homepage') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{ trans('label.trainee') }}</li>
                 </ol>
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div>
-                <a href="{{route('view.trainee.create')}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
+                <a href="{{route('view.trainee.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
-                   {{ trans('label.table_title') }}
+                    {{ trans('label.table_title') }}
                     <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light bg-transparent rounded-pill" data-bs-toggle="dropdown"><i class="fe fe-more-horizontal"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);">10</a>
@@ -45,14 +45,14 @@
                         <a class="dropdown-item" href="javascript:void(0);">All</a>
                     </div>
                 </div>
-                 
-                <div class="table-responsive country-table" >
+
+                <div class="table-responsive country-table">
                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                         <thead class="gridjs-thead">
                             <tr class="gridjs-tr">
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">ID</div>
+                                        <div class="gridjs-th-content"> {{ trans('label.id') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -60,13 +60,29 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Name</div>
+                                        <div class="gridjs-th-content"> {{ trans('label.name') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
                                     </div>
                                 </th>
-                             
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content"> {{ trans('label.mobile_tel') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content"> {{ trans('label.passport_no') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+
                                 <th></th>
                             </tr>
                         </thead>
@@ -74,10 +90,12 @@
                             <tr v-for="item in list" :key="item.trainee_id">
                                 <td>((item.trainee_id))</td>
                                 <td class="fw-medium">((item.name))</td>
+                                <td class="fw-medium">((item.mobile_tel))</td>
+                                <td class="fw-medium">((item.passport_no))</td>
                                 <td>
                                     <div class="hstack gap-2 ">
                                         <a :href="`{{asset('trainee')}}/`+item.trainee_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('trainee')}}/`+item.trainee_id"  :id="'formDelete_'+((item.trainee_id))" class="pt-1" method="post">
+                                        <form :action="`{{asset('trainee')}}/`+item.trainee_id" :id="'formDelete_'+((item.trainee_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
                                             <a href="##" @click="deleteItem(item.trainee_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
@@ -244,10 +262,10 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        jQuery('#formDelete_'+id).submit();
+                        jQuery('#formDelete_' + id).submit();
                     }
                 })
-             
+
             },
         },
     });

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Customer Staff')
 
 @section('content')
 <form action="{{route('view.customer_staff.update', ['id' => $customer_staff->customer_staff_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
@@ -9,7 +9,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">Sửa staff</h4>
+            <h4 class="mb-0">{{ trans('label.staff_edit') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -35,7 +35,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Thông tin staff
+                    {{ trans('label.staff_info') }}
                     </div>
                 </div>
 

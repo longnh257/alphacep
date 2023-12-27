@@ -21,6 +21,11 @@ class ProjectDocumentController extends Controller
             $query->where("entry_date", "LIKE", "%" . $s . "%");
         }
 
+        if ($request->project_trainee_id) {
+            $query->where('project_trainee_id', $request->project_trainee_id);
+        }
+
+
         $datas = $query->paginate($this->numPerPage);
 
         return $this->hasSuccess('Get list successful.', $datas);

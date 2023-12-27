@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
 
 class VisitGuidanceRecordDetail extends Model
@@ -17,6 +18,10 @@ class VisitGuidanceRecordDetail extends Model
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
 
+    public function visit_record(): BelongsTo
+    {
+        return $this->belongsTo(VisitGuidanceRecord::class, 'visit_record_id', 'visit_record_id');
+    }
 
     protected static function boot()
     {

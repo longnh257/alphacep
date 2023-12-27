@@ -57,50 +57,7 @@
                                         </button>
                                     </div>
                                 </th>
-                                <th class="gridjs-th gridjs-th-sort ">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.trainee_number') }}</div>
-                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
-                                            <i class="fe fe-maximize-2"></i>
-                                        </button>
-                                    </div>
-                                </th>
 
-                                <th class="gridjs-th gridjs-th-sort">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.entry_date') }}</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                            <i class="fe fe-arrow-down"></i>
-                                        </button>
-                                    </div>
-                                </th>
-
-                                <th class="gridjs-th gridjs-th-sort">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.sending_agency') }}</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                            <i class="fe fe-arrow-down"></i>
-                                        </button>
-                                    </div>
-                                </th>
-
-                                <th class="gridjs-th gridjs-th-sort">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.company') }}</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                            <i class="fe fe-arrow-down"></i>
-                                        </button>
-                                    </div>
-                                </th>
-
-                                <th class="gridjs-th gridjs-th-sort">
-                                    <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.url') }}</div>
-                                        <button class="btn btn-outline-success btn-wave waves-effect waves-light">
-                                            <i class="fe fe-arrow-down"></i>
-                                        </button>
-                                    </div>
-                                </th>
                                 <th class="text-end">
                                     <a href="{{route('view.project.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                         <i class="fe fe-plus"></i></a>

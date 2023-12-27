@@ -51,58 +51,13 @@
                     <div class="row gy-4">
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="project_work_id" class="form-label">{{ trans('label.project_work_id') }}</label>
-                            <input type="number" class="form-control" value="{{ $project_work->project_work_id }}" disabled>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="title" class="form-label">{{ trans('label.title') }}</label>
-                            <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
                             <label for="seq_no" class="form-label">{{ trans('label.seq_no') }}</label>
-                            <input type="number" class="form-control" name="seq_no" id="seq_no" value="{{ old('seq_no') }}">
+                            <input type="text" class="form-control" name="seq_no" id="seq_no" value="{{ old('seq_no') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="person_id" class="form-label">{{ trans('label.person_id') }}</label>
-                            <!-- Dropdown for person_id -->
-                            <input type="number" class="form-control" name="person_id" id="person_id" value="{{ old('complete_user_id') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="complete_limit_date" class="form-label">{{ trans('label.complete_limit_date') }}</label>
-                            <input type="date" class="form-control" name="complete_limit_date" id="complete_limit_date" value="{{ old('complete_limit_date') }}">
-                        </div>
-
-                        <div class=" col-sm-12">
-                            <label for="content" class="form-label">{{ trans('label.content') }}</label>
-                            <textarea class="form-control" name="content" id="content">{{ old('content') }}</textarea>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="status" class="form-label">{{ trans('label.status') }}</label>
-                            <!-- Dropdown for status -->
-                            <select class="form-control" name="status" id="status">
-                                <option value="0">{{ trans('label.incomplete') }}</option>
-                                <option value="1">{{ trans('label.complete') }}</option>
-                            </select>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="complete_date" class="form-label">{{ trans('label.complete_date') }}</label>
-                            <input type="date" class="form-control" name="complete_date" id="complete_date" value="{{ old('complete_date') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="complete_user_id" class="form-label">{{ trans('label.complete_user_id') }}</label>
-                            <input type="number" class="form-control" name="complete_user_id" id="complete_user_id" value="{{ old('complete_user_id') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="complete_user_name" class="form-label">{{ trans('label.complete_user_name') }}</label>
-                            <input type="text" class="form-control" name="complete_user_name" id="complete_user_name" value="{{ old('complete_user_name') }}">
+                            <label for="file" class="form-label">{{ trans('label.file') }}</label>
+                            <input type="file" class="form-control" name="file" id="file">
                         </div>
 
                         <div class="btn-list">
