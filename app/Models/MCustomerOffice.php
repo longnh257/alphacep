@@ -49,12 +49,5 @@ class MCustomerOffice extends Model
             }
         });
         
-        static::addGlobalScope('customer', function (Builder $builder) {
-            $user = Auth::user();
-
-            if ($user) {
-                $builder->where('customer_id', $user->customer_id);
-            }
-        });
     }
 }

@@ -82,6 +82,7 @@
                 </li> -->
 
                 <!-- Start::slide -->
+                @if(Auth::user()->group_id==1)
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -111,7 +112,7 @@
                         </li>
                     </ul>
                 </li>
-
+                @endif
 
                 <li class="slide">
                     <a href="{{asset('/customer-office')}}" class="side-menu__item">

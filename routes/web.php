@@ -86,7 +86,7 @@ Route::group(['middleware' => 'check.login'], function () {
 
 //customer
 
-Route::group(['prefix' => 'customer', 'middleware' => 'check.login'], function () {
+Route::group(['prefix' => 'customer', 'middleware' => ['check.login','check.admin']], function () {
     Route::get('/', [CustomerPageController::class, 'index'])->name('view.customer.index');
     Route::get('/create', [CustomerPageController::class, 'create'])->name('view.customer.create');
     Route::post('/', [CustomerPageController::class, 'store'])->name('view.customer.store');
@@ -386,7 +386,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
     Route::get('/audit-reports', [AuditReportController::class, 'index'])->name('api.audit_reports.list');
 
     Route::group(['prefix' => 'customers'], function () {
-        Route::get('/customers', [CustomerController::class, 'index'])->name('api.customers.list');
+        Route::get('/customers', [CustomerController::class, 'index'])->name('api.customers.list')->middleware('check.admin');
         Route::get('/customer-offices', [CustomerOfficeController::class, 'index'])->name('api.customer_offices.list');
         Route::get('/customer-staffs', [CustomerStaffController::class, 'index'])->name('api.customer_staffs.list');
     });
