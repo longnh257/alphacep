@@ -2,6 +2,7 @@
 
 return [
     //sidebar
+    'id'=> 'ID',
     'admin' => 'Admin',
     'function' => 'Function',
     'function_category' => 'Function Category',
@@ -18,6 +19,7 @@ return [
     'workflow' => 'Workflow',
     'audit_report' => 'Audit Report',
     'document_template' => 'Document Template',
+    'working_hour' => 'Working Hour',
 
     'female' => 'Female',
     'male' => 'Male',

@@ -16,8 +16,7 @@ class WorkFlowController extends Controller
         $query  = MWorkFlow::query();
 
         if ($s = $request->has("s")) {
-            $query->where("trainee_number", "LIKE", "%" . $s . "%");
-            $query->where("entry_date", "LIKE", "%" . $s . "%");
+            
         }
         $datas = $query->paginate($this->numPerPage);
 

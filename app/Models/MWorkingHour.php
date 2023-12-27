@@ -22,19 +22,12 @@ class MWorkingHour extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->customer_id = auth()->user()->customer_id;
             $model->created_by_id = auth()->id();
         });
         static::updating(function ($model) {
             $model->updated_by_id =  auth()->id();
             $model->updated_count += 1;
         });  
-        static::addGlobalScope('customer', function (Builder $builder) {
-            $user = Auth::user();
-
-            if ($user) {
-                $builder->where('customer_id', $user->customer_id);
-            }
-        });
+     
     }
 }

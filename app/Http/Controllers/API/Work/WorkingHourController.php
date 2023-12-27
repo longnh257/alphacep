@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\API\Work;
 
 use App\Http\Controllers\Controller;
-use App\Models\MWork;
+use App\Models\MWorkingHour;
 use Illuminate\Http\Request;
 
-class WorkController extends Controller
+class WorkingHourController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public $numPerPage = 10;
     public function index(Request $request) {
-        $query  = MWork::query();
+        $query  = MWorkingHour::query();
 
         if ($s = $request->has("s")) {
             

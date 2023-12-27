@@ -31,6 +31,7 @@ use App\Http\Controllers\Pages\TrainingFacility\TrainingFacilityPageController;
 use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordDetailPageController;
 use App\Http\Controllers\Pages\VisitGuidanceRecord\VisitGuidanceRecordPageController;
 use App\Http\Controllers\Pages\Document\DocumentTemplatePageController;
+use App\Http\Controllers\Pages\Work\WorkingHourPageController;
 
 
 // Import Api
@@ -62,8 +63,7 @@ use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordController;
 use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordDetailController;
 use App\Http\Controllers\API\Document\DocumentAttributeController;
 use App\Http\Controllers\API\Document\DocumentTemplateController;
-
-
+use App\Http\Controllers\API\Work\WorkingHourController;
 
 /*
 |--------------------------------------------------------------------------
@@ -267,6 +267,16 @@ Route::group(['prefix' => 'workflow', 'middleware' => 'check.login'], function (
 });
 //end workflow
 
+//working hour
+Route::group(['prefix' => 'working-hour', 'middleware' => 'check.login'], function () {
+    Route::get('/', [WorkingHourPageController::class, 'index'])->name('view.working_hour.index');
+    Route::get('/create', [WorkingHourPageController::class, 'create'])->name('view.working_hour.create');
+    Route::post('/', [WorkingHourPageController::class, 'store'])->name('view.working_hour.store');
+    Route::get('/{id}/edit', [WorkingHourPageController::class, 'edit'])->name('view.working_hour.edit');
+    Route::put('/{id}', [WorkingHourPageController::class, 'update'])->name('view.working_hour.update');
+    Route::delete('/{id}', [WorkingHourPageController::class, 'destroy'])->name('view.working_hour.destroy');
+});
+//end working hour
 
 Route::group(['prefix' => 'function', 'middleware' => 'check.login'], function () {
     Route::get('/', [FunctionPageController::class, 'index'])->name('view.function.index');
@@ -421,6 +431,10 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
 
     Route::group(['prefix' => 'works'], function () {
         Route::get('/', [WorkController::class, 'index'])->name('api.works.list');
+    });
+
+    Route::group(['prefix' => 'working-hours'], function () {
+        Route::get('/', [WorkingHourController::class, 'index'])->name('api.working_hours.list');
     });
 
     Route::group(['prefix' => 'workflows'], function () {
