@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 17, 2023 lúc 07:14 PM
+-- Thời gian đã tạo: Th12 27, 2023 lúc 10:15 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -42,6 +42,13 @@ CREATE TABLE `audit_report` (
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `audit_report`
+--
+
+INSERT INTO `audit_report` (`audit_report_id`, `company_id`, `company_office_id`, `audit_date`, `last_audit_date`, `next_audit_date`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, 1, 1, '2023-12-30', '2023-12-30', '2023-12-21', 1, 1, '2023-12-24 12:13:42', 1, '2023-12-24 12:24:21', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -52,7 +59,8 @@ CREATE TABLE `document_attribute` (
   `document_attribute_id` bigint(20) UNSIGNED NOT NULL,
   `document_template_id` bigint(20) DEFAULT NULL,
   `seq_no` int(11) DEFAULT NULL,
-  `attribute_name` varchar(100) DEFAULT NULL,
+  `attribute_name` varchar(254) DEFAULT NULL,
+  `attribute_value` varchar(254) DEFAULT NULL,
   `customer_id` bigint(20) DEFAULT NULL,
   `created_by_id` bigint(20) DEFAULT NULL,
   `created_on` timestamp NULL DEFAULT NULL,
@@ -60,6 +68,15 @@ CREATE TABLE `document_attribute` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `document_attribute`
+--
+
+INSERT INTO `document_attribute` (`document_attribute_id`, `document_template_id`, `seq_no`, `attribute_name`, `attribute_value`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(5, 2, 2, '1', '2', 6, 50, '2023-12-26 22:44:54', NULL, '2023-12-26 22:44:54', NULL),
+(6, 2, 2, '3', '4', 6, 50, '2023-12-26 22:44:54', NULL, '2023-12-26 22:44:54', NULL),
+(7, 2, 2, 'doc 1', 'doc 1', 6, 50, '2023-12-26 22:44:54', NULL, '2023-12-26 22:44:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -79,6 +96,13 @@ CREATE TABLE `document_template` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `document_template`
+--
+
+INSERT INTO `document_template` (`document_template_id`, `name`, `type`, `target_doc`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(2, 'doc 1', '03', '03', 6, 50, '2023-12-26 22:44:54', NULL, '2023-12-26 22:44:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,6 +179,14 @@ CREATE TABLE `m_company` (
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `m_company`
+--
+
+INSERT INTO `m_company` (`company_id`, `name`, `name_kana`, `tel`, `fax`, `postcode`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(2, 'company1', 'company1', '1231231231', 'company1', 'company1', 1, 1, '2023-12-25 20:42:25', NULL, '2023-12-25 20:42:25'),
+(4, 'comp2', 'comp2', '1231231231', NULL, NULL, 1, 1, '2023-12-27 12:50:57', NULL, '2023-12-27 12:50:57');
+
 -- --------------------------------------------------------
 
 --
@@ -175,11 +207,20 @@ CREATE TABLE `m_company_office` (
   `note` text DEFAULT NULL,
   `practitioner_id` bigint(20) DEFAULT NULL,
   `company_id` bigint(20) DEFAULT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
   `created_by_id` bigint(20) DEFAULT NULL,
   `created_on` timestamp NULL DEFAULT NULL,
   `updated_by_id` bigint(20) DEFAULT NULL,
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `m_company_office`
+--
+
+INSERT INTO `m_company_office` (`company_office_id`, `name`, `name_kana`, `tel`, `fax`, `postcode`, `address1`, `address2`, `office_area`, `office_number`, `note`, `practitioner_id`, `company_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(2, 'office1', 'office1', '1231231231', 'office1', 'office1', 'office1', 'office1', 'office1', 'office1', 'office1', NULL, 2, 1, 1, '2023-12-25 20:46:39', 1, '2023-12-25 20:46:39'),
+(3, 'office2', 'office2', '1231231231', 'office1', 'office1', 'office1', 'office1', 'office1', 'office1', 'office1', NULL, 2, 1, 1, '2023-12-25 20:49:39', 1, '2023-12-25 20:49:39');
 
 -- --------------------------------------------------------
 
@@ -206,12 +247,20 @@ CREATE TABLE `m_company_staff` (
   `assignment_date` date DEFAULT NULL,
   `work_condition` varchar(1) DEFAULT NULL,
   `company_id` bigint(20) DEFAULT NULL,
+  `customer_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_by_id` bigint(20) DEFAULT NULL,
   `created_on` timestamp NULL DEFAULT NULL,
   `updated_by_id` bigint(20) DEFAULT NULL,
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `m_company_staff`
+--
+
+INSERT INTO `m_company_staff` (`company_staff_id`, `name`, `name_kana`, `birthday`, `sex`, `position`, `nationality`, `company_office_id`, `tel`, `postcode`, `address1`, `address2`, `certificate`, `mail`, `certificate_submit`, `assignment_date`, `work_condition`, `company_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, 'st1', 'st1', NULL, 'M', NULL, NULL, '3', '1231231231', NULL, NULL, NULL, NULL, NULL, '1', NULL, '1', 2, 1, 1, '2023-12-27 13:03:01', 1, '2023-12-27 13:03:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -256,7 +305,8 @@ CREATE TABLE `m_customer` (
 --
 
 INSERT INTO `m_customer` (`customer_id`, `name`, `name_kana`, `tel`, `fax`, `postcode`, `address1`, `address2`, `corporate_number`, `office_area`, `supervion_business_type`, `supervion_license_number`, `permission_date`, `planning_period_from_date`, `planning_period_from_to`, `permission_valid_from_date`, `permission_valid_to_date`, `jobs_comment`, `external_audit`, `external_audit_person`, `external_officer`, `corporate_type`, `overview`, `identifying_code`, `note`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
-(1, 'customer 1', 'customer 1', '1231231231', '1231231231', '99502', 'add 1', 'add 2', '321', '123', '123', '123', '2023-12-12', '2023-12-14', NULL, '2023-12-13', '2023-12-21', '123', '12123', '123', '123', '123', '123', '123', '123', 1, '2023-12-17 10:31:55', 1, '2023-12-17 10:31:55');
+(1, 'customer 1', 'customer 1', '1231231231', '1231231231', '99502', 'add 1', 'add 2', '321', '123', '123', '123', '2023-12-12', '2023-12-14', NULL, '2023-12-13', '2023-12-21', '123', '12123', '123', '123', '123', '123', '123', '123', 1, '2023-12-17 10:31:55', 1, '2023-12-17 10:31:55'),
+(6, 'user1@gmail.com', 'user1@gmail.com', '1231231231', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-12-26 22:19:22', 1, '2023-12-26 22:19:22');
 
 -- --------------------------------------------------------
 
@@ -296,6 +346,14 @@ CREATE TABLE `m_customer_office` (
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `m_customer_office`
+--
+
+INSERT INTO `m_customer_office` (`customer_office_id`, `name`, `name_kana`, `tel`, `fax`, `postcode`, `address1`, `address2`, `corporate_number`, `office_area`, `office_number`, `employment_insurance_office_number`, `supervion_license_number`, `permission_date`, `planning_period_from_date`, `planning_period_from_to`, `new_buid_date`, `abolition_date`, `jobs_comment`, `work_intern_area`, `intern_prefecture`, `audit_execution_frequency`, `identifying_code`, `note`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(1, '2313', '321', '1234123412', '321', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, NULL, 1, 1, '2023-12-24 11:26:33', 1, '2023-12-24 11:26:33'),
+(2, 'user1@gmail.com', 'user1@gmail.com', '1231231231', '21321321', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, NULL, 1, 1, '2023-12-27 12:49:37', 1, '2023-12-27 12:49:37');
+
 -- --------------------------------------------------------
 
 --
@@ -327,6 +385,14 @@ CREATE TABLE `m_customer_staff` (
   `updated_by_id` bigint(20) DEFAULT NULL,
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `m_customer_staff`
+--
+
+INSERT INTO `m_customer_staff` (`customer_staff_id`, `name`, `name_kana`, `birthday`, `sex`, `position`, `nationality`, `customer_office_id`, `tel`, `postcode`, `address1`, `address2`, `certificate`, `mail`, `certificate_submit`, `assignment_date`, `role`, `work_condition`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(1, 'staff1', 'staff1', NULL, 'M', NULL, NULL, '1', '1231231231', NULL, NULL, NULL, NULL, 'staff1@gmail.com', '1', NULL, '1', '1', 1, 1, '2023-12-24 14:37:58', 1, '2023-12-24 14:37:58'),
+(2, 'staff2', 'staff2', NULL, 'M', NULL, NULL, '1', '1231231231', NULL, NULL, NULL, NULL, 'staff2@gmail.com', '1', NULL, '1', '1', 1, 1, '2023-12-24 14:38:18', 1, '2023-12-24 14:38:18');
 
 -- --------------------------------------------------------
 
@@ -407,6 +473,14 @@ CREATE TABLE `m_sending_agency` (
   `updated_by_id` bigint(20) DEFAULT NULL,
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `m_sending_agency`
+--
+
+INSERT INTO `m_sending_agency` (`sending_agency_id`, `representative_name`, `representative_name_kana`, `postcode`, `address1`, `address2`, `tel`, `fax`, `mail`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(2, 'agency 1', 'agency 1', 'office 1', '321', 'agency 1', '1231231231', '21321321', 'agency@gmail.com', 1, 1, '2023-12-20 18:04:02', 1, '2023-12-20 18:04:02'),
+(3, 'agency  2', 'agency2', 'office 1', '321', 'agency 1', '1231231231', '21321321', 'agency2@gmail.com', 1, 1, '2023-12-20 18:04:13', 1, '2023-12-20 18:04:13');
 
 -- --------------------------------------------------------
 
@@ -495,7 +569,7 @@ CREATE TABLE `m_trainee` (
   `applicant_address1` varchar(100) DEFAULT NULL,
   `applicant_address2` varchar(100) DEFAULT NULL,
   `change_permission_apply_reason` varchar(100) DEFAULT NULL,
-  `update_permission_apply_reason` varchar(100) NOT NULL,
+  `update_permission_apply_reason` varchar(100) DEFAULT NULL,
   `notice_mail` varchar(256) DEFAULT NULL,
   `relatives_in_japan` varchar(1) DEFAULT NULL,
   `customer_id` bigint(20) DEFAULT NULL,
@@ -510,7 +584,9 @@ CREATE TABLE `m_trainee` (
 --
 
 INSERT INTO `m_trainee` (`trainee_id`, `name`, `name_kanji`, `name_kana`, `birthday`, `sex`, `marital_div`, `nationality_id`, `native_language_id`, `occupation`, `mobile_tel`, `birth_place`, `home_country_address`, `enrollment_status_div`, `difficulty_notification_div`, `difficulty_notification_date`, `disappeared_status_div`, `disappeared_date`, `resumption_status_div`, `resumption_date`, `trainee_type`, `status`, `train_history`, `move_date`, `start_date`, `complete_date`, `sending_agency_id`, `apply_immigration_name`, `update_immigration_name`, `passport_no`, `expiration_date`, `schedule_landing_port`, `stay_period`, `visa_application_place`, `entry_exit_history_div`, `entry_exit_times`, `entry_exit_div`, `entry_exit_from_date`, `entry_exit_to_date`, `residence_status`, `residence_period`, `residence_card_number`, `stay_expiration_date`, `applicant_agent`, `relationship_with_trainee`, `applicant_tel`, `applicant_postcode`, `applicant_address1`, `applicant_address2`, `change_permission_apply_reason`, `update_permission_apply_reason`, `notice_mail`, `relatives_in_japan`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
-(1, 'TRAINEE name 2', 'TRAINEE name  2', 'TRAINEE name 2', NULL, '2', '1', 1, 1, '2', '1234123413', '2', '2', '02', '0', '2023-03-17', '0', '2023-01-17', '0', '2023-01-17', '01', '02', '2', '2023-01-17', '2024-12-17', '2024-12-17', 2, '2', '2', '2', '2024-12-17', '2', '2', '2', '0', 2, '0', '2023-12-19', '2023-02-01', '2', '2', '2', '2023-02-01', '2', '2', '12', '12', '12', '12', '2', '2', 'dsa@gmail.com', '0', 1, 1, '2023-12-17 23:02:06', 1, '2023-12-17 22:55:33');
+(1, 'TRAINEE name 2', 'TRAINEE name  2', 'TRAINEE name 2', NULL, '2', '1', 1, 1, '2', '1234123413', '2', '2', '02', '0', '2023-03-17', '0', '2023-01-17', '0', '2023-01-17', '01', '02', '2', '2023-01-17', '2024-12-17', '2024-12-17', 2, '2', '2', '2', '2024-12-17', '2', '2', '2', '0', 2, '0', '2023-12-19', '2023-02-01', '2', '2', '2', '2023-02-01', '2', '2', '12', '12', '12', '12', '2', '2', 'dsa@gmail.com', '0', 1, 1, '2023-12-17 23:02:06', 1, '2023-12-17 22:55:33'),
+(2, 'trainee1', 'trainee1', 'trainee1', NULL, '1', '0', 1, 1, NULL, '1234123413', NULL, NULL, '01', '1', NULL, '1', NULL, '1', NULL, '01', '01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 1, 1, '2023-12-20 19:21:26', 1, '2023-12-20 19:21:26'),
+(3, 'trainee3', 'trainee3', 'trainee3', NULL, '1', '0', 1, 1, NULL, '1234123413', NULL, NULL, '01', '1', NULL, '1', NULL, '1', NULL, '01', '01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 1, 1, '2023-12-20 19:23:46', 1, '2023-12-20 19:23:46');
 
 -- --------------------------------------------------------
 
@@ -535,6 +611,13 @@ CREATE TABLE `m_trainee_relative` (
   `updated_by_id` bigint(20) DEFAULT NULL,
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `m_trainee_relative`
+--
+
+INSERT INTO `m_trainee_relative` (`relative_id`, `relationship`, `name`, `birthday`, `nationality`, `live_together`, `work_school_place`, `mobile_tel`, `residence_card_number`, `trainee_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(1, 'f', '123', NULL, '1', '1', '2321', '321', '321', 2, 1, 1, '2023-12-27 10:18:04', NULL, '2023-12-27 10:18:04');
 
 -- --------------------------------------------------------
 
@@ -565,15 +648,23 @@ CREATE TABLE `m_training_facility` (
   `training_place_postcode` varchar(12) DEFAULT NULL,
   `training_place_address1` varchar(100) DEFAULT NULL,
   `training_place_address2` varchar(200) DEFAULT NULL,
-  `training_place_area` varchar(5) DEFAULT NULL,
-  `training_place_person` varchar(5) DEFAULT NULL,
-  `training_place_room_area` varchar(5) DEFAULT NULL,
+  `training_place_area` varchar(254) DEFAULT NULL,
+  `training_place_person` varchar(254) DEFAULT NULL,
+  `training_place_room_area` varchar(254) DEFAULT NULL,
   `customer_id` bigint(20) DEFAULT NULL,
   `created_by_id` bigint(20) DEFAULT NULL,
   `created_on` timestamp NULL DEFAULT NULL,
   `updated_by_id` bigint(20) DEFAULT NULL,
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `m_training_facility`
+--
+
+INSERT INTO `m_training_facility` (`training_facility_id`, `name`, `tel`, `postcode`, `address1`, `address2`, `food_expense_payment`, `food_expense_payment_detail`, `food_expense_trainee_charge`, `food_expense_trainee_charge_detail`, `food_expense_comment`, `house_cost_payment`, `house_cost_payment_detail`, `house_cost_trainee_charge`, `house_cost_trainee_charge_detail`, `training_place_form`, `training_place_form_detail`, `training_place_name`, `training_place_tel`, `training_place_postcode`, `training_place_address1`, `training_place_address2`, `training_place_area`, `training_place_person`, `training_place_room_area`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(1, 'test12', 'test13', 'test14', 'test15', 'test16', '0', 'test17', '0', 'test12', 'test13', '0', 'test14', '0', 'test15', '99', 'test12', 'test14', 'test13', 'test15', 'test16', 'test18', 'test17', 'test19', 'test111', 1, 1, '2023-12-20 16:48:06', 1, '2023-12-20 16:58:08'),
+(2, 'facility1', 'facility1', 'facility1', 'facility1', 'facility1', '1', 'facility1', '1', 'facility1', 'facility1', '1', 'facility1', '1', 'facility1', '01', NULL, 'facility1', 'facility1', 'facility1', 'facility1', 'facility1', 'facility1', 'facility1', 'facility1', 1, 1, '2023-12-20 18:05:05', 1, '2023-12-20 18:05:05');
 
 -- --------------------------------------------------------
 
@@ -587,7 +678,7 @@ CREATE TABLE `m_user` (
   `email` varchar(191) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) NOT NULL,
-  `group_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL DEFAULT 2,
   `is_active` smallint(6) DEFAULT 1 COMMENT '0: Deactive | 1: Active',
   `phone` varchar(191) DEFAULT NULL,
   `address` longtext DEFAULT NULL,
@@ -609,7 +700,8 @@ CREATE TABLE `m_user` (
 --
 
 INSERT INTO `m_user` (`id`, `name`, `email`, `email_verified_at`, `password`, `group_id`, `is_active`, `phone`, `address`, `device_token`, `mac_address`, `remember_token`, `created_at`, `updated_at`, `verified`, `deleted_at`, `password_expiration`, `customer_id`, `created_by_id`, `updated_by_id`) VALUES
-(1, 'Super Admin', 'admin@gmail.com', NULL, '$2y$10$iU8vkYTqg9rlZzzqykVKK.6IlnmkhxqQRnF5vomFiMl8n0OgA4aLW', 1, 1, '1017245567', 'Mary Moore, 1313 E Main St, Portage MI 49024-2001.', NULL, NULL, NULL, '2023-10-10 11:29:18', '2023-11-16 03:59:36', 2, NULL, NULL, 1, NULL, NULL);
+(1, 'Super Admin', 'admin@gmail.com', NULL, '$2y$10$iU8vkYTqg9rlZzzqykVKK.6IlnmkhxqQRnF5vomFiMl8n0OgA4aLW', 1, 1, '1017245567', 'Mary Moore, 1313 E Main St, Portage MI 49024-2001.', NULL, NULL, NULL, '2023-10-10 11:29:18', '2023-11-16 03:59:36', 2, NULL, NULL, 1, NULL, NULL),
+(50, 'user1@gmail.com', 'user1@gmail.com', NULL, '$2y$12$3uyQYxtppdIncH26VmmwRuuCWQ2vx66qYvl0GLVIInC51j0NtGC4G', 2, 1, '1234123412', NULL, NULL, NULL, NULL, '2023-12-26 22:19:23', '2023-12-26 22:19:23', 1, NULL, NULL, 6, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -629,6 +721,14 @@ CREATE TABLE `m_work` (
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `m_work`
+--
+
+INSERT INTO `m_work` (`work_id`, `name`, `workflow_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, 'name', 1, 1, 1, '2023-12-20 15:00:38', NULL, '2023-12-20 15:00:38', NULL),
+(2, '32', 2, 1, 1, '2023-12-22 19:41:19', NULL, '2023-12-22 19:41:19', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -646,6 +746,14 @@ CREATE TABLE `m_workflow` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `m_workflow`
+--
+
+INSERT INTO `m_workflow` (`flow_id`, `name`, `flowgroup_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, '受入前事前説明', 1, 1, NULL, '2023-12-20 14:26:37', NULL, '2023-12-20 14:26:37', NULL),
+(2, '求人', 1, 1, NULL, '2023-12-20 14:58:23', 1, '2023-12-20 14:59:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -715,6 +823,14 @@ CREATE TABLE `project` (
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `project`
+--
+
+INSERT INTO `project` (`project_id`, `company_id`, `sending_agency_id`, `entry_date`, `trainee_number`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, NULL, NULL, '2023-12-20', 15, 1, NULL, '2023-12-20 13:15:31', NULL, '2023-12-20 13:15:31', NULL),
+(4, NULL, NULL, '2023-12-04', 1321, 1, 1, '2023-12-27 11:58:55', NULL, '2023-12-27 11:58:55', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -736,6 +852,13 @@ CREATE TABLE `project_document` (
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `project_document`
+--
+
+INSERT INTO `project_document` (`project_document_id`, `project_trainee_id`, `document_id`, `document_name`, `document_type`, `target_doc`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(3, 3, NULL, 'doc1', '01', '01', 1, 1, '2023-12-26 18:24:22', NULL, '2023-12-26 18:24:22', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -745,9 +868,10 @@ CREATE TABLE `project_document` (
 CREATE TABLE `project_document_attribute` (
   `project_document_attribute_id` bigint(20) UNSIGNED NOT NULL,
   `document_id` bigint(20) DEFAULT NULL,
+  `project_document_id` bigint(20) UNSIGNED DEFAULT NULL,
   `seq_no` int(11) DEFAULT NULL,
-  `attribute_name` varchar(100) DEFAULT NULL,
-  `attribute_value` varchar(100) DEFAULT NULL,
+  `attribute_name` varchar(254) DEFAULT NULL,
+  `attribute_value` varchar(254) DEFAULT NULL,
   `customer_id` bigint(20) DEFAULT NULL,
   `created_by_id` bigint(20) DEFAULT NULL,
   `created_on` timestamp NULL DEFAULT NULL,
@@ -755,6 +879,15 @@ CREATE TABLE `project_document_attribute` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `project_document_attribute`
+--
+
+INSERT INTO `project_document_attribute` (`project_document_attribute_id`, `document_id`, `project_document_id`, `seq_no`, `attribute_name`, `attribute_value`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(20, NULL, 3, 3, '123', '123', 1, 1, '2023-12-26 20:42:21', NULL, '2023-12-26 20:42:21', NULL),
+(21, NULL, 3, 3, '123', '123', 1, 1, '2023-12-26 20:42:21', NULL, '2023-12-26 20:42:21', NULL),
+(22, NULL, 3, 3, '4', '4', 1, 1, '2023-12-26 20:42:21', NULL, '2023-12-26 20:42:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -764,8 +897,8 @@ CREATE TABLE `project_document_attribute` (
 
 CREATE TABLE `project_trainee` (
   `project_trainee_id` bigint(20) UNSIGNED NOT NULL,
-  `project_id` bigint(20) DEFAULT NULL,
-  `trainee_id` bigint(20) DEFAULT NULL,
+  `project_id` bigint(20) NOT NULL,
+  `trainee_id` bigint(20) NOT NULL,
   `stay_facility_id` bigint(20) DEFAULT NULL,
   `training_facility_id` bigint(20) DEFAULT NULL,
   `sending_agency_id` bigint(20) DEFAULT NULL,
@@ -776,6 +909,15 @@ CREATE TABLE `project_trainee` (
   `updated_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `project_trainee`
+--
+
+INSERT INTO `project_trainee` (`project_trainee_id`, `project_id`, `trainee_id`, `stay_facility_id`, `training_facility_id`, `sending_agency_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`) VALUES
+(3, 1, 1, NULL, 1, 2, NULL, NULL, '2023-12-20 19:27:13', NULL, '2023-12-20 19:27:13'),
+(4, 1, 3, NULL, 1, 2, NULL, NULL, '2023-12-20 19:27:33', NULL, '2023-12-20 19:27:33'),
+(5, 1, 3, NULL, 2, 3, 1, 1, '2023-12-26 23:34:34', NULL, '2023-12-26 23:34:34');
+
 -- --------------------------------------------------------
 
 --
@@ -785,7 +927,7 @@ CREATE TABLE `project_trainee` (
 CREATE TABLE `project_trainee_contract` (
   `contract_id` bigint(20) UNSIGNED NOT NULL,
   `project_trainee_id` bigint(20) DEFAULT NULL,
-  `training_office_id` bigint(20) DEFAULT NULL,
+  `training_facility_id` bigint(20) DEFAULT NULL,
   `practitioner_group_id` bigint(20) DEFAULT NULL,
   `work_place_name` varchar(100) DEFAULT NULL,
   `postcode` varchar(10) DEFAULT NULL,
@@ -877,6 +1019,15 @@ CREATE TABLE `project_trainee_contract` (
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `project_trainee_contract`
+--
+
+INSERT INTO `project_trainee_contract` (`contract_id`, `project_trainee_id`, `training_facility_id`, `practitioner_group_id`, `work_place_name`, `postcode`, `address1`, `address2`, `transition_occupation_id1`, `transition_occupation_id2`, `transition_occupation_id3`, `other_transition_occupation`, `schedule_entry_date_div`, `schedule_entry_date`, `entry_date_div`, `entry_date`, `no3_entry_date_div`, `no3_entry_date`, `schedule_return_date_div`, `schedule_return_from_date`, `schedule_return_to_date`, `pre_entry_training`, `post_entry_training_div`, `post_entry_training_from_date`, `post_entry_training_from_to`, `training_no1_certification_date_div`, `training_no1_certification_date`, `training_no1_certification_number`, `training_no1_practition_date_div`, `training_no1_practition_from_date`, `training_no1_practition_to_date`, `training_no1_note`, `training_no2_certification_date_div`, `training_no2_certification_date`, `training_no2_certification_number`, `training_no2_practition_date_div`, `training_no2_practition_from_date`, `training_no2_practition_to_date`, `training_no2_note`, `training_no3_certification_date_div`, `training_no3_certification_date`, `training_no3_certification_number`, `training_no3_practition_date_div`, `training_no3_practition_from_date`, `training_no3_practition_to_date`, `training_no3_note`, `fixed_term_employment_contract`, `employment_contract_from_date`, `employment_contract_from_to`, `work_hours_div`, `work_days_1_year`, `work_days_2_year`, `work_days_3_year`, `work_days_4_year`, `work_days_5_year`, `holiday_days`, `work_hours_per_day`, `work_hours_per_week`, `work_hours_per_week_decimal_notation`, `work_hours_per_month`, `work_hours_per_month_decimal_notation`, `work_hours_per_year`, `work_hours_per_year_decimal_notation`, `post_entry_training_hours`, `training_no1_hours`, `training_no2_hours`, `training_no3_hours`, `training_span_period`, `training_no1_basic_salary_for_month`, `training_no1_basic_salary_for_day`, `training_no1_basic_salary_for_hour`, `training_no2_basic_salary_for_month`, `training_no2_basic_salary_for_day`, `training_no2_basic_salary_for_hour`, `training_no3_basic_salary_for_month`, `training_no3_basic_salary_for_day`, `training_no3_basic_salary_for_hour`, `comuting_allowance`, `approx_amount`, `food_expense_div`, `food_expense_amount`, `house_expense_amount`, `accommodation_type`, `light_heat_fee_div`, `light_heat_fee`, `other_amount`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, 3, 1, 1, '1', '1', '1', '1', 1, 1, 1, '1', '1', '2023-12-21', '1', '2023-12-22', '1', '2023-12-27', '1', '2023-12-21', '2023-12-21', '1', '1', '2023-12-21', NULL, '1', '2023-12-21', '1', '1', '2023-12-21', '2023-12-21', '1', '1', '2023-12-21', '1', '1', '2023-12-21', '2023-12-21', '1', '1', '2023-12-21', '1', '1', '2024-11-11', '2023-12-21', '1', '1', '2023-12-21', '2023-12-20', '2023-12-21', 1, 1, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', 1, 1.00, 1.00, 1.00, '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, '1', 1, 1, '01', '1', 1, 1, 1, 1, '2023-12-21 18:55:54', 1, '2023-12-22 14:40:36', NULL),
+(2, 4, 2, 1, '1', '1', '1', '1', 1, 1, 1, '1', '0', '2023-12-21', '0', '2023-12-22', '0', '2023-12-27', '1', '2023-12-21', '2023-12-21', '1', '1', '2023-12-21', NULL, '0', '2023-12-21', '1', '0', '2023-12-21', '2023-12-21', '1', '0', '2023-12-21', '1', '0', '2023-12-21', '2023-12-21', '1', '0', '2023-12-21', '1', '0', '2024-11-11', '2023-12-21', '1', '0', '2023-12-21', '2023-12-20', '2023-12-21', 1, 1, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', 1, 1.00, 1.00, 1.00, '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, '0', 1, 1, '02', '0', 1, 1, 1, 1, '2023-12-21 18:57:46', 1, '2023-12-21 18:57:46', NULL),
+(3, 5, 2, 1, '1', '1', '1', '1', 1, NULL, NULL, NULL, '1', NULL, '1', NULL, '1', NULL, '1', NULL, NULL, '1', '1', NULL, NULL, '1', NULL, NULL, '1', NULL, NULL, NULL, '1', NULL, NULL, '1', NULL, NULL, NULL, '1', NULL, NULL, '1', NULL, NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, '01', '1', NULL, NULL, 1, 1, '2023-12-26 23:34:50', 1, '2023-12-26 23:34:50', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -894,6 +1045,14 @@ CREATE TABLE `project_work` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `project_work`
+--
+
+INSERT INTO `project_work` (`project_work_id`, `project_id`, `work_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(5, 1, 1, 1, 1, '2023-12-23 13:30:21', NULL, '2023-12-23 13:30:21', NULL),
+(6, 1, 2, 1, 1, '2023-12-27 11:46:36', NULL, '2023-12-27 11:46:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -921,6 +1080,13 @@ CREATE TABLE `project_work_task` (
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `project_work_task`
+--
+
+INSERT INTO `project_work_task` (`task_id`, `title`, `project_work_id`, `seq_no`, `person_id`, `complete_limit_date`, `content`, `status`, `complete_date`, `complete_user_id`, `complete_user_name`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, 'work task title2', 5, 12, 12, '2023-12-27', 'work task title2', '0', '2023-12-14', 12, '1dsa2', 1, 1, '2023-12-23 14:18:06', 1, '2023-12-23 14:47:08', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -932,8 +1098,8 @@ CREATE TABLE `project_work_task_file` (
   `file_name` varchar(256) DEFAULT NULL,
   `file_size` bigint(20) DEFAULT NULL,
   `seq_no` int(11) DEFAULT NULL,
-  `file_data` blob DEFAULT NULL,
-  `project_work_task_id` bigint(20) DEFAULT NULL,
+  `file_data` longtext DEFAULT NULL,
+  `project_work_id` bigint(20) DEFAULT NULL,
   `customer_id` bigint(20) DEFAULT NULL,
   `created_by_id` bigint(20) DEFAULT NULL,
   `created_on` timestamp NULL DEFAULT NULL,
@@ -968,6 +1134,15 @@ CREATE TABLE `s_function` (
   `url` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `s_function`
+--
+
+INSERT INTO `s_function` (`function_id`, `function_name`, `category_id`, `url`) VALUES
+(1, 'b', '1', 'b'),
+(2, 'ac a', '1', 'ac-a'),
+(3, 'cde', '3', 'cde');
+
 -- --------------------------------------------------------
 
 --
@@ -978,8 +1153,15 @@ CREATE TABLE `s_function_category` (
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `category_name` varchar(20) DEFAULT NULL,
   `parent_category_id` varchar(2) DEFAULT NULL,
-  `category_level` int(11) DEFAULT NULL
+  `category_level` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `s_function_category`
+--
+
+INSERT INTO `s_function_category` (`category_id`, `category_name`, `parent_category_id`, `category_level`) VALUES
+(1, '案件一覧', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1000,6 +1182,14 @@ CREATE TABLE `visit_guidance_record` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `visit_guidance_record`
+--
+
+INSERT INTO `visit_guidance_record` (`visit_record_id`, `company_id`, `company_office_id`, `visit_staff_id`, `trainee_id`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(1, 2, 1, 1, 1, 1, 1, '2023-12-24 14:38:39', NULL, '2023-12-24 14:38:39', NULL),
+(2, 2, 1, 1, 2, 1, 1, '2023-12-24 14:40:14', 1, '2023-12-25 12:47:06', 2);
 
 -- --------------------------------------------------------
 
@@ -1030,6 +1220,13 @@ CREATE TABLE `visit_guidance_record_detail` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `visit_guidance_record_detail`
+--
+
+INSERT INTO `visit_guidance_record_detail` (`detail_id`, `visit_record_id`, `seq_no`, `visit_date`, `visit_time`, `reflect_div`, `training_progress`, `training_level`, `time_allowcation`, `training_attitube`, `training_willingness`, `japanese_understanding`, `life_attitude`, `discipline_violation`, `note`, `customer_id`, `created_by_id`, `created_on`, `updated_by_id`, `updated_on`, `updated_count`) VALUES
+(2, 2, 1, NULL, 'comp2', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, 1, 1, '2023-12-27 12:51:34', NULL, '2023-12-27 12:51:34', NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -1262,19 +1459,19 @@ ALTER TABLE `visit_guidance_record_detail`
 -- AUTO_INCREMENT cho bảng `audit_report`
 --
 ALTER TABLE `audit_report`
-  MODIFY `audit_report_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `audit_report_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `document_attribute`
 --
 ALTER TABLE `document_attribute`
-  MODIFY `document_attribute_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `document_attribute_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `document_template`
 --
 ALTER TABLE `document_template`
-  MODIFY `document_template_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `document_template_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `migrations`
@@ -1286,37 +1483,37 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `m_company`
 --
 ALTER TABLE `m_company`
-  MODIFY `company_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `company_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `m_company_office`
 --
 ALTER TABLE `m_company_office`
-  MODIFY `company_office_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `company_office_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `m_company_staff`
 --
 ALTER TABLE `m_company_staff`
-  MODIFY `company_staff_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `company_staff_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `m_customer`
 --
 ALTER TABLE `m_customer`
-  MODIFY `customer_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `m_customer_office`
 --
 ALTER TABLE `m_customer_office`
-  MODIFY `customer_office_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_office_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `m_customer_staff`
 --
 ALTER TABLE `m_customer_staff`
-  MODIFY `customer_staff_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_staff_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `m_flowgroup`
@@ -1340,7 +1537,7 @@ ALTER TABLE `m_native_language`
 -- AUTO_INCREMENT cho bảng `m_sending_agency`
 --
 ALTER TABLE `m_sending_agency`
-  MODIFY `sending_agency_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sending_agency_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `m_stay_facility`
@@ -1352,43 +1549,43 @@ ALTER TABLE `m_stay_facility`
 -- AUTO_INCREMENT cho bảng `m_trainee`
 --
 ALTER TABLE `m_trainee`
-  MODIFY `trainee_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `trainee_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `m_trainee_relative`
 --
 ALTER TABLE `m_trainee_relative`
-  MODIFY `relative_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `relative_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `m_training_facility`
 --
 ALTER TABLE `m_training_facility`
-  MODIFY `training_facility_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `training_facility_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `m_user`
 --
 ALTER TABLE `m_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT cho bảng `m_work`
 --
 ALTER TABLE `m_work`
-  MODIFY `work_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `work_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `m_workflow`
 --
 ALTER TABLE `m_workflow`
-  MODIFY `flow_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `flow_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `m_working_hour`
 --
 ALTER TABLE `m_working_hour`
-  MODIFY `working_hour_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `working_hour_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`
@@ -1400,49 +1597,49 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `project`
 --
 ALTER TABLE `project`
-  MODIFY `project_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `project_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `project_document`
 --
 ALTER TABLE `project_document`
-  MODIFY `project_document_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `project_document_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `project_document_attribute`
 --
 ALTER TABLE `project_document_attribute`
-  MODIFY `project_document_attribute_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `project_document_attribute_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `project_trainee`
 --
 ALTER TABLE `project_trainee`
-  MODIFY `project_trainee_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `project_trainee_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `project_trainee_contract`
 --
 ALTER TABLE `project_trainee_contract`
-  MODIFY `contract_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `contract_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `project_work`
 --
 ALTER TABLE `project_work`
-  MODIFY `project_work_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `project_work_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `project_work_task`
 --
 ALTER TABLE `project_work_task`
-  MODIFY `task_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `task_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `project_work_task_file`
 --
 ALTER TABLE `project_work_task_file`
-  MODIFY `task_file_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `task_file_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `s_code`
@@ -1454,25 +1651,25 @@ ALTER TABLE `s_code`
 -- AUTO_INCREMENT cho bảng `s_function`
 --
 ALTER TABLE `s_function`
-  MODIFY `function_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `function_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `s_function_category`
 --
 ALTER TABLE `s_function_category`
-  MODIFY `category_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `visit_guidance_record`
 --
 ALTER TABLE `visit_guidance_record`
-  MODIFY `visit_record_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `visit_record_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `visit_guidance_record_detail`
 --
 ALTER TABLE `visit_guidance_record_detail`
-  MODIFY `detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
