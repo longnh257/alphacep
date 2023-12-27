@@ -44,7 +44,7 @@
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <label for="type" class="form-label">{{ trans('label.type') }}</label>
+                                        <label for="type" class="form-label">{{ trans('document_template.type') }}</label>
                                         <select class="form-control" name="type" id="type">
                                             <option value="01" {{ $model->type == '01' ? 'selected' : '' }}>資格申請書類</option>
                                             <option value="02" {{ $model->type == '02' ? 'selected' : '' }}>更新申請書類</option>
@@ -53,7 +53,7 @@
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <label for="target_doc" class="form-label">{{ trans('label.target_doc') }}</label>
+                                        <label for="target_doc" class="form-label">{{ trans('document_template.target_doc') }}</label>
                                         <select class="form-control" name="target_doc" id="target_doc">
                                             <option value="01" {{ $model->target_doc == '01' ? 'selected' : '' }}>実習生書類</option>
                                             <option value="02" {{ $model->target_doc == '02' ? 'selected' : '' }}>企業書類</option>
@@ -61,18 +61,18 @@
                                         </select>
                                     </div>
 
-                                    <span class="mb-0">{{trans('label.document_attributes') }}</span>
+                                    <span class="mb-0">{{trans('document_attribute.document_attributes') }}</span>
                                     <table class="table table-striped table-bordered mt-0 mb-0 mx-2 text-nowrap gridjs-table">
                                         <thead class="gridjs-thead">
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort " style="width: 70px;">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.no') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('document_attribute.no') }}</div>
                                                     </div>
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.name') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('document_attribute.name') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-maximize-2"></i>
                                                         </button>
@@ -81,7 +81,7 @@
 
                                                 <th class="gridjs-th gridjs-th-sort">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.value') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('document_attribute.value') }}</div>
                                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -114,7 +114,7 @@
                                     </table>
 
                                     <div class="btn-list">
-                                        <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                        <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                     </div>
 
                                 </div>

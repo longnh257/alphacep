@@ -7,7 +7,7 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.working_hour_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('working_hour.working_hour_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -47,52 +47,52 @@
                         @csrf
                         <div class="row gy-4">
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="working_hour_from" class="form-label">{{ trans('label.working_hour_from') }}</label>
+                                <label for="working_hour_from" class="form-label">{{ trans('working_hour.working_hour_from') }}</label>
                                 <input type="text" class="form-control" name="working_hour_from" id="working_hour_from" value="{{ $model->working_hour_from }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="working_hour_to" class="form-label">{{ trans('label.working_hour_to') }}</label>
+                                <label for="working_hour_to" class="form-label">{{ trans('working_hour.working_hour_to') }}</label>
                                 <input type="text" class="form-control" name="working_hour_to" id="working_hour_to" value="{{ $model->working_hour_to }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="rest_time_from" class="form-label">{{ trans('label.rest_time_from') }}</label>
+                                <label for="rest_time_from" class="form-label">{{ trans('working_hour.rest_time_from') }}</label>
                                 <input type="text" class="form-control" name="rest_time_from" id="rest_time_from" value="{{ $model->rest_time_from }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="rest_time_to" class="form-label">{{ trans('label.rest_time_to') }}</label>
+                                <label for="rest_time_to" class="form-label">{{ trans('working_hour.rest_time_to') }}</label>
                                 <input type="text" class="form-control" name="rest_time_to" id="rest_time_to" value="{{ $model->rest_time_to }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="rest_time_from_2" class="form-label">{{ trans('label.rest_time_from_2') }}</label>
+                                <label for="rest_time_from_2" class="form-label">{{ trans('working_hour.rest_time_from_2') }}</label>
                                 <input type="text" class="form-control" name="rest_time_from_2" id="rest_time_from_2" value="{{ $model->rest_time_from_2 }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="rest_time_to_2" class="form-label">{{ trans('label.rest_time_to_2') }}</label>
+                                <label for="rest_time_to_2" class="form-label">{{ trans('working_hour.rest_time_to_2') }}</label>
                                 <input type="text" class="form-control" name="rest_time_to_2" id="rest_time_to_2" value="{{ $model->rest_time_to_2 }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="rest_time_from_3" class="form-label">{{ trans('label.rest_time_from_3') }}</label>
+                                <label for="rest_time_from_3" class="form-label">{{ trans('working_hour.rest_time_from_3') }}</label>
                                 <input type="text" class="form-control" name="rest_time_from_3" id="rest_time_from_3" value="{{ $model->rest_time_from_3 }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="rest_time_to_3" class="form-label">{{ trans('label.rest_time_to_3') }}</label>
+                                <label for="rest_time_to_3" class="form-label">{{ trans('working_hour.rest_time_to_3') }}</label>
                                 <input type="text" class="form-control" name="rest_time_to_3" id="rest_time_to_3" value="{{ $model->rest_time_to_3 }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="rest_hour" class="form-label">{{ trans('label.rest_hour') }}</label>
+                                <label for="rest_hour" class="form-label">{{ trans('working_hour.rest_hour') }}</label>
                                 <input type="text" class="form-control" name="rest_hour" id="rest_hour" value="{{ $model->rest_hour }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="work_overtime" class="form-label">{{ trans('label.work_overtime') }}</label>
+                                <label for="work_overtime" class="form-label">{{ trans('working_hour.work_overtime') }}</label>
                                 <select class="form-control" name="work_overtime" id="work_overtime">
                                     <option value="1" {{ $model->work_overtime == '1' ? 'selected' : '' }}>有</option>
                                     <option value="0" {{ $model->work_overtime == '0' ? 'selected' : '' }}>無</option>
@@ -100,28 +100,28 @@
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="holiday_plan" class="form-label">{{ trans('label.holiday_plan') }}</label>
+                                <label for="holiday_plan" class="form-label">{{ trans('working_hour.holiday_plan') }}</label>
                                 <input type="text" class="form-control" name="holiday_plan" id="holiday_plan" value="{{ $model->holiday_plan }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="working_hour_comment" class="form-label">{{ trans('label.working_hour_comment') }}</label>
+                                <label for="working_hour_comment" class="form-label">{{ trans('working_hour.working_hour_comment') }}</label>
                                 <input type="text" class="form-control" name="working_hour_comment" id="working_hour_comment" value="{{ $model->working_hour_comment }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="working_condition" class="form-label">{{ trans('label.working_condition') }}</label>
+                                <label for="working_condition" class="form-label">{{ trans('working_hour.working_condition') }}</label>
                                 <input type="text" class="form-control" name="working_condition" id="working_condition" value="{{ $model->working_condition }}">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <label for="yearly_give" class="form-label">{{ trans('label.yearly_give') }}</label>
+                                <label for="yearly_give" class="form-label">{{ trans('working_hour.yearly_give') }}</label>
                                 <input type="text" class="form-control" name="yearly_give" id="yearly_give" value="{{ $model->yearly_give }}">
                             </div>
 
 
                             <div class="btn-list">
-                                <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                             </div>
 
                         </div>

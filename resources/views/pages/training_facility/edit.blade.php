@@ -7,7 +7,7 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.training_facility_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('training_facility.training_facility_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -60,32 +60,32 @@
                             @csrf
                             <div class="row gy-4">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{ $training_facility->name }}" placeholder="{{ trans('label.name') }}">
+                                    <label for="name" class="form-label required">{{ trans('training_facility.name') }}</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ $training_facility->name }}" placeholder="{{ trans('training_facility.name') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="tel" class="form-label">{{ trans('label.tel') }}</label>
-                                    <input type="text" class="form-control" name="tel" id="tel" value="{{ $training_facility->tel }}" placeholder="{{ trans('label.tel') }}">
+                                    <label for="tel" class="form-label">{{ trans('training_facility.tel') }}</label>
+                                    <input type="text" class="form-control" name="tel" id="tel" value="{{ $training_facility->tel }}" placeholder="{{ trans('training_facility.tel') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
-                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $training_facility->postcode }}" placeholder="{{ trans('label.postcode') }}">
+                                    <label for="postcode" class="form-label">{{ trans('training_facility.postcode') }}</label>
+                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $training_facility->postcode }}" placeholder="{{ trans('training_facility.postcode') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="address1" class="form-label">{{ trans('label.address1') }}</label>
-                                    <input type="text" class="form-control" name="address1" id="address1" value="{{ $training_facility->address1 }}" placeholder="{{ trans('label.address1') }}">
+                                    <label for="address1" class="form-label">{{ trans('training_facility.address1') }}</label>
+                                    <input type="text" class="form-control" name="address1" id="address1" value="{{ $training_facility->address1 }}" placeholder="{{ trans('training_facility.address1') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="address2" class="form-label">{{ trans('label.address2') }}</label>
-                                    <input type="text" class="form-control" name="address2" id="address2" value="{{ $training_facility->address2 }}" placeholder="{{ trans('label.address2') }}">
+                                    <label for="address2" class="form-label">{{ trans('training_facility.address2') }}</label>
+                                    <input type="text" class="form-control" name="address2" id="address2" value="{{ $training_facility->address2 }}" placeholder="{{ trans('training_facility.address2') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="food_expense_payment" class="form-label">{{ trans('label.food_expense_payment') }}</label>
+                                    <label for="food_expense_payment" class="form-label">{{ trans('training_facility.food_expense_payment') }}</label>
                                     <select class="form-select" name="food_expense_payment" id="food_expense_payment">
                                         <option value="0" {{ $training_facility->food_expense_payment == 0 ? ' selected' : '' }}>No</option>
                                         <option value="1" {{ $training_facility->food_expense_payment == 1 ? ' selected' : '' }}>Yes</option>
@@ -93,12 +93,12 @@
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="food_expense_payment_detail" class="form-label">{{ trans('label.food_expense_payment_detail') }}</label>
-                                    <input type="text" class="form-control" name="food_expense_payment_detail" id="food_expense_payment_detail" value="{{ $training_facility->food_expense_payment_detail }}" placeholder="{{ trans('label.food_expense_payment_detail') }}">
+                                    <label for="food_expense_payment_detail" class="form-label">{{ trans('training_facility.food_expense_payment_detail') }}</label>
+                                    <input type="text" class="form-control" name="food_expense_payment_detail" id="food_expense_payment_detail" value="{{ $training_facility->food_expense_payment_detail }}" placeholder="{{ trans('training_facility.food_expense_payment_detail') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="food_expense_trainee_charge" class="form-label">{{ trans('label.food_expense_trainee_charge') }}</label>
+                                    <label for="food_expense_trainee_charge" class="form-label">{{ trans('training_facility.food_expense_trainee_charge') }}</label>
                                     <select class="form-select" name="food_expense_trainee_charge" id="food_expense_trainee_charge">
                                         <option value="0" {{ $training_facility->food_expense_trainee_charge == 0 ? ' selected' : '' }}>No</option>
                                         <option value="1" {{ $training_facility->food_expense_trainee_charge == 1 ? ' selected' : '' }}>Yes</option>
@@ -106,17 +106,17 @@
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="food_expense_trainee_charge_detail" class="form-label">{{ trans('label.food_expense_trainee_charge_detail') }}</label>
-                                    <input type="text" class="form-control" name="food_expense_trainee_charge_detail" id="food_expense_trainee_charge_detail" value="{{ $training_facility->food_expense_trainee_charge_detail }}" placeholder="{{ trans('label.food_expense_trainee_charge_detail') }}">
+                                    <label for="food_expense_trainee_charge_detail" class="form-label">{{ trans('training_facility.food_expense_trainee_charge_detail') }}</label>
+                                    <input type="text" class="form-control" name="food_expense_trainee_charge_detail" id="food_expense_trainee_charge_detail" value="{{ $training_facility->food_expense_trainee_charge_detail }}" placeholder="{{ trans('training_facility.food_expense_trainee_charge_detail') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="food_expense_comment" class="form-label">{{ trans('label.food_expense_comment') }}</label>
-                                    <input type="text" class="form-control" name="food_expense_comment" id="food_expense_comment" value="{{ $training_facility->food_expense_comment }}" placeholder="{{ trans('label.food_expense_comment') }}">
+                                    <label for="food_expense_comment" class="form-label">{{ trans('training_facility.food_expense_comment') }}</label>
+                                    <input type="text" class="form-control" name="food_expense_comment" id="food_expense_comment" value="{{ $training_facility->food_expense_comment }}" placeholder="{{ trans('training_facility.food_expense_comment') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="house_cost_payment" class="form-label">{{ trans('label.house_cost_payment') }}</label>
+                                    <label for="house_cost_payment" class="form-label">{{ trans('training_facility.house_cost_payment') }}</label>
                                     <select class="form-select" name="house_cost_payment" id="house_cost_payment">
                                         <option value="0" {{ $training_facility->house_cost_payment == 0 ? ' selected' : '' }}>No</option>
                                         <option value="1" {{ $training_facility->house_cost_payment == 1 ? ' selected' : '' }}>Yes</option>
@@ -124,11 +124,11 @@
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="house_cost_payment_detail" class="form-label">{{ trans('label.house_cost_payment_detail') }}</label>
-                                    <input type="text" class="form-control" name="house_cost_payment_detail" id="house_cost_payment_detail" value="{{ $training_facility->house_cost_payment_detail }}" placeholder="{{ trans('label.house_cost_payment_detail') }}">
+                                    <label for="house_cost_payment_detail" class="form-label">{{ trans('training_facility.house_cost_payment_detail') }}</label>
+                                    <input type="text" class="form-control" name="house_cost_payment_detail" id="house_cost_payment_detail" value="{{ $training_facility->house_cost_payment_detail }}" placeholder="{{ trans('training_facility.house_cost_payment_detail') }}">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="house_cost_trainee_charge" class="form-label">{{ trans('label.house_cost_trainee_charge') }}</label>
+                                    <label for="house_cost_trainee_charge" class="form-label">{{ trans('training_facility.house_cost_trainee_charge') }}</label>
                                     <select class="form-select" name="house_cost_trainee_charge" id="house_cost_trainee_charge">
                                         <option value="0" {{ $training_facility->house_cost_trainee_charge == 0 ? ' selected' : '' }}>No</option>
                                         <option value="1" {{ $training_facility->house_cost_trainee_charge == 1 ? ' selected' : '' }}>Yes</option>
@@ -136,12 +136,12 @@
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="house_cost_trainee_charge_detail" class="form-label">{{ trans('label.house_cost_trainee_charge_detail') }}</label>
-                                    <input type="text" class="form-control" name="house_cost_trainee_charge_detail" id="house_cost_trainee_charge_detail" value="{{ $training_facility->house_cost_trainee_charge_detail }}" placeholder="{{ trans('label.house_cost_trainee_charge_detail') }}">
+                                    <label for="house_cost_trainee_charge_detail" class="form-label">{{ trans('training_facility.house_cost_trainee_charge_detail') }}</label>
+                                    <input type="text" class="form-control" name="house_cost_trainee_charge_detail" id="house_cost_trainee_charge_detail" value="{{ $training_facility->house_cost_trainee_charge_detail }}" placeholder="{{ trans('training_facility.house_cost_trainee_charge_detail') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_form" class="form-label">{{ trans('label.training_place_form') }}</label>
+                                    <label for="training_place_form" class="form-label">{{ trans('training_facility.training_place_form') }}</label>
                                     <select class="form-select" name="training_place_form" id="training_place_form">
                                         <option value="01" {{ $training_facility->training_place_form == '01' ? ' selected' : '' }}>Dormitory</option>
                                         <option value="02" {{ $training_facility->training_place_form == '02' ? ' selected' : '' }}>Rental House</option>
@@ -150,53 +150,53 @@
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_form_detail" class="form-label">{{ trans('label.training_place_form_detail') }}</label>
-                                    <input type="text" class="form-control" name="training_place_form_detail" id="training_place_form_detail" value="{{ $training_facility->training_place_form_detail }}" placeholder="{{ trans('label.training_place_form_detail') }}">
+                                    <label for="training_place_form_detail" class="form-label">{{ trans('training_facility.training_place_form_detail') }}</label>
+                                    <input type="text" class="form-control" name="training_place_form_detail" id="training_place_form_detail" value="{{ $training_facility->training_place_form_detail }}" placeholder="{{ trans('training_facility.training_place_form_detail') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_name" class="form-label">{{ trans('label.training_place_name') }}</label>
-                                    <input type="text" class="form-control" name="training_place_name" id="training_place_name" value="{{ $training_facility->training_place_name }}" placeholder="{{ trans('label.training_place_name') }}">
+                                    <label for="training_place_name" class="form-label">{{ trans('training_facility.training_place_name') }}</label>
+                                    <input type="text" class="form-control" name="training_place_name" id="training_place_name" value="{{ $training_facility->training_place_name }}" placeholder="{{ trans('training_facility.training_place_name') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_tel" class="form-label">{{ trans('label.training_place_tel') }}</label>
-                                    <input type="text" class="form-control" name="training_place_tel" id="training_place_tel" value="{{ $training_facility->training_place_tel }}" placeholder="{{ trans('label.training_place_tel') }}">
+                                    <label for="training_place_tel" class="form-label">{{ trans('training_facility.training_place_tel') }}</label>
+                                    <input type="text" class="form-control" name="training_place_tel" id="training_place_tel" value="{{ $training_facility->training_place_tel }}" placeholder="{{ trans('training_facility.training_place_tel') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_postcode" class="form-label">{{ trans('label.training_place_postcode') }}</label>
-                                    <input type="text" class="form-control" name="training_place_postcode" id="training_place_postcode" value="{{ $training_facility->training_place_postcode }}" placeholder="{{ trans('label.training_place_postcode') }}">
+                                    <label for="training_place_postcode" class="form-label">{{ trans('training_facility.training_place_postcode') }}</label>
+                                    <input type="text" class="form-control" name="training_place_postcode" id="training_place_postcode" value="{{ $training_facility->training_place_postcode }}" placeholder="{{ trans('training_facility.training_place_postcode') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_address1" class="form-label">{{ trans('label.training_place_address1') }}</label>
-                                    <input type="text" class="form-control" name="training_place_address1" id="training_place_address1" value="{{ $training_facility->training_place_address1 }}" placeholder="{{ trans('label.training_place_address1') }}">
+                                    <label for="training_place_address1" class="form-label">{{ trans('training_facility.training_place_address1') }}</label>
+                                    <input type="text" class="form-control" name="training_place_address1" id="training_place_address1" value="{{ $training_facility->training_place_address1 }}" placeholder="{{ trans('training_facility.training_place_address1') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_address2" class="form-label">{{ trans('label.training_place_address2') }}</label>
-                                    <input type="text" class="form-control" name="training_place_address2" id="training_place_address2" value="{{ $training_facility->training_place_address2 }}" placeholder="{{ trans('label.training_place_address2') }}">
+                                    <label for="training_place_address2" class="form-label">{{ trans('training_facility.training_place_address2') }}</label>
+                                    <input type="text" class="form-control" name="training_place_address2" id="training_place_address2" value="{{ $training_facility->training_place_address2 }}" placeholder="{{ trans('training_facility.training_place_address2') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_area" class="form-label">{{ trans('label.training_place_area') }}</label>
-                                    <input type="text" class="form-control" name="training_place_area" id="training_place_area" value="{{ $training_facility->training_place_area }}" placeholder="{{ trans('label.training_place_area') }}">
+                                    <label for="training_place_area" class="form-label">{{ trans('training_facility.training_place_area') }}</label>
+                                    <input type="text" class="form-control" name="training_place_area" id="training_place_area" value="{{ $training_facility->training_place_area }}" placeholder="{{ trans('training_facility.training_place_area') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_person" class="form-label">{{ trans('label.training_place_person') }}</label>
-                                    <input type="text" class="form-control" name="training_place_person" id="training_place_person" value="{{ $training_facility->training_place_person }}" placeholder="{{ trans('label.training_place_person') }}">
+                                    <label for="training_place_person" class="form-label">{{ trans('training_facility.training_place_person') }}</label>
+                                    <input type="text" class="form-control" name="training_place_person" id="training_place_person" value="{{ $training_facility->training_place_person }}" placeholder="{{ trans('training_facility.training_place_person') }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="training_place_room_area" class="form-label">{{ trans('label.training_place_room_area') }}</label>
-                                    <input type="text" class="form-control" name="training_place_room_area" id="training_place_room_area" value="{{ $training_facility->training_place_room_area }}" placeholder="{{ trans('label.training_place_room_area') }}">
+                                    <label for="training_place_room_area" class="form-label">{{ trans('training_facility.training_place_room_area') }}</label>
+                                    <input type="text" class="form-control" name="training_place_room_area" id="training_place_room_area" value="{{ $training_facility->training_place_room_area }}" placeholder="{{ trans('training_facility.training_place_room_area') }}">
                                 </div>
 
 
                                 <div class="btn-list">
-                                    <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                 </div>
 
                             </div>

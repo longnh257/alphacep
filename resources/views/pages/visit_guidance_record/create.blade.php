@@ -8,10 +8,10 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.visit_guidance_record_add') }}</h4>
+            <h4 class="mb-0">{{ trans('visit_guidance_record.visit_guidance_record_add') }}</h4>
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('label.visit_guidance_record') }}</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('common.homepage') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ trans('visit_guidance_record.visit_guidance_record') }}</li>
             </ol>
         </div>
 
@@ -25,7 +25,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.visit_guidance_record_info') }}
+                        {{ trans('visit_guidance_record.visit_guidance_record_info') }}
                     </div>
                 </div>
 
@@ -43,27 +43,27 @@
 
 
                         <div class="col-sm-12">
-                            <label for="company_office" class="form-label ">{{ trans('label.company_office') }}</label>
+                            <label for="company_office" class="form-label ">{{ trans('visit_guidance_record.company_office') }}</label>
                             <select class="form-control" data-trigger name="company_office_id" id="company_office">
-                                <option value="">{{ trans('label.choose_company_office') }}</option>
+                                <option value="">{{ trans('visit_guidance_record.choose_company_office') }}</option>
                                 @foreach ($company_office as $item)
                                 <option value="{{$item->company_office_id}}">ID: {{$item->company_office_id}} - Name: {{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-sm-12">
-                            <label for="visit_staff" class="form-label ">{{ trans('label.visit_staff') }}</label>
+                            <label for="visit_staff" class="form-label ">{{ trans('visit_guidance_record.visit_staff') }}</label>
                             <select class="form-control" data-trigger name="visit_staff_id" id="visit_staff">
-                                <option value="">{{ trans('label.visit_staff') }}</option>
+                                <option value="">{{ trans('visit_guidance_record.visit_staff') }}</option>
                                 @foreach ($customer_staff as $item)
                                 <option value="{{$item->customer_staff_id}}">ID: {{$item->customer_staff_id}} - Name: {{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-sm-12">
-                            <label for="trainee" class="form-label ">{{ trans('label.trainee') }}</label>
+                            <label for="trainee" class="form-label ">{{ trans('visit_guidance_record.trainee') }}</label>
                             <select class="form-control" data-trigger name="trainee_id" id="trainee">
-                                <option value="">{{ trans('label.choose_trainee') }}</option>
+                                <option value="">{{ trans('visit_guidance_record.choose_trainee') }}</option>
                                 @foreach ($trainee as $item)
                                 <option value="{{$item->trainee_id}}">ID: {{$item->trainee_id}} - Name: {{$item->name}}</option>
                                 @endforeach
@@ -71,7 +71,7 @@
                         </div>
                        
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

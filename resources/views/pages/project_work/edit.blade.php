@@ -7,7 +7,7 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.project_work_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('project_work.project_work_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,13 +34,13 @@
 
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_work_info" href="#project_work_info">{{trans('label.project_work_info')}}</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_work_info" href="#project_work_info">{{trans('project_work.project_work_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#work_task" aria-current="page" href="#work_task"> {{trans('label.project_work_task_info')}}</a>
+                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#work_task" aria-current="page" href="#work_task"> {{trans('project_work.project_work_task_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#work_task_file" aria-current="page" href="#work_task_file"> {{trans('label.project_work_task_file_info')}}</a>
+                        <a class="nav-link " data-bs-toggle="tab" data-bs-target="#work_task_file" aria-current="page" href="#work_task_file"> {{trans('project_work.project_work_task_file_info')}}</a>
                     </li>
 
                 </ul>
@@ -62,12 +62,12 @@
                             <div class="row gy-4">
 
                                 <div class="col-sm-12">
-                                    <label for="project_id" class="form-label required">{{ trans('label.project_id') }}</label>
+                                    <label for="project_id" class="form-label required">{{ trans('project_work.project_id') }}</label>
                                     <input type="number" class="form-control" value="{{$model->project_id}}" disabled>
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <label for="work" class="form-label ">{{ trans('label.work') }}</label>
+                                    <label for="work" class="form-label ">{{ trans('project_work.work') }}</label>
                                     <select class="form-control" data-trigger name="work_id" id="work">
                                         @foreach ($work as $item)
                                         <option value="{{$item->work_id}}" {{ $model->work_id == $item->work_id ? 'selected' : '' }}>ID: {{$item->work_id}} - Name: {{$item->name}}</option>
@@ -77,7 +77,7 @@
 
 
                                 <div class="btn-list">
-                                    <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                 </div>
 
                             </div>
@@ -102,7 +102,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.task_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.task_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -112,7 +112,7 @@
 
                                                 <th>
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_work_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.project_work_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -120,7 +120,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.seq_no')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.seq_no')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -128,7 +128,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.person_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.person_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -136,7 +136,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.complete_user_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.complete_user_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -144,7 +144,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.complete_user_name')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.complete_user_name')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -243,7 +243,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task_file.id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -251,7 +251,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.file_path')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task_file.file_path')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -259,7 +259,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.file_size')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task_file.file_size')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -267,7 +267,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.seq_no')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task_file.seq_no')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -275,7 +275,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_work_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task_file.project_work_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>

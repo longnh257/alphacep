@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.task_file_add') }}</h4>
+            <h4 class="mb-0">{{ trans('project_work_task_file.task_file_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.project_info') }}
+                        {{ trans('project_work_task_file.project_info') }}
                     </div>
                 </div>
 
@@ -51,17 +51,17 @@
                     <div class="row gy-4">
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="seq_no" class="form-label">{{ trans('label.seq_no') }}</label>
+                            <label for="seq_no" class="form-label">{{ trans('project_work_task_file.seq_no') }}</label>
                             <input type="number" class="form-control" name="seq_no" id="seq_no" value="{{ old('seq_no') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="file" class="form-label">{{ trans('label.file') }}</label>
+                            <label for="file" class="form-label">{{ trans('project_work_task_file.file') }}</label>
                             <input type="file" class="form-control" name="file" id="file">
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

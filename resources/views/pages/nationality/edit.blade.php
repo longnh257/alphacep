@@ -7,7 +7,7 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.nationality_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('nationality.nationality_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -47,12 +47,12 @@
                         @csrf
                         <div class="row gy-4">
                             <div class="col-sm-12">
-                                <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $nationality->name }}" placeholder="{{ trans('label.name') }}">
+                                <label for="name" class="form-label required">{{ trans('nationality.name') }}</label>
+                                <input type="text" class="form-control" name="name" id="name" value="{{ $nationality->name }}" placeholder="{{ trans('nationality.name') }}">
                             </div>
 
                             <div class="btn-list">
-                                <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                             </div>
 
                         </div>

@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Homepage')
+@section('title', 'Company')
 
 @section('content')
 
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.company_add') }}</h4>
+        <h4 class="mb-0">{{ trans('company.company_add') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -33,13 +33,13 @@
             <div class="card-body">
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#company" aria-current="page" href="#company">{{ trans('label.company_info') }}</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#company" aria-current="page" href="#company">{{ trans('company.company_info') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#office" href="#office">{{ trans('label.customer_office_info') }}</a>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#office" href="#office">{{ trans('company.customer_office_info') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#visit_guidance" href="#visit_guidance">{{ trans('label.visit_guidance_info') }}</a>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#visit_guidance" href="#visit_guidance">{{ trans('company.visit_guidance_info') }}</a>
                     </li>
                 </ul>
 
@@ -60,31 +60,31 @@
                             @csrf
                             <div class="row gy-4">
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{ $company->name }}" placeholder="{{ trans('label.name') }}">
+                                    <label for="name" class="form-label required">{{ trans('company.name') }}</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ $company->name }}" placeholder="{{ trans('company.name') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                                    <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ $company->name_kana }}" placeholder="{{ trans('label.name_kana') }}">
+                                    <label for="name_kana" class="form-label  required">{{ trans('company.name_kana') }}</label>
+                                    <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ $company->name_kana }}" placeholder="{{ trans('company.name_kana') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="tel" class="form-label required">{{ trans('label.tel') }}</label>
-                                    <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ $company->tel }}" placeholder="{{ trans('label.tel') }}">
+                                    <label for="tel" class="form-label required">{{ trans('company.tel') }}</label>
+                                    <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ $company->tel }}" placeholder="{{ trans('company.tel') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="fax" class="form-label">{{ trans('label.fax') }}</label>
-                                    <input type="text" class="form-control" name="fax" id="fax" value="{{ $company->fax }}" placeholder="{{ trans('label.fax') }}">
+                                    <label for="fax" class="form-label">{{ trans('company.fax') }}</label>
+                                    <input type="text" class="form-control" name="fax" id="fax" value="{{ $company->fax }}" placeholder="{{ trans('company.fax') }}">
                                 </div>
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
-                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $company->postcode }}" placeholder="{{ trans('label.postcode') }}">
+                                    <label for="postcode" class="form-label">{{ trans('company.postcode') }}</label>
+                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{ $company->postcode }}" placeholder="{{ trans('company.postcode') }}">
                                 </div>
 
                                 <div class="btn-list">
-                                    <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                 </div>
 
                             </div>
@@ -107,7 +107,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.customer_office_info') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_office.id') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -116,7 +116,7 @@
 
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Name</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_office.name') }}</div>
                                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-up"></i>
                                                         </button>
@@ -124,7 +124,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Company</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_office.company') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-maximize-2"></i>
                                                         </button>
@@ -132,7 +132,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Tel</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_office.tel') }}</div>
                                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -140,7 +140,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
+                                                        <a href="{{route('view.company_company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
@@ -227,7 +227,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.id') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance.id') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -235,7 +235,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.company') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance.company') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -243,7 +243,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.company_office') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance.company_office') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -251,7 +251,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.visit_staff') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance.visit_staff') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -259,7 +259,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.trainee') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance.trainee') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>

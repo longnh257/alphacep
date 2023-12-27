@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.workflow_add') }}</h4>
+            <h4 class="mb-0">{{ trans('workflow.workflow_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.workflow_info') }}
+                        {{ trans('workflow.workflow_info') }}
                     </div>
                 </div>
 
@@ -51,12 +51,12 @@
                     <div class="row gy-4">
 
                         <div class="col-sm-12">
-                            <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('label.name') }}">
+                            <label for="name" class="form-label required">{{ trans('workflow.name') }}</label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('workflow.name') }}">
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="flowgroup_id" class="form-label ">{{ trans('label.flowgroup_id') }}</label>
+                            <label for="flowgroup_id" class="form-label ">{{ trans('workflow.flowgroup_id') }}</label>
                             <select class="form-control" data-trigger name="flowgroup_id" id="flowgroup_id">
                                 <option value="1">入国手続</option>
                                 <option value="2">技能実習</option>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

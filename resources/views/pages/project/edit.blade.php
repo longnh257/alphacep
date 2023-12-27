@@ -7,7 +7,7 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.project_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('project.project_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -41,13 +41,13 @@
             <div class="card-body">
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_info" aria-current="page" href="#project_info"> {{trans('label.project_info')}}</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#project_info" aria-current="page" href="#project_info"> {{trans('project.project_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#project_trainee_info" href="#project_trainee_info">{{trans('label.project_trainee_info')}}</a>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#project_trainee_info" href="#project_trainee_info">{{trans('project.project_trainee_info')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#project_work_info" href="#project_work_info">{{trans('label.project_work_info')}}</a>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#project_work_info" href="#project_work_info">{{trans('project.project_work_info')}}</a>
                     </li>
                 </ul>
 
@@ -61,19 +61,19 @@
                             @csrf
                             <div class="row gy-4">
                                 <div class="col-sm-12">
-                                    <label for="trainee_number" class="form-label required">{{ trans('label.trainee_number') }}</label>
-                                    <input type="number" class="form-control" name="trainee_number" id="trainee_number" value="{{ $project->trainee_number }}" placeholder="{{ trans('label.trainee_number') }}">
+                                    <label for="trainee_number" class="form-label required">{{ trans('project.trainee_number') }}</label>
+                                    <input type="number" class="form-control" name="trainee_number" id="trainee_number" value="{{ $project->trainee_number }}" placeholder="{{ trans('project.trainee_number') }}">
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <label for="entry_date" class="form-label required">{{ trans('label.entry_date') }}</label>
-                                    <input type="date" class="form-control" name="entry_date" id="entry_date" value="{{ $project->entry_date }}" placeholder="{{ trans('label.entry_date') }}">
+                                    <label for="entry_date" class="form-label required">{{ trans('project.entry_date') }}</label>
+                                    <input type="date" class="form-control" name="entry_date" id="entry_date" value="{{ $project->entry_date }}" placeholder="{{ trans('project.entry_date') }}">
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <label for="sending_agency_id" class="form-label ">{{ trans('label.sending_agency') }}</label>
+                                    <label for="sending_agency_id" class="form-label ">{{ trans('project.sending_agency') }}</label>
                                     <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency_id">
-                                        <option value="">{{ trans('label.choose_sending_agency') }}</option>
+                                        <option value="">{{ trans('project.choose_sending_agency') }}</option>
                                         @foreach ($sending_agency as $item)
                                         <option value="{{$item->sending_agency_id}}" @if($project->sending_agency_id == $item->sending_agency_id ) selected @endif>{{$item->sending_agency_name}}</option>
                                         @endforeach
@@ -81,9 +81,9 @@
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <label for="company_id" class="form-label ">{{ trans('label.company') }}</label>
+                                    <label for="company_id" class="form-label ">{{ trans('project.company') }}</label>
                                     <select class="form-control" data-trigger name="company_id" id="company_id">
-                                        <option value="">{{ trans('label.choose_company') }}</option>
+                                        <option value="">{{ trans('project.choose_company') }}</option>
                                         @foreach ($company as $item)
                                         <option value="{{$item->company_id}}" @if($project->company_id == $item->company_id ) selected @endif>{{$item->company_name}}</option>
                                         @endforeach
@@ -91,7 +91,7 @@
                                 </div>
 
                                 <div class="btn-list">
-                                    <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                 </div>
 
                             </div>
@@ -115,7 +115,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_trainee.id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -123,7 +123,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_trainee.project_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -131,7 +131,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.trainee_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_trainee.trainee_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -139,7 +139,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.training_facility_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_trainee.training_facility_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -147,7 +147,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.sending_agency_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_trainee.sending_agency_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -172,7 +172,7 @@
 
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap">
-                                                        <a :href="`{{asset('project-trainee-contract/create')}}/`+item.project_trainee_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee-contract')}}"><i class="bx bx-file"></i></a>
+                                                        <a :href="`{{asset('project-trainee-contract/create')}}/`+item.project_trainee_id" class="text-info fs-14 lh-1" title="{{trans('project_trainee.add-project-trainee-contract')}}"><i class="bx bx-file"></i></a>
                                                         <a :href="`{{asset('project-trainee')}}/`+item.project_trainee_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('project-trainee')}}/`+item.project_trainee_id" :id="'formDelete_'+((item.project_trainee_id))" class="pt-1" method="post">
                                                             @method('DELETE')
@@ -247,7 +247,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work.id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -255,7 +255,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work.project_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -263,7 +263,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.work_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work.work_id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>

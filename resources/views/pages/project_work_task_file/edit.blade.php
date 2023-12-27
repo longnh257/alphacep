@@ -7,7 +7,7 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.task_file_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('project_work_task_file.task_file_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -49,63 +49,63 @@
                             <div class="row gy-4">
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="project_work_id" class="form-label">{{ trans('label.project_work_id') }}</label>
+                                    <label for="project_work_id" class="form-label">{{ trans('project_work_task_file.project_work_id') }}</label>
                                     <input type="number" class="form-control" value="{{ $model->project_work_id }}" disabled>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="title" class="form-label">{{ trans('label.title') }}</label>
+                                    <label for="title" class="form-label">{{ trans('project_work_task_file.title') }}</label>
                                     <input type="text" class="form-control" name="title" id="title" value="{{ $model->title }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="seq_no" class="form-label">{{ trans('label.seq_no') }}</label>
+                                    <label for="seq_no" class="form-label">{{ trans('project_work_task_file.seq_no') }}</label>
                                     <input type="number" class="form-control" name="seq_no" id="seq_no" value="{{ $model->seq_no }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="person_id" class="form-label">{{ trans('label.person_id') }}</label>
+                                    <label for="person_id" class="form-label">{{ trans('project_work_task_file.person_id') }}</label>
                                     <!-- Dropdown for person_id -->
                                     <input type="number" class="form-control" name="person_id" id="person_id" value="{{ $model->complete_user_id }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="complete_limit_date" class="form-label">{{ trans('label.complete_limit_date') }}</label>
+                                    <label for="complete_limit_date" class="form-label">{{ trans('project_work_task_file.complete_limit_date') }}</label>
                                     <input type="date" class="form-control" name="complete_limit_date" id="complete_limit_date" value="{{ $model->complete_limit_date }}">
                                 </div>
 
                                 <div class=" col-sm-12">
-                                    <label for="content" class="form-label">{{ trans('label.content') }}</label>
+                                    <label for="content" class="form-label">{{ trans('project_work_task_file.content') }}</label>
                                     <textarea class="form-control" name="content" id="content">{{ $model->content }}</textarea>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="status" class="form-label">{{ trans('label.status') }}</label>
+                                    <label for="status" class="form-label">{{ trans('project_work_task_file.status') }}</label>
                                     <!-- Dropdown for status -->
                                     <select class="form-control" name="status" id="status">
-                                        <option value="0" {{ $model->status == '0' ? 'selected' : '' }}>{{ trans('label.incomplete') }}</option>
-                                        <option value="1" {{ $model->status == '1' ? 'selected' : '' }}> {{ trans('label.complete') }}</option>
+                                        <option value="0" {{ $model->status == '0' ? 'selected' : '' }}>{{ trans('project_work_task_file.incomplete') }}</option>
+                                        <option value="1" {{ $model->status == '1' ? 'selected' : '' }}> {{ trans('project_work_task_file.complete') }}</option>
                                     </select>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="complete_date" class="form-label">{{ trans('label.complete_date') }}</label>
+                                    <label for="complete_date" class="form-label">{{ trans('project_work_task_file.complete_date') }}</label>
                                     <input type="date" class="form-control" name="complete_date" id="complete_date" value="{{ $model->complete_date }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="complete_user_id" class="form-label">{{ trans('label.complete_user_id') }}</label>
+                                    <label for="complete_user_id" class="form-label">{{ trans('project_work_task_file.complete_user_id') }}</label>
                                     <input type="number" class="form-control" name="complete_user_id" id="complete_user_id" value="{{ $model->complete_user_id }}">
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="complete_user_name" class="form-label">{{ trans('label.complete_user_name') }}</label>
+                                    <label for="complete_user_name" class="form-label">{{ trans('project_work_task_file.complete_user_name') }}</label>
                                     <input type="text" class="form-control" name="complete_user_name" id="complete_user_name" value="{{ $model->complete_user_name }}">
                                 </div>
 
 
                                 <div class="btn-list">
-                                    <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                 </div>
 
                             </div>

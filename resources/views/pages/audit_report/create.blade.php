@@ -8,10 +8,10 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.audit_report_add') }}</h4>
+            <h4 class="mb-0">{{ trans('audit_report_label.audit_report_add') }}</h4>
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('label.audit_report') }}</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('common.homepage') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ trans('audit_report_label.audit_report') }}</li>
             </ol>
         </div>
 
@@ -25,7 +25,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.audit_report_info') }}
+                        {{ trans('audit_report_label.audit_report_info') }}
                     </div>
                 </div>
 
@@ -43,9 +43,9 @@
 
 
                         <div class="col-sm-12">
-                            <label for="company_office" class="form-label ">{{ trans('label.company_office') }}</label>
+                            <label for="company_office" class="form-label ">{{ trans('audit_report_label.company_office') }}</label>
                             <select class="form-control" data-trigger name="company_office_id" id="company_office">
-                                <option value="">{{ trans('label.choose_company_office') }}</option>
+                                <option value="">{{ trans('audit_report_label.choose_company_office') }}</option>
                                 @foreach ($company_office as $item)
                                 <option value="{{$item->company_office_id}}">ID: {{$item->company_office_id}} - Name: {{$item->name}}</option>
                                 @endforeach
@@ -53,9 +53,9 @@
                         </div>
                         <!-- 
                         <div class="col-sm-12">
-                            <label for="company" class="form-label ">{{ trans('label.company') }}</label>
+                            <label for="company" class="form-label ">{{ trans('audit_report_label.company') }}</label>
                             <select class="form-control" data-trigger name="company_id" id="company">
-                                <option value="">{{ trans('label.choose_company') }}</option>
+                                <option value="">{{ trans('audit_report_label.choose_company') }}</option>
                                 @foreach ($company as $item)
                                 <option value="{{$item->company_id}}">ID: {{$item->company_id}} - Name: {{$item->name}}</option>
                                 @endforeach
@@ -63,22 +63,22 @@
                         </div> -->
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="audit_date" class="form-label">{{ trans('label.audit_date') }}</label>
+                            <label for="audit_date" class="form-label">{{ trans('audit_report_label.audit_date') }}</label>
                             <input type="date" class="form-control" name="audit_date" id="audit_date" value="{{ old('audit_date') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="last_audit_date" class="form-label">{{ trans('label.last_audit_date') }}</label>
+                            <label for="last_audit_date" class="form-label">{{ trans('audit_report_label.last_audit_date') }}</label>
                             <input type="date" class="form-control" name="last_audit_date" id="last_audit_date" value="{{ old('last_audit_date') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="next_audit_date" class="form-label">{{ trans('label.next_audit_date') }}</label>
+                            <label for="next_audit_date" class="form-label">{{ trans('audit_report_label.next_audit_date') }}</label>
                             <input type="date" class="form-control" name="next_audit_date" id="next_audit_date" value="{{ old('next_audit_date') }}">
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('audit_report_common.submit') }}</button>
                         </div>
 
                     </div>

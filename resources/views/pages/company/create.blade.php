@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Company')
 
 @section('content')
 <form action="{{route('view.company.store')}}" method="post" enctype="multipart/form-data" class="container-fluid">
@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">Thêm công ty</h4>
+            <h4 class="mb-0">{{ trans('company.company_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        Thông tin công ty
+                        {{ trans('company.company_info') }}
                     </div>
                 </div>
 
@@ -50,31 +50,31 @@
                 <div class="card-body">
                     <div class="row gy-4">
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('label.name') }}">
+                            <label for="name" class="form-label required">{{ trans('company.name') }}</label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="{{ trans('company.name') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                            <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ old('name_kana') }}" placeholder="{{ trans('label.name_kana') }}">
+                            <label for="name_kana" class="form-label  required">{{ trans('company.name_kana') }}</label>
+                            <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{ old('name_kana') }}" placeholder="{{ trans('company.name_kana') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="tel" class="form-label required">{{ trans('label.tel') }}</label>
-                            <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ old('tel') }}" placeholder="{{ trans('label.tel') }}">
+                            <label for="tel" class="form-label required">{{ trans('company.tel') }}</label>
+                            <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{ old('tel') }}" placeholder="{{ trans('company.tel') }}">
                         </div>
 
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="fax" class="form-label">{{ trans('label.fax') }}</label>
-                            <input type="text" class="form-control" name="fax" id="fax" value="{{ old('fax') }}" placeholder="{{ trans('label.fax') }}">
+                            <label for="fax" class="form-label">{{ trans('company.fax') }}</label>
+                            <input type="text" class="form-control" name="fax" id="fax" value="{{ old('fax') }}" placeholder="{{ trans('company.fax') }}">
                         </div>
                         <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
-                            <input type="text" class="form-control" name="postcode" id="postcode" value="{{ old('postcode') }}" placeholder="{{ trans('label.postcode') }}">
+                            <label for="postcode" class="form-label">{{ trans('company.postcode') }}</label>
+                            <input type="text" class="form-control" name="postcode" id="postcode" value="{{ old('postcode') }}" placeholder="{{ trans('company.postcode') }}">
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

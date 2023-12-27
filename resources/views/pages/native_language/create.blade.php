@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.native_language_add') }}</h4>
+            <h4 class="mb-0">{{ trans('native_language.native_language_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.native_language_info') }}
+                        {{ trans('native_language.native_language_info') }}
                     </div>
                 </div>
 
@@ -50,12 +50,12 @@
                 <div class="card-body">
                     <div class="row gy-4">
                         <div class="col-sm-12">
-                            <label for="native_language" class="form-label required">{{ trans('label.native_language') }}</label>
-                            <input type="text" class="form-control" name="native_language" id="native_language" value="{{ old('native_language') }}" placeholder="{{ trans('label.native_language') }}">
+                            <label for="native_language" class="form-label required">{{ trans('native_language.native_language') }}</label>
+                            <input type="text" class="form-control" name="native_language" id="native_language" value="{{ old('native_language') }}" placeholder="{{ trans('native_language.native_language') }}">
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

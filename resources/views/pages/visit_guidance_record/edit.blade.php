@@ -7,11 +7,11 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('label.visit_guidance_record_edit') }}</h4>
+        <h4 class="mb-0">{{ trans('visit_guidance_record.visit_guidance_record_edit') }}</h4>
         <nav>
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('label.homepage') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('label.visit_guidance_record') }}</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('common.homepage') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ trans('visit_guidance_record.visit_guidance_record') }}</li>
             </ol>
         </nav>
     </div>
@@ -47,10 +47,10 @@
 
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#visit_guidance_record" aria-current="page" href="#visit_guidance_record">{{ trans('label.visit_guidance_record_info') }}</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#visit_guidance_record" aria-current="page" href="#visit_guidance_record">{{ trans('visit_guidance_record.visit_guidance_record_info') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#visit_guidance_record_detail" href="#visit_guidance_record_detail">{{ trans('label.visit_guidance_record_detail') }}</a>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#visit_guidance_record_detail" href="#visit_guidance_record_detail">{{ trans('visit_guidance_record.visit_guidance_record_detail') }}</a>
                     </li>
 
                 </ul>
@@ -75,27 +75,27 @@
 
 
                                 <div class="col-sm-12">
-                                    <label for="company_office" class="form-label ">{{ trans('label.company_office') }}</label>
+                                    <label for="company_office" class="form-label ">{{ trans('visit_guidance_record.company_office') }}</label>
                                     <select class="form-control" data-trigger name="company_office_id" id="company_office">
-                                        <option value="">{{ trans('label.choose_company_office') }}</option>
+                                        <option value="">{{ trans('visit_guidance_record.choose_company_office') }}</option>
                                         @foreach ($company_office as $item)
                                         <option value="{{$item->company_office_id}}" {{$item->company_office_id == $model->company_office_id ? 'selected' : ''}}>ID: {{$item->company_office_id}} - Name: {{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-sm-12">
-                                    <label for="visit_staff" class="form-label ">{{ trans('label.visit_staff') }}</label>
+                                    <label for="visit_staff" class="form-label ">{{ trans('visit_guidance_record.visit_staff') }}</label>
                                     <select class="form-control" data-trigger name="visit_staff_id" id="visit_staff">
-                                        <option value="">{{ trans('label.visit_staff') }}</option>
+                                        <option value="">{{ trans('visit_guidance_record.visit_staff') }}</option>
                                         @foreach ($customer_staff as $item)
                                         <option value="{{$item->customer_staff_id}}" {{$item->customer_staff_id == $model->visit_staff_id ? 'selected' : ''}}>ID: {{$item->customer_staff_id}} - Name: {{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-sm-12">
-                                    <label for="trainee" class="form-label ">{{ trans('label.trainee') }}</label>
+                                    <label for="trainee" class="form-label ">{{ trans('visit_guidance_record.trainee') }}</label>
                                     <select class="form-control" data-trigger name="trainee_id" id="trainee">
-                                        <option value="">{{ trans('label.choose_trainee') }}</option>
+                                        <option value="">{{ trans('visit_guidance_record.choose_trainee') }}</option>
                                         @foreach ($trainee as $item)
                                         <option value="{{$item->trainee_id}}" {{$item->trainee_id == $model->trainee_id ? 'selected' : ''}}>ID: {{$item->trainee_id}} - Name: {{$item->name}}</option>
                                         @endforeach
@@ -103,7 +103,7 @@
                                 </div>
 
                                 <div class="btn-list">
-                                    <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                 </div>
 
                             </div>
@@ -123,7 +123,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.id') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance_record_detail.id') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -131,7 +131,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.seq_no') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance_record_detail.seq_no') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -139,7 +139,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.visit_date') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance_record_detail.visit_date') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -147,7 +147,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{ trans('label.visit_time') }}</div>
+                                                        <div class="gridjs-th-content">{{ trans('visit_guidance_record_detail.visit_time') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>

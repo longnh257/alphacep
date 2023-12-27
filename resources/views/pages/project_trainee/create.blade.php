@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.project_add') }}</h4>
+            <h4 class="mb-0">{{ trans('project_trainee.project_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.project_info') }}
+                        {{ trans('project_trainee.project_info') }}
                     </div>
                 </div>
 
@@ -52,14 +52,14 @@
 
 
                         <div class="col-sm-12">
-                            <label for="project_id" class="form-label required">{{ trans('label.project_id') }}</label>
+                            <label for="project_id" class="form-label required">{{ trans('project_trainee.project_id') }}</label>
                             <input type="number" class="form-control" value="{{$project->project_id}}" disabled>
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="trainee" class="form-label ">{{ trans('label.trainee') }}</label>
+                            <label for="trainee" class="form-label ">{{ trans('project_trainee.trainee') }}</label>
                             <select class="form-control" data-trigger name="trainee_id" id="trainee">
-                                <option value="">{{ trans('label.choose_trainee') }}</option>
+                                <option value="">{{ trans('project_trainee.choose_trainee') }}</option>
                                 @foreach ($trainee as $item)
                                 <option value="{{$item->trainee_id}}">ID: {{$item->trainee_id}} - Name: {{$item->name}}</option>
                                 @endforeach
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="sending_agency" class="form-label ">{{ trans('label.sending_agency') }}</label>
+                            <label for="sending_agency" class="form-label ">{{ trans('project_trainee.sending_agency') }}</label>
                             <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency">
                                 @foreach ($sending_agency as $item)
                                 <option value="{{$item->sending_agency_id}}">ID: {{$item->sending_agency_id}} - Name: {{$item->representative_name}}</option>
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="training_facility" class="form-label ">{{ trans('label.training_facility') }}</label>
+                            <label for="training_facility" class="form-label ">{{ trans('project_trainee.training_facility') }}</label>
                             <select class="form-control" data-trigger name="training_facility_id" id="training_facility">
                                 @foreach ($training_facility as $item)
                                 <option value="{{$item->training_facility_id}}">ID: {{$item->training_facility_id}} - Name: {{$item->name}}</option>
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

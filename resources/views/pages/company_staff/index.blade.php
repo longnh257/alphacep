@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
-@section('title', 'Company Office')
+@section('title', 'Company Staff')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1">Company Office</h5>
+            <h5 class="page-title fs-21 mb-1">{{ trans('company_staff.company_staff') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Company Office</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('common.homepage') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ trans('company_staff.company_staff') }}</li>
                 </ol>
             </nav>
         </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
-                   {{ trans('label.table_title') }}
+                   {{ trans('company_staff.table_title') }}
                     <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light bg-transparent rounded-pill" data-bs-toggle="dropdown"><i class="fe fe-more-horizontal"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);">10</a>
@@ -52,7 +52,7 @@
                             <tr class="gridjs-tr">
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('label.id') }}</div>
+                                        <div class="gridjs-th-content">{{ trans('company_staff.id') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -60,7 +60,7 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Name</div>
+                                        <div class="gridjs-th-content">{{ trans('company_staff.name') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
@@ -68,7 +68,7 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">office</div>
+                                        <div class="gridjs-th-content">{{ trans('company_staff.office') }}</div>
                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-up"></i>
                                         </button>
@@ -76,7 +76,7 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">Tel</div>
+                                        <div class="gridjs-th-content">{{ trans('company_staff.tel') }}</div>
                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>

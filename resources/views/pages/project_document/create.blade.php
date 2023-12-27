@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.project_document_add') }}</h4>
+            <h4 class="mb-0">{{ trans('project_document.project_document_add') }}</h4>
         </div>
     </div>
     <!-- End Page Header -->
@@ -20,7 +20,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.project_info') }}
+                        {{ trans('project_document.project_info') }}
                     </div>
                 </div>
 
@@ -39,12 +39,12 @@
 
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="document_name" class="form-label">{{ trans('label.document_name') }}</label>
+                            <label for="document_name" class="form-label">{{ trans('project_document.document_name') }}</label>
                             <input type="text" class="form-control" name="document_name" id="document_name" value="{{ old('document_name') }}">
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="document_type" class="form-label">{{ trans('label.document_type') }}</label>
+                            <label for="document_type" class="form-label">{{ trans('project_document.document_type') }}</label>
                             <select class="form-control" name="document_type" id="document_type">
                                 <option value="01" {{ old('document_type') == '01' ? 'selected' : '' }}>資格申請書類</option>
                                 <option value="02" {{ old('document_type') == '02' ? 'selected' : '' }}>更新申請書類</option>
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="target_doc" class="form-label">{{ trans('label.target_doc') }}</label>
+                            <label for="target_doc" class="form-label">{{ trans('project_document.target_doc') }}</label>
                             <select class="form-control" name="target_doc" id="target_doc">
                                 <option value="01" {{ old('target_doc') == '01' ? 'selected' : '' }}>実習生書類</option>
                                 <option value="02" {{ old('target_doc') == '02' ? 'selected' : '' }}>企業書類</option>
@@ -61,18 +61,18 @@
                             </select>
                         </div>
 
-                        <span class="mb-0">{{trans('label.document_attributes') }}</span>
+                        <span class="mb-0">{{trans('project_document.document_attributes') }}</span>
                         <table class="table table-striped table-bordered mt-0 mb-0 mx-2 text-nowrap gridjs-table">
                             <thead class="gridjs-thead">
                                 <tr class="gridjs-tr">
                                     <th class="gridjs-th gridjs-th-sort " style="width: 70px;">
                                         <div class="flex-between-center">
-                                            <div class="gridjs-th-content">{{ trans('label.no') }}</div>
+                                            <div class="gridjs-th-content">{{ trans('project_document.no') }}</div>
                                         </div>
                                     </th>
                                     <th class="gridjs-th gridjs-th-sort ">
                                         <div class="flex-between-center">
-                                            <div class="gridjs-th-content">{{ trans('label.name') }}</div>
+                                            <div class="gridjs-th-content">{{ trans('project_document.name') }}</div>
                                             <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                 <i class="fe fe-maximize-2"></i>
                                             </button>
@@ -81,7 +81,7 @@
 
                                     <th class="gridjs-th gridjs-th-sort">
                                         <div class="flex-between-center">
-                                            <div class="gridjs-th-content">{{ trans('label.value') }}</div>
+                                            <div class="gridjs-th-content">{{ trans('project_document.value') }}</div>
                                             <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                                 <i class="fe fe-arrow-down"></i>
                                             </button>
@@ -114,7 +114,7 @@
                         </table>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

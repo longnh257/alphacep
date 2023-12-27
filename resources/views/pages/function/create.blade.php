@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.function_add') }}</h4>
+            <h4 class="mb-0">{{ trans('function.function_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.function_info') }}
+                        {{ trans('function.function_info') }}
                     </div>
                 </div>
 
@@ -50,14 +50,14 @@
                 <div class="card-body">
                     <div class="row gy-4">
                         <div class="col-sm-12">
-                            <label for="function_name" class="form-label required">{{ trans('label.function_name') }}</label>
-                            <input type="text" class="form-control" name="function_name" id="function_name" value="{{ old('function_name') }}" placeholder="{{ trans('label.function_name') }}">
+                            <label for="function_name" class="form-label required">{{ trans('function.function_name') }}</label>
+                            <input type="text" class="form-control" name="function_name" id="function_name" value="{{ old('function_name') }}" placeholder="{{ trans('function.function_name') }}">
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="category_id" class="form-label ">{{ trans('label.category') }}</label>
+                            <label for="category_id" class="form-label ">{{ trans('function.category') }}</label>
                             <select class="form-control" data-trigger name="category_id" id="category_id">
-                                <option value="">{{ trans('label.choose_parent') }}</option>
+                                <option value="">{{ trans('function.choose_parent') }}</option>
                                 @foreach ($categories as $cat)
                                 <option value="{{$cat->category_id}}">{{$cat->category_name}}</option>
                                 @endforeach
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

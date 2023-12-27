@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.project_add') }}</h4>
+            <h4 class="mb-0">{{ trans('project_work.project_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -34,7 +34,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.project_info') }}
+                        {{ trans('project_work.project_info') }}
                     </div>
                 </div>
 
@@ -52,12 +52,12 @@
 
 
                         <div class="col-sm-12">
-                            <label for="project_id" class="form-label required">{{ trans('label.project_id') }}</label>
+                            <label for="project_id" class="form-label required">{{ trans('project_work.project_id') }}</label>
                             <input type="number" class="form-control" value="{{$project->project_id}}" disabled>
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="work" class="form-label ">{{ trans('label.work') }}</label>
+                            <label for="work" class="form-label ">{{ trans('project_work.work') }}</label>
                             <select class="form-control" data-trigger name="work_id" id="work">
                                 @foreach ($work as $item)
                                 <option value="{{$item->work_id}}">ID: {{$item->work_id}} - Name: {{$item->name}}</option>
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>

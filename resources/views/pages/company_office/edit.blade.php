@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Company Office')
 
 @section('content')
 
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">Thêm Office</h4>
+        <h4 class="mb-0"> {{ trans('company_office.company_office_edit') }}</h4>
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
@@ -33,7 +33,7 @@
         <div class="card custom-card">
             <div class="card-header justify-content-between">
                 <div class="card-title">
-                    Thông tin office
+                    {{ trans('company_office.company_office_info') }}
                 </div>
             </div>
 
@@ -48,10 +48,10 @@
             <div class="card-body">
                 <ul class="nav nav-tabs tab-style-1 d-sm-flex d-block" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#office" aria-current="page" href="#office">{{ trans('label.office_tab') }}</a>
+                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#office" aria-current="page" href="#office">{{ trans('company_office.office_info') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#staff" href="#staff">{{ trans('label.staffs_tab') }}</a>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#staff" href="#staff">{{ trans('company_office.staffs_info') }}</a>
                     </li>
                 </ul>
 
@@ -72,57 +72,57 @@
                             @csrf
                             <div class="row gy-4">
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="name" class="form-label required">{{ trans('label.name') }}</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{$company_office->name }}" placeholder="{{ trans('label.name') }}">
+                                    <label for="name" class="form-label required">{{ trans('company_office.name') }}</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{$company_office->name }}" placeholder="{{ trans('company_office.name') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="name_kana" class="form-label  required">{{ trans('label.name_kana') }}</label>
-                                    <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{$company_office->name_kana }}" placeholder="{{ trans('label.name_kana') }}">
+                                    <label for="name_kana" class="form-label  required">{{ trans('company_office.name_kana') }}</label>
+                                    <input type="text" class="form-control" name="name_kana" id="name_kana" value="{{$company_office->name_kana }}" placeholder="{{ trans('company_office.name_kana') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="tel" class="form-label required">{{ trans('label.tel') }}</label>
-                                    <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{$company_office->tel }}" placeholder="{{ trans('label.tel') }}">
+                                    <label for="tel" class="form-label required">{{ trans('company_office.tel') }}</label>
+                                    <input type="text" class="form-control" name="tel" id="tel" max="10" min="10" value="{{$company_office->tel }}" placeholder="{{ trans('company_office.tel') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="fax" class="form-label">{{ trans('label.fax') }}</label>
-                                    <input type="text" class="form-control" name="fax" id="fax" value="{{$company_office->fax }}" placeholder="{{ trans('label.fax') }}">
+                                    <label for="fax" class="form-label">{{ trans('company_office.fax') }}</label>
+                                    <input type="text" class="form-control" name="fax" id="fax" value="{{$company_office->fax }}" placeholder="{{ trans('company_office.fax') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="postcode" class="form-label">{{ trans('label.postcode') }}</label>
-                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{$company_office->postcode }}" placeholder="{{ trans('label.postcode') }}">
+                                    <label for="postcode" class="form-label">{{ trans('company_office.postcode') }}</label>
+                                    <input type="text" class="form-control" name="postcode" id="postcode" value="{{$company_office->postcode }}" placeholder="{{ trans('company_office.postcode') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="address1" class="form-label">{{ trans('label.address1') }}</label>
-                                    <input type="text" class="form-control" name="address1" id="address1" value="{{$company_office->address1 }}" placeholder="{{ trans('label.address1') }}">
+                                    <label for="address1" class="form-label">{{ trans('company_office.address1') }}</label>
+                                    <input type="text" class="form-control" name="address1" id="address1" value="{{$company_office->address1 }}" placeholder="{{ trans('company_office.address1') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="address2" class="form-label">{{ trans('label.address2') }}</label>
-                                    <input type="text" class="form-control" name="address2" id="address2" value="{{$company_office->address2 }}" placeholder="{{ trans('label.address2') }}">
+                                    <label for="address2" class="form-label">{{ trans('company_office.address2') }}</label>
+                                    <input type="text" class="form-control" name="address2" id="address2" value="{{$company_office->address2 }}" placeholder="{{ trans('company_office.address2') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="office_area" class="form-label">{{ trans('label.office_area') }}</label>
-                                    <input type="text" class="form-control" name="office_area" id="office_area" value="{{$company_office->office_area }}" placeholder="{{ trans('label.office_area') }}">
+                                    <label for="office_area" class="form-label">{{ trans('company_office.office_area') }}</label>
+                                    <input type="text" class="form-control" name="office_area" id="office_area" value="{{$company_office->office_area }}" placeholder="{{ trans('company_office.office_area') }}">
                                 </div>
 
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
-                                    <label for="office_number" class="form-label">{{ trans('label.office_number') }}</label>
-                                    <input type="text" class="form-control" name="office_number" id="office_number" value="{{$company_office->office_number }}" placeholder="{{ trans('label.office_number') }}">
+                                    <label for="office_number" class="form-label">{{ trans('company_office.office_number') }}</label>
+                                    <input type="text" class="form-control" name="office_number" id="office_number" value="{{$company_office->office_number }}" placeholder="{{ trans('company_office.office_number') }}">
                                 </div>
 
                                 <div class="  col-sm-12">
-                                    <label for="note" class="form-label">{{ trans('label.note') }}</label>
-                                    <textarea class="form-control" name="note" id="note" placeholder="{{ trans('label.note') }}">{{$company_office->note }}</textarea>
+                                    <label for="note" class="form-label">{{ trans('company_office.note') }}</label>
+                                    <textarea class="form-control" name="note" id="note" placeholder="{{ trans('company_office.note') }}">{{$company_office->note }}</textarea>
                                 </div>
 
                                 <div class="btn-list">
-                                    <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                                    <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                                 </div>
 
                             </div>
@@ -145,7 +145,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">STAFF ID</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_staff.id') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -154,7 +154,7 @@
 
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Name</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_staff.name') }}</div>
                                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-up"></i>
                                                         </button>
@@ -162,7 +162,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">OFFICE</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_staff.office') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-maximize-2"></i>
                                                         </button>
@@ -170,7 +170,7 @@
                                                 </th>
                                                 <th class="gridjs-th gridjs-th-sort">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">Tel</div>
+                                                        <div class="gridjs-th-content">{{ trans('company_staff.tel') }}</div>
                                                         <button class="btn btn-outline-success btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>

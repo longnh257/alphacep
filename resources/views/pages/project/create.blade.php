@@ -8,7 +8,7 @@
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div>
-            <h4 class="mb-0">{{ trans('label.project_add') }}</h4>
+            <h4 class="mb-0">{{ trans('project.project_add') }}</h4>
         </div>
         <div class="main-dashboard-header-right">
             <div class="d-flex my-xl-auto right-content align-items-center">
@@ -41,7 +41,7 @@
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
                     <div class="card-title">
-                        {{ trans('label.project_info') }}
+                        {{ trans('project.project_info') }}
                     </div>
                 </div>
 
@@ -49,19 +49,19 @@
                     <div class="row gy-4">
 
                         <div class="col-sm-12">
-                            <label for="trainee_number" class="form-label required">{{ trans('label.trainee_number') }}</label>
-                            <input type="number" class="form-control" name="trainee_number" id="trainee_number" value="{{ old('trainee_number') }}" placeholder="{{ trans('label.trainee_number') }}">
+                            <label for="trainee_number" class="form-label required">{{ trans('project.trainee_number') }}</label>
+                            <input type="number" class="form-control" name="trainee_number" id="trainee_number" value="{{ old('trainee_number') }}" placeholder="{{ trans('project.trainee_number') }}">
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="entry_date" class="form-label required">{{ trans('label.entry_date') }}</label>
-                            <input type="date" class="form-control" name="entry_date" id="entry_date" value="{{ old('entry_date') }}" placeholder="{{ trans('label.entry_date') }}">
+                            <label for="entry_date" class="form-label required">{{ trans('project.entry_date') }}</label>
+                            <input type="date" class="form-control" name="entry_date" id="entry_date" value="{{ old('entry_date') }}" placeholder="{{ trans('project.entry_date') }}">
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="sending_agency_id" class="form-label ">{{ trans('label.sending_agency') }}</label>
+                            <label for="sending_agency_id" class="form-label ">{{ trans('project.sending_agency') }}</label>
                             <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency_id">
-                                <option value="">{{ trans('label.choose_sending_agency') }}</option>
+                                <option value="">{{ trans('project.choose_sending_agency') }}</option>
                                 @foreach ($sending_agency as $item)
                                 <option value="{{$item->sending_agency_id}}">{{$item->sending_agency_name}}</option>
                                 @endforeach
@@ -69,9 +69,9 @@
                         </div>
 
                         <div class="col-sm-12">
-                            <label for="company_id" class="form-label ">{{ trans('label.company') }}</label>
+                            <label for="company_id" class="form-label ">{{ trans('project.company') }}</label>
                             <select class="form-control" data-trigger name="company_id" id="company_id">
-                                <option value="">{{ trans('label.choose_company') }}</option>
+                                <option value="">{{ trans('project.choose_company') }}</option>
                                 @foreach ($company as $item)
                                 <option value="{{$item->company_id}}">{{$item->company_name}}</option>
                                 @endforeach
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary ">{{ trans('label.submit') }}</button>
+                            <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>
                         </div>
 
                     </div>
