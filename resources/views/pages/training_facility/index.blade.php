@@ -111,7 +111,7 @@
                                 <td class="fw-medium">((item.address1))</td>
                                 <td class="fw-medium">((item.address2))</td>
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 ">
                                         <a :href="`{{asset('training-facility')}}/`+item.training_facility_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('training-facility')}}/`+item.training_facility_id" :id="'formDelete_'+((item.training_facility_id))" class="pt-1" method="post">
                                             @method('DELETE')

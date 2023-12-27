@@ -113,7 +113,7 @@
                                 <td>((item.last_audit_date))</td>
                                 <td>((item.next_audit_date))</td>
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 ">
                                         <a :href="`{{asset('audit-report')}}/`+item.audit_report_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('audit-report')}}/`+item.audit_report_id" :id="'formDelete_'+((item.audit_report_id))" class="pt-1" method="post">
                                             @method('DELETE')

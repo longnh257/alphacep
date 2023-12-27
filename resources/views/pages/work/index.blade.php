@@ -87,7 +87,7 @@
                                 <td class="fw-medium">((item.workflow_id))</td>
 
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 ">
                                         <a :href="`{{asset('work')}}/`+item.work_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('work')}}/`+item.work_id" :id="'formDelete_'+((item.work_id))" class="pt-1" method="post">
                                             @method('DELETE')

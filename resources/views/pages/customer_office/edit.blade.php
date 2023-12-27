@@ -11,12 +11,12 @@
     </div>
     <div class="main-dashboard-header-right">
         <div class="d-flex my-xl-auto right-content align-items-center">
-            <div>
+            <div class="pe-1 mb-xl-0">
                 <button type="submit" class="btn btn-success btn-icon me-2 btn-b">
                     <i class="bi bi-save"></i>
                 </button>
             </div>
-            <div>
+            <div class="pe-1 mb-xl-0">
                 <a href="{{route('view.customer.index')}}" class="btn btn-danger btn-icon me-2 btn-b">
                     <i class="bi bi-box-arrow-left"></i>
                 </a>
@@ -215,7 +215,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">STAFF ID</div>
+                                                        <div class="gridjs-th-content">{{ trans('label.id') }}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -248,7 +248,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.customer_staff.create',['customer_office_id'=>$customer_office->customer_office_id])}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
+                                                        <a href="{{route('view.customer_staff.create',['customer_office_id'=>$customer_office->customer_office_id])}}" class="btn btn-info btn-icon me-2 btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
@@ -256,13 +256,13 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="item in list" :key="item.customer_id" >
+                                            <tr v-for="item in list" :key="item.customer_id">
                                                 <td>((item.customer_staff_id))</td>
                                                 <td class="fw-medium">((item.name))</td>
                                                 <td>((item.customer_office_id))</td>
                                                 <td class="fw-medium">((item.tel))</td>
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                                    <div class="hstack gap-2 ">
                                                         <a :href="`{{asset('customer-staff')}}/`+item.customer_staff_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('customer-staff')}}/`+item.customer_staff_id" :id="'formDelete_'+((item.customer_staff_id))" class="pt-1" method="post">
                                                             @method('DELETE')

@@ -97,7 +97,7 @@
                                 <td class="fw-medium">((item.rest_hour))</td>
 
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 ">
                                         <a :href="`{{asset('working-hour')}}/`+item.working_hour_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('working-hour')}}/`+item.working_hour_id" :id="'formDelete_'+((item.working_hour_id))" class="pt-1" method="post">
                                             @method('DELETE')

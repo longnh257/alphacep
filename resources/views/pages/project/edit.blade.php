@@ -114,7 +114,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_trainee_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -246,7 +246,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('label.project_work_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('label.id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>

@@ -87,7 +87,7 @@
                                 <td class="fw-medium">((item.flowgroup_id==1 ? '入国手続' : '')) ((item.flowgroup_id==2 ? '技能実習' : ''))</td>
                              
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 ">
                                         <a :href="`{{asset('workflow')}}/`+item.flow_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('workflow')}}/`+item.flow_id" :id="'formDelete_'+((item.flow_id))" class="pt-1" method="post">
                                             @method('DELETE')

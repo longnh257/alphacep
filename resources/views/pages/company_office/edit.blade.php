@@ -192,7 +192,7 @@
                                                 <td>((item.company_office_id))</td>
                                                 <td class="fw-medium">((item.tel))</td>
                                                 <td>
-                                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                                    <div class="hstack gap-2 ">
                                                         <a :href="`{{asset('company-staff')}}/`+item.company_staff_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                                         <form :action="`{{asset('company-staff')}}/`+item.company_staff_id" :id="'formDelete_'+((item.company_staff_id))" class="pt-1" method="post">
                                                             @method('DELETE')

@@ -116,7 +116,7 @@
                                 <td class="fw-medium">((item.company_id))</td>
                                 <td class="fw-medium">((item.url))</td>
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 ">
                                         <a :href="`{{asset('project-work/create')}}/`+item.project_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-work')}}"><i class="bi bi-briefcase"></i></a>
                                         <a :href="`{{asset('project-trainee/create')}}/`+item.project_id" class="text-info fs-14 lh-1" title="{{trans('label.add-project-trainee')}}"><i class="si si-user-follow"></i></a>
                                         <a :href="`{{asset('project')}}/`+item.project_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>

@@ -45,11 +45,12 @@
 
 .country-table td:first-of-type,
 .country-table td:last-of-type {
-    max-width: 200px;
+    max-width: 300px;
     text-align: center;
     justify-content: center;
 }
 
 .country-table td:last-of-type .hstack {
     justify-content: end;
+    gap: 10px;
 }

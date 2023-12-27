@@ -108,7 +108,7 @@
                                 <td class="fw-medium">((item.customer_id))</td>
                                 <td class="fw-medium">((item.created_on))</td>
                                 <td>
-                                    <div class="hstack gap-2 flex-wrap justify-content-end">
+                                    <div class="hstack gap-2 ">
                                         <a :href="`{{asset('company')}}/`+item.company_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
                                         <form :action="`{{asset('company')}}/`+item.company_id" :id="'formDelete_'+((item.company_id))" class="pt-1" method="post">
                                             @method('DELETE')
