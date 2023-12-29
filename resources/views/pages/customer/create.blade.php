@@ -38,52 +38,7 @@
     </div>
     @endforeach
     @endif
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card custom-card">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        <h4 class="mb-0">{{ trans('customer.account_info') }}</h4>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="row gy-4">
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="name" class="form-label  required">{{ trans('customer.name') }}</label>
-                            <input type="text" class="form-control" name="user_name" id="name" value="{{ old('user_name') }}" placeholder="{{ trans('customer.user_name') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="email" class="form-label required">{{ trans('customer.email') }}</label>
-                            <input type="email" class="form-control" name="user_email" id="email" value="{{ old('user_email') }}" placeholder="{{ trans('customer.user_email') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="password" class="form-label required">{{ trans('customer.password') }}</label>
-                            <input type="password" class="form-control" name="password" id="password" value="" placeholder="{{ trans('customer.password') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="password_confirmation required" class="form-label">{{ trans('customer.password_confirmation') }}</label>
-                            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" value="" placeholder="{{ trans('customer.password_confirmation') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="phone" class="form-label required">{{ trans('customer.phone') }}</label>
-                            <input type="phone" class="form-control" name="user_phone" id="phone" value="{{ old('phone') }}" placeholder="{{ trans('customer.user_phone') }}">
-                        </div>
-
-                        <div class="  col-lg-6 col-md-6 col-sm-12">
-                            <label for="address" class="form-label">{{ trans('customer.address') }}</label>
-                            <input type="text" class="form-control" name="user_address" id="address" value="{{ old('address') }}" placeholder="{{ trans('customer.user_address') }}">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     <div class="row">
         <div class="col-xl-12">
             <div class="card custom-card">

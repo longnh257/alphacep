@@ -64,8 +64,10 @@ use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordDetailContro
 use App\Http\Controllers\API\Document\DocumentAttributeController;
 use App\Http\Controllers\API\Document\DocumentTemplateController;
 use App\Http\Controllers\API\StayFacility\StayFacilityController;
+use App\Http\Controllers\API\User\UserController;
 use App\Http\Controllers\API\Work\WorkingHourController;
 use App\Http\Controllers\Pages\StayFacility\StayFacilityPageController;
+use App\Http\Controllers\Pages\User\UserPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,13 +90,22 @@ Route::group(['middleware' => 'check.login'], function () {
 
 //customer
 
-Route::group(['prefix' => 'customer', 'middleware' => ['check.login','check.admin']], function () {
+Route::group(['prefix' => 'customer', 'middleware' => ['check.login', 'check.admin']], function () {
     Route::get('/', [CustomerPageController::class, 'index'])->name('view.customer.index');
     Route::get('/create', [CustomerPageController::class, 'create'])->name('view.customer.create');
     Route::post('/', [CustomerPageController::class, 'store'])->name('view.customer.store');
     Route::get('/{id}/edit', [CustomerPageController::class, 'edit'])->name('view.customer.edit');
     Route::put('/{id}', [CustomerPageController::class, 'update'])->name('view.customer.update');
     Route::delete('/{id}', [CustomerPageController::class, 'destroy'])->name('view.customer.destroy');
+});
+
+Route::group(['prefix' => 'user', 'middleware' => ['check.login', 'check.admin']], function () {
+    Route::get('/', [UserPageController::class, 'index'])->name('view.user.index');
+    Route::get('/create', [UserPageController::class, 'create'])->name('view.user.create');
+    Route::post('/', [UserPageController::class, 'store'])->name('view.user.store');
+    Route::get('/{id}/edit', [UserPageController::class, 'edit'])->name('view.user.edit');
+    Route::put('/{id}', [UserPageController::class, 'update'])->name('view.user.update');
+    Route::delete('/{id}', [UserPageController::class, 'destroy'])->name('view.user.destroy');
 });
 Route::group(['prefix' => 'customer-office', 'middleware' => 'check.login'], function () {
     Route::get('/', [CustomerOfficePageController::class, 'index'])->name('view.customer_office.index');
@@ -412,6 +423,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
         Route::get('/company-staffs', [CompanystaffController::class, 'index'])->name('api.company_staffs.list');
     });
 
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('api.users.list')->middleware('check.admin');
+    });
 
     Route::group(['prefix' => 'functions'], function () {
         Route::get('/', [FunctionController::class, 'index'])->name('api.functions.list');

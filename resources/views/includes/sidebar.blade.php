@@ -52,6 +52,9 @@
                         <li class="slide has-sub">
                             <a href="{{asset('/native-language')}}" class="side-menu__item {{ request()->is(['native-language*']) ? 'active' : '' }}"> {{ trans('label.native_language') }}</a>
                         </li>
+                        <li class="slide has-sub">
+                            <a href="{{asset('/user')}}" class="side-menu__item {{ request()->is(['user*']) ? 'active' : '' }}"> {{ trans('label.user') }}</a>
+                        </li>
                     </ul>
                 </li>
                 @endif

@@ -32,11 +32,6 @@ class CustomerPageController extends Controller
                 'name_kana' => 'required|max:254',
                 'tel' => 'required|regex:/^\d{10}$/|max:12',
                 'postcode' => 'max:10',
-
-                'user_name' => 'required|max:254',
-                'user_email' => 'email|required|max:254|unique:m_user,email',
-                'user_phone' => 'required|regex:/^\d{10}$/|max:12',
-                'password' => 'required|confirmed',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),
@@ -45,16 +40,7 @@ class CustomerPageController extends Controller
         $request['created_by_id'] = Auth::id();
         $request['updated_by_id'] = Auth::id();
 
-        $customer = MCustomer::create($request->except('_token'));
-
-        MUser::create([
-            "name" => $request->user_name,
-            "email" => $request->user_email,
-            "phone" => $request->user_phone,
-            "password" => bcrypt($request->password),
-            "address" => $request->address,
-            "customer_id" => $customer->customer_id,
-        ]);
+        MCustomer::create($request->except('_token'));
 
         return redirect()->route('view.customer.index')
             ->with('success', 'Customer created successfully!');
