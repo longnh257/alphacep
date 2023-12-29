@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,12 +18,12 @@ class MCompany extends Model
     const UPDATED_AT = 'updated_on';
 
 
-    public function offices(): HasMany
+    public function offices()
     {
-        return $this->hasMany(MCompany::class, 'company_id', 'company_id');
+        return $this->hasMany(MCompanyOffice::class, 'company_id', 'company_id');
     }
 
-    public function visit_records(): HasMany
+    public function visit_records()
     {
         return $this->hasMany(VisitGuidanceRecord::class, 'company_id', 'company_id');
     }

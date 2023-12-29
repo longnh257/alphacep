@@ -32,14 +32,11 @@
 </div>
 <!-- End Page Header -->
 
-<div class="row">
+<div class="row" id="app" data-companies="{{ $company }}">
     <div class="col-xl-12">
-        <div class="card custom-card    pt-4">
-
+        <div class="card custom-card pt-4">
             <div class="card-body">
-
                 <div class="tab-content">
-
                     @if ($errors->any())
                     @foreach ($errors->all() as $error)
                     <div class="alert alert-danger mx-2" role="alert">
@@ -47,32 +44,27 @@
                     </div>
                     @endforeach
                     @endif
-
                     <form action="{{route('view.audit_report.update', ['id' => $model->audit_report_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
                         @method('PUT')
                         @csrf
                         <div class="row gy-4">
 
+                            <div class="col-sm-12">
+                                <label for="company" class="form-label ">{{ trans('audit_report_label.company') }}</label>
+                                <select class="form-control" v-model="selectedCompany" @change="changeCompany()" data-trigger name="company_id" id="company">
+                                    <option value="">{{ trans('audit_report_label.choose_company') }}</option>
+                                    <option v-for="item in companies" :value="item.company_id">((item.name))</option>
+                                </select>
+                            </div>
 
                             <div class="col-sm-12">
                                 <label for="company_office" class="form-label ">{{ trans('audit_report_label.company_office') }}</label>
-                                <select class="form-control" data-trigger name="company_office_id" id="company_office">
+                                <select class="form-control"   v-model="selectedOffice"  data-trigger name="company_office_id" id="company_office">
                                     <option value="">{{ trans('audit_report_label.choose_company_office') }}</option>
-                                    @foreach ($company_office as $item)
-                                    <option value="{{$item->company_office_id}}" {{$item->company_office_id == $model->company_office_id ? 'selected' : ''}}>{{$item->name}}</option>
-                                    @endforeach
+                                    <option v-for="item in offices" :value="item.company_office_id">((item.name))</option>
                                 </select>
                             </div>
-                            <!-- 
-                        <div class="col-sm-12">
-                            <label for="company" class="form-label ">{{ trans('audit_report_label.company') }}</label>
-                            <select class="form-control" data-trigger name="company_id" id="company">
-                                <option value="">{{ trans('audit_report_label.choose_company') }}</option>
-                                @foreach ($company as $item)
-                                <option value="{{$item->company_id}}">{{$item->name}}</option>
-                                @endforeach
-                            </select>
-                        </div> -->
+
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <label for="audit_date" class="form-label">{{ trans('audit_report_label.audit_date') }}</label>
@@ -116,4 +108,30 @@
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
 
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            companies: [],
+            offices: [],
+            selectedCompany: "{{$model->company_id}}",
+            selectedOffice: "{{$model->company_office_id}}",
+        },
+        delimiters: ["((", "))"],
+        mounted() {
+            const companies = this.$el.getAttribute('data-companies')
+            this.companies = JSON.parse(companies)
+            this.offices =  this.companies.filter(company => company.company_id == this.selectedCompany)[0]?.offices;
+        },
+        computed: {},
+
+        methods: {
+            changeCompany() {
+                this.offices = this.companies.filter(company => company.company_id == this.selectedCompany)[0]?.offices;
+                this.selectedOffice=""
+            }
+        },
+    });
+</script>
 @endsection

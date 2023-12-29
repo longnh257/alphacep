@@ -20,7 +20,8 @@
 
     <!-- row -->
     <!-- Start:: row-1 -->
-    <div class="row">
+
+    <div class="row" id="app" data-companies="{{ $company }}">
         <div class="col-xl-12">
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
@@ -41,26 +42,22 @@
                 <div class="card-body">
                     <div class="row gy-4">
 
+                        <div class="col-sm-12">
+                            <label for="company" class="form-label ">{{ trans('audit_report_label.company') }}</label>
+                            <select class="form-control" v-model="selectedCompany" @change="changeCompany()" data-trigger name="company_id" id="company">
+                                <option value="">{{ trans('audit_report_label.choose_company') }}</option>
+                                <option v-for="item in companies" :value="item.company_id">((item.name))</option>
+                            </select>
+                        </div>
 
                         <div class="col-sm-12">
                             <label for="company_office" class="form-label ">{{ trans('audit_report_label.company_office') }}</label>
                             <select class="form-control" data-trigger name="company_office_id" id="company_office">
                                 <option value="">{{ trans('audit_report_label.choose_company_office') }}</option>
-                                @foreach ($company_office as $item)
-                                <option value="{{$item->company_office_id}}">{{$item->name}}</option>
-                                @endforeach
+                                <option v-for="item in offices" :value="item.company_office_id">((item.name))</option>
                             </select>
                         </div>
-                        <!-- 
-                        <div class="col-sm-12">
-                            <label for="company" class="form-label ">{{ trans('audit_report_label.company') }}</label>
-                            <select class="form-control" data-trigger name="company_id" id="company">
-                                <option value="">{{ trans('audit_report_label.choose_company') }}</option>
-                                @foreach ($company as $item)
-                                <option value="{{$item->company_id}}">{{$item->name}}</option>
-                                @endforeach
-                            </select>
-                        </div> -->
+                       
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <label for="audit_date" class="form-label">{{ trans('audit_report_label.audit_date') }}</label>
@@ -116,4 +113,26 @@
 <!-- Custom JS -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            companies: [],
+            offices: [],
+            selectedCompany: ""
+        },
+        delimiters: ["((", "))"],
+        mounted() {
+            const companies = this.$el.getAttribute('data-companies')
+            this.companies = JSON.parse(companies)
+        },
+        computed: {},
+
+        methods: {
+            changeCompany() {
+                this.offices = this.companies.filter(company => company.company_id == this.selectedCompany)[0]?.offices;
+            }
+        },
+    });
+</script>
 @endsection

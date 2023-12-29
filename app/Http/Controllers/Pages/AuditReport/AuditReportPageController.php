@@ -18,14 +18,12 @@ class AuditReportPageController extends Controller
 
     public function create()
     {
-        $company = MCompany::all();
-        $company_office = MCompanyOffice::all();
-        return view('pages.audit_report.create', compact('company_office', 'company'));
+        $company = MCompany::with('offices')->get();
+        return view('pages.audit_report.create', compact('company'));
     }
 
     public function store(Request $request)
     {
-
         $request->validate(
             [],
             trans('validation.messages'),
@@ -44,15 +42,13 @@ class AuditReportPageController extends Controller
     public function edit($id)
     {
         $model = AuditReport::findOrFail($id);
-        $company = MCompany::all();
-        $company_office = MCompanyOffice::all();
-        return view('pages.audit_report.edit', compact('model', 'company_office', 'company'));
+        $company = MCompany::with('offices')->get();
+        return view('pages.audit_report.edit', compact('model', 'company'));
     }
 
     public function update(Request $request, $id)
     {
         $audit_report = AuditReport::findOrFail($id);
-
         $request->validate(
             [],
             trans('validation.messages'),
