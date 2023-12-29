@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages\Project;
 
 use App\Http\Controllers\Controller;
+use App\Models\MUser;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\MWork;
@@ -16,9 +17,11 @@ class ProjectWorkTaskPageController extends Controller
 {
     public function create($project_work_id)
     {
+        $user = MUser::where('id', '!=', 1)->get();
         $project_work = ProjectWork::findOrFail($project_work_id);
         return view('pages.project_work_task.create', compact(
             'project_work',
+            'user'
         ));
     }
 
@@ -26,11 +29,14 @@ class ProjectWorkTaskPageController extends Controller
     public function store(Request $request, $project_work_id)
     {
         ProjectWork::findOrFail($project_work_id);
+
         $request->validate(
             [],
             trans('validation.messages'),
             trans('validation.attributes'),
         );
+
+        $request['status'] = 0;
 
         $request['project_work_id'] = $project_work_id;
         ProjectWorkTask::create($request->except('_token'));
@@ -41,9 +47,10 @@ class ProjectWorkTaskPageController extends Controller
 
     public function edit($id)
     {
+        $user = MUser::where('id', '!=', 1)->get();
         $model = ProjectWorkTask::findOrFail($id);
         $work = MWork::get();
-        return view('pages.project_work_task.edit', compact('model', 'work'));
+        return view('pages.project_work_task.edit', compact('model', 'work','user'));
     }
 
     public function update(Request $request, $id)

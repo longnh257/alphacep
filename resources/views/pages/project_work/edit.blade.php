@@ -56,7 +56,7 @@
                     @endif
                     <div class="tab-pane active" id="project_work_info" role="project_work_info">
 
-                        <form action="{{route('view.project_work.update', ['id' => $model->project_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
+                        <form action="{{route('view.project_work.update', ['id' => $model->project_work_id])}}" method="post" enctype="multipart/form-data" class="container-fluid">
                             @method('PUT')
                             @csrf
                             <div class="row gy-4">
@@ -102,7 +102,7 @@
                                             <tr class="gridjs-tr">
                                                 <th class="gridjs-th gridjs-th-sort ">
                                                     <div class="flex-between-center">
-                                                        <div class="gridjs-th-content">{{trans('project_work_task.task_id')}}</div>
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.id')}}</div>
                                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                                             <i class="fe fe-arrow-down"></i>
                                                         </button>
@@ -110,6 +110,14 @@
 
                                                 </th>
 
+                                                <th>
+                                                    <div class="flex-between-center">
+                                                        <div class="gridjs-th-content">{{trans('project_work_task.title')}}</div>
+                                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                                            <i class="fe fe-arrow-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </th>
                                                 <th>
                                                     <div class="flex-between-center">
                                                         <div class="gridjs-th-content">{{trans('project_work_task.project_work_id')}}</div>
@@ -161,6 +169,7 @@
                                         <tbody>
                                             <tr v-for="item in list" :key="item.project_work_project_work_id">
                                                 <td>((item.task_id))</td>
+                                                <td>((item.title))</td>
                                                 <td>((item.project_work_id))</td>
                                                 <td>((item.seq_no))</td>
                                                 <td>((item.person_id))</td>

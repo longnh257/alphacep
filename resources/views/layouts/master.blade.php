@@ -31,6 +31,8 @@
     <meta name="keywords" content="@yield('keywords', '')">
     <link rel="stylesheet" href="{{ asset('assets/libs/prismjs/themes/prism-coy.min.css') }}">
     <link href="{{ asset('assets/css/custome.css') }}" rel="stylesheet">
+    <!-- Full Calendar CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/fullcalendar/main.min.css') }}">
 </head>
 
 <body>
@@ -92,6 +94,9 @@
     <script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script>
     <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('/assets/js/sweet-alerts.js') }}"></script>
+    <!-- Fullcalendar JS -->
+    <script src="../assets/libs/fullcalendar/main.min.js"></script>
+    <script src="../assets/js/fullcalendar.js"></script>
     @yield('script-footer')
 
 

@@ -19,7 +19,7 @@ class MCustomer extends Model
 
     public function user(): HasOne
     {
-        return $this->hasOne(MUser::class, 'customer_id', 'customer_id');
+        return $this->hasOne(User::class, 'customer_id', 'customer_id');
     }
 
     public function offices(): HasMany

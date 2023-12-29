@@ -24,6 +24,8 @@ class ProjectWorkTask extends Model
         return $this->belongsTo(ProjectWork::class, 'project_work_id', 'project_work_id');
     }
 
+    
+
     protected static function boot()
     {
         parent::boot();

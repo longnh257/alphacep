@@ -38,7 +38,7 @@ class ProjectWorkPageController extends Controller
         $request['project_id'] = $project_id;
         ProjectWork::create($request->except('_token'));
 
-        return redirect()->route('view.project.index')
+        return redirect()->route('view.project.edit',$project_id)
             ->with('success', trans('messages.project.created_success'));
     }
 
@@ -51,7 +51,7 @@ class ProjectWorkPageController extends Controller
 
     public function update(Request $request, $id)
     {
-        $project = ProjectWork::findOrFail($id);
+        $model = ProjectWork::findOrFail($id);
 
         $request->validate(
             [],
@@ -59,9 +59,9 @@ class ProjectWorkPageController extends Controller
             trans('validation.attributes'),
         );
 
-        $project->update($request->input());
+        $model->update($request->input());
 
-        return redirect()->route('view.project.index')
+        return redirect()->route('view.project.edit',$model->project_id)
             ->with('success', trans('messages.project.updated_success'));
     }
 

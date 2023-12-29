@@ -17,7 +17,7 @@ class UserPageController extends Controller
 
     public function create()
     {
-        $customer = MCustomer::where('customer_id', '!=', 1)->get();
+        $customer = MCustomer::where('customer_id', '!=', 1)->whereDoesntHave('user')->get();
         return view('pages.user.create', compact('customer'));
     }
 
@@ -53,7 +53,7 @@ class UserPageController extends Controller
     public function edit($id)
     {
         $model = MUser::findOrFail($id);
-        $customer = MCustomer::where('customer_id', '!=', 1)->get();
+        $customer = MCustomer::whereDoesntHave('user')->where('customer_id', '!=', 1)->orWhere('customer_id', $model->customer_id)->get();
         return view('pages.user.edit', compact('model', 'customer'));
     }
 

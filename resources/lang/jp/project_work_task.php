@@ -20,6 +20,11 @@ return [
         'audit_report' => 'Audit Report',
         'document_template' => 'Document Template',
         'working_hour' => 'Working Hour',
+        'project_work_id' => 'PROJECT WORK ID',
+        'seq_no' => 'seq no',
+        'title' => 'title',
+        'person_id' => 'Person ID',
+        
     
         'female' => 'Female',
         'male' => 'Male',

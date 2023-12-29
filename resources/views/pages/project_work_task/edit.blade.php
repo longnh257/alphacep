@@ -63,10 +63,13 @@
                                     <input type="number" class="form-control" name="seq_no" id="seq_no" value="{{ $model->seq_no }}">
                                 </div>
 
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="person_id" class="form-label">{{ trans('project_work_task.person_id') }}</label>
-                                    <!-- Dropdown for person_id -->
-                                    <input type="number" class="form-control" name="person_id" id="person_id" value="{{ $model->complete_user_id }}">
+                                <div class="col-md-6 col-sm-12">
+                                    <label for="person_id" class="form-label ">{{ trans('work.person_id') }}</label>
+                                    <select class="form-control" data-trigger name="person_id" id="person_id">
+                                        @foreach ($user as $item)
+                                        <option value="{{$item->id}}" {{ $model->person_id == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -92,17 +95,6 @@
                                     <label for="complete_date" class="form-label">{{ trans('project_work_task.complete_date') }}</label>
                                     <input type="date" class="form-control" name="complete_date" id="complete_date" value="{{ $model->complete_date }}">
                                 </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="complete_user_id" class="form-label">{{ trans('project_work_task.complete_user_id') }}</label>
-                                    <input type="number" class="form-control" name="complete_user_id" id="complete_user_id" value="{{ $model->complete_user_id }}">
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label for="complete_user_name" class="form-label">{{ trans('project_work_task.complete_user_name') }}</label>
-                                    <input type="text" class="form-control" name="complete_user_name" id="complete_user_name" value="{{ $model->complete_user_name }}">
-                                </div>
-
 
                                 <div class="btn-list">
                                     <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>

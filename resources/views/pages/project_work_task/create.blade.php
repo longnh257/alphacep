@@ -65,45 +65,25 @@
                             <input type="number" class="form-control" name="seq_no" id="seq_no" value="{{ old('seq_no') }}">
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="person_id" class="form-label">{{ trans('project_work_task.person_id') }}</label>
-                            <!-- Dropdown for person_id -->
-                            <input type="number" class="form-control" name="person_id" id="person_id" value="{{ old('complete_user_id') }}">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="person_id" class="form-label ">{{ trans('work.person_id') }}</label>
+                            <select class="form-control" data-trigger name="person_id" id="person_id">
+                                @foreach ($user as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <label for="complete_limit_date" class="form-label">{{ trans('project_work_task.complete_limit_date') }}</label>
                             <input type="date" class="form-control" name="complete_limit_date" id="complete_limit_date" value="{{ old('complete_limit_date') }}">
                         </div>
-
+                      
                         <div class=" col-sm-12">
                             <label for="content" class="form-label">{{ trans('project_work_task.content') }}</label>
                             <textarea class="form-control" name="content" id="content">{{ old('content') }}</textarea>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="status" class="form-label">{{ trans('project_work_task.status') }}</label>
-                            <!-- Dropdown for status -->
-                            <select class="form-control" name="status" id="status">
-                                <option value="0">{{ trans('project_work_task.incomplete') }}</option>
-                                <option value="1">{{ trans('project_work_task.complete') }}</option>
-                            </select>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="complete_date" class="form-label">{{ trans('project_work_task.complete_date') }}</label>
-                            <input type="date" class="form-control" name="complete_date" id="complete_date" value="{{ old('complete_date') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="complete_user_id" class="form-label">{{ trans('project_work_task.complete_user_id') }}</label>
-                            <input type="number" class="form-control" name="complete_user_id" id="complete_user_id" value="{{ old('complete_user_id') }}">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <label for="complete_user_name" class="form-label">{{ trans('project_work_task.complete_user_name') }}</label>
-                            <input type="text" class="form-control" name="complete_user_name" id="complete_user_name" value="{{ old('complete_user_name') }}">
-                        </div>
 
                         <div class="btn-list">
                             <button type="submit" class="btn btn-primary ">{{ trans('common.submit') }}</button>

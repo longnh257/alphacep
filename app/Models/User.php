@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,11 +16,18 @@ class User extends Authenticatable
     protected $table = 'm_user';
     protected $guarded = ['user_id'];
 
-        
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(MCustomer::class, 'customer_id', 'customer_id');
     }
+
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(ProjectWorkTask::class, 'person_id', 'id');
+    }
+
+
 
     protected static function boot()
     {

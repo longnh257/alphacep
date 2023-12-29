@@ -22,7 +22,7 @@ class ProjectWork extends Model
 
     public function work(): BelongsTo
     {
-        return $this->belongsTo(MTrainee::class, 'work_id', 'work_id');
+        return $this->belongsTo(MWork::class, 'work_id', 'work_id');
     }
 
     public function project(): BelongsTo

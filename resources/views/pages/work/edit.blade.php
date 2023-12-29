@@ -54,8 +54,9 @@
                             <div class="col-sm-12">
                                 <label for="workflow_id" class="form-label ">{{ trans('work.workflow_id') }}</label>
                                 <select class="form-control" data-trigger name="workflow_id" id="workflow_id">
-                                    <option value="1" @if($work->workflow_id == 1 ) selected @endif>入国手続</option>
-                                    <option value="2" @if($work->workflow_id == 2 ) selected @endif>技能実習</option>
+                                    @foreach ($workflow as $item)
+                                    <option value="{{$item->flow_id}}" {{$work->workflow_id == item->workflow_id ? 'selected':''}}>{{$item->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
