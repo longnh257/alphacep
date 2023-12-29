@@ -36,7 +36,7 @@
                         <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#company" aria-current="page" href="#company">{{ trans('company.company_info') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#office" href="#office">{{ trans('company.customer_office_info') }}</a>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#office" href="#office">{{ trans('company.company_office_info') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" data-bs-target="#visit_guidance" href="#visit_guidance">{{ trans('company.visit_guidance_info') }}</a>
@@ -77,6 +77,14 @@
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="fax" class="form-label">{{ trans('company.fax') }}</label>
                                     <input type="text" class="form-control" name="fax" id="fax" value="{{ $company->fax }}" placeholder="{{ trans('company.fax') }}">
+                                </div>
+                                <div class="  col-lg-6 col-md-6 col-sm-12">
+                                    <label for="address1" class="form-label">{{ trans('company.address1') }}</label>
+                                    <input type="text" class="form-control" name="address1" id="address1" value="{{ $company->address1 }}" placeholder="{{ trans('company.address1') }}">
+                                </div>
+                                <div class="  col-lg-6 col-md-6 col-sm-12">
+                                    <label for="address2" class="form-label">{{ trans('company.address2') }}</label>
+                                    <input type="text" class="form-control" name="address2" id="address2" value="{{ $company->address2 }}" placeholder="{{ trans('company.address2') }}">
                                 </div>
                                 <div class="  col-lg-6 col-md-6 col-sm-12">
                                     <label for="postcode" class="form-label">{{ trans('company.postcode') }}</label>
@@ -140,7 +148,7 @@
                                                 </th>
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.company_company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
+                                                        <a href="{{route('view.company_office.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
@@ -268,7 +276,7 @@
 
                                                 <th>
                                                     <div class="pe-1 mb-xl-0 text-end">
-                                                        <a href="{{route('view.visit_guidance_record.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank"> 
+                                                        <a href="{{route('view.visit_guidance_record.create',['company_id'=>$company->company_id])}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                                             <i class="fe fe-plus"></i></a>
                                                     </div>
                                                 </th>
@@ -281,7 +289,7 @@
                                                 <td>((item.company_office_id ))</td>
                                                 <td>((item.visit_staff_id ))</td>
                                                 <td>((item.trainee_id ))</td>
-                                         
+
                                                 <td>
                                                     <div class="hstack gap-2 flex-wrap">
                                                         <a :href="`{{asset('visit-guidance-record')}}/`+item.visit_record_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
@@ -462,7 +470,7 @@
             },
         },
     });
-    
+
     new Vue({
         el: '#list-data2',
         data: {

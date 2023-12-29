@@ -43,7 +43,7 @@
                             <select class="form-control" data-trigger name="training_facility_id" id="training_facility">
                                 <option value="">{{ trans('project_trainee_contract.choose_training_facility') }}</option>
                                 @foreach ($training_facility as $item)
-                                <option value="{{$item->training_facility_id}}">ID: {{$item->training_facility_id}} - Name: {{$item->name}}</option>
+                                <option value="{{$item->training_facility_id}}"> {{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>

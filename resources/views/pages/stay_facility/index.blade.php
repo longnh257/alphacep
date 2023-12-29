@@ -1,23 +1,23 @@
 @extends('layouts.master')
 
-@section('title', 'Work')
+@section('title', 'Stay Facility')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
         <div class="my-auto">
-            <h5 class="page-title fs-21 mb-1"> {{ trans('work.work') }}</h5>
+            <h5 class="page-title fs-21 mb-1"> {{ trans('stay_facility.stay_facility') }}</h5>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">{{ trans('common.homepage') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ trans('work.work') }}</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);"> {{ trans('common.homepage') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{ trans('stay_facility.stay_facility') }}</li>
                 </ol>
             </nav>
         </div>
         <div class="d-flex my-xl-auto right-content align-items-center">
             <div>
-                <a href="{{route('view.work.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
+                <a href="{{route('view.stay_facility.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                     <i class="fe fe-plus"></i></a>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12 col-lg-12 col-xl-12" id="list-data">
             <div class="card card-table">
                 <div class=" card-header p-0 d-flex justify-content-between">
-                    <h4 class="card-title mb-1">{{ trans('work.table_title') }}</h4>
+                    {{ trans('stay_facility.table_title') }}
                     <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light bg-transparent rounded-pill" data-bs-toggle="dropdown"><i class="fe fe-more-horizontal"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);">10</a>
@@ -45,13 +45,14 @@
                         <a class="dropdown-item" href="javascript:void(0);">All</a>
                     </div>
                 </div>
+
                 <div class="table-responsive country-table">
                     <table class="table table-striped table-bordered mb-0 text-nowrap gridjs-table">
                         <thead class="gridjs-thead">
                             <tr class="gridjs-tr">
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('work.id') }}</div>
+                                        <div class="gridjs-th-content">{{ trans('stay_facility.id') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-arrow-down"></i>
                                         </button>
@@ -59,40 +60,63 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('work.name') }}</div>
+                                        <div class="gridjs-th-content">{{ trans('stay_facility.name') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
-                                    </div> 
+                                    </div>
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content">{{ trans('work.workflow_id') }}</div>
+                                        <div class="gridjs-th-content">{{ trans('stay_facility.tel') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('stay_facility.postcode') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('stay_facility.address1') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content">{{ trans('stay_facility.address2') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
                                     </div>
                                 </th>
 
-                                <th class="text-end">
-                                    <a href="{{route('view.work.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
-                                        <i class="fe fe-plus"></i></a>
-                                </th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in list" :key="item.work_id">
-                                <td>((item.work_id))</td>
+                            <tr v-for="item in list" :key="item.stay_facility_id">
+                                <td>((item.stay_facility_id))</td>
                                 <td class="fw-medium">((item.name))</td>
-                                <td class="fw-medium">((item.workflow_id))</td>
-
+                                <td class="fw-medium">((item.tel))</td>
+                                <td class="fw-medium">((item.postcode))</td>
+                                <td class="fw-medium">((item.address1))</td>
+                                <td class="fw-medium">((item.address2))</td>
                                 <td>
                                     <div class="hstack gap-2 ">
-                                        <a :href="`{{asset('work')}}/`+item.work_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
-                                        <form :action="`{{asset('work')}}/`+item.work_id" :id="'formDelete_'+((item.work_id))" class="pt-1" method="post">
+                                        <a :href="`{{asset('stay-facility')}}/`+item.stay_facility_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>
+                                        <form :action="`{{asset('stay-facility')}}/`+item.stay_facility_id" :id="'formDelete_'+((item.stay_facility_id))" class="pt-1" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="##" @click="deleteItem(item.work_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
+                                            <a href="##" @click="deleteItem(item.stay_facility_id)" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line"></i></a>
                                         </form>
                                     </div>
                                 </td>
@@ -173,7 +197,7 @@
         el: '#list-data',
         data: {
             sortDirection: 'desc',
-            sortBy: 'fyb_id',
+            sortBy: 'stay_facility_id',
             count: 0,
             page: 1,
             list: [],
@@ -218,7 +242,7 @@
                 this.conditionSearch = conditionSearch;
                 jQuery.ajax({
                     type: 'GET',
-                    url: "{{route('api.works.list')}}" + conditionSearch,
+                    url: "{{route('api.stay_facilities.list')}}" + conditionSearch,
                     success: function(data) {
                         that.list = data.result.data;
                         that.count = data.result.last_page;

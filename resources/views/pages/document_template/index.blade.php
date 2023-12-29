@@ -84,7 +84,22 @@
                                         </button>
                                     </div>
                                 </th>
-
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content"> {{ trans('trainee.updated_by_id') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content"> {{ trans('trainee.updated_at') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
                                 <th class="text-end">
                                     <a href="{{route('view.document_template.create')}}" class="btn btn-info btn-icon btn-b" target="_blank">
                                         <i class="fe fe-plus"></i></a>
@@ -97,6 +112,8 @@
                                 <td>((item.name))</td>
                                 <td>((item.type))</td>
                                 <td>((item.target_doc))</td>
+                                <td class="fw-medium">((item.updated_by_id ? item.updated_by_id : created_by_id))</td>
+                                <td class="fw-medium">((item.updated_on ? item.updated_on : item.created_on))</td>
                                 <td>
                                     <div class="hstack gap-2 ">
                                         <a :href="`{{asset('document-template')}}/`+item.document_template_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>

@@ -38,8 +38,7 @@ class MCompany extends Model
             $model->created_by_id = auth()->id();
         });
         static::updating(function ($model) {
-            $model->updated_by_id =  auth()->id();
-            $model->updated_count += 1;
+            $model->updated_by_id = auth()->id();
         });
         static::deleting(function ($model) {
             $model->offices()->delete();

@@ -61,7 +61,7 @@
                             <select class="form-control" data-trigger name="trainee_id" id="trainee">
                                 <option value="">{{ trans('project_trainee.choose_trainee') }}</option>
                                 @foreach ($trainee as $item)
-                                <option value="{{$item->trainee_id}}">ID: {{$item->trainee_id}} - Name: {{$item->name}}</option>
+                                <option value="{{$item->trainee_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -70,7 +70,7 @@
                             <label for="sending_agency" class="form-label ">{{ trans('project_trainee.sending_agency') }}</label>
                             <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency">
                                 @foreach ($sending_agency as $item)
-                                <option value="{{$item->sending_agency_id}}">ID: {{$item->sending_agency_id}} - Name: {{$item->representative_name}}</option>
+                                <option value="{{$item->sending_agency_id}}">{{$item->representative_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -79,7 +79,16 @@
                             <label for="training_facility" class="form-label ">{{ trans('project_trainee.training_facility') }}</label>
                             <select class="form-control" data-trigger name="training_facility_id" id="training_facility">
                                 @foreach ($training_facility as $item)
-                                <option value="{{$item->training_facility_id}}">ID: {{$item->training_facility_id}} - Name: {{$item->name}}</option>
+                                <option value="{{$item->training_facility_id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="stay_facility" class="form-label ">{{ trans('project_trainee.stay_facility') }}</label>
+                            <select class="form-control" data-trigger name="stay_facility_id" id="stay_facility">
+                                @foreach ($stay_facility as $item)
+                                <option value="{{$item->stay_facility_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>

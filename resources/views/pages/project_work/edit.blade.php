@@ -70,7 +70,7 @@
                                     <label for="work" class="form-label ">{{ trans('project_work.work') }}</label>
                                     <select class="form-control" data-trigger name="work_id" id="work">
                                         @foreach ($work as $item)
-                                        <option value="{{$item->work_id}}" {{ $model->work_id == $item->work_id ? 'selected' : '' }}>ID: {{$item->work_id}} - Name: {{$item->name}}</option>
+                                        <option value="{{$item->work_id}}" {{ $model->work_id == $item->work_id ? 'selected' : '' }}> {{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -63,7 +63,9 @@ use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordController;
 use App\Http\Controllers\API\VisitGuidanceRecord\VisitGuidanceRecordDetailController;
 use App\Http\Controllers\API\Document\DocumentAttributeController;
 use App\Http\Controllers\API\Document\DocumentTemplateController;
+use App\Http\Controllers\API\StayFacility\StayFacilityController;
 use App\Http\Controllers\API\Work\WorkingHourController;
+use App\Http\Controllers\Pages\StayFacility\StayFacilityPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -322,7 +324,7 @@ Route::group(['prefix' => 'trainee-relative', 'middleware' => 'check.login'], fu
 
 //end trainee
 
-//trainee
+//training_facility
 
 Route::group(['prefix' => 'training-facility', 'middleware' => 'check.login'], function () {
     Route::get('/', [TrainingFacilityPageController::class, 'index'])->name('view.training_facility.index');
@@ -333,7 +335,20 @@ Route::group(['prefix' => 'training-facility', 'middleware' => 'check.login'], f
     Route::delete('/{id}', [TrainingFacilityPageController::class, 'destroy'])->name('view.training_facility.destroy');
 });
 
-//end trainee
+//end training_facility
+
+//stay_facility
+
+Route::group(['prefix' => 'stay-facility', 'middleware' => 'check.login'], function () {
+    Route::get('/', [StayFacilityPageController::class, 'index'])->name('view.stay_facility.index');
+    Route::get('/create', [StayFacilityPageController::class, 'create'])->name('view.stay_facility.create');
+    Route::post('/', [StayFacilityPageController::class, 'store'])->name('view.stay_facility.store');
+    Route::get('/{id}/edit', [StayFacilityPageController::class, 'edit'])->name('view.stay_facility.edit');
+    Route::put('/{id}', [StayFacilityPageController::class, 'update'])->name('view.stay_facility.update');
+    Route::delete('/{id}', [StayFacilityPageController::class, 'destroy'])->name('view.stay_facility.destroy');
+});
+
+//end stay_facility
 
 Route::group(['prefix' => 'nationality', 'middleware' => 'check.login'], function () {
     Route::get('/', [NationalityPageController::class, 'index'])->name('view.nationality.index');
@@ -415,6 +430,10 @@ Route::group(['prefix' => 'api', 'middleware' => 'check.login'], function () {
 
     Route::group(['prefix' => 'training-facilities'], function () {
         Route::get('/training-facilities', [TrainingFacilityController::class, 'index'])->name('api.training_facilities.list');
+    });
+
+    Route::group(['prefix' => 'stay-facilities'], function () {
+        Route::get('/stay-facilities', [StayFacilityController::class, 'index'])->name('api.stay_facilities.list');
     });
 
     Route::group(['prefix' => 'nationalities'], function () {

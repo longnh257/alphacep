@@ -74,7 +74,7 @@
                                     <label for="sending_agency" class="form-label ">{{ trans('project_trainee.sending_agency') }}</label>
                                     <select class="form-control" data-trigger name="sending_agency" id="sending_agency">
                                         @foreach ($sending_agency as $item)
-                                        <option value="{{$item->sending_agency_id}}" @if($project_trainee->sending_agency_id == $item->sending_agency_id ) selected @endif>ID: {{$item->sending_agency_id}} - Name: {{$item->representative_name}}</option>
+                                        <option value="{{$item->sending_agency_id}}" @if($project_trainee->sending_agency_id == $item->sending_agency_id ) selected @endif>{{$item->representative_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -83,7 +83,7 @@
                                     <label for="training_facility" class="form-label ">{{ trans('project_trainee.training_facility') }}</label>
                                     <select class="form-control" data-trigger name="training_facility" id="training_facility">
                                         @foreach ($training_facility as $item)
-                                        <option value="{{$item->training_facility_id}}" @if($project_trainee->training_facility_id == $item->training_facility_id ) selected @endif>ID: {{$item->training_facility_id}} - Name: {{$item->name}}</option>
+                                        <option value="{{$item->training_facility_id}}" @if($project_trainee->training_facility_id == $item->training_facility_id ) selected @endif>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

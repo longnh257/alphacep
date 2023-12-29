@@ -11,6 +11,7 @@ return [
     'sending_agency' => 'Sending Agency',
     'trainee' => 'Trainee',
     'training_facility' => 'Training Facility',
+    'stay_facility' => 'Stay Facility',
     'project' => 'Project',
 ];
 

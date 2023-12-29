@@ -69,6 +69,14 @@
                             <input type="text" class="form-control" name="fax" id="fax" value="{{ old('fax') }}" placeholder="{{ trans('company.fax') }}">
                         </div>
                         <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="address1" class="form-label">{{ trans('company.address1') }}</label>
+                            <input type="text" class="form-control" name="address1" id="address1" value="{{ old('address1') }}" placeholder="{{ trans('company.address1') }}">
+                        </div>
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
+                            <label for="address2" class="form-label">{{ trans('company.address2') }}</label>
+                            <input type="text" class="form-control" name="address2" id="address2" value="{{ old('address2') }}" placeholder="{{ trans('company.address2') }}">
+                        </div>
+                        <div class="  col-lg-6 col-md-6 col-sm-12">
                             <label for="postcode" class="form-label">{{ trans('company.postcode') }}</label>
                             <input type="text" class="form-control" name="postcode" id="postcode" value="{{ old('postcode') }}" placeholder="{{ trans('company.postcode') }}">
                         </div>

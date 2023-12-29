@@ -59,7 +59,7 @@
                                 <select class="form-control" data-trigger name="company_office_id" id="company_office">
                                     <option value="">{{ trans('audit_report_label.choose_company_office') }}</option>
                                     @foreach ($company_office as $item)
-                                    <option value="{{$item->company_office_id}}" {{$item->company_office_id == $model->company_office_id ? 'selected' : ''}}>ID: {{$item->company_office_id}} - Name: {{$item->name}}</option>
+                                    <option value="{{$item->company_office_id}}" {{$item->company_office_id == $model->company_office_id ? 'selected' : ''}}>{{$item->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -69,7 +69,7 @@
                             <select class="form-control" data-trigger name="company_id" id="company">
                                 <option value="">{{ trans('audit_report_label.choose_company') }}</option>
                                 @foreach ($company as $item)
-                                <option value="{{$item->company_id}}">ID: {{$item->company_id}} - Name: {{$item->name}}</option>
+                                <option value="{{$item->company_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div> -->

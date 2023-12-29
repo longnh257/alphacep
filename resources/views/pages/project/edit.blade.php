@@ -75,7 +75,7 @@
                                     <select class="form-control" data-trigger name="sending_agency_id" id="sending_agency_id">
                                         <option value="">{{ trans('project.choose_sending_agency') }}</option>
                                         @foreach ($sending_agency as $item)
-                                        <option value="{{$item->sending_agency_id}}" @if($project->sending_agency_id == $item->sending_agency_id ) selected @endif>{{$item->sending_agency_name}}</option>
+                                        <option value="{{$item->sending_agency_id}}" @if($project->sending_agency_id == $item->sending_agency_id ) selected @endif>{{$item->representative_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -85,7 +85,7 @@
                                     <select class="form-control" data-trigger name="company_id" id="company_id">
                                         <option value="">{{ trans('project.choose_company') }}</option>
                                         @foreach ($company as $item)
-                                        <option value="{{$item->company_id}}" @if($project->company_id == $item->company_id ) selected @endif>{{$item->company_name}}</option>
+                                        <option value="{{$item->company_id}}" {{ $project->company_id == $item->company_id ? selected : "" }}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

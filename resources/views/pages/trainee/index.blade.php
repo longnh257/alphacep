@@ -68,7 +68,7 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content"> {{ trans('trainee.mobile_tel') }}</div>
+                                        <div class="gridjs-th-content"> {{ trans('trainee.name_kana') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
@@ -76,7 +76,23 @@
                                 </th>
                                 <th class="gridjs-th gridjs-th-sort ">
                                     <div class="flex-between-center">
-                                        <div class="gridjs-th-content"> {{ trans('trainee.passport_no') }}</div>
+                                        <div class="gridjs-th-content"> {{ trans('trainee.name_kanji') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content"> {{ trans('trainee.updated_by_id') }}</div>
+                                        <button class="btn btn-outline-light btn-wave waves-effect waves-light">
+                                            <i class="fe fe-maximize-2"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th class="gridjs-th gridjs-th-sort ">
+                                    <div class="flex-between-center">
+                                        <div class="gridjs-th-content"> {{ trans('trainee.updated_at') }}</div>
                                         <button class="btn btn-outline-light btn-wave waves-effect waves-light">
                                             <i class="fe fe-maximize-2"></i>
                                         </button>
@@ -90,8 +106,10 @@
                             <tr v-for="item in list" :key="item.trainee_id">
                                 <td>((item.trainee_id))</td>
                                 <td class="fw-medium">((item.name))</td>
-                                <td class="fw-medium">((item.mobile_tel))</td>
-                                <td class="fw-medium">((item.passport_no))</td>
+                                <td class="fw-medium">((item.name_kana))</td>
+                                <td class="fw-medium">((item.name_kanji))</td>
+                                <td class="fw-medium">((item.updated_by_id ? item.updated_by_id : created_by_id))</td>
+                                <td class="fw-medium">((item.updated_on ? item.updated_on : item.created_on))</td>
                                 <td>
                                     <div class="hstack gap-2 ">
                                         <a :href="`{{asset('trainee')}}/`+item.trainee_id+`/edit`" class="text-info fs-14 lh-1"><i class="ri-edit-line"></i></a>

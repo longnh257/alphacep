@@ -79,7 +79,7 @@
                                     <select class="form-control" data-trigger name="company_office_id" id="company_office">
                                         <option value="">{{ trans('visit_guidance_record.choose_company_office') }}</option>
                                         @foreach ($company_office as $item)
-                                        <option value="{{$item->company_office_id}}" {{$item->company_office_id == $model->company_office_id ? 'selected' : ''}}>ID: {{$item->company_office_id}} - Name: {{$item->name}}</option>
+                                        <option value="{{$item->company_office_id}}" {{$item->company_office_id == $model->company_office_id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -88,7 +88,7 @@
                                     <select class="form-control" data-trigger name="visit_staff_id" id="visit_staff">
                                         <option value="">{{ trans('visit_guidance_record.visit_staff') }}</option>
                                         @foreach ($customer_staff as $item)
-                                        <option value="{{$item->customer_staff_id}}" {{$item->customer_staff_id == $model->visit_staff_id ? 'selected' : ''}}>ID: {{$item->customer_staff_id}} - Name: {{$item->name}}</option>
+                                        <option value="{{$item->customer_staff_id}}" {{$item->customer_staff_id == $model->visit_staff_id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -97,7 +97,7 @@
                                     <select class="form-control" data-trigger name="trainee_id" id="trainee">
                                         <option value="">{{ trans('visit_guidance_record.choose_trainee') }}</option>
                                         @foreach ($trainee as $item)
-                                        <option value="{{$item->trainee_id}}" {{$item->trainee_id == $model->trainee_id ? 'selected' : ''}}>ID: {{$item->trainee_id}} - Name: {{$item->name}}</option>
+                                        <option value="{{$item->trainee_id}}" {{$item->trainee_id == $model->trainee_id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

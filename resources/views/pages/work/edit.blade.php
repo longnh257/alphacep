@@ -48,14 +48,14 @@
                         <div class="row gy-4">
                             <div class="col-sm-12">
                                 <label for="name" class="form-label required">{{ trans('work.name') }}</label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $workflow->name }}" placeholder="{{ trans('work.name') }}">
+                                <input type="text" class="form-control" name="name" id="name" value="{{ $work->name }}" placeholder="{{ trans('work.name') }}">
                             </div>
 
                             <div class="col-sm-12">
-                                <label for="flowgroup_id" class="form-label ">{{ trans('work.sending_agency') }}</label>
-                                <select class="form-control" data-trigger name="flowgroup_id" id="flowgroup_id">
-                                    <option value="1" @if($workflow->flowgroup_id == 1 ) selected @endif>入国手続</option>
-                                    <option value="2" @if($workflow->flowgroup_id == 2 ) selected @endif>技能実習</option>
+                                <label for="workflow_id" class="form-label ">{{ trans('work.workflow_id') }}</label>
+                                <select class="form-control" data-trigger name="workflow_id" id="workflow_id">
+                                    <option value="1" @if($work->workflow_id == 1 ) selected @endif>入国手続</option>
+                                    <option value="2" @if($work->workflow_id == 2 ) selected @endif>技能実習</option>
                                 </select>
                             </div>
 

@@ -47,7 +47,7 @@
                             <select class="form-control" data-trigger name="company_office_id" id="company_office">
                                 <option value="">{{ trans('visit_guidance_record.choose_company_office') }}</option>
                                 @foreach ($company_office as $item)
-                                <option value="{{$item->company_office_id}}">ID: {{$item->company_office_id}} - Name: {{$item->name}}</option>
+                                <option value="{{$item->company_office_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -56,7 +56,7 @@
                             <select class="form-control" data-trigger name="visit_staff_id" id="visit_staff">
                                 <option value="">{{ trans('visit_guidance_record.visit_staff') }}</option>
                                 @foreach ($customer_staff as $item)
-                                <option value="{{$item->customer_staff_id}}">ID: {{$item->customer_staff_id}} - Name: {{$item->name}}</option>
+                                <option value="{{$item->customer_staff_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                             <select class="form-control" data-trigger name="trainee_id" id="trainee">
                                 <option value="">{{ trans('visit_guidance_record.choose_trainee') }}</option>
                                 @foreach ($trainee as $item)
-                                <option value="{{$item->trainee_id}}">ID: {{$item->trainee_id}} - Name: {{$item->name}}</option>
+                                <option value="{{$item->trainee_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>

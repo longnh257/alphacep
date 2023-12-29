@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Pages\Project;
 
 use App\Http\Controllers\Controller;
-use App\Models\MCompany;
 use App\Models\MSendingAgency;
+use App\Models\MStayFacility;
 use App\Models\MTrainee;
 use App\Models\MTrainingFacility;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\ProjectTrainee;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+
 
 class ProjectTraineePageController extends Controller
 {
@@ -22,11 +21,13 @@ class ProjectTraineePageController extends Controller
         $trainee = MTrainee::whereNotIn('trainee_id', $this_project_trainee_ids)->get();
         $training_facility = MTrainingFacility::all();
         $sending_agency = MSendingAgency::all();
+        $stay_facility = MStayFacility::all();
         return view('pages.project_trainee.create', compact(
             'project',
             'trainee',
             'training_facility',
             'sending_agency',
+            'stay_facility',
         ));
     }
 

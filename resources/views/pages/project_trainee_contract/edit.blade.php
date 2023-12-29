@@ -42,7 +42,7 @@
                                 <select class="form-control" data-trigger name="training_facility_id" id="training_facility">
                                     <option value="">{{ trans('project_trainee_contract.choose_training_facility') }}</option>
                                     @foreach ($training_facility as $item)
-                                    <option value="{{$item->training_facility_id}}" @if($item->training_facility_id == $project_trainee_contract->training_facility_id) selected @endif>ID: {{$item->training_facility_id}} - Name: {{$item->name}}</option>
+                                    <option value="{{$item->training_facility_id}}" @if($item->training_facility_id == $project_trainee_contract->training_facility_id) selected @endif>{{$item->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
