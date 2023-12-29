@@ -7,8 +7,8 @@
 <!-- Page Header -->
 <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
     <div>
-        <h4 class="mb-0">{{ trans('user.user_add') }}</h4>
-        <p class="mb-0 text-muted">{{ trans('user.user_add_desc') }}</p>
+        <h4 class="mb-0">{{ trans('user.user_edit') }}</h4>
+        <p class="mb-0 text-muted">{{ trans('user.user_edit_desc') }}</p>
     </div>
 </div>
 <!-- End Page Header -->
@@ -57,10 +57,10 @@
 
                         <div class="  col-lg-6 col-sm-12">
                             <label for="customer" class="form-label ">{{ trans('user.customer') }}</label>
-                            <select class="form-control" data-trigger name="user_id" id="customer">
+                            <select class="form-control" data-trigger name="customer_id" id="customer">
                                 <option value="">{{ trans('user.choose_customer') }}</option>
                                 @foreach ($customer as $item)
-                                <option value="{{$item->customer_id}}" {{$item->customer_id == $model->user_id ? 'selected' : ''}}>{{$item->name}}</option>
+                                <option value="{{$item->customer_id}}" {{$item->customer_id == $model->customer_id ? 'selected' : ''}}>{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>

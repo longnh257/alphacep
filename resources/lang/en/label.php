@@ -20,6 +20,7 @@ return [
     'audit_report' => 'Audit Report',
     'document_template' => 'Document Template',
     'working_hour' => 'Working Hour',
+    'user' => 'User',
 
     'female' => 'Female',
     'male' => 'Male',

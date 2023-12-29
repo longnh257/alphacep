@@ -17,8 +17,8 @@ class UserPageController extends Controller
 
     public function create()
     {
-        $customer = MCustomer::where('customer_id','!=',1)->get();
-        return view('pages.user.create',compact('customer'));
+        $customer = MCustomer::where('customer_id', '!=', 1)->get();
+        return view('pages.user.create', compact('customer'));
     }
 
 
@@ -28,10 +28,10 @@ class UserPageController extends Controller
         $request->validate(
             [
                 'name' => 'required|max:254',
-                'address' => 'max:10',
                 'email' => 'email|required|max:254|unique:m_user,email',
                 'phone' => 'required|regex:/^\d{10}$/|max:12',
                 'password' => 'required|confirmed',
+                'customer_id' => 'required',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),
@@ -42,6 +42,7 @@ class UserPageController extends Controller
             "name" => $request->name,
             "email" => $request->email,
             "phone" => $request->phone,
+            "customer_id" => $request->customer_id,
             "password" => bcrypt($request->password),
         ]);
 
@@ -52,8 +53,8 @@ class UserPageController extends Controller
     public function edit($id)
     {
         $model = MUser::findOrFail($id);
-        $customer = MCustomer::where('customer_id','!=',1)->get();
-        return view('pages.user.edit', compact('model','customer'));
+        $customer = MCustomer::where('customer_id', '!=', 1)->get();
+        return view('pages.user.edit', compact('model', 'customer'));
     }
 
     public function update(Request $request, $id)
@@ -63,17 +64,26 @@ class UserPageController extends Controller
         $request->validate(
             [
                 'name' => 'required|max:254',
-                'address' => 'max:10',
                 'email' => 'email|required|max:254|unique:m_user,email,' . $id . ',id',
                 'phone' => 'required|regex:/^\d{10}$/|max:12',
-                'password' => 'required|confirmed',
+                'password' => 'confirmed',
+                'customer_id' => 'required',
             ],
             trans('validation.messages'),
             trans('validation.attributes'),
         );
 
-        $request['updated_by_id'] = Auth::id();
-        $user->update($request->input());
+        $cred = [
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "customer_id" => $request->customer_id,
+        ];
+        if ($request->password) {
+            $cred["password"] = bcrypt($request->password);
+        }
+
+        $user->update($cred);
 
         return redirect()->route('view.user.index')
             ->with('success', 'User updated successfully!');

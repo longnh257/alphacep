@@ -76,10 +76,10 @@
 
                         <div class="  col-lg-6 col-sm-12">
                             <label for="customer" class="form-label ">{{ trans('user.customer') }}</label>
-                            <select class="form-control" data-trigger name="user_id" id="customer">
+                            <select class="form-control" data-trigger name="customer_id" id="customer">
                                 <option value="">{{ trans('user.choose_customer') }}</option>
                                 @foreach ($customer as $item)
-                                <option value="{{$item->user_id}}">{{$item->name}}</option>
+                                <option value="{{$item->customer_id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
